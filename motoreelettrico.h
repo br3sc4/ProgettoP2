@@ -18,6 +18,7 @@ public:
                     bool inC, double capB, double ampB, u_int carS, u_int velC);
 
     // Metodi virtuali
+    virtual ~motoreElettrico();
 
     // Metodi get
     bool getInCarica() const;

@@ -17,7 +17,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     Model/abstractFile.cpp \
+    autoibrida.cpp \
+    automobile.cpp \
+    automobileelettrica.cpp \
+    bicicletta.cpp \
     main.cpp \
+    monopattino.cpp \
+    moto.cpp \
+    motoelettrica.cpp \
     motorecombustione.cpp \
     motoreelettrico.cpp \
     veicolo.cpp \
@@ -25,6 +32,13 @@ SOURCES += \
 
 HEADERS += \
     Model/abstractFile.h \
+    autoibrida.h \
+    automobile.h \
+    automobileelettrica.h \
+    bicicletta.h \
+    monopattino.h \
+    moto.h \
+    motoelettrica.h \
     motorecombustione.h \
     motoreelettrico.h \
     veicolo.h \
