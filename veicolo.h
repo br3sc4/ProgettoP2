@@ -1,6 +1,7 @@
 #ifndef VEICOLO_H
 #define VEICOLO_H
-#define u_int unsigned short    //  unsigned short int abbreviato (da 0 a 65,535)
+
+#define u_int unsigned short    //  unsigned short abbreviato (da 0 a 65,535)
 
 #include <string>
 
@@ -10,8 +11,6 @@ class veicolo
 {
 private:
     string targa;
-    //float prezzoAcquisto;     // possiamo toglierlo? Oppure ci interessa quanto abbiamo speso per un veicolo?
-    //u_int capacitaPosti;      // anche questo non saprei se ci può essere utile
     string posizione;           //  gradi decimali con 4 cifre dopo il punto es: "41.8902, 12.4922"
     u_int statoAttuale;         //  0 = libero, 1 = occupato, 2 = prenotato, 3 = manutenzione
     float chilometraggio;
@@ -22,7 +21,7 @@ private:
 
 public:
     // Costruttore
-    veicolo(string tar, float preA, u_int capP, string pos, u_int staA, float km, bool inR, bool ricM, u_int ing, u_int emi);
+    veicolo(string tar, string pos, u_int staA, float km, bool inR, bool ricM, u_int ing, u_int emi);
 
     // Metodi virtuali
     virtual float consumoKm() const =0;
@@ -32,14 +31,13 @@ public:
 
     // Tutti i metodi get
     string getTarga() const;
-    unsigned short getCapacitaPosti() const;
     string getPosizione() const;
-    unsigned short getStatoAttuale() const;
+    u_int getStatoAttuale() const;
     float getChilometraggio() const;
     bool getInRiserva() const;
     bool getRichiedeManutenzione() const;
-    unsigned short getIngombro() const;
-    unsigned short getEmissioni() const;
+    u_int getIngombro() const;
+    u_int getEmissioni() const;
 };
 
 #endif // VEICOLO_H

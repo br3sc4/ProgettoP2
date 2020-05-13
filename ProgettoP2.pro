@@ -18,11 +18,15 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     Model/abstractFile.cpp \
     main.cpp \
+    motorecombustione.cpp \
+    motoreelettrico.cpp \
     veicolo.cpp \
     widget.cpp
 
 HEADERS += \
     Model/abstractFile.h \
+    motorecombustione.h \
+    motoreelettrico.h \
     veicolo.h \
     widget.h
 
