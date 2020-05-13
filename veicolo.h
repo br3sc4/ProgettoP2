@@ -21,7 +21,18 @@ private:
     u_int emissioni;            //  da 0 a 95g circa per km
 
 public:
-    veicolo();
+    veicolo(string tar, float preA, u_int capP, string pos, u_int staA, float km, bool inR, bool ricM, u_int ing, u_int emi);
+
+    // Tutti i metodi get
+    string getTarga() const;
+    unsigned short getCapacitaPosti() const;
+    string getPosizione() const;
+    unsigned short getStatoAttuale() const;
+    float getChilometraggio() const;
+    bool getInRiserva() const;
+    bool getRichiedeManutenzione() const;
+    unsigned short getIngombro() const;
+    unsigned short getEmissioni() const;
 };
 
 #endif // VEICOLO_H
