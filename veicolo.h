@@ -21,7 +21,14 @@ private:
     u_int emissioni;            //  da 0 a 95g circa per km
 
 public:
+    // Costruttore
     veicolo(string tar, float preA, u_int capP, string pos, u_int staA, float km, bool inR, bool ricM, u_int ing, u_int emi);
+
+    // Metodi virtuali
+    virtual float consumoKm() const =0;
+    virtual float distanzaPercorribile() const =0;      // range del veicolo dato da litri serbatoio o kw batteria * consumo al km
+    virtual short int fattoreGreen() const =0;          // da -10 a +10
+    virtual ~veicolo();                                 // non mi fa mettere const o default qua...
 
     // Tutti i metodi get
     string getTarga() const;
