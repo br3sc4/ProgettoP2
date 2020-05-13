@@ -18,10 +18,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     Model/abstractFile.cpp \
     main.cpp \
+    veicolo.cpp \
     widget.cpp
 
 HEADERS += \
     Model/abstractFile.h \
+    veicolo.h \
     widget.h
 
 # Default rules for deployment.
