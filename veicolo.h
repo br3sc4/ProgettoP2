@@ -10,8 +10,8 @@ class veicolo
 {
 private:
     string targa;
-    float prezzoAcquisto;
-    u_int capacitaPosti;
+    //float prezzoAcquisto;     // possiamo toglierlo? Oppure ci interessa quanto abbiamo speso per un veicolo?
+    //u_int capacitaPosti;      // anche questo non saprei se ci può essere utile
     string posizione;           //  gradi decimali con 4 cifre dopo il punto es: "41.8902, 12.4922"
     u_int statoAttuale;         //  0 = libero, 1 = occupato, 2 = prenotato, 3 = manutenzione
     float chilometraggio;
