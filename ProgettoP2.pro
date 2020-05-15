@@ -26,6 +26,7 @@ SOURCES += \
     Model/motorecombustione.cpp \
     Model/motoreelettrico.cpp \
     Model/veicolo.cpp \
+    main.cpp \
     widget.cpp
 
 HEADERS += \
