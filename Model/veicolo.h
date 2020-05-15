@@ -9,8 +9,17 @@ using std::string;                  //  dichiarazione d'uso per string
 
 class Veicolo {
 public:
-    // Costruttore
-    Veicolo();
+
+    /**
+     * @brief Veicolo: Costruttore della classe astratta
+     * @param targa
+     * @param posizione
+     * @param km
+     * @param numeroPosti
+     * @param ingombro
+     * @param emissioni
+     */
+    Veicolo(string targa, string posizione, double km, u_int numeroPosti, u_int ingombro, u_int emissioni);
 
     // Metodi virtuali
     virtual double autonomia() const =0;      // range del veicolo dato da litri o ampere * consumo
@@ -25,18 +34,18 @@ public:
     } StatoVeicolo;
 
 private:
-    string targa;
-    float chilometraggio;
-    u_int numeroUsi;                //  quante volte è stato usato
-    u_int tempoServizio;            //  tempo totale di utilizzo in minuti
-    StatoVeicolo statoAttuale;
-    u_int ingombro;                 //  in base alla dimensioni del veicolo (da 0 a 5)        (o da 1 a 5 ?)
-    u_int emissioni;                //  da 0 a 95g circa per km
-    bool inRiserva;                 //  se autonomia < di 30km
-    bool serveAssistenza;
-    u_int guasti;                   //  quante volte si è rotto
-    string posizione;               //  gradi decimali con 4 cifre dopo il punto es: "41.8902, 12.4922"
-    u_int capacitaPosti;
+    string _targa;
+    string _posizione;               //  gradi decimali con 4 cifre dopo il punto es: "41.8902, 12.4922"
+    double _chilometraggio;
+    u_int _capacitaPosti;
+    u_int _ingombro;                 //  in base alla dimensioni del veicolo (da 0 a 5)        (o da 1 a 5 ?)
+    u_int _emissioni;                //  da 0 a 95g circa per km
+    u_int _numeroUsi;                //  quante volte è stato usato
+    unsigned long _tempoServizio;            //  tempo totale di utilizzo in minuti
+    StatoVeicolo _statoAttuale;
+    bool _inRiserva;                 //  se autonomia < di 30km
+    bool _serveAssistenza;
+    u_int _guasti;                   //  quante volte si è rotto
 };
 
 #endif // VEICOLO_H
