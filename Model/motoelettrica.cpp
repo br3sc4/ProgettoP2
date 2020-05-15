@@ -1,6 +1,6 @@
 #include "motoelettrica.h"
 
-motoElettrica::motoElettrica()
+MotoElettrica::MotoElettrica()
 {
 
 }

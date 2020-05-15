@@ -1,6 +1,6 @@
 #include "monopattino.h"
 
-monopattino::monopattino()
+Monopattino::Monopattino()
 {
 
 }

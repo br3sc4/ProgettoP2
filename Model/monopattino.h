@@ -3,10 +3,10 @@
 
 #include "motoreelettrico.h"
 
-class monopattino: public motoreElettrico
+class Monopattino: public MotoreElettrico
 {
 public:
-    monopattino();
+    Monopattino();
 };
 
 #endif // MONOPATTINO_H

@@ -13,20 +13,23 @@ public:
     Veicolo();
 
     // Metodi virtuali
-    virtual float autonomia() const =0;      // range del veicolo dato da litri o ampere * consumo
+    virtual double autonomia() const =0;      // range del veicolo dato da litri o ampere * consumo
     virtual short int fattoreGreen() const =0;          // da -10 a +10
+    virtual double autonomia() =0;
+    virtual double consumoKm() const =0;
+    virtual short int fattoreUtilizzo() const;
     virtual ~Veicolo();
 
     typedef enum {
         libero, prenotato, occupato, manutenzione
     } StatoVeicolo;
+
 private:
     string targa;
     float chilometraggio;
     u_int numeroUsi;                //  quante volte è stato usato
     float tempoServizio;            //  tempo totale di utilizzo in minuti
-    float consumoKm;                //  consumo al km (litri o ampere)
-    StatoVeicolo statoAttuale;             //  0 = libero, 1 = occupato, 2 = prenotato, 3 = manutenzione
+    StatoVeicolo statoAttuale;
     u_int ingombro;                 //  in base alla dimensioni del veicolo (da 0 a 5)        (o da 1 a 5 ?)
     u_int emissioni;                //  da 0 a 95g circa per km
     bool inRiserva;                 //  se autonomia < di 30km

@@ -3,7 +3,7 @@
 
 #include "veicolo.h"
 
-class motoreCombustione : public veicolo
+class MotoreCombustione : public Veicolo
 {
 private:
     double capacitaSerbatoio;
@@ -13,10 +13,10 @@ private:
 
 public:
     // Costruttore
-    motoreCombustione();
+    MotoreCombustione();
 
     // Metodi virtuali
-    virtual ~motoreCombustione();
+    virtual ~MotoreCombustione();
 
 };
 

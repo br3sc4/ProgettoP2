@@ -26,17 +26,6 @@ SOURCES += \
     Model/motorecombustione.cpp \
     Model/motoreelettrico.cpp \
     Model/veicolo.cpp \
-    autoibrida.cpp \
-    automobile.cpp \
-    automobileelettrica.cpp \
-    bicicletta.cpp \
-    main.cpp \
-    monopattino.cpp \
-    moto.cpp \
-    motoelettrica.cpp \
-    motorecombustione.cpp \
-    motoreelettrico.cpp \
-    veicolo.cpp \
     widget.cpp
 
 HEADERS += \
@@ -50,16 +39,6 @@ HEADERS += \
     Model/motorecombustione.h \
     Model/motoreelettrico.h \
     Model/veicolo.h \
-    autoibrida.h \
-    automobile.h \
-    automobileelettrica.h \
-    bicicletta.h \
-    monopattino.h \
-    moto.h \
-    motoelettrica.h \
-    motorecombustione.h \
-    motoreelettrico.h \
-    veicolo.h \
     widget.h
 
 # Default rules for deployment.

@@ -4,10 +4,10 @@
 #include "motorecombustione.h"
 #include "motoreelettrico.h"
 
-class autoibrida: public motoreCombustione, public motoreElettrico
+class AutoIbrida: public MotoreCombustione, public MotoreElettrico
 {
 public:
-    autoibrida();
+    AutoIbrida();
 };
 
 #endif // AUTOIBRIDA_H

@@ -3,10 +3,10 @@
 
 #include "motoreelettrico.h"
 
-class bicicletta: public motoreElettrico
+class Bicicletta: public MotoreElettrico
 {
 public:
-    bicicletta();
+    Bicicletta();
 };
 
 #endif // BICICLETTA_H

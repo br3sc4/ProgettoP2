@@ -1,6 +1,5 @@
 #include "autoibrida.h"
 
-autoibrida::autoibrida()
-{
+AutoIbrida::AutoIbrida() {
 
 }

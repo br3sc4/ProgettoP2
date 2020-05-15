@@ -1,8 +1,8 @@
 #include "motoreelettrico.h"
 
-motoreElettrico::motoreElettrico()
+MotoreElettrico::MotoreElettrico()
 {
 
 }
 
-motoreElettrico::~motoreElettrico(){}
+MotoreElettrico::~MotoreElettrico(){}

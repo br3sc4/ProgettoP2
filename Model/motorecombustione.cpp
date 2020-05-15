@@ -1,8 +1,8 @@
 #include "motorecombustione.h"
 
 
-motoreCombustione::motoreCombustione(){
+MotoreCombustione::MotoreCombustione(){
 
 }
 
-motoreCombustione::~motoreCombustione(){};
+MotoreCombustione::~MotoreCombustione(){};

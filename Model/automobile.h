@@ -3,10 +3,10 @@
 
 #include "motorecombustione.h"
 
-class automobile: public motoreCombustione
+class Automobile: public MotoreCombustione
 {
 public:
-    automobile();
+    Automobile();
 };
 
 #endif // AUTOMOBILE_H

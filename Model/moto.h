@@ -3,10 +3,10 @@
 
 #include "motorecombustione.h"
 
-class moto: public motoreCombustione
+class Moto: public MotoreCombustione
 {
 public:
-    moto();
+    Moto();
 };
 
 #endif // MOTO_H

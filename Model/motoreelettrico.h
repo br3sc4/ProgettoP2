@@ -3,7 +3,7 @@
 
 #include "veicolo.h"
 
-class motoreElettrico : public veicolo
+class MotoreElettrico : public Veicolo
 {
 private:
     bool inCarica;
@@ -14,10 +14,10 @@ private:
 
 public:
     // Costruttore
-    motoreElettrico();
+    MotoreElettrico();
 
     // Metodi virtuali
-    virtual ~motoreElettrico();
+    virtual ~MotoreElettrico();
 
 };
 

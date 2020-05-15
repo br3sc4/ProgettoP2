@@ -1,7 +1,9 @@
 #include "veicolo.h"
 
-veicolo::veicolo(){
+Veicolo::Veicolo(){}
 
+short Veicolo::fattoreUtilizzo() const {
+    return 0;
 }
 
-veicolo::~veicolo(){}
+Veicolo::~Veicolo(){}

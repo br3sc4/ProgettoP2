@@ -1,6 +1,5 @@
 #include "moto.h"
 
-moto::moto()
-{
+Moto::Moto() {
 
 }

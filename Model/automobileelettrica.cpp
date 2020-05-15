@@ -1,6 +1,6 @@
 #include "automobileelettrica.h"
 
-automobileElettrica::automobileElettrica()
+AutomobileElettrica::AutomobileElettrica()
 {
 
 }

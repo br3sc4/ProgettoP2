@@ -1,6 +1,5 @@
 #include "bicicletta.h"
 
-bicicletta::bicicletta()
-{
+Bicicletta::Bicicletta() {
 
 }

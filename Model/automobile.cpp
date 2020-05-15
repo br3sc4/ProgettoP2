@@ -1,6 +1,5 @@
 #include "automobile.h"
 
-automobile::automobile()
-{
+Automobile::Automobile() {
 
 }
