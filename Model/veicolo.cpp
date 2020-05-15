@@ -3,7 +3,7 @@
 Veicolo::Veicolo(){}
 
 short Veicolo::fattoreUtilizzo() const {
-    return 0;
+    return (tempoServizio / 52560) % 52560;
 }
 
 Veicolo::~Veicolo(){}
