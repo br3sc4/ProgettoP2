@@ -28,7 +28,7 @@ private:
     string targa;
     float chilometraggio;
     u_int numeroUsi;                //  quante volte è stato usato
-    float tempoServizio;            //  tempo totale di utilizzo in minuti
+    u_int tempoServizio;            //  tempo totale di utilizzo in minuti
     StatoVeicolo statoAttuale;
     u_int ingombro;                 //  in base alla dimensioni del veicolo (da 0 a 5)        (o da 1 a 5 ?)
     u_int emissioni;                //  da 0 a 95g circa per km
