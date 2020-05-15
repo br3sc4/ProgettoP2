@@ -16,7 +16,16 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    Model/abstractFile.cpp \
+    Model/autoibrida.cpp \
+    Model/automobile.cpp \
+    Model/automobileelettrica.cpp \
+    Model/bicicletta.cpp \
+    Model/monopattino.cpp \
+    Model/moto.cpp \
+    Model/motoelettrica.cpp \
+    Model/motorecombustione.cpp \
+    Model/motoreelettrico.cpp \
+    Model/veicolo.cpp \
     autoibrida.cpp \
     automobile.cpp \
     automobileelettrica.cpp \
@@ -31,7 +40,16 @@ SOURCES += \
     widget.cpp
 
 HEADERS += \
-    Model/abstractFile.h \
+    Model/autoibrida.h \
+    Model/automobile.h \
+    Model/automobileelettrica.h \
+    Model/bicicletta.h \
+    Model/monopattino.h \
+    Model/moto.h \
+    Model/motoelettrica.h \
+    Model/motorecombustione.h \
+    Model/motoreelettrico.h \
+    Model/veicolo.h \
     autoibrida.h \
     automobile.h \
     automobileelettrica.h \
