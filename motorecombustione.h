@@ -13,17 +13,11 @@ private:
 
 public:
     // Costruttore
-    motoreCombustione(string tar, string pos, u_int staA, float km, bool inR, bool ricM, u_int ing, u_int emi,
-                      double capS, double litS, u_int tipC, u_int cil);
+    motoreCombustione();
 
     // Metodi virtuali
     virtual ~motoreCombustione();
 
-    //  Metodi get
-    double getCapacitaSerbatoio() const;
-    double getLitriSerbatoio() const;
-    u_int getTipoCarburante() const;
-    u_int getCilindrata() const;
 };
 
 #endif // MOTORECOMBUSTIONE_H

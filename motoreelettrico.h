@@ -14,18 +14,11 @@ private:
 
 public:
     // Costruttore
-    motoreElettrico(string tar, string pos, u_int staA, float km, bool inR, bool ricM, u_int ing, u_int emi,
-                    bool inC, double capB, double ampB, u_int carS, u_int velC);
+    motoreElettrico();
 
     // Metodi virtuali
     virtual ~motoreElettrico();
 
-    // Metodi get
-    bool getInCarica() const;
-    double getCapacitaBatteria() const;
-    double getAmpereBatteria() const;
-    u_int getCaricaSupportata() const;
-    u_int getVelocitaCarica() const;
 };
 
 #endif // MOTOREELETTRICO_H
