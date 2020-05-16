@@ -21,6 +21,7 @@ private:
     double litriSerbatoio;
     Carburante tipoCarburante;               // 0 = benzina, 1 = diesel, 2 = GPL
     u_int cilindrata;
+    u_int _emissioni;                //  da 0 a 95g circa per km
 };
 
 #endif // MOTORECOMBUSTIONE_H

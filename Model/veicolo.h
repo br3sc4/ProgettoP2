@@ -39,7 +39,6 @@ private:
     double _chilometraggio;
     u_int _capacitaPosti;
     u_int _ingombro;                 //  in base alla dimensioni del veicolo (da 0 a 5)        (o da 1 a 5 ?)
-    u_int _emissioni;                //  da 0 a 95g circa per km
     u_int _numeroUsi;                //  quante volte è stato usato
     unsigned long _tempoServizio;            //  tempo totale di utilizzo in minuti
     StatoVeicolo _statoAttuale;
