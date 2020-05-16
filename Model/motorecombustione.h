@@ -19,7 +19,7 @@ public:
 private:
     double capacitaSerbatoio;
     double litriSerbatoio;
-    u_int tipoCarburante;               // 0 = benzina, 1 = diesel, 2 = GPL
+    Carburante tipoCarburante;               // 0 = benzina, 1 = diesel, 2 = GPL
     u_int cilindrata;
 };
 
