@@ -9,6 +9,9 @@ using std::string;                  //  dichiarazione d'uso per string
 
 class Veicolo {
 public:
+    enum StatoVeicolo {
+        libero, prenotato, occupato, manutenzione
+    };
 
     /**
      * @brief Veicolo: Costruttore
@@ -21,20 +24,20 @@ public:
     Veicolo(string targa, string posizione, double km, u_int numeroPosti, u_int ingombro);
 
     /**
-     * @brief autonomia
+     * @brief autonomia o range del veicolo
      * @return
      */
-    virtual double autonomia() const =0;            // range del veicolo dato da litri o ampere * consumo
+    virtual double autonomia() const =0;
 
     /**
-     * @brief fattoreGreen
+     * @brief fattoreGreen (-10 a +10)
      * @return
      */
-    virtual short int fattoreGreen() const =0;      // da -10 a +10
+    virtual short int fattoreGreen() const =0;
 
     /**
      * @brief consumoKm
-     * @return calcola il consumo del veicolo in base alle sue caratteristiche
+     * @return consumo al km in base ad alcune caratteristiche
      */
     virtual double consumoKm() const =0;
 
@@ -49,16 +52,12 @@ public:
      */
     virtual ~Veicolo();
 
-    enum StatoVeicolo {
-        libero, prenotato, occupato, manutenzione
-    };
-
 private:
     string _targa;
     string _posizione;              //  gradi decimali con 4 cifre dopo il punto es: "41.8902, 12.4922"
     double _chilometraggio;
     u_int _capacitaPosti;
-    u_int _ingombro;                //  in base alla dimensioni del veicolo (da 0 a 5)        (o da 1 a 5 ?)
+    u_int _ingombro;                //  dimensioni del veicolo (da 1 a 5)
     u_int _numeroUsi;               //  quante volte è stato usato
     unsigned long _tempoServizio;   //  tempo totale di utilizzo in minuti
     StatoVeicolo _statoAttuale;
