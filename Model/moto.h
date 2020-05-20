@@ -3,10 +3,22 @@
 
 #include "motorecombustione.h"
 
-class Moto: public MotoreCombustione
-{
+class Moto: public MotoreCombustione {
 public:
-    Moto(string targa, string posizione, double km, double capacitaSerbatoio, Carburante tipoCarburante, u_int cilindrata, u_int emissioni, u_int numeroPosti=1, u_int ingombro=2);
+    /**
+     * @brief Moto: costruttore
+     * @param targa
+     * @param posizione
+     * @param km
+     * @param capacitaSerbatoio
+     * @param tipoCarburante
+     * @param cilindrata
+     * @param emissioni
+     * @param numeroPosti
+     * @param ingombro
+     */
+    Moto(string targa, string posizione, double km, double capacitaSerbatoio, Carburante tipoCarburante,
+         u_int cilindrata, u_int emissioni, u_int numeroPosti=1, u_int ingombro=2);
 };
 
 #endif // MOTO_H

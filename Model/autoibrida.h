@@ -7,7 +7,22 @@
 class AutoIbrida: public MotoreCombustione, public MotoreElettrico
 {
 public:
-    AutoIbrida(string targa, string posizione, double km, double capacitaSerbatoio, Carburante tipoCarburante, u_int cilindrata, u_int emissioni,    double capacitaBatteria, VelocitaRicarica caricaSupportata, u_int numeroPosti=2, u_int ingombro=3);
+    /**
+     * @brief AutoIbrida: costruttore
+     * @param targa
+     * @param posizione
+     * @param km
+     * @param capacitaSerbatoio
+     * @param tipoCarburante
+     * @param cilindrata
+     * @param emissioni
+     * @param capacitaBatteria
+     * @param caricaSupportata
+     * @param numeroPosti
+     * @param ingombro
+     */
+    AutoIbrida(string targa, string posizione, double km, double capacitaSerbatoio, Carburante tipoCarburante, u_int cilindrata, u_int emissioni,
+               double capacitaBatteria, VelocitaRicarica caricaSupportata, u_int numeroPosti=2, u_int ingombro=3);
 
     /**
      * @brief autonomia

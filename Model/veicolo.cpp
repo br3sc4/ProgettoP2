@@ -10,112 +10,90 @@ short Veicolo::fattoreUtilizzo() const {
 
 Veicolo::~Veicolo(){}
 
-string Veicolo::targa() const
-{
+string Veicolo::targa() const {
     return _targa;
 }
 
-void Veicolo::setTarga(const string &targa)
-{
+void Veicolo::setTarga(const string &targa) {
     _targa = targa;
 }
 
-string Veicolo::posizione() const
-{
+string Veicolo::posizione() const {
     return _posizione;
 }
 
-void Veicolo::setPosizione(const string &posizione)
-{
+void Veicolo::setPosizione(const string &posizione) {
     _posizione = posizione;
 }
 
-double Veicolo::chilometraggio() const
-{
+double Veicolo::chilometraggio() const {
     return _chilometraggio;
 }
 
-void Veicolo::setChilometraggio(double chilometraggio)
-{
+void Veicolo::setChilometraggio(double chilometraggio) {
     _chilometraggio = chilometraggio;
 }
 
-unsigned short Veicolo::capacitaPosti() const
-{
+unsigned short Veicolo::capacitaPosti() const {
     return _capacitaPosti;
 }
 
-void Veicolo::setCapacitaPosti(unsigned short capacitaPosti)
-{
+void Veicolo::setCapacitaPosti(unsigned short capacitaPosti) {
     _capacitaPosti = capacitaPosti;
 }
 
-unsigned short Veicolo::ingombro() const
-{
+unsigned short Veicolo::ingombro() const {
     return _ingombro;
 }
 
-void Veicolo::setIngombro(unsigned short ingombro)
-{
+void Veicolo::setIngombro(unsigned short ingombro) {
     _ingombro = ingombro;
 }
 
-unsigned short Veicolo::numeroUsi() const
-{
+unsigned short Veicolo::numeroUsi() const {
     return _numeroUsi;
 }
 
-void Veicolo::setNumeroUsi(unsigned short numeroUsi)
-{
+void Veicolo::setNumeroUsi(unsigned short numeroUsi) {
     _numeroUsi = numeroUsi;
 }
 
-unsigned long Veicolo::tempoServizio() const
-{
+unsigned long Veicolo::tempoServizio() const {
     return _tempoServizio;
 }
 
-void Veicolo::setTempoServizio(unsigned long tempoServizio)
-{
+void Veicolo::setTempoServizio(unsigned long tempoServizio) {
     _tempoServizio = tempoServizio;
 }
 
-Veicolo::StatoVeicolo Veicolo::statoAttuale() const
-{
+Veicolo::StatoVeicolo Veicolo::statoAttuale() const {
     return _statoAttuale;
 }
 
-void Veicolo::setStatoAttuale(const StatoVeicolo &statoAttuale)
-{
+void Veicolo::setStatoAttuale(const StatoVeicolo &statoAttuale) {
     _statoAttuale = statoAttuale;
 }
 
-bool Veicolo::inRiserva() const
-{
+bool Veicolo::inRiserva() const {
     return _inRiserva;
 }
 
-void Veicolo::setInRiserva(bool inRiserva)
-{
+void Veicolo::setInRiserva(bool inRiserva) {
     _inRiserva = inRiserva;
 }
 
-bool Veicolo::serveAssistenza() const
-{
+bool Veicolo::serveAssistenza() const {
     return _serveAssistenza;
 }
 
-void Veicolo::setServeAssistenza(bool serveAssistenza)
-{
+void Veicolo::setServeAssistenza(bool serveAssistenza) {
     _serveAssistenza = serveAssistenza;
 }
 
-unsigned short Veicolo::guasti() const
-{
+unsigned short Veicolo::guasti() const {
     return _guasti;
 }
 
-void Veicolo::setGuasti(unsigned short guasti)
-{
+void Veicolo::setGuasti(unsigned short guasti) {
     _guasti = guasti;
 }

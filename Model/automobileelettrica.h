@@ -3,10 +3,20 @@
 
 #include "motoreelettrico.h"
 
-class AutomobileElettrica: public MotoreElettrico
-{
+class AutomobileElettrica: public MotoreElettrico {
 public:
-    AutomobileElettrica(string targa, string posizione, double km, u_int numeroPosti, u_int ingombro, double capacitaBatteria, VelocitaRicarica caricaSupportata);
+    /**
+     * @brief AutomobileElettrica: construttore
+     * @param targa
+     * @param posizione
+     * @param km
+     * @param numeroPosti
+     * @param ingombro
+     * @param capacitaBatteria
+     * @param caricaSupportata
+     */
+    AutomobileElettrica(string targa, string posizione, double km, u_int numeroPosti, u_int ingombro,
+                        double capacitaBatteria, VelocitaRicarica caricaSupportata);
 
 };
 
