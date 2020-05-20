@@ -48,6 +48,15 @@ public:
     virtual short int fattoreUtilizzo() const;
 
     /**
+     * @brief controlla autonomia e setta inRiserva
+     * @return
+     */
+    virtual void checkRiserva() {
+        if(autonomia()<30) setInRiserva(true);
+        else setInRiserva(false);
+    }
+
+    /**
      * @brief ~Veicolo: distruttore
      */
     virtual ~Veicolo();
