@@ -13,13 +13,13 @@ public:
      * @brief autonomia
      * @return
      */
-    double autonomia() const {return 0;}           // range del veicolo dato da litri o ampere * consumo
+    double autonomia() const {return 0;}
 
     /**
      * @brief fattoreGreen
      * @return
      */
-     short int fattoreGreen() const {return 0;}      // da -10 a +10
+     short int fattoreGreen() const {return 0;}
 
     /**
      * @brief consumoKm

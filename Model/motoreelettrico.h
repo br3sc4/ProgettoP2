@@ -49,6 +49,7 @@ private:
     double _capacitaAttuale;               // Ampere-ora presenti
     VelocitaRicarica _caricaSupportata;     // la massima velocità alla quale può essere ricaricata (da 1 a 4)
     Colonnina _colonninaAttuale;              // tipo di colonnina alla quale è inCarica
+
 };
 
 #endif // MOTOREELETTRICO_H

@@ -52,6 +52,39 @@ public:
      */
     virtual ~Veicolo();
 
+    string targa() const;
+    void setTarga(const string &targa);
+
+    string posizione() const;
+    void setPosizione(const string &posizione);
+
+    double chilometraggio() const;
+    void setChilometraggio(double chilometraggio);
+
+    unsigned short capacitaPosti() const;
+    void setCapacitaPosti(unsigned short capacitaPosti);
+
+    unsigned short ingombro() const;
+    void setIngombro(unsigned short ingombro);
+
+    unsigned short numeroUsi() const;
+    void setNumeroUsi(unsigned short numeroUsi);
+
+    unsigned long tempoServizio() const;
+    void setTempoServizio(unsigned long tempoServizio);
+
+    StatoVeicolo statoAttuale() const;
+    void setStatoAttuale(const StatoVeicolo &statoAttuale);
+
+    bool inRiserva() const;
+    void setInRiserva(bool inRiserva);
+
+    bool serveAssistenza() const;
+    void setServeAssistenza(bool serveAssistenza);
+
+    unsigned short guasti() const;
+    void setGuasti(unsigned short guasti);
+
 private:
     string _targa;
     string _posizione;              //  gradi decimali con 4 cifre dopo il punto es: "41.8902, 12.4922"
