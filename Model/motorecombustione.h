@@ -5,9 +5,9 @@
 
 class MotoreCombustione : public Veicolo {
 public:
-    typedef enum {
+    enum Carburante {
         benzina, diesel, gpl, metano
-    } Carburante;
+    };
 
     /**
      * @brief MotoreCombustione: Costruttore

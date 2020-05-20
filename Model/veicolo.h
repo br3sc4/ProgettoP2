@@ -33,12 +33,6 @@ public:
     virtual short int fattoreGreen() const =0;      // da -10 a +10
 
     /**
-     * @brief autonomia
-     * @return
-     */
-    virtual double autonomia() =0;
-
-    /**
      * @brief consumoKm
      * @return calcola il consumo del veicolo in base alle sue caratteristiche
      */
@@ -55,9 +49,9 @@ public:
      */
     virtual ~Veicolo();
 
-    typedef enum {
+    enum StatoVeicolo {
         libero, prenotato, occupato, manutenzione
-    } StatoVeicolo;
+    };
 
 private:
     string _targa;

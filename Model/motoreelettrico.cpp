@@ -10,3 +10,7 @@ MotoreElettrico::~MotoreElettrico() {}
 unsigned short MotoreElettrico::percentualeCarica() const {
     return (_capacitaAttuale * 100) / _capacitaTotaleBatteria;
 }
+
+unsigned short MotoreElettrico::tempoRimanenteCaricaCompleta() const {
+    return 10;
+}

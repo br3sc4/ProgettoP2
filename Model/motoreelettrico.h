@@ -5,13 +5,13 @@
 
 class MotoreElettrico : public Veicolo {
 public:
-    typedef enum {
+    enum Colonnina {
         nessuna
-    } Colonnina;
+    };
 
-    typedef enum {
-        lenta, media, veloce
-    } VelocitaRicarica;
+    enum VelocitaRicarica {
+        lenta = 1, media, veloce
+    };
 
     /**
      * @brief MotoreElettrico: Costruttore
