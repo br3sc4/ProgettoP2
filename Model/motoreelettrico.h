@@ -3,7 +3,7 @@
 
 #include "veicolo.h"
 
-class MotoreElettrico : public Veicolo {
+class MotoreElettrico : virtual public Veicolo {
 public:
     typedef enum {
         nessuna
@@ -30,12 +30,6 @@ public:
      * @brief ~MotoreElettrico: Distruttore
      */
     virtual ~MotoreElettrico();
-
-    /**
-     * @brief consumoKm
-     * @return calcola il consumo del veicolo in base alle sue caratteristiche
-     */
-    virtual double consumoKm() const;
 
     /**
      * @brief tempoRimanenteCaricaCompleta

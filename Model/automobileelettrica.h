@@ -6,7 +6,8 @@
 class AutomobileElettrica: public MotoreElettrico
 {
 public:
-    AutomobileElettrica();
+    AutomobileElettrica(string targa, string posizione, double km, u_int numeroPosti, u_int ingombro, double capacitaBatteria, VelocitaRicarica caricaSupportata);
+
 };
 
 #endif // AUTOMOBILEELETTRICA_H

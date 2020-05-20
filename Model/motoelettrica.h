@@ -6,7 +6,7 @@
 class MotoElettrica: public MotoreElettrico
 {
 public:
-    MotoElettrica();
+    MotoElettrica(string targa, string posizione, double km, u_int numeroPosti, u_int ingombro, double capacitaBatteria, VelocitaRicarica caricaSupportata);
 };
 
 #endif // MOTOELETTRICA_H

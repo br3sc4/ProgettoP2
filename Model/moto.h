@@ -6,7 +6,8 @@
 class Moto: public MotoreCombustione
 {
 public:
-    Moto();
+    Moto(string targa, string posizione, double km, u_int numeroPosti, u_int ingombro,
+          double capacitaSerbatoio, Carburante tipoCarburante, u_int cilindrata, u_int emissioni);
 };
 
 #endif // MOTO_H
