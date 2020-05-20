@@ -6,7 +6,7 @@
 class MotoreElettrico : virtual public Veicolo {
 public:
     enum Colonnina {
-        nessuna
+        nessuna, lowHome, lowPublic, medium, ultraFast
     };
 
     enum VelocitaRicarica {
@@ -35,13 +35,19 @@ public:
      * @brief tempoRimanenteCaricaCompleta
      * @return calcola il tempo rimanente al veicolo per ranggiungere il 100% di carica
      */
-    unsigned short tempoRimanenteCaricaCompleta() const;
+    short tempoRimanenteCaricaCompleta() const;
 
     /**
      * @brief percentualeCarica
      * @return calcola la percentuale della batteria in quel momento
      */
     unsigned short percentualeCarica() const;
+
+    /**
+     * @brief inCarica
+     * @return se il veicolo è in carica
+     */
+    bool inCarica() const;
 
 private:
     bool _inCarica;
