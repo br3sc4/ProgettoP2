@@ -22,12 +22,6 @@ public:
      short int fattoreGreen() const {return 0;}      // da -10 a +10
 
     /**
-     * @brief autonomia
-     * @return
-     */
-     double autonomia() {return 0;}
-
-    /**
      * @brief consumoKm
      * @return calcola il consumo del veicolo in base alle sue caratteristiche
      */
