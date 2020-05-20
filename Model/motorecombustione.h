@@ -3,7 +3,7 @@
 
 #include "veicolo.h"
 
-class MotoreCombustione : public Veicolo {
+class MotoreCombustione : virtual public Veicolo {
 public:
     enum Carburante {
         benzina, diesel, gpl, metano
@@ -29,11 +29,6 @@ public:
      */
     virtual ~MotoreCombustione();
 
-    /**
-     * @brief consumoKm
-     * @return calcola il consumo del veicolo in base alle sue caratteristiche
-     */
-    virtual double consumoKm() const;
 
 private:
     double _capacitaSerbatoio;
