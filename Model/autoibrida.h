@@ -7,26 +7,19 @@
 class AutoIbrida: public MotoreCombustione, public MotoreElettrico
 {
 public:
-    AutoIbrida(string targa, string posizione, double km, u_int numeroPosti, u_int ingombro,
-               double capacitaSerbatoio, Carburante tipoCarburante, u_int cilindrata, u_int emissioni,
-               double capacitaBatteria, VelocitaRicarica caricaSupportata);
+    AutoIbrida(string targa, string posizione, double km, double capacitaSerbatoio, Carburante tipoCarburante, u_int cilindrata, u_int emissioni,    double capacitaBatteria, VelocitaRicarica caricaSupportata, u_int numeroPosti=2, u_int ingombro=3);
+
     /**
      * @brief autonomia
      * @return
      */
-    double autonomia() const {return 0;}           // range del veicolo dato da litri o ampere * consumo
+    double autonomia() const {return 0;}
 
     /**
      * @brief fattoreGreen
      * @return
      */
-     short int fattoreGreen() const {return 0;}      // da -10 a +10
-
-    /**
-     * @brief autonomia
-     * @return
-     */
-     double autonomia() {return 0;}
+     short int fattoreGreen() const {return 0;}
 
     /**
      * @brief consumoKm
