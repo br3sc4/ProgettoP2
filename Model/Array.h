@@ -26,6 +26,7 @@ private:
   }
 
 public:
+  //costruttore
   Array(int k=0, const T& t = T()): x(0), size(k), capacity(k*2){
     if (k) {
         x=new T[k*2];
@@ -33,9 +34,9 @@ public:
           x[i]=t;
       }
   }
-  //richiamo copia sull'oggetto di invocazione e gli passo i parametri di t
+  //costruttore di copia
   Array(const Array& t):x(copia(t.x,t.size,t.capacity)),size(t.size),capacity(t.capacity){}
-  ~Array(){delete[] x;}
+    //costruttore assegnazione
   Array& operator=(const Array& t){
     if(this != t){
         delete[] x;
@@ -45,8 +46,62 @@ public:
       }
     return *this;
   }
+  //distruttore
+  ~Array(){delete[] x;}
 
-  void pushBack(const T& t){
+  bool operator==(const Array& a){
+    if(size != a.size) return false;
+    for(int i=0; i<size; i++) if(x[i]!=a[i]) return false;
+    return true;
+  }
+
+  //****ITERATORS****
+
+  //begin e end const e non
+
+  //****CAPACITY****
+
+  //size  Returns the number of elements in the vector.
+
+  //max_size Returns the maximum number of elements that the vector can hold.
+
+  //resize Change size (public member function )
+  /*Change size
+Resizes the container so that it contains n elements.
+If n is smaller than the current container size, the content is reduced to its first n elements, removing those beyond (and destroying them).
+If n is greater than the current container size, the content is expanded by inserting at the end as many elements as needed to reach a size of n. If val is specified, the new elements are initialized as copies of val, otherwise, they are value-initialized.
+If n is also greater than the current container capacity, an automatic reallocation of the allocated storage space takes place.
+Notice that this function changes the actual content of the container by inserting or erasing elements from it.
+*/
+
+  //capacity Return size of allocated storage capacity (public member function )
+
+  //empty Test whether vector is empty (public member function )
+
+
+//****ELEMENT ACCESS****
+
+// operator[] Access element (public member function ) const e non
+
+
+//front Access first element (public member function ) const e non
+/*Access first element
+Returns a reference to the first element in the vector.
+Unlike member vector::begin, which returns an iterator to this same element, this function returns a direct reference.
+Calling this function on an empty container causes undefined behavior.*/
+
+
+//back Access last element (public member function )
+  /*
+Returns a reference to the last element in the vector.
+Unlike member vector::end, which returns an iterator just past this element, this function returns a direct reference.
+Calling this function on an empty container causes undefined behavior*/
+
+
+  //****MODIFIERS****
+
+  //push_back Add element at the end
+  void push_back(const T& t){
     if (size==capacity) {
         x=copia(x, size, capacity*2);
         capacity=capacity*2;
@@ -59,20 +114,29 @@ public:
       }
   }
 
-  T popBack(){
+  //pop_back Delete last element (public member function )
+  T pop_back(){
     if(x){
-        T aux = x[size-1];  //T SENZA *
+        T aux = x[size-1];
         delete x[size-1];
-        size--;   //RICORDATI
+        size--;
         return aux;
-      }else throw Empty();
+      }else throw Empty();//TODO: gestire con una eccezione ?
   }
 
-  bool operator==(const Array& a){
-    if(size != a.size) return false;
-    for(int i=0; i<size; i++) if(x[i]!=a[i]) return false;
-    return true;
-  }
+
+  //insert Insert elements (public member function )
+  //TODO: iterator insert (iterator position, const value_type& val);
+
+
+  //erase Erase elements (public member function )
+  //iterator erase (iterator position);
+  //iterator erase (iterator first, iterator last);
+  // attenzione metodo inefficiente perché bisogna riallocare gli elementi ancora presenti
+
+
+  //clear Clear content (public member function )
+
 };
 
 template<class T>
