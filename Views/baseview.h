@@ -11,13 +11,14 @@ class BaseView : public QWidget {
     Q_OBJECT
 
 public:
-    BaseView(const QString& title, QWidget *parent = nullptr);
+    explicit BaseView(const QString& title = "Elenco città", QWidget *parent = nullptr);
     virtual ~BaseView();
+    virtual void setTitle(const QString& title);
 
 private:
+    QVBoxLayout* _verticalLayout;
     QLabel* _title;
     QTableWidget* _table;
-    QVBoxLayout* _verticalLayout;
 
     void setupLayout();
     void setupLabel(const QString& title);

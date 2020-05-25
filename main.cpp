@@ -1,12 +1,11 @@
 //#include "baseview.h"
-#include "Views/baseview.h"
+#include "Views/window.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    BaseView w("Elenco città");
-    w.setMinimumSize(600, 400);
+    Window w;
     w.show();
     return a.exec();
 }

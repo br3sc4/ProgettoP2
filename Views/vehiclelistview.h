@@ -7,13 +7,16 @@
 class VehicleListView : public BaseView {
     Q_OBJECT
 public:
-    VehicleListView(const QString& title, QWidget *parent = nullptr);
+    explicit VehicleListView(const QString& title = "Elenco veicoli", QWidget *parent = nullptr);
     virtual ~VehicleListView();
 
 private:
     QPushButton* _backButton;
 
     void setupBackButton();
+
+signals:
+    void backButtonClicked();
 };
 
 #endif // VEHICLELISTVIEW_H

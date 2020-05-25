@@ -28,7 +28,8 @@ SOURCES += \
     Model/motoreelettrico.cpp \
     Model/veicolo.cpp \
     Views/baseview.cpp \
-    Views/vehiclelistview.cpp \  
+    Views/vehiclelistview.cpp \
+    Views/window.cpp \
     main.cpp
 
 HEADERS += \
@@ -44,7 +45,8 @@ HEADERS += \
     Model/motoreelettrico.h \
     Model/veicolo.h \
     Views/baseview.h \
-    Views/vehiclelistview.h
+    Views/vehiclelistview.h \
+    Views/window.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
