@@ -6,6 +6,8 @@
 #include <QHBoxLayout>
 #include <QLabel>
 #include <QTableWidget>
+#include <QHeaderView>
+#include <QSizePolicy>
 
 class BaseView : public QWidget {
     Q_OBJECT
@@ -13,17 +15,25 @@ class BaseView : public QWidget {
 public:
     explicit BaseView(const QString& title = "Elenco città", QWidget *parent = nullptr);
     virtual ~BaseView();
-    virtual void setTitle(const QString& title);
+    void setTitle(const QString& title);
+    void resetTable();
 
 private:
     QVBoxLayout* _verticalLayout;
     QLabel* _title;
-    QTableWidget* _table;
 
     void setupLayout();
     void setupLabel(const QString& title);
-    void setupTable();
+    virtual void setupTable();
+
 protected:
+    QTableWidget* _table;
     QHBoxLayout* _horizontalLayout;
+
+private slots:
+    void selectRow(QTableWidgetItem* itemClicked);
+
+signals:
+    void selectedCity(QTableWidgetItem* itemClicked);
 };
 #endif // BASEVIEW_H

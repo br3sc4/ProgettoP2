@@ -3,6 +3,7 @@
 
 #include "Views/baseview.h"
 #include "Views/vehiclelistview.h"
+#include "Views/vehicledetailview.h"
 #include <QWidget>
 #include <QStackedWidget>
 
@@ -18,10 +19,11 @@ private:
     QStackedWidget *_navigator;
     BaseView *_citiesView;
     VehicleListView *_vehiclesView;
-    QPushButton *btn;
+    VehicleDetailView *_vehicleDetailView;
 
 private slots:
-    void goToVehiclesView();
+    void goToVehiclesView(QTableWidgetItem* itemClicked);
+    void goToVehicleDetailView(QTableWidgetItem* itemClicked);
     void goBack();
 };
 

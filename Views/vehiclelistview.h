@@ -13,10 +13,12 @@ public:
 private:
     QPushButton* _backButton;
 
+    virtual void setupTable();
     void setupBackButton();
 
 signals:
     void backButtonClicked();
+    void selectedVehicle(QTableWidgetItem* itemClicked);
 };
 
 #endif // VEHICLELISTVIEW_H

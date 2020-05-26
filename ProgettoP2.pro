@@ -28,6 +28,7 @@ SOURCES += \
     Model/motoreelettrico.cpp \
     Model/veicolo.cpp \
     Views/baseview.cpp \
+    Views/vehicledetailview.cpp \
     Views/vehiclelistview.cpp \
     Views/window.cpp \
     main.cpp
@@ -45,6 +46,7 @@ HEADERS += \
     Model/motoreelettrico.h \
     Model/veicolo.h \
     Views/baseview.h \
+    Views/vehicledetailview.h \
     Views/vehiclelistview.h \
     Views/window.h
 
