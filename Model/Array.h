@@ -19,7 +19,7 @@ class Array {
 
  private:
   T* x;
-  int size, capacity;
+  int _size, _capacity;
 
   static T* copia(T* t, int sz, int cap) {
     T* a = new T[cap];
@@ -30,33 +30,33 @@ class Array {
 
  public:
   // costruttore
-  Array(int k = 0, const T& t = T()) : x(0), size(k), capacity(k * 2) {
+  Array(int k = 0, const T& t = T()) : x(0), _size(k), _capacity(k * 2) {
     if (k) {
       x = new T[k * 2];
-      for (int i = 0; i < size; i++)
+      for (int i = 0; i < _size; i++)
         x[i] = t;
     }
   }
   // costruttore di copia
   Array(const Array& t)
-      : x(copia(t.x, t.size, t.capacity)), size(t.size), capacity(t.capacity) {}
+      : x(copia(t.x, t._size, t._capacity)), _size(t._size), _capacity(t._capacity) {}
   // costruttore assegnazione
   Array& operator=(const Array& t) {
     if (this != t) {
       delete[] x;
-      x = copia(t, t.size, t.capacity);
-      size = t.size;
-      capacity = t.capacity;
+      x = copia(t, t._size, t._capacity);
+      _size = t._size;
+      _capacity = t._capacity;
     }
     return *this;
   }
   // distruttore
   ~Array() { delete[] x; }
-
+  // operatore di uguaglianza
   bool operator==(const Array& a) {
-    if (size != a.size)
+    if (_size != a._size)
       return false;
-    for (int i = 0; i < size; i++)
+    for (int i = 0; i < _size; i++)
       if (x[i] != a[i])
         return false;
     return true;
@@ -122,72 +122,91 @@ class Array {
 
   //****CAPACITY****
 
-  // size  Returns the number of elements in the vector.
+  // Returns the number of elements in the vector.
+  int size() const {
+      return _size;
+  }
 
-  // max_size Returns the maximum number of elements that the vector can hold.
+  // Return size of allocated storage capacity
+  int capacity() const {
+      return _capacity;
+  }
 
-  // resize Change size (public member function )
-  /*Change size
-Resizes the container so that it contains n elements.
-If n is smaller than the current container size, the content is reduced to its
-first n elements, removing those beyond (and destroying them).
-If n is greater than the current container size, the content is expanded by
-inserting at the end as many elements as needed to reach a size of n. If val is
-specified, the new elements are initialized as copies of val, otherwise, they
-are value-initialized.
-If n is also greater than the current container capacity, an automatic
-reallocation of the allocated storage space takes place.
-Notice that this function changes the actual content of the container by
-inserting or erasing elements from it.
-*/
+  // Test whether vector is empty
+  bool empty() const {
+      return _size==0; // anche x==nullptr ?
+  }
 
-  // capacity Return size of allocated storage capacity (public member function
-  // )
+  // Test whether vector is full
+  bool full() const {
+      return _size==_capacity;
+  }
 
-  // empty Test whether vector is empty (public member function )
+  // Double the vector capacity
+  void resize() {
+      x = copia(x, _size, _capacity * 2);
+      _capacity = _capacity * 2;
+  }
 
   //****ELEMENT ACCESS****
 
-  // operator[] Access element (public member function ) const e non
+  // Access element
+  T operator[] (int pos) const {
+      return x[pos];
+  }
 
-  // front Access first element (public member function ) const e non
-  /*Access first element
-Returns a reference to the first element in the vector.
-Unlike member vector::begin, which returns an iterator to this same element,
-this function returns a direct reference.
-Calling this function on an empty container causes undefined behavior.*/
+  T operator[] (int pos) {
+      return x[pos];
+  }
 
-  // back Access last element (public member function )
-  /*
-Returns a reference to the last element in the vector.
-Unlike member vector::end, which returns an iterator just past this element,
-this function returns a direct reference.
-Calling this function on an empty container causes undefined behavior*/
+  // Returns a reference to the first element in the vector.
+  T front() const {
+      if(empty())
+          throw Empty();    //undefined behavior
+      else
+        return x[0];
+  }
+
+  T front() {
+      if(empty())
+          throw Empty();    //undefined behavior
+      else
+        return x[0];
+  }
+
+  // Returns a reference to the last element in the vector.
+  T back() const {
+      if(empty())
+          throw Empty();    //undefined behavior
+      else
+        return x[_size-1];
+  }
+
+  T back() {
+      if(empty())
+          throw Empty();    //undefined behavior
+      else
+        return x[_size-1];
+  }
 
   //****MODIFIERS****
 
-  // push_back Add element at the end
+  // Add element at the end
   void push_back(const T& t) {
-    if (size == capacity) {
-      x = copia(x, size, capacity * 2);
-      capacity = capacity * 2;
-      x[size] = t;
-      size++;
-    } else {
-      x[size] = t;
-      size++;
-    }
+    if (full()) resize();
+    x[_size] = t;
+    _size++;
   }
 
-  // pop_back Delete last element (public member function )
+  // Delete last element
   T pop_back() {
     if (x) {
-      T aux = x[size - 1];
-      delete x[size - 1];
-      size--;
+      T aux = x[_size - 1];
+      delete x[_size - 1];
+      _size--;
       return aux;
     } else
-      throw Empty();  // TODO: gestire con una eccezione ?
+      throw Empty();  // TODO: gestire con una eccezione
   }
 
   // insert Insert elements (public member function )
@@ -204,7 +223,7 @@ Calling this function on an empty container causes undefined behavior*/
 
 template <class T>
 std::ostream& operator<<(std::ostream& os, const Array<T>& a) {
-  for (int i = 0; i < a.size; i++) {
+  for (int i = 0; i < a._size; i++) {
     os << (a.x)[i] << " ";
   }
   return os;
