@@ -1,9 +1,9 @@
 #ifndef VEICOLO_H
 #define VEICOLO_H
 
-#define u_int unsigned short        //  unsigned short abbreviato (da 0 a 65,535)
-
 #include <string>
+
+#define u_int unsigned short        //  unsigned short abbreviato (da 0 a 65,535)
 
 using std::string;                  //  dichiarazione d'uso per string
 

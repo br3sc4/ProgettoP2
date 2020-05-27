@@ -1,8 +1,8 @@
 #ifndef VEHICLELISTVIEW_H
 #define VEHICLELISTVIEW_H
 
-#import "baseview.h"
-#import <QPushButton>
+#include "baseview.h"
+#include <QPushButton>
 
 class VehicleListView : public BaseView {
     Q_OBJECT

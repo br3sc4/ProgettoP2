@@ -1,2 +1,2 @@
-#include "Array.h"
+#include "array.h"
 
