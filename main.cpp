@@ -6,18 +6,20 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    Array<int> v(10, 1);
+    Array<int> v;
 
-    for (auto it = v.begin(); it != v.end(); it++) {
-        *it = 10;
-        std::cout << *it << " ";
+    for (int i = 1; i <= 9; i++) {
+        v.push_back(i);
+        std::cout << i << " ";
     }
     std::cout << std::endl;
 
-    for (auto it = v.cbegin(); it != v.cend(); it++) {
-        std::cout << *it << " ";
-    }
-    std::cout << std::endl;
+    *(v.begin()) = 0;
+    *(++(v.begin())) = 1;
+
+    v.erase(v.begin());
+
+    std::cout << v << std::endl;
 //    Window w;
 //    w.show();
 //    return a.exec();
