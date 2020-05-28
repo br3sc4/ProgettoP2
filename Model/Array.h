@@ -138,6 +138,10 @@ public:
 			return tmp;
 		}
 
+        iterator operator+(int n) {
+            return i + n;
+        }
+
         iterator& operator=(iterator it) {
 			i = it.i;
 			return *this;
@@ -183,7 +187,11 @@ public:
 			const_iterator tmp = i;
 			++i;
 			return tmp;
-		}
+		}      
+
+        const_iterator operator+(int n) {
+            return i + n;
+        }
 
 		const_iterator& operator=(const_iterator it) {
 			i = it.i;
@@ -197,6 +205,7 @@ public:
 
 	//===== ITERATORS =====
 	iterator begin() const { 
+        if (empty()) return nullptr;
         return &x[0];
 	}
 
@@ -206,6 +215,7 @@ public:
 	}
 
     const_iterator cbegin() const {
+        if (empty()) return nullptr;
         return &x[0];
 	}
 
@@ -228,14 +238,14 @@ public:
 	}
 
 	// Returns a reference to the first element in the vector.
-	T front() const {
+    const T& front() const {
 		if(empty())
             throw EmptyException();    //undefined behavior
 		else
 			return x[0];
 	}
 
-	T front() {
+    T& front() {
 		if(empty())
             throw EmptyException();    //undefined behavior
 		else
@@ -243,18 +253,18 @@ public:
 	}
 
 	// Returns a reference to the last element in the vector.
-    const T back() const {
+    const T& back() const {
 		if(empty())
             throw EmptyException();    //undefined behavior
 		else
-			return x[_size-1];
+            return x[_size - 1];
 	}
 
-    T back() {
+    T& back() {
 		if(empty())
             throw EmptyException();    //undefined behavior
 		else
-			return x[_size-1];
+            return x[_size - 1];
 	}
 
     //===== MODIFIERS =====
@@ -267,12 +277,10 @@ public:
 	}
 
 	// Delete last element
-	T pop_back() {
-		if (x) {
-			T aux = x[_size - 1];
-			delete x[_size - 1];
-			_size--;
-			return aux;
+    void pop_back() {
+        if (!empty()) {
+            x[_size - 1] = x[_size];
+            _size--;
 		} else
             throw EmptyException();
 	}
@@ -282,19 +290,20 @@ public:
 
 	// erase Erase elements (public member function )
     iterator erase(iterator position) {
-        --_size;
         iterator aux = position;
-        while (position != end()) {
-            *position = *(++position);
-            std::cout << *position << " ";
+        for (; position != end(); position++) {
+            *position = *(position + 1);
         }
-        std::cout << std::endl;
+        --_size;
         return aux;
     }
-	// attenzione metodo inefficiente perché bisogna riallocare gli elementi
-	// ancora presenti
 
 	// clear Clear content (public member function )
+    void clear() {
+        delete[] x;
+        x = new T[_capacity];
+        _size = 0;
+    }
 };
 
 template <class T>
