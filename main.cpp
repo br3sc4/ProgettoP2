@@ -20,6 +20,15 @@ int main(int argc, char *argv[])
     v.erase(v.begin());
 
     std::cout << v << std::endl;
+
+    v.clear();
+    std::cout << v << std::endl;
+
+    v.push_back(1);
+    std::cout << v << std::endl;
+
+    v.pop_back();
+    std::cout << v << std::endl;
 //    Window w;
 //    w.show();
 //    return a.exec();
