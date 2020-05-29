@@ -285,9 +285,6 @@ public:
             throw EmptyException();
 	}
 
-	// insert Insert elements (public member function )
-	// TODO: iterator insert (iterator position, const value_type& val);
-
 	// erase Erase elements (public member function )
     iterator erase(iterator position) {
         iterator aux = position;
