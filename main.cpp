@@ -14,10 +14,11 @@ int main(int argc, char *argv[])
     }
     std::cout << std::endl;
 
-    *(v.begin()) = 0;
-    *(++(v.begin())) = 1;
+//    *(v.begin()) = 0;
+//    v.insert(v.begin()+10, 0);
+//    *(++(v.begin())) = 2;
 
-    v.erase(v.begin());
+//    v.erase(v.begin());
 
     std::cout << v << std::endl;
 

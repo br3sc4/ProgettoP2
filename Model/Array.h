@@ -36,12 +36,9 @@ private:
 
 public:
     // costruttore
-	Array(int k = 0, const T& t = T()) : x(0), _size(k), _capacity(k * 2) {
-		if (k) {
-			x = new T[k * 2];
-			for (int i = 0; i < _size; i++)
-				x[i] = t;
-		}
+	Array(int k = 0, const T& t = T()) : x(k == 0 ? nullptr : new T[k * 2]), _size(k), _capacity(k * 2) {
+        for (int i = 0; i < _size; i++)
+            x[i] = t;
 	}
 
 	// costruttore di copia
@@ -49,7 +46,7 @@ public:
 
 	// costruttore assegnazione
 	Array& operator=(const Array& t) {
-		if (this != t) {
+        if (this != &t) {
 			delete[] x;
 			x = copia(t, t._size, t._capacity);
 			_size = t._size;
@@ -65,8 +62,8 @@ public:
 
 	// operatore di uguaglianza
 	bool operator==(const Array& a) {
-		if (_size != a._size)
-			return false;
+        if (this == &a) return true;
+        if (_size != a._size) return false;
 		for (int i = 0; i < _size; i++)
 			if (x[i] != a[i])
 				return false;
@@ -97,6 +94,7 @@ public:
 
     // Double the vector capacity
     void resize() {
+        if (_capacity == 0) ++_capacity;
         x = copia(x, _size, _capacity * 2);
         _capacity = _capacity * 2;
     }
@@ -125,31 +123,51 @@ public:
 		iterator& operator++() {
 			if(i) {
 				if(!isPastTheEnd) { 
-					if(i + sizeof(T) == nullptr) {++i; isPastTheEnd=true;}
+                    if(i + sizeof(T) == nullptr) {++i; isPastTheEnd = true;}
 					else ++i;
 				}
 			}
 			return *this;
-		}
+        }
 
-		iterator operator++(int) {
+        iterator operator++(int) {
             iterator tmp = i;
 			++i;
 			return tmp;
-		}
+        }
+
+//        iterator& operator--() {
+//            if(i) {
+//                if(!isPastTheEnd) {
+//                    if(i - sizeof(T) != nullptr) --i;
+//                    else throw OutOfBoundsException();
+//                } else { --i; isPastTheEnd = false; }
+//            }
+//            return *this;
+//        }
+
+//        iterator operator--(int) {
+//            iterator tmp = i;
+//            --i;
+//            return tmp;
+//        }
 
         iterator operator+(int n) {
-            return i + n;
+            return i + n; // verifica che sia contiguo
         }
+
+//        iterator operator-(int n) {
+//            return i - n;
+//        }
 
         iterator& operator=(iterator it) {
 			i = it.i;
 			return *this;
 		}
 
-		bool operator==(iterator it) { return i == it.i; }
+        bool operator==(iterator it) const { return i == it.i; }
 
-		bool operator!=(iterator it) { return i != it.i; }
+        bool operator!=(iterator it) const { return i != it.i; }
 	};
 
 	class const_iterator {
@@ -198,9 +216,9 @@ public:
 			return *this;
 		}
 
-		bool operator==(const_iterator it) { return i == it.i; }
+        bool operator==(const_iterator it) const { return i == it.i; }
 
-		bool operator!=(const_iterator it) { return i != it.i; }
+        bool operator!=(const_iterator it) const { return i != it.i; }
 	};
 
 	//===== ITERATORS =====
@@ -210,7 +228,7 @@ public:
 	}
 
 	iterator end() const { 
-		if (empty()) return nullptr; 
+        if (empty()) return nullptr;
         return iterator(&x[_size], true);
 	}
 
@@ -271,9 +289,9 @@ public:
 
 	// Add element at the end
 	void push_back(const T& t) {
-		if (full()) resize();
-		x[_size] = t;
-		_size++;
+        if (full()) resize();
+        x[_size] = t;
+        _size++;
 	}
 
 	// Delete last element
@@ -284,6 +302,23 @@ public:
 		} else
             throw EmptyException();
 	}
+
+	// insert Insert elements (public member function )
+//    iterator insert(iterator position, const T& val) {
+//        if (position.i == nullptr) push_back(val);
+//        else {
+//            if (_size + 1 > _capacity) resize();
+//            if (position != end()) {
+//                for (iterator it = end(); it != position; it--) {
+//                    *it = *(it - 1);
+//                }
+//            }
+//            *position = val;
+//            _size++;
+//        }
+
+//        return position;
+//    }
 
 	// erase Erase elements (public member function )
     iterator erase(iterator position) {
