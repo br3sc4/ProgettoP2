@@ -20,7 +20,7 @@ public:
      * @param caricaSupportata: la velocità di carica a cui può essere caricato il veicolo
      */
     MotoreElettrico(string targa, string posizione, double km, u_int numeroPosti, u_int ingombro,
-                    double capacitaBatteria, VelocitaRicarica caricaSupportata);
+                    bool inCarica, double capacitaBatteria, double capacitaAttuale, VelocitaRicarica caricaSupportata, Colonnina colonninaAttuale);
 
     /**
      * @brief ~MotoreElettrico: Distruttore
@@ -45,9 +45,17 @@ public:
      */
     bool inCarica() const;
 
+    double capacitaBatteria() const;
+
+    double capacitaAttuale() const;
+
+    VelocitaRicarica caricaSupportata() const;
+
+    Colonnina colonninaAttuale() const;
+
 private:
     bool _inCarica;
-    double _capacitaTotaleBatteria;         // Ampere-ora (Ah) massimi
+    double _capacitaBatteria;         // Ampere-ora (Ah) massimi
     double _capacitaAttuale;               // Ampere-ora presenti
     VelocitaRicarica _caricaSupportata;     // la massima velocità alla quale può essere ricaricata (da 1 a 4)
     Colonnina _colonninaAttuale;              // tipo di colonnina alla quale è inCarica
