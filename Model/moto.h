@@ -17,8 +17,8 @@ public:
      * @param numeroPosti
      * @param ingombro
      */
-    Moto(string targa, string posizione, double km, double capacitaSerbatoio, Carburante tipoCarburante,
-         u_int cilindrata, u_int emissioni, u_int numeroPosti=1, u_int ingombro=2);
+    Moto(string targa, string posizione, double km, double capacitaSerbatoio, double litriSerbatoio,
+         Carburante tipoCarburante, u_int cilindrata, u_int emissioni, u_int numeroPosti = 1, u_int ingombro = 2);
 };
 
 #endif // MOTO_H
