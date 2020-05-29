@@ -27,6 +27,16 @@ public:
      */
     virtual ~MotoreCombustione();
 
+    double capacitaSerbatoio() const;
+
+    double litriSerbatoio() const;
+
+    Carburante tipoCarburante() const;
+
+    unsigned short cilindrata() const;
+
+    unsigned short emissioni() const;
+
 private:
     double _capacitaSerbatoio;
     double _litriSerbatoio;

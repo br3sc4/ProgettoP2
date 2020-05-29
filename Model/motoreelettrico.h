@@ -15,11 +15,7 @@ public:
 
     /**
      * @brief MotoreElettrico: Costruttore
-     * @param targa: la targa del veicolo
-     * @param posizione: la posizione attuale del veicolo
-     * @param km: i chilometri percorsi dal veicolo
-     * @param numeroPosti: i posti per cui è omologato il veicolo
-     * @param ingombro: le dimensioni del veicolo
+     * @param from Veicolo(targa, posizione, km, numeroPosti, ingombro)
      * @param capacitaBatteria: la capacità totale della batteria del veicolo
      * @param caricaSupportata: la velocità di carica a cui può essere caricato il veicolo
      */
