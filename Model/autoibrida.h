@@ -16,14 +16,12 @@ public:
      */
     AutoIbrida(string targa, string posizione, double km,
                double capacitaSerbatoio, double litriSerbatoio, Carburante tipoCarburante, u_int cilindrata, u_int emissioni,
-               double capacitaBatteria, VelocitaRicarica caricaSupportata, u_int numeroPosti=2, u_int ingombro=3);
+               bool inCarica, double capacitaBatteria, VelocitaRicarica caricaSupportata,
+               u_int numeroPosti=2, u_int ingombro=3);
 
-    /**
-     * @brief autonomia
-     * @return
-     */
+
     double autonomia() const {
-        return consumoKm()*litriSerbatoio()*;
+        return (consumoKm() * litriSerbatoio()) + (consumoKm() * capacitaAttuale());
     }
 
     /**
