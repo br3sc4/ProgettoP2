@@ -1,5 +1,4 @@
 #include "Model/array.h"
-#include "Model/array.cpp"
 #include "Views/window.h"
 #include <QApplication>
 #include <iostream>

@@ -18,7 +18,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     Exceptions/emptyexception.cpp \
     Exceptions/outofboundsexception.cpp \
-    Model/array.cpp \
     Model/autoibrida.cpp \
     Model/automobile.cpp \
     Model/automobileelettrica.cpp \
