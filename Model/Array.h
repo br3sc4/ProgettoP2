@@ -18,114 +18,44 @@ private:
 	T* x;
 	int _size, _capacity;
 
-	static T* copia(T* t, int sz, int cap) {
-		T* a = new T[cap];
-		for (int i = 0; i < sz; ++i)
-			a[i] = t[i];
-		return a;
-	}
+    static T* copia(T* t, int sz, int cap);
 
 public:
     // costruttore
-	Array(int k = 0, const T& t = T()) : x(k == 0 ? nullptr : new T[k * 2]), _size(k), _capacity(k * 2) {
-        for (int i = 0; i < _size; i++)
-            x[i] = t;
-	}
+    Array(int k = 0, const T& t = T());
 
 	// costruttore di copia
-	Array(const Array& t): x(copia(t.x, t._size, t._capacity)), _size(t._size), _capacity(t._capacity) {}
+    Array(const Array& t);
 
 	// costruttore assegnazione
-	Array& operator=(const Array& t) {
-        if (this != &t) {
-			delete[] x;
-			x = copia(t, t._size, t._capacity);
-			_size = t._size;
-			_capacity = t._capacity;
-		}
-		return *this;
-	}
+    Array& operator=(const Array& t);
 
 	// distruttore
-    ~Array() {
-        delete[] x;
-    }
+    ~Array();
 
 	// operatore di uguaglianza
-	bool operator==(const Array& a) {
-        if (this == &a) return true;
-        if (_size != a._size) return false;
-		for (int i = 0; i < _size; i++)
-			if (x[i] != a[i])
-				return false;
-		return true;
-	}
+    bool operator==(const Array& a);
 
-    //===== CAPACITY =====
-
-    // Returns the number of elements in the vector.
-    int size() const {
-        return _size;
-    }
-
-    // Return size of allocated storage capacity
-    int capacity() const {
-        return _capacity;
-    }
-
-    // Test whether vector is empty
-    bool empty() const {
-        return _size == 0; // anche x==nullptr ?
-    }
-
-    // Test whether vector is full
-    bool full() const {
-        return _size == _capacity;
-    }
-
-    // Double the vector capacity
-    void resize() {
-        if (_capacity == 0) ++_capacity;
-        x = copia(x, _size, _capacity * 2);
-        _capacity = _capacity * 2;
-    }
-
-	class iterator {
+    class iterator {
         friend class Array<T>;
 
-	private:
-		T* i;
-		bool isPastTheEnd;
+    private:
+        T* i;
+        bool isPastTheEnd;
 
-		// convertitore da T* => const_iterator
-		iterator(T* e, bool pte = false): i(e), isPastTheEnd(pte) {}
+        // convertitore da T* => const_iterator
+        iterator(T* e, bool pte = false);
 
-	public:
-		iterator(): i(nullptr), isPastTheEnd(false) {}
-		
-		T& operator*() const {
-            return *i;
-		}
-		
-		T* operator->() const {
-			return &(i);
-		}
+    public:
+        iterator();
 
-		iterator& operator++() {
-			if(i) {
-				if(!isPastTheEnd) { 
-                    if(i + sizeof(T) == nullptr) {++i; isPastTheEnd = true;}
-					else ++i;
-				}
-			}
-			return *this;
-        }
+        T& operator*() const;
 
-        iterator operator++(int) {
-            iterator tmp = i;
-			++i;
-			return tmp;
-        }
+        T* operator->() const;
+
+        iterator& operator++();
+
+        iterator operator++(int);
 
 //        iterator& operator--() {
 //            if(i) {
@@ -143,156 +73,99 @@ public:
 //            return tmp;
 //        }
 
-        iterator operator+(int n) {
-            return i + n; // verifica che sia contiguo
-        }
+        iterator operator+(int n);
 
 //        iterator operator-(int n) {
 //            return i - n;
 //        }
 
-        iterator& operator=(iterator it) {
-			i = it.i;
-			return *this;
-		}
+        iterator& operator=(iterator it);
 
-        bool operator==(iterator it) const { return i == it.i; }
+        bool operator==(iterator it) const;
 
-        bool operator!=(iterator it) const { return i != it.i; }
-	};
+        bool operator!=(iterator it) const;
+    };
 
-	class const_iterator {
-		friend class Array<T>;
+    class const_iterator {
+        friend class Array<T>;
 
-	private:
-		T* i;
-		bool isPastTheEnd;
+    private:
+        T* i;
+        bool isPastTheEnd;
 
-		// convertitore da T* => const_iterator
-		const_iterator(T* e, bool pte = false): i(e), isPastTheEnd(pte) {}
+        // convertitore da T* => const_iterator
+        const_iterator(T* e, bool pte = false);
 
-	public:
-		const_iterator(): i(nullptr), isPastTheEnd(false) {}
-		
-		const T& operator*() const {
-            return *i;
-		}
-		
-		const T* operator->() const {
-			return &(i);
-		}
+    public:
+        const_iterator();
 
-		const_iterator& operator++() {
-			if(i) {
-				if(!isPastTheEnd) { 
-					if(i + sizeof(T) == nullptr) {++i; isPastTheEnd=true;}
-					else ++i;
-				}
-			}
-			return *this;
-		}
+        const T& operator*() const;
 
-		const_iterator operator++(int) {
-			const_iterator tmp = i;
-			++i;
-			return tmp;
-		}      
+        const T* operator->() const;
 
-        const_iterator operator+(int n) {
-            return i + n;
-        }
+        const_iterator& operator++();
 
-		const_iterator& operator=(const_iterator it) {
-			i = it.i;
-			return *this;
-		}
+        const_iterator operator++(int);
 
-        bool operator==(const_iterator it) const { return i == it.i; }
+        const_iterator operator+(int n);
 
-        bool operator!=(const_iterator it) const { return i != it.i; }
-	};
+        const_iterator& operator=(const_iterator it);
+
+        bool operator==(const_iterator it) const;
+
+        bool operator!=(const_iterator it) const;
+    };
+
+    //===== CAPACITY =====
+
+    // Returns the number of elements in the vector.
+    int size() const;
+
+    // Return size of allocated storage capacity
+    int capacity() const;
+
+    // Test whether vector is empty
+    bool empty() const;
+
+    // Test whether vector is full
+    bool full() const;
+
+    // Double the vector capacity
+    void resize();
 
 	//===== ITERATORS =====
-	iterator begin() const { 
-        if (empty()) return nullptr;
-        return &x[0];
-	}
+    iterator begin() const;
 
-	iterator end() const { 
-        if (empty()) return nullptr;
-        return iterator(&x[_size], true);
-	}
+    iterator end() const;
 
-    const_iterator cbegin() const {
-        if (empty()) return nullptr;
-        return &x[0];
-	}
+    const_iterator cbegin() const;
 
-    const_iterator cend() const {
-		if (empty()) return nullptr; 
-        return const_iterator(&x[_size], true);
-	}
+    const_iterator cend() const;
 
     //===== ELEMENT ACCESS =====
 
 	// Access element
-	const T& operator[] (int pos) const {
-        if (pos < 0 || pos >= _size) throw OutOfBoundsException();
-		return x[pos];
-	}
+    const T& operator[] (int pos) const;
 
-    T& operator[] (int pos) {
-        if (pos < 0 || pos >= _size) throw OutOfBoundsException();
-		return x[pos];
-	}
+    T& operator[] (int pos);
 
 	// Returns a reference to the first element in the vector.
-    const T& front() const {
-		if(empty())
-            throw EmptyException();    //undefined behavior
-		else
-			return x[0];
-	}
+    const T& front() const;
 
-    T& front() {
-		if(empty())
-            throw EmptyException();    //undefined behavior
-		else
-			return x[0];
-	}
+    T& front();
 
 	// Returns a reference to the last element in the vector.
-    const T& back() const {
-		if(empty())
-            throw EmptyException();    //undefined behavior
-		else
-            return x[_size - 1];
-	}
+    const T& back() const;
 
-    T& back() {
-		if(empty())
-            throw EmptyException();    //undefined behavior
-		else
-            return x[_size - 1];
-	}
+    T& back();
 
     //===== MODIFIERS =====
 
 	// Add element at the end
-	void push_back(const T& t) {
-        if (full()) resize();
-        x[_size] = t;
-        _size++;
-	}
+    void push_back(const T& t);
 
 	// Delete last element
-    void pop_back() {
-        if (!empty()) {
-            x[_size - 1] = x[_size];
-            _size--;
-		} else
-            throw EmptyException();
-	}
+    void pop_back();
 
 	// insert Insert elements (public member function )
 //    iterator insert(iterator position, const T& val) {
@@ -312,29 +185,10 @@ public:
 //    }
 
 	// erase Erase elements (public member function )
-    iterator erase(iterator position) {
-        iterator aux = position;
-        for (; position != end(); position++) {
-            *position = *(position + 1);
-        }
-        --_size;
-        return aux;
-    }
+    iterator erase(iterator position);
 
 	// clear Clear content (public member function )
-    void clear() {
-        delete[] x;
-        x = new T[_capacity];
-        _size = 0;
-    }
+    void clear();
 };
-
-template <class T>
-std::ostream& operator<< (std::ostream& os, const Array<T>& a) {
-    for (typename Array<T>::const_iterator it = a.cbegin(); it != a.cend(); it++) {
-        os << *it << " ";
-	}
-	return os;
-}
 
 #endif  // ARRAY_H
