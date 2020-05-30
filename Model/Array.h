@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include "Exceptions/emptyexception.h"
-#include "Exceptions/outofboundsexceptions.h"
+#include "Exceptions/outofboundsexception.h"
 
 template <class T>
 class Array;

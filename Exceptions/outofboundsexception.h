@@ -3,9 +3,9 @@
 
 #include <stdexcept>
 
-class OutOfBoundsExceptions : public std::range_error {
+class OutOfBoundsException: public std::range_error {
 public:
-    OutOfBoundsExceptions();
+    OutOfBoundsException();
 };
 
 #endif // OUTOFBOUNDEXCEPTIONS_H

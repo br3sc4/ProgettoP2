@@ -1,5 +1,7 @@
 #include "automobileelettrica.h"
 
-AutomobileElettrica::AutomobileElettrica(string targa, string posizione, double km, u_int numeroPosti, u_int ingombro, double capacitaBatteria, VelocitaRicarica caricaSupportata):
-    Veicolo(targa, posizione, km, numeroPosti, ingombro),
-    MotoreElettrico(targa, posizione, km, numeroPosti, ingombro, capacitaBatteria, caricaSupportata) {}
+AutomobileElettrica::AutomobileElettrica(string targa, string posizione, double km, double capacitaBatteria, double capacitaAttuale,
+                                         VelocitaRicarica caricaSupportata, bool inCarica, Colonnina colonninaAttuale,
+                                         u_int numeroPosti, u_int ingombro):
+    MotoreElettrico(targa, posizione, km, numeroPosti, ingombro, inCarica, capacitaBatteria, capacitaAttuale, caricaSupportata, colonninaAttuale)
+{}

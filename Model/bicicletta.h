@@ -15,8 +15,9 @@ public:
      * @param numeroPosti
      * @param ingombro
      */
-    Bicicletta(string targa, string posizione, double km, double capacitaBatteria,
-               VelocitaRicarica caricaSupportata, u_int numeroPosti=1, u_int ingombro=1);
+    Bicicletta(string targa, string posizione, double km, double capacitaBatteria, double capacitaAttuale,
+               VelocitaRicarica caricaSupportata, bool inCarica = false, Colonnina colonninaAttuale = nessuna,
+               u_int numeroPosti = 1, u_int ingombro = 1);
 };
 
 #endif // BICICLETTA_H

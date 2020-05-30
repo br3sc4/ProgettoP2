@@ -17,7 +17,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     Exceptions/emptyexception.cpp \
-    Exceptions/outofboundsexceptions.cpp \
+    Exceptions/outofboundsexception.cpp \
     Model/array.cpp \
     Model/autoibrida.cpp \
     Model/automobile.cpp \
@@ -37,7 +37,7 @@ SOURCES += \
 
 HEADERS += \
     Exceptions/emptyexception.h \
-    Exceptions/outofboundsexceptions.h \
+    Exceptions/outofboundsexception.h \
     Model/array.h \
     Model/autoibrida.h \
     Model/automobile.h \
