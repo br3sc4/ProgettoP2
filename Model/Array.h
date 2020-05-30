@@ -2,17 +2,8 @@
 #define ARRAY_H
 
 #include <iostream>
-#include <stdexcept>
-
-class EmptyException: public std::runtime_error {
-public:
-    EmptyException(): std::runtime_error("Exception: trying to remove an element from empty array.") {}
-};
-
-class OutOfBoundsException: public std::out_of_range {
-public:
-    OutOfBoundsException(): std::out_of_range("Exception: index is out of bounds") {}
-};
+#include "Exceptions/emptyexception.h"
+#include "Exceptions/outofboundsexceptions.h"
 
 template <class T>
 class Array;
