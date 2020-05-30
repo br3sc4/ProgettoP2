@@ -1,4 +1,4 @@
-#include "motorecombustione.h"
+#include "MODELS/header/motorecombustione.h"
 
 
 MotoreCombustione::MotoreCombustione(string targa, string posizione, double km, u_int numeroPosti, u_int ingombro,

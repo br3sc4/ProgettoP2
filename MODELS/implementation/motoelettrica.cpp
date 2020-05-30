@@ -1,4 +1,4 @@
-#include "motoelettrica.h"
+#include "MODELS/header/motoelettrica.h"
 
 MotoElettrica::MotoElettrica(string targa, string posizione, double km, double capacitaBatteria, double capacitaAttuale,
                              VelocitaRicarica caricaSupportata, bool inCarica, Colonnina colonninaAttuale,

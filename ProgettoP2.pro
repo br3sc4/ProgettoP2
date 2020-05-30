@@ -1,59 +1,51 @@
-QT       += core gui
+#-------------------------------------------------
+#
+# Progetto Liberty
+#
+#-------------------------------------------------
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+QT += core gui
+QT += widgets
 
+TARGET = ProgettoP2
+TEMPLATE = app
 CONFIG += c++11
+CONFIG += qt
+QMAKE_CXXFLAGS += -std=c++11
+RESOURCES = resource.qrc
 
-# The following define makes your compiler emit warnings if you use
-# any Qt feature that has been marked deprecated (the exact warnings
-# depend on your compiler). Please consult the documentation of the
-# deprecated API in order to know how to port your code away from it.
-DEFINES += QT_DEPRECATED_WARNINGS
-
-# You can also make your code fail to compile if it uses deprecated APIs.
-# In order to do so, uncomment the following line.
-# You can also select to disable deprecated APIs only up to a certain version of Qt.
-#DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
-
-SOURCES += \
-    Exceptions/emptyexception.cpp \
-    Exceptions/outofboundsexception.cpp \
-    Model/autoibrida.cpp \
-    Model/automobile.cpp \
-    Model/automobileelettrica.cpp \
-    Model/bicicletta.cpp \
-    Model/monopattino.cpp \
-    Model/moto.cpp \
-    Model/motoelettrica.cpp \
-    Model/motorecombustione.cpp \
-    Model/motoreelettrico.cpp \
-    Model/veicolo.cpp \
-    Views/baseview.cpp \
-    Views/vehicledetailview.cpp \
-    Views/vehiclelistview.cpp \
-    Views/window.cpp \
+SOURCES += EXCEPTIONS/implementation/emptyexception.cpp \
+    EXCEPTIONS/implementation/outofboundsexception.cpp \
+    MODELS/implementation/autoibrida.cpp \
+    MODELS/implementation/automobile.cpp \
+    MODELS/implementation/automobileelettrica.cpp \
+    MODELS/implementation/bicicletta.cpp \
+    MODELS/implementation/monopattino.cpp \
+    MODELS/implementation/moto.cpp \
+    MODELS/implementation/motoelettrica.cpp \
+    MODELS/implementation/motorecombustione.cpp \
+    MODELS/implementation/motoreelettrico.cpp \
+    MODELS/implementation/veicolo.cpp \
+    VIEWS/implementation/baseview.cpp \
+    VIEWS/implementation/vehicledetailview.cpp \
+    VIEWS/implementation/vehiclelistview.cpp \
+    VIEWS/implementation/window.cpp \
     main.cpp
 
-HEADERS += \
-    Exceptions/emptyexception.h \
-    Exceptions/outofboundsexception.h \
-    Model/array.h \
-    Model/autoibrida.h \
-    Model/automobile.h \
-    Model/automobileelettrica.h \
-    Model/bicicletta.h \
-    Model/monopattino.h \
-    Model/moto.h \
-    Model/motoelettrica.h \
-    Model/motorecombustione.h \
-    Model/motoreelettrico.h \
-    Model/veicolo.h \
-    Views/baseview.h \
-    Views/vehicledetailview.h \
-    Views/vehiclelistview.h \
-    Views/window.h
-
-# Default rules for deployment.
-qnx: target.path = /tmp/$${TARGET}/bin
-else: unix:!android: target.path = /opt/$${TARGET}/bin
-!isEmpty(target.path): INSTALLS += target
+HEADERS += EXCEPTIONS/header/emptyexception.h \
+    EXCEPTIONS/header/outofboundsexception.h \
+    MODELS/header/array.h \
+    MODELS/header/autoibrida.h \
+    MODELS/header/automobile.h \
+    MODELS/header/automobileelettrica.h \
+    MODELS/header/bicicletta.h \
+    MODELS/header/monopattino.h \
+    MODELS/header/moto.h \
+    MODELS/header/motoelettrica.h \
+    MODELS/header/motorecombustione.h \
+    MODELS/header/motoreelettrico.h \
+    MODELS/header/veicolo.h \
+    VIEWS/header/baseview.h \
+    VIEWS/header/vehicledetailview.h \
+    VIEWS/header/vehiclelistview.h \
+    VIEWS/header/window.h

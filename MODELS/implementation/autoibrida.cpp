@@ -1,4 +1,4 @@
-#include "autoibrida.h"
+#include "MODELS/header/autoibrida.h"
 
 AutoIbrida::AutoIbrida(string targa, string posizione, double km, double capacitaSerbatoio, double litriSerbatoio,
                        Carburante tipoCarburante, u_int cilindrata, u_int emissioni, double capacitaBatteria, double capacitaAttuale,

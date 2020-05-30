@@ -1,4 +1,4 @@
-#include "monopattino.h"
+#include "MODELS/header/monopattino.h"
 
 Monopattino::Monopattino(string targa, string posizione, double km, double capacitaBatteria, double capacitaAttuale,
                          VelocitaRicarica caricaSupportata, bool inCarica, Colonnina colonninaAttuale,
