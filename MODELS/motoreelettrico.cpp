@@ -1,4 +1,4 @@
-#include "MODELS/header/motoreelettrico.h"
+#include "MODELS/motoreelettrico.h"
 
 MotoreElettrico::MotoreElettrico(string targa, string posizione, double km, u_int numeroPosti, u_int ingombro, bool inCarica,
                                  double capacitaBatteria, double capacitaAttuale, VelocitaRicarica caricaSupportata, Colonnina colonninaAttuale):

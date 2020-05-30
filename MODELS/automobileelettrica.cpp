@@ -1,4 +1,4 @@
-#include "MODELS/header/automobileelettrica.h"
+#include "MODELS/automobileelettrica.h"
 
 AutomobileElettrica::AutomobileElettrica(string targa, string posizione, double km, double capacitaBatteria, double capacitaAttuale,
                                          VelocitaRicarica caricaSupportata, bool inCarica, Colonnina colonninaAttuale,

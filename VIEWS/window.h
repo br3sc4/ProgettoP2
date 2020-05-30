@@ -1,9 +1,9 @@
 #ifndef WINDOW_H
 #define WINDOW_H
 
-#include "VIEWS/header/baseview.h"
-#include "VIEWS/header/vehiclelistview.h"
-#include "VIEWS/header/vehicledetailview.h"
+#include "VIEWS/baseview.h"
+#include "VIEWS/vehiclelistview.h"
+#include "VIEWS/vehicledetailview.h"
 #include <QWidget>
 #include <QStackedWidget>
 

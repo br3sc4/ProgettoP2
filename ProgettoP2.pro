@@ -14,38 +14,38 @@ CONFIG += qt
 QMAKE_CXXFLAGS += -std=c++11
 RESOURCES = resource.qrc
 
-SOURCES += EXCEPTIONS/implementation/emptyexception.cpp \
-    EXCEPTIONS/implementation/outofboundsexception.cpp \
-    MODELS/implementation/autoibrida.cpp \
-    MODELS/implementation/automobile.cpp \
-    MODELS/implementation/automobileelettrica.cpp \
-    MODELS/implementation/bicicletta.cpp \
-    MODELS/implementation/monopattino.cpp \
-    MODELS/implementation/moto.cpp \
-    MODELS/implementation/motoelettrica.cpp \
-    MODELS/implementation/motorecombustione.cpp \
-    MODELS/implementation/motoreelettrico.cpp \
-    MODELS/implementation/veicolo.cpp \
-    VIEWS/implementation/baseview.cpp \
-    VIEWS/implementation/vehicledetailview.cpp \
-    VIEWS/implementation/vehiclelistview.cpp \
-    VIEWS/implementation/window.cpp \
+SOURCES += EXCEPTIONS/emptyexception.cpp \
+    EXCEPTIONS/outofboundsexception.cpp \
+    MODELS/autoibrida.cpp \
+    MODELS/automobile.cpp \
+    MODELS/automobileelettrica.cpp \
+    MODELS/bicicletta.cpp \
+    MODELS/monopattino.cpp \
+    MODELS/moto.cpp \
+    MODELS/motoelettrica.cpp \
+    MODELS/motorecombustione.cpp \
+    MODELS/motoreelettrico.cpp \
+    MODELS/veicolo.cpp \
+    VIEWS/baseview.cpp \
+    VIEWS/vehicledetailview.cpp \
+    VIEWS/vehiclelistview.cpp \
+    VIEWS/window.cpp \
     main.cpp
 
-HEADERS += EXCEPTIONS/header/emptyexception.h \
-    EXCEPTIONS/header/outofboundsexception.h \
-    MODELS/header/array.h \
-    MODELS/header/autoibrida.h \
-    MODELS/header/automobile.h \
-    MODELS/header/automobileelettrica.h \
-    MODELS/header/bicicletta.h \
-    MODELS/header/monopattino.h \
-    MODELS/header/moto.h \
-    MODELS/header/motoelettrica.h \
-    MODELS/header/motorecombustione.h \
-    MODELS/header/motoreelettrico.h \
-    MODELS/header/veicolo.h \
-    VIEWS/header/baseview.h \
-    VIEWS/header/vehicledetailview.h \
-    VIEWS/header/vehiclelistview.h \
-    VIEWS/header/window.h
+HEADERS += EXCEPTIONS/emptyexception.h \
+    EXCEPTIONS/outofboundsexception.h \
+    MODELS/array.h \
+    MODELS/autoibrida.h \
+    MODELS/automobile.h \
+    MODELS/automobileelettrica.h \
+    MODELS/bicicletta.h \
+    MODELS/monopattino.h \
+    MODELS/moto.h \
+    MODELS/motoelettrica.h \
+    MODELS/motorecombustione.h \
+    MODELS/motoreelettrico.h \
+    MODELS/veicolo.h \
+    VIEWS/baseview.h \
+    VIEWS/vehicledetailview.h \
+    VIEWS/vehiclelistview.h \
+    VIEWS/window.h

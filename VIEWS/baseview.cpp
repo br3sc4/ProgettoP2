@@ -1,4 +1,4 @@
-#include "VIEWS/header/baseview.h"
+#include "VIEWS/baseview.h"
 
 BaseView::BaseView(const QString& title, QWidget *parent): QWidget(parent), _verticalLayout(new QVBoxLayout),
     _title(new QLabel(this)), _table(new QTableWidget(this)), _horizontalLayout(new QHBoxLayout) {

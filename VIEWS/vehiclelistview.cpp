@@ -1,4 +1,4 @@
-#include "VIEWS/header/vehiclelistview.h"
+#include "VIEWS/vehiclelistview.h"
 
 VehicleListView::VehicleListView(const QString& title, QWidget *parent): BaseView(title, parent), _backButton(new QPushButton("Back")) {
     setupBackButton();

@@ -1,4 +1,4 @@
-#include "MODELS/header/bicicletta.h"
+#include "MODELS/bicicletta.h"
 
 Bicicletta::Bicicletta(string targa, string posizione, double km, double capacitaBatteria, double capacitaAttuale,
                        VelocitaRicarica caricaSupportata, bool inCarica, Colonnina colonninaAttuale,

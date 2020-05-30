@@ -2,8 +2,8 @@
 #define ARRAY_H
 
 #include <iostream>
-#include "EXCEPTIONS/header/emptyexception.h"
-#include "EXCEPTIONS/header/outofboundsexception.h"
+#include "EXCEPTIONS/emptyexception.h"
+#include "EXCEPTIONS/outofboundsexception.h"
 
 template <class T>
 class Array;

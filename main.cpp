@@ -1,5 +1,5 @@
-#include "MODELS/header/array.h"
-#include "VIEWS/header/window.h"
+#include "MODELS/array.h"
+#include "VIEWS/window.h"
 #include <QApplication>
 #include <iostream>
 

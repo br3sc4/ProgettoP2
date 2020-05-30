@@ -1,4 +1,4 @@
-#include "VIEWS/header/vehicledetailview.h"
+#include "VIEWS/vehicledetailview.h"
 
 VehicleDetailView::VehicleDetailView(const QString& title, QWidget *parent): VehicleListView(title, parent) {
     setupTable();

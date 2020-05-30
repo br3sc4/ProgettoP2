@@ -1,4 +1,4 @@
-#include "VIEWS/header/window.h"
+#include "VIEWS/window.h"
 
 Window::Window(QWidget *parent) : QWidget(parent), _layout(new QVBoxLayout), _navigator(new QStackedWidget(this)),
     _citiesView(new BaseView()), _vehiclesView(new VehicleListView()), _vehicleDetailView(new VehicleDetailView()) {
