@@ -1,4 +1,7 @@
 #include "MODELS/array.h"
+#include "MODELS/automobile.h"
+#include "MODELS/moto.h"
+#include "MODELS/bicicletta.h"
 #include "VIEWS/window.h"
 #include <QApplication>
 #include <iostream>
@@ -7,36 +10,19 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    Array<int> v;
+    Array<> v;
 
-    std::cout << "ciao";
+    v.push_back(new Bicicletta("Pippo", "posizione", 10, 2000, 1000, Bicicletta::veloce));
+    v.push_back(new Automobile("Auto", "pos", 100, 60, 20, Automobile::diesel, 1600, 60, 4));
 
-    for (int i = 1; i <= 9; i++) {
-        v.push_back(i);
-        std::cout << i << " ";
+    for (Array<>::iterator it = v.begin(); it != v.end(); it++) {
+        std::cout << (*it)->targa() << " ";
     }
     std::cout << std::endl;
 
-    *(v.begin()) = 0;
-    //v.insert(v.begin()+10, 0);
-    *(++(v.begin())) = 2;
+    std::cout << v << std::endl;    // stampa l'indirizzo perché è un array di puntatori
 
-    v.erase(v.begin());
-
-    std::cout << v << std::endl;
-
-    v.clear();
-    std::cout << v << std::endl;
-
-    v.push_back(1);
-    std::cout << v << std::endl;
-
-    v.pop_back();
-   std::cout << v << std::endl;
-
-   Window w;
-    w.show();
-    return a.exec();
-
-   return 0;
+//    Window w;
+//    w.show();
+//    return a.exec();
 }
