@@ -2,13 +2,12 @@
 #define ARRAY_H
 
 #include <iostream>
+#include "veicolo.h"
 #include "EXCEPTIONS/emptyexception.h"
 #include "EXCEPTIONS/outofboundsexception.h"
 
-template <class T>
-class Array;
-template <class T>
-std::ostream& operator<< (std::ostream&, const Array<T>&);
+template <class T = Veicolo*> class Array;
+template <class T> std::ostream& operator<< (std::ostream&, const Array<T>&);
 
 template <class T>
 class Array {
@@ -26,8 +25,10 @@ private:
     }
 
 public:
+//    Array(int k = 0) : x(k == 0 ? nullptr : new T[k * 2]), _size(k), _capacity(k * 2) {}
+
     // costruttore
-    Array(int k = 0, const T& t = T()) : x(k == 0 ? nullptr : new T[k * 2]), _size(k), _capacity(k * 2) {
+    Array(const T& t = T(), int k = 0) : x(k == 0 ? nullptr : new T[k * 2]), _size(k), _capacity(k * 2) {
         for (int i = 0; i < _size; i++)
             x[i] = t;
     }
