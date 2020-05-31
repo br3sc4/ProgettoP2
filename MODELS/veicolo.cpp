@@ -1,11 +1,20 @@
 #include "MODELS/veicolo.h"
 
+Veicolo::Veicolo(): _targa(""), _posizione(""), _chilometraggio(0), _capacitaPosti(0), _ingombro(0),
+    _numeroUsi(0), _tempoServizio(0), _statoAttuale(libero), _inRiserva(false), _serveAssistenza(false) {}
+
 Veicolo::Veicolo(string targa, string posizione, double km, u_int numeroPosti, u_int ingombro):
     _targa(targa), _posizione(posizione), _chilometraggio(km), _capacitaPosti(numeroPosti), _ingombro(ingombro),
     _numeroUsi(0), _tempoServizio(0), _statoAttuale(libero), _inRiserva(false), _serveAssistenza(false) {}
 
 short Veicolo::fattoreUtilizzo() const {
     return (_tempoServizio / 52560) % 52560;
+}
+
+void Veicolo::checkRiserva() {
+//    if (autonomia() < 30) _inRiserva = false;
+//    else _inRiserva = false;
+    _inRiserva = false;
 }
 
 Veicolo::~Veicolo(){}

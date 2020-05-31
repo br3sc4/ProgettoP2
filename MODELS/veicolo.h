@@ -14,6 +14,11 @@ public:
     };
 
     /**
+     * @brief Veicolo: costruttore di default
+     */
+    Veicolo();
+
+    /**
      * @brief Veicolo: costruttore
      * @param targa: la targa del veicolo
      * @param posizione: la posizione attuale del veicolo
@@ -27,19 +32,19 @@ public:
      * @brief autonomia o range del veicolo
      * @return
      */
-    virtual double autonomia() const =0;
+//    virtual double autonomia() const =0;
 
     /**
      * @brief fattoreGreen (-10 a +10)
      * @return
      */
-    virtual short int fattoreGreen() const =0;
+//    virtual short int fattoreGreen() const =0;
 
     /**
      * @brief consumoKm
      * @return consumo al km in base ad alcune caratteristiche
      */
-    virtual double consumoKm() const =0;
+//    virtual double consumoKm() const =0;
 
     /**
      * @brief fattoreUtilizzo
@@ -51,10 +56,7 @@ public:
      * @brief controlla autonomia e setta inRiserva
      * @return
      */
-    virtual void checkRiserva() {
-        if(autonomia()<30) setInRiserva(true);
-        else setInRiserva(false);
-    }
+    virtual void checkRiserva();
 
     /**
      * @brief ~Veicolo: distruttore
