@@ -8,27 +8,22 @@ MotoreCombustione::MotoreCombustione(string targa, string posizione, double km, 
 
 MotoreCombustione::~MotoreCombustione() {}
 
-double MotoreCombustione::capacitaSerbatoio() const
-{
+double MotoreCombustione::capacitaSerbatoio() const {
     return _capacitaSerbatoio;
 }
 
-double MotoreCombustione::litriSerbatoio() const
-{
+double MotoreCombustione::litriSerbatoio() const {
     return _litriSerbatoio;
 }
 
-MotoreCombustione::Carburante MotoreCombustione::tipoCarburante() const
-{
+MotoreCombustione::Carburante MotoreCombustione::tipoCarburante() const {
     return _tipoCarburante;
 }
 
-unsigned short MotoreCombustione::cilindrata() const
-{
+unsigned short MotoreCombustione::cilindrata() const {
     return _cilindrata;
 }
 
-unsigned short MotoreCombustione::emissioni() const
-{
+unsigned short MotoreCombustione::emissioni() const {
     return _emissioni;
 };
