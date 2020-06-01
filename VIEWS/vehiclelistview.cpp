@@ -1,6 +1,6 @@
 #include "VIEWS/vehiclelistview.h"
 
-VehicleListView::VehicleListView(const QString& title, QWidget *parent): BaseView(title, parent), _backButton(new QPushButton("Back")) {
+VehicleListView::VehicleListView(const QString& title, QWidget *parent): BaseView(title, parent), _backButton(new QPushButton("Back", parent)) {
     setupBackButton();
     setupTable();
 

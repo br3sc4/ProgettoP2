@@ -1,6 +1,8 @@
 #ifndef VEHICLEDETAILVIEW_H
 #define VEHICLEDETAILVIEW_H
 
+#include <QCheckBox>
+#include <QPushButton>
 #include "vehiclelistview.h"
 
 class VehicleDetailView : public VehicleListView {
@@ -11,7 +13,13 @@ public:
     virtual ~VehicleDetailView();
 
 private:
+    QCheckBox *_checkBox;
+    QPushButton *_moveButton, *_removeButton;
+
     virtual void setupTable();
+    void setupCheckBox();
+    void setupMoveButton();
+    void setupRemoveButton();
 };
 
 #endif // VEHICLEDETAILVIEW_H

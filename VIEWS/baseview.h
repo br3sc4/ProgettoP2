@@ -19,7 +19,6 @@ public:
     void resetTable();
 
 private:
-    QVBoxLayout* _verticalLayout;
     QLabel* _title;
 
     void setupLayout();
@@ -28,6 +27,7 @@ private:
 
 protected:
     QTableWidget* _table;
+    QVBoxLayout* _verticalLayout;
     QHBoxLayout* _horizontalLayout;
 
 private slots:

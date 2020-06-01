@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
 
     std::cout << v << std::endl;    // stampa l'indirizzo perché è un array di puntatori
 
-//    Window w;
-//    w.show();
-//    return a.exec();
+    Window w;
+    w.show();
+    return a.exec();
 }
