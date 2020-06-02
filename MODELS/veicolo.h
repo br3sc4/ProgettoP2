@@ -29,6 +29,12 @@ public:
     Veicolo(string targa, string posizione, double km, u_int numeroPosti, u_int ingombro);
 
     /**
+     * @brief consumoKm
+     * @return consumo al km in base ad alcune caratteristiche
+     */
+    virtual double consumoKm() const =0;
+
+    /**
      * @brief autonomia o range del veicolo
      * @return
      */
@@ -39,12 +45,6 @@ public:
      * @return
      */
 //    virtual short int fattoreGreen() const =0;
-
-    /**
-     * @brief consumoKm
-     * @return consumo al km in base ad alcune caratteristiche
-     */
-//    virtual double consumoKm() const =0;
 
     /**
      * @brief fattoreUtilizzo

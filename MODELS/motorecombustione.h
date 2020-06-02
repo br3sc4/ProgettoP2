@@ -22,10 +22,15 @@ public:
     MotoreCombustione(string targa, string posizione, double km, u_int numeroPosti, u_int ingombro,
                       double capacitaSerbatoio, double litriSerbatoio, Carburante tipoCarburante, u_int cilindrata, u_int emissioni);
 
-    /**
-     * @brief ~MotoreCombustione: Distruttore
-     */
     virtual ~MotoreCombustione();
+
+    double consumoKm() const;
+
+    virtual void checkRiserva() {
+    //    if (autonomia() < 30) _inRiserva = false;
+    //    else _inRiserva = false;
+        setInRiserva(false);
+    }
 
     double capacitaSerbatoio() const;
 

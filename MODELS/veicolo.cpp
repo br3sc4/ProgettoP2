@@ -11,11 +11,6 @@ short Veicolo::fattoreUtilizzo() const {
     return (_tempoServizio / 52560) % 52560;
 }
 
-void Veicolo::checkRiserva() {
-//    if (autonomia() < 30) _inRiserva = false;
-//    else _inRiserva = false;
-    _inRiserva = false;
-}
 
 Veicolo::~Veicolo(){}
 
