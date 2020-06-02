@@ -7,11 +7,11 @@ Veicolo::Veicolo(string targa, string posizione, double km, u_int numeroPosti, u
     _targa(targa), _posizione(posizione), _chilometraggio(km), _capacitaPosti(numeroPosti), _ingombro(ingombro),
     _numeroUsi(0), _tempoServizio(0), _statoAttuale(libero), _inRiserva(false), _serveAssistenza(false) {}
 
-Veicolo::~Veicolo(){}
+Veicolo::~Veicolo() {}
 
 void Veicolo::checkRiserva() {
-    if (autonomia() < 30) setInRiserva(true);
-    else setInRiserva(false);
+    if (autonomia() < 30) _inRiserva = true;
+    else _inRiserva = false;
 }
 
 short Veicolo::fattoreUtilizzo() const {
@@ -20,10 +20,6 @@ short Veicolo::fattoreUtilizzo() const {
 
 string Veicolo::targa() const {
     return _targa;
-}
-
-void Veicolo::setTarga(const string &targa) {
-    _targa = targa;
 }
 
 string Veicolo::posizione() const {
@@ -38,40 +34,32 @@ double Veicolo::chilometraggio() const {
     return _chilometraggio;
 }
 
-void Veicolo::setChilometraggio(double chilometraggio) {
-    _chilometraggio = chilometraggio;
+void Veicolo::increaseChilometraggio(double chilometraggio) {
+    _chilometraggio += chilometraggio;
 }
 
 unsigned short Veicolo::capacitaPosti() const {
     return _capacitaPosti;
 }
 
-void Veicolo::setCapacitaPosti(unsigned short capacitaPosti) {
-    _capacitaPosti = capacitaPosti;
-}
-
 unsigned short Veicolo::ingombro() const {
     return _ingombro;
-}
-
-void Veicolo::setIngombro(unsigned short ingombro) {
-    _ingombro = ingombro;
 }
 
 unsigned short Veicolo::numeroUsi() const {
     return _numeroUsi;
 }
 
-void Veicolo::setNumeroUsi(unsigned short numeroUsi) {
-    _numeroUsi = numeroUsi;
+void Veicolo::increaseNumeroUsi(unsigned short numeroUsi) {
+    _numeroUsi += numeroUsi;
 }
 
 unsigned long Veicolo::tempoServizio() const {
     return _tempoServizio;
 }
 
-void Veicolo::setTempoServizio(unsigned long tempoServizio) {
-    _tempoServizio = tempoServizio;
+void Veicolo::increaseTempoServizio(unsigned long tempoServizio) {
+    _tempoServizio += tempoServizio;
 }
 
 Veicolo::StatoVeicolo Veicolo::statoAttuale() const {
@@ -86,10 +74,6 @@ bool Veicolo::inRiserva() const {
     return _inRiserva;
 }
 
-void Veicolo::setInRiserva(bool inRiserva) {
-    _inRiserva = inRiserva;
-}
-
 bool Veicolo::serveAssistenza() const {
     return _serveAssistenza;
 }
@@ -102,6 +86,6 @@ unsigned short Veicolo::guasti() const {
     return _guasti;
 }
 
-void Veicolo::setGuasti(unsigned short guasti) {
-    _guasti = guasti;
+void Veicolo::increaseGuasti(unsigned short guasti) {
+    _guasti += guasti;
 }

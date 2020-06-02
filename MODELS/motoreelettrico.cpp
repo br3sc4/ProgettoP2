@@ -34,7 +34,7 @@ short MotoreElettrico::tempoRimanenteCaricaCompleta() const {
             _capacitaColonnina = 200;
         return _capacitaBatteria / _capacitaColonnina;
     } else
-        return -1;
+        throw NotInChargeException();
 }
 
 unsigned short MotoreElettrico::percentualeCarica() const {
@@ -65,27 +65,12 @@ MotoreElettrico::Colonnina MotoreElettrico::colonninaAttuale() const
     return _colonninaAttuale;
 }
 
-void MotoreElettrico::setInCarica(bool inCarica)
-{
+void MotoreElettrico::setInCarica(bool inCarica, Colonnina colonnina) {
     _inCarica = inCarica;
-}
-
-void MotoreElettrico::setCapacitaBatteria(double capacitaBatteria)
-{
-    _capacitaBatteria = capacitaBatteria;
+    _colonninaAttuale = colonnina;
 }
 
 void MotoreElettrico::setCapacitaAttuale(double capacitaAttuale)
 {
     _capacitaAttuale = capacitaAttuale;
-}
-
-void MotoreElettrico::setCaricaSupportata(const VelocitaRicarica &caricaSupportata)
-{
-    _caricaSupportata = caricaSupportata;
-}
-
-void MotoreElettrico::setColonninaAttuale(const Colonnina &colonninaAttuale)
-{
-    _colonninaAttuale = colonninaAttuale;
 }

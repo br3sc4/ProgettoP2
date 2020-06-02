@@ -58,17 +58,15 @@ public:
     unsigned short guasti() const;
 
     // metodi set
-    void setTarga(const string &targa);
-    void setPosizione(const string &posizione);
-    void setChilometraggio(double chilometraggio);
-    void setCapacitaPosti(unsigned short capacitaPosti);
-    void setIngombro(unsigned short ingombro);
-    void setNumeroUsi(unsigned short numeroUsi);
-    void setTempoServizio(unsigned long tempoServizio);
-    void setStatoAttuale(const StatoVeicolo &statoAttuale);
-    void setInRiserva(bool inRiserva);
+    void setPosizione(const string& posizione);
+    void setStatoAttuale(const StatoVeicolo& statoAttuale);
     void setServeAssistenza(bool serveAssistenza);
-    void setGuasti(unsigned short guasti);
+
+    // metodi incremento
+    void increaseChilometraggio(double chilometraggio);
+    void increaseNumeroUsi(unsigned short numeroUsi);
+    void increaseTempoServizio(unsigned long tempoServizio);
+    void increaseGuasti(unsigned short guasti);
 
 private:
     string _targa;

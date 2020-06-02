@@ -1,7 +1,7 @@
 #include "VIEWS/baseview.h"
 
-BaseView::BaseView(const QString& title, QWidget *parent): QWidget(parent), _verticalLayout(new QVBoxLayout),
-    _title(new QLabel(this)), _table(new QTableWidget(this)), _horizontalLayout(new QHBoxLayout) {
+BaseView::BaseView(const QString& title, QWidget *parent): QWidget(parent), _title(new QLabel(this)), _table(new QTableWidget(this)),
+    _verticalLayout(new QVBoxLayout), _horizontalLayout(new QHBoxLayout) {
     setupLayout();
     setupLabel(title);
     setupTable();

@@ -19,40 +19,25 @@ public:
                VelocitaRicarica caricaSupportata, bool inCarica = false,
                Colonnina colonninaAttuale = nessuna, u_int numeroPosti = 2, u_int ingombro = 3);
 
-    double autonomia() const {
-        return (consumoKm() * litriSerbatoio()) + (consumoKm() * capacitaAttuale());
-    }
+    double autonomia() const;
 
     /**
      * @brief fattoreGreen
      * @return
      */
-     short int fattoreGreen() const {return 0;}
+    short int fattoreGreen() const;
 
     /**
      * @brief consumoKm
-     * @return calcola il consumo del veicolo in base alle sue caratteristiche
+     * @return
      */
-     double consumoKm() const {return 0;}
+    double consumoKm() const;
 
     /**
      * @brief fattoreUtilizzo
      * @return
      */
-     short int fattoreUtilizzo() const{return 0;}
-
-     /**
-      * @brief tempoRimanenteCaricaCompleta
-      * @return calcola il tempo rimanente al veicolo per ranggiungere il 100% di carica
-      */
-     unsigned short tempoRimanenteCaricaCompleta() const;
-
-     /**
-      * @brief percentualeCarica
-      * @return calcola la percentuale della batteria in quel momento
-      */
-     unsigned short percentualeCarica() const;
-
+    short int fattoreUtilizzo() const;
 };
 
 #endif // AUTOIBRIDA_H

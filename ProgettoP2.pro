@@ -15,6 +15,7 @@ QMAKE_CXXFLAGS += -std=c++11
 RESOURCES = resource.qrc
 
 SOURCES += EXCEPTIONS/emptyexception.cpp \
+    EXCEPTIONS/notinchargeexception.cpp \
     EXCEPTIONS/outofboundsexception.cpp \
     MODELS/autoibrida.cpp \
     MODELS/automobile.cpp \
@@ -33,6 +34,7 @@ SOURCES += EXCEPTIONS/emptyexception.cpp \
     main.cpp
 
 HEADERS += EXCEPTIONS/emptyexception.h \
+    EXCEPTIONS/notinchargeexception.h \
     EXCEPTIONS/outofboundsexception.h \
     MODELS/array.h \
     MODELS/autoibrida.h \

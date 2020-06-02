@@ -2,6 +2,7 @@
 #define MOTOREELETTRICO_H
 
 #include "veicolo.h"
+#include "EXCEPTIONS/notinchargeexception.h"
 
 class MotoreElettrico : virtual public Veicolo {
 public:
@@ -25,9 +26,9 @@ public:
     virtual ~MotoreElettrico();
 
     // metodi virtuali implementati
-    virtual double consumoKm() const =0;
-    virtual double autonomia() const =0;
-    virtual short int fattoreGreen() const =0;
+    virtual double consumoKm() const;
+    virtual double autonomia() const;
+    virtual short int fattoreGreen() const;
 
     // calcola il tempo rimanente al veicolo per ranggiungere il 100% di carica
     short tempoRimanenteCaricaCompleta() const;
@@ -43,18 +44,15 @@ public:
     Colonnina colonninaAttuale() const;
 
     // metodi set
-    void setInCarica(bool inCarica);
-    void setCapacitaBatteria(double capacitaBatteria);
+    void setInCarica(bool inCarica, Colonnina colonnina = nessuna);
     void setCapacitaAttuale(double capacitaAttuale);
-    void setCaricaSupportata(const VelocitaRicarica &caricaSupportata);
-    void setColonninaAttuale(const Colonnina &colonninaAttuale);
 
 private:
     bool _inCarica;
-    double _capacitaBatteria;              // Ampere-ora (Ah) massimi
-    double _capacitaAttuale;               // Ampere-ora presenti
-    VelocitaRicarica _caricaSupportata;    // la massima velocità alla quale può essere ricaricata (da 1 a 4)
-    Colonnina _colonninaAttuale;           // tipo di colonnina alla quale è inCarica
+    const double _capacitaBatteria;             // Ampere-ora (Ah) massimi
+    double _capacitaAttuale;                    // Ampere-ora presenti
+    const VelocitaRicarica _caricaSupportata;   // la massima velocità alla quale può essere ricaricata (da 1 a 4)
+    Colonnina _colonninaAttuale;                // tipo di colonnina alla quale è inCarica
 
 };
 

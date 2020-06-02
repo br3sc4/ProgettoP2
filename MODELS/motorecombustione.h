@@ -24,9 +24,9 @@ public:
     virtual ~MotoreCombustione();
 
     // metodi virtuali implementati
-    virtual double consumoKm() const =0;
-    virtual double autonomia() const =0;
-    virtual short int fattoreGreen() const =0;
+    virtual double consumoKm() const;
+    virtual double autonomia() const;
+    virtual short int fattoreGreen() const;
 
     // metodi get
     double capacitaSerbatoio() const;
@@ -36,18 +36,14 @@ public:
     unsigned short emissioni() const;
 
     // metodi set
-    void setCapacitaSerbatoio(double capacitaSerbatoio);
     void setLitriSerbatoio(double litriSerbatoio);
-    void setTipoCarburante(const Carburante &tipoCarburante);
-    void setCilindrata(unsigned short cilindrata);
-    void setEmissioni(unsigned short emissioni);
 
 private:
-    double _capacitaSerbatoio;
+    const double _capacitaSerbatoio;
     double _litriSerbatoio;
-    Carburante _tipoCarburante;
-    u_int _cilindrata;
-    u_int _emissioni;
+    const Carburante _tipoCarburante;
+    const u_int _cilindrata;
+    const u_int _emissioni;
 };
 
 #endif // MOTORECOMBUSTIONE_H
