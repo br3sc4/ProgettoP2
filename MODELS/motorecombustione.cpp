@@ -8,6 +8,29 @@ MotoreCombustione::MotoreCombustione(string targa, string posizione, double km, 
 
 MotoreCombustione::~MotoreCombustione() {}
 
+double MotoreCombustione::consumoKm() const {
+    double consumoGG = ingombro();
+    if(tipoCarburante()==0)
+        consumoGG = consumoGG * 1.2;
+    else if(tipoCarburante()==2 || tipoCarburante()==3)
+         consumoGG = consumoGG * 1.5;
+    return ((consumoGG * (cilindrata()/1000)) / 100);
+}
+
+double MotoreCombustione::autonomia() const {
+        return consumoKm()*litriSerbatoio();
+}
+
+short int MotoreCombustione::fattoreGreen() const {
+    //TODO funzione
+    return 1;
+}
+
+void MotoreCombustione::checkRiserva() {
+    if (autonomia() < 30) setInRiserva(true);
+    else setInRiserva(false);
+}
+
 double MotoreCombustione::capacitaSerbatoio() const {
     return _capacitaSerbatoio;
 }
@@ -28,20 +51,27 @@ unsigned short MotoreCombustione::emissioni() const {
     return _emissioni;
 }
 
-double MotoreCombustione::consumoKm() const {
-    double consumoGG = ingombro();
-    if(tipoCarburante()==0)
-        consumoGG = consumoGG * 1.2;
-    else if(tipoCarburante()==2 || tipoCarburante()==3)
-         consumoGG = consumoGG * 1.5;
-    return ((consumoGG * (cilindrata()/1000)) / 100);
+void MotoreCombustione::setCapacitaSerbatoio(double capacitaSerbatoio)
+{
+    _capacitaSerbatoio = capacitaSerbatoio;
 }
 
-double MotoreCombustione::autonomia() const {
-        return consumoKm()*litriSerbatoio();
+void MotoreCombustione::setLitriSerbatoio(double litriSerbatoio)
+{
+    _litriSerbatoio = litriSerbatoio;
 }
 
-short int MotoreCombustione::fattoreGreen() const {
-    //TODO funzione
-    return 1;
+void MotoreCombustione::setTipoCarburante(const Carburante &tipoCarburante)
+{
+    _tipoCarburante = tipoCarburante;
+}
+
+void MotoreCombustione::setCilindrata(unsigned short cilindrata)
+{
+    _cilindrata = cilindrata;
+}
+
+void MotoreCombustione::setEmissioni(unsigned short emissioni)
+{
+    _emissioni = emissioni;
 }

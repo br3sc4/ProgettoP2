@@ -30,11 +30,7 @@ public:
 
     virtual short int fattoreGreen() const =0;
 
-    virtual void checkRiserva() {
-    //    if (autonomia() < 30) _inRiserva = false;
-    //    else _inRiserva = false;
-        setInRiserva(false);
-    }
+    virtual void checkRiserva();
 
     // metodi get
     double capacitaSerbatoio() const;
