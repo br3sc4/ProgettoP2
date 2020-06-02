@@ -23,13 +23,10 @@ public:
 
     virtual ~MotoreCombustione();
 
+    // metodi virtuali implementati
     virtual double consumoKm() const =0;
-
     virtual double autonomia() const =0;
-
     virtual short int fattoreGreen() const =0;
-
-    virtual void checkRiserva();
 
     // metodi get
     double capacitaSerbatoio() const;

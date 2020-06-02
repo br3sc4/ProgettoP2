@@ -8,6 +8,21 @@ MotoreElettrico::MotoreElettrico(string targa, string posizione, double km, u_in
 
 MotoreElettrico::~MotoreElettrico() {}
 
+double MotoreElettrico::consumoKm() const {
+    //TODO
+    return 0;
+}
+
+double MotoreElettrico::autonomia() const {
+    //TODO
+    return 0;
+}
+
+short int MotoreElettrico::fattoreGreen() const {
+    //TODO
+    return 0;
+}
+
 short MotoreElettrico::tempoRimanenteCaricaCompleta() const {
     if (_inCarica) {
         int _capacitaColonnina = 0;

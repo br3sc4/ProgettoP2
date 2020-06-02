@@ -9,6 +9,11 @@ Veicolo::Veicolo(string targa, string posizione, double km, u_int numeroPosti, u
 
 Veicolo::~Veicolo(){}
 
+void Veicolo::checkRiserva() {
+    if (autonomia() < 30) setInRiserva(true);
+    else setInRiserva(false);
+}
+
 short Veicolo::fattoreUtilizzo() const {
     return (_tempoServizio / 52560) % 52560;
 }

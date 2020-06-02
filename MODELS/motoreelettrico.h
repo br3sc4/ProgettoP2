@@ -24,6 +24,12 @@ public:
 
     virtual ~MotoreElettrico();
 
+    // metodi virtuali implementati
+    virtual double consumoKm() const =0;
+    virtual double autonomia() const =0;
+    virtual short int fattoreGreen() const =0;
+    virtual void checkRiserva();
+
     // calcola il tempo rimanente al veicolo per ranggiungere il 100% di carica
     short tempoRimanenteCaricaCompleta() const;
 

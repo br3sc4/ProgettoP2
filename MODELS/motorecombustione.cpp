@@ -26,11 +26,6 @@ short int MotoreCombustione::fattoreGreen() const {
     return 1;
 }
 
-void MotoreCombustione::checkRiserva() {
-    if (autonomia() < 30) setInRiserva(true);
-    else setInRiserva(false);
-}
-
 double MotoreCombustione::capacitaSerbatoio() const {
     return _capacitaSerbatoio;
 }
