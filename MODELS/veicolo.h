@@ -3,7 +3,7 @@
 
 #include <string>
 
-#define u_int unsigned short        //  unsigned short abbreviato (da 0 a 65,535)
+#define u_int unsigned short        //  unsigned short abbreviato (NB da 0 a 65,535)
 
 using std::string;                  //  dichiarazione d'uso per string
 

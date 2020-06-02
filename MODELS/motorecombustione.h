@@ -10,8 +10,7 @@ public:
     };
 
     /**
-     * @brief MotoreCombustione: Costruttore
-     *
+     * @brief Costruttore
      * @param from Veicolo(targa, posizione, km, numeroPosti, ingombro)
      * @param capacitaSerbatoio: quanti litri di carburante può contenere il serbatoio del veicolo
      * @param litriSerbatoio: quanti litri di carburante sono rimasti

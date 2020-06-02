@@ -14,7 +14,7 @@ public:
     };
 
     /**
-     * @brief MotoreElettrico: Costruttore
+     * @brief Costruttore
      * @param from Veicolo(targa, posizione, km, numeroPosti, ingombro)
      * @param capacitaBatteria: la capacità totale della batteria del veicolo
      * @param caricaSupportata: la velocità di carica a cui può essere caricato il veicolo
