@@ -8,6 +8,20 @@ MotoreElettrico::MotoreElettrico(string targa, string posizione, double km, u_in
 
 MotoreElettrico::~MotoreElettrico() {}
 
+short MotoreElettrico::tempoRimanenteCaricaCompleta() const {
+    if (_inCarica) {
+        int _capacitaColonnina = 0;
+        if (_caricaSupportata == lenta)
+            _capacitaColonnina = 16;
+        else if (_caricaSupportata == media)
+            _capacitaColonnina = 63;
+        else
+            _capacitaColonnina = 200;
+        return _capacitaBatteria / _capacitaColonnina;
+    } else
+        return -1;
+}
+
 unsigned short MotoreElettrico::percentualeCarica() const {
     return (_capacitaAttuale * 100) / _capacitaBatteria;
 }
@@ -36,16 +50,27 @@ MotoreElettrico::Colonnina MotoreElettrico::colonninaAttuale() const
     return _colonninaAttuale;
 }
 
-short MotoreElettrico::tempoRimanenteCaricaCompleta() const {
-    if (_inCarica) {
-        int _capacitaColonnina = 0;
-        if (_caricaSupportata == lenta)
-            _capacitaColonnina = 16;
-        else if (_caricaSupportata == media)
-            _capacitaColonnina = 63;
-        else
-            _capacitaColonnina = 200;
-        return _capacitaBatteria / _capacitaColonnina;
-    } else
-        return -1;
+void MotoreElettrico::setInCarica(bool inCarica)
+{
+    _inCarica = inCarica;
+}
+
+void MotoreElettrico::setCapacitaBatteria(double capacitaBatteria)
+{
+    _capacitaBatteria = capacitaBatteria;
+}
+
+void MotoreElettrico::setCapacitaAttuale(double capacitaAttuale)
+{
+    _capacitaAttuale = capacitaAttuale;
+}
+
+void MotoreElettrico::setCaricaSupportata(const VelocitaRicarica &caricaSupportata)
+{
+    _caricaSupportata = caricaSupportata;
+}
+
+void MotoreElettrico::setColonninaAttuale(const Colonnina &colonninaAttuale)
+{
+    _colonninaAttuale = colonninaAttuale;
 }

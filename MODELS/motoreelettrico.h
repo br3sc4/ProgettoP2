@@ -22,43 +22,34 @@ public:
     MotoreElettrico(string targa, string posizione, double km, u_int numeroPosti, u_int ingombro,
                     bool inCarica, double capacitaBatteria, double capacitaAttuale, VelocitaRicarica caricaSupportata, Colonnina colonninaAttuale);
 
-    /**
-     * @brief ~MotoreElettrico: Distruttore
-     */
     virtual ~MotoreElettrico();
 
-    /**
-     * @brief tempoRimanenteCaricaCompleta
-     * @return calcola il tempo rimanente al veicolo per ranggiungere il 100% di carica
-     */
+    // calcola il tempo rimanente al veicolo per ranggiungere il 100% di carica
     short tempoRimanenteCaricaCompleta() const;
 
-    /**
-     * @brief percentualeCarica
-     * @return calcola la percentuale della batteria in quel momento
-     */
+    // calcola la percentuale della batteria in quel momento
     unsigned short percentualeCarica() const;
 
-    /**
-     * @brief inCarica
-     * @return se il veicolo è in carica
-     */
+    // metodi get
     bool inCarica() const;
-
     double capacitaBatteria() const;
-
     double capacitaAttuale() const;
-
     VelocitaRicarica caricaSupportata() const;
-
     Colonnina colonninaAttuale() const;
+
+    // metodi set
+    void setInCarica(bool inCarica);
+    void setCapacitaBatteria(double capacitaBatteria);
+    void setCapacitaAttuale(double capacitaAttuale);
+    void setCaricaSupportata(const VelocitaRicarica &caricaSupportata);
+    void setColonninaAttuale(const Colonnina &colonninaAttuale);
 
 private:
     bool _inCarica;
-    double _capacitaBatteria;         // Ampere-ora (Ah) massimi
+    double _capacitaBatteria;              // Ampere-ora (Ah) massimi
     double _capacitaAttuale;               // Ampere-ora presenti
-    VelocitaRicarica _caricaSupportata;     // la massima velocità alla quale può essere ricaricata (da 1 a 4)
-    Colonnina _colonninaAttuale;              // tipo di colonnina alla quale è inCarica
+    VelocitaRicarica _caricaSupportata;    // la massima velocità alla quale può essere ricaricata (da 1 a 4)
+    Colonnina _colonninaAttuale;           // tipo di colonnina alla quale è inCarica
 
 };
 
