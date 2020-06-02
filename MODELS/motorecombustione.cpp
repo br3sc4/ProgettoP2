@@ -8,16 +8,6 @@ MotoreCombustione::MotoreCombustione(string targa, string posizione, double km, 
 
 MotoreCombustione::~MotoreCombustione() {}
 
-double consumoKm() const {
-    double consumo = ingombro();
-    if(tipoCarburante()==0)
-        consumo = consumo * 1.2;
-    else if(tipoCarburante()==2 || tipoCarburante()==3)
-         consumo = consumo * 1.5;
-    return (consumo * cilindrata()/1000) / 100;
-}
-
-
 double MotoreCombustione::capacitaSerbatoio() const {
     return _capacitaSerbatoio;
 }
@@ -36,4 +26,22 @@ unsigned short MotoreCombustione::cilindrata() const {
 
 unsigned short MotoreCombustione::emissioni() const {
     return _emissioni;
+}
+
+double MotoreCombustione::consumoKm() const {
+    double consumoGG = ingombro();
+    if(tipoCarburante()==0)
+        consumoGG = consumoGG * 1.2;
+    else if(tipoCarburante()==2 || tipoCarburante()==3)
+         consumoGG = consumoGG * 1.5;
+    return ((consumoGG * (cilindrata()/1000)) / 100);
+}
+
+double MotoreCombustione::autonomia() const {
+        return consumoKm()*litriSerbatoio();
+}
+
+short int MotoreCombustione::fattoreGreen() const {
+    //TODO funzione
+    return 1;
 }

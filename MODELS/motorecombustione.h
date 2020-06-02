@@ -24,7 +24,11 @@ public:
 
     virtual ~MotoreCombustione();
 
-    double consumoKm() const;
+    virtual double consumoKm() const =0;
+
+    virtual double autonomia() const =0;
+
+    virtual short int fattoreGreen() const =0;
 
     virtual void checkRiserva() {
     //    if (autonomia() < 30) _inRiserva = false;
@@ -32,15 +36,19 @@ public:
         setInRiserva(false);
     }
 
+    // metodi get
     double capacitaSerbatoio() const;
-
     double litriSerbatoio() const;
-
     Carburante tipoCarburante() const;
-
     unsigned short cilindrata() const;
-
     unsigned short emissioni() const;
+
+    // metodi set
+    void setCapacitaSerbatoio(double capacitaSerbatoio);
+    void setLitriSerbatoio(double litriSerbatoio);
+    void setTipoCarburante(const Carburante &tipoCarburante);
+    void setCilindrata(unsigned short cilindrata);
+    void setEmissioni(unsigned short emissioni);
 
 private:
     double _capacitaSerbatoio;

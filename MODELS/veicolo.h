@@ -13,9 +13,7 @@ public:
         libero, prenotato, occupato, manutenzione
     };
 
-    /**
-     * @brief Veicolo: costruttore di default
-     */
+    // costruttore di default
     Veicolo();
 
     /**
@@ -28,171 +26,48 @@ public:
      */
     Veicolo(string targa, string posizione, double km, u_int numeroPosti, u_int ingombro);
 
-    /**
-     * @brief consumoKm
-     * @return consumo al km in base ad alcune caratteristiche
-     */
+     // distruttore virtuale
+     virtual ~Veicolo();
+
+    // consumo al km in base ad alcune caratteristiche
     virtual double consumoKm() const =0;
 
-    /**
-     * @brief autonomia o range del veicolo
-     * @return
-     */
-//    virtual double autonomia() const =0;
+    // autonomia (o range) del veicolo
+    virtual double autonomia() const =0;
 
-    /**
-     * @brief fattoreGreen (-10 a +10)
-     * @return
-     */
-//    virtual short int fattoreGreen() const =0;
+    // fattoreGreen (-10 a +10)
+    virtual short int fattoreGreen() const =0;
 
-    /**
-     * @brief fattoreUtilizzo
-     * @return
-     */
-    virtual short int fattoreUtilizzo() const;
-
-    /**
-     * @brief controlla autonomia e setta inRiserva
-     * @return
-     */
+    // controlla autonomia e setta inRiserva
     virtual void checkRiserva();
 
-    /**
-     * @brief ~Veicolo: distruttore
-     */
-    virtual ~Veicolo();
+    // fattoreUtilizzo
+    short int fattoreUtilizzo() const;
 
-    /**
-     * @brief targa: metodo get per _targa
-     * @return
-     */
+    // metodi get
     string targa() const;
-
-    /**
-     * @brief setTarga: metodo set per _targa
-     * @param targa
-     */
-    void setTarga(const string &targa);
-
-    /**
-     * @brief posizione: metodo get per _posizione
-     * @return
-     */
     string posizione() const;
-
-    /**
-     * @brief setPosizione: metodo set per _posizione
-     * @param posizione
-     */
-    void setPosizione(const string &posizione);
-
-    /**
-     * @brief chilometraggio: metodo get per _chilometraggio
-     * @return
-     */
     double chilometraggio() const;
-
-    /**
-     * @brief setChilometraggio: metodo set per _chilometraggio
-     * @param chilometraggio
-     */
-    void setChilometraggio(double chilometraggio);
-
-    /**
-     * @brief capacitaPosti: metodo get per _capacitaPosti
-     * @return
-     */
     unsigned short capacitaPosti() const;
-
-    /**
-     * @brief setCapacitaPosti: metodo set per _capacitaPosti
-     * @param capacitaPosti
-     */
-    void setCapacitaPosti(unsigned short capacitaPosti);
-
-    /**
-     * @brief ingombro: metodo get per _ingombro
-     * @return
-     */
     unsigned short ingombro() const;
-
-    /**
-     * @brief setIngombro: metodo set per _ingombro
-     * @param ingombro
-     */
-    void setIngombro(unsigned short ingombro);
-
-    /**
-     * @brief numeroUsi: metodo get per _numeroUsi
-     * @return
-     */
     unsigned short numeroUsi() const;
-
-    /**
-     * @brief setNumeroUsi: metodo set per _numeroUsi
-     * @param numeroUsi
-     */
-    void setNumeroUsi(unsigned short numeroUsi);
-
-    /**
-     * @brief tempoServizio: metodo get per _tempoServizio
-     * @return
-     */
     unsigned long tempoServizio() const;
-
-    /**
-     * @brief setTempoServizio: metodo set per _tempoServizio
-     * @param tempoServizio
-     */
-    void setTempoServizio(unsigned long tempoServizio);
-
-    /**
-     * @brief statoAttuale: metodo get per _statoAttuale
-     * @return
-     */
     StatoVeicolo statoAttuale() const;
-
-    /**
-     * @brief setStatoAttuale: metodo set per _statoAttuale
-     * @param statoAttuale
-     */
-    void setStatoAttuale(const StatoVeicolo &statoAttuale);
-
-    /**
-     * @brief inRiserva: metodo get per _inRiserva
-     * @return
-     */
     bool inRiserva() const;
-
-    /**
-     * @brief setInRiserva: metodo set per _inRiserva
-     * @param inRiserva
-     */
-    void setInRiserva(bool inRiserva);
-
-    /**
-     * @brief serveAssistenza: metodo get per _serveAssistenza
-     * @return
-     */
     bool serveAssistenza() const;
-
-    /**
-     * @brief setServeAssistenza: metodo set per _serveAssistenza
-     * @param serveAssistenza
-     */
-    void setServeAssistenza(bool serveAssistenza);
-
-    /**
-     * @brief guasti: metodo get per _guasti
-     * @return
-     */
     unsigned short guasti() const;
 
-    /**
-     * @brief setGuasti: metodo set per _guasti
-     * @param guasti
-     */
+    // metodi set
+    void setTarga(const string &targa);
+    void setPosizione(const string &posizione);
+    void setChilometraggio(double chilometraggio);
+    void setCapacitaPosti(unsigned short capacitaPosti);
+    void setIngombro(unsigned short ingombro);
+    void setNumeroUsi(unsigned short numeroUsi);
+    void setTempoServizio(unsigned long tempoServizio);
+    void setStatoAttuale(const StatoVeicolo &statoAttuale);
+    void setInRiserva(bool inRiserva);
+    void setServeAssistenza(bool serveAssistenza);
     void setGuasti(unsigned short guasti);
 
 private:
