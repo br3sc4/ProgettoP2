@@ -1,23 +1,19 @@
 #include "VIEWS/vehicledetailview.h"
 
-VehicleDetailView::VehicleDetailView(const QString& title, QWidget *parent): VehicleListView(title, parent),
-    _checkBox(new QCheckBox("in manutenzione", parent)), _moveButton(new QPushButton("Cambia città", parent)),
-    _removeButton(new QPushButton("Rimuovi dalla flotta", parent)) {
-    setupTable();
+VehicleDetailView::VehicleDetailView(const QString& title, const QStringList& headerStrings, QWidget *parent):
+    BaseBackAbstractView(title, headerStrings, parent), _checkBox(new QCheckBox("in manutenzione", parent)),
+    _moveButton(new QPushButton("Cambia città", parent)), _removeButton(new QPushButton("Rimuovi dalla flotta", parent)) {
     setupCheckBox();
     setupMoveButton();
     setupRemoveButton();
     _verticalLayout->addSpacerItem(new QSpacerItem(10, 100));
+    setMinimumSize(600, 400);
 }
 
-VehicleDetailView::~VehicleDetailView() {}
-
-void VehicleDetailView::setupTable() {
-    _table->setRowCount(1);
-    _table->setFixedHeight(50);
-    _table->setHorizontalHeaderLabels({ "Targa", "Tipo", "Stato", "Posizione" });
-    QHeaderView *header = _table->horizontalHeader();
-    header->resizeSections(QHeaderView::ResizeToContents);
+VehicleDetailView::~VehicleDetailView() {
+    delete _removeButton;
+    delete _moveButton;
+    delete _checkBox;
 }
 
 void VehicleDetailView::setupCheckBox() {

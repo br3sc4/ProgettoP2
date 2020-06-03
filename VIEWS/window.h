@@ -1,7 +1,7 @@
 #ifndef WINDOW_H
 #define WINDOW_H
 
-#include "VIEWS/baseview.h"
+#include "VIEWS/citieslistview.h"
 #include "VIEWS/vehiclelistview.h"
 #include "VIEWS/vehicledetailview.h"
 #include <QWidget>
@@ -17,7 +17,7 @@ public:
 private:
     QVBoxLayout *_layout;
     QStackedWidget *_navigator;
-    BaseView *_citiesView;
+    CitiesListView *_citiesView;
     VehicleListView *_vehiclesView;
     VehicleDetailView *_vehicleDetailView;
 

@@ -1,22 +1,21 @@
 #ifndef VEHICLEDETAILVIEW_H
 #define VEHICLEDETAILVIEW_H
 
+#include "basebackabstractview.h"
 #include <QCheckBox>
 #include <QPushButton>
-#include "vehiclelistview.h"
 
-class VehicleDetailView : public VehicleListView {
+class VehicleDetailView : public BaseBackAbstractView {
     Q_OBJECT
 
 public:
-    explicit VehicleDetailView(const QString& title = "Veicolo", QWidget *parent = nullptr);
+    explicit VehicleDetailView(const QString& title = "Vehicle", const QStringList& headerStrings = {}, QWidget *parent = nullptr);
     virtual ~VehicleDetailView();
 
 private:
     QCheckBox *_checkBox;
     QPushButton *_moveButton, *_removeButton;
 
-    virtual void setupTable();
     void setupCheckBox();
     void setupMoveButton();
     void setupRemoveButton();

@@ -9,31 +9,30 @@
 #include <QHeaderView>
 #include <QSizePolicy>
 
-class BaseView : public QWidget {
+class BaseAbstractView : public QWidget {
     Q_OBJECT
 
 public:
-    explicit BaseView(const QString& title = "Elenco città", QWidget *parent = nullptr);
-    virtual ~BaseView();
+    explicit BaseAbstractView(const QString& title, const QStringList& headerStrings, QWidget *parent = nullptr);
+    virtual ~BaseAbstractView() = 0;
     void setTitle(const QString& title);
-    void resetTable();
+    void setHederStrings(const QStringList& headerStrings);
+    void resetTableSelection();
+    void setData(const QStringList& headerStrings);
 
 private:
     QLabel* _title;
 
     void setupLayout();
     void setupLabel(const QString& title);
-    virtual void setupTable();
+    virtual void setupTable(const QStringList& headerStrings);
 
 protected:
     QTableWidget* _table;
     QVBoxLayout* _verticalLayout;
     QHBoxLayout* _horizontalLayout;
 
-private slots:
-    void selectRow(QTableWidgetItem* itemClicked);
-
 signals:
-    void selectedCity(QTableWidgetItem* itemClicked);
+    void rowDoubleClicked(QTableWidgetItem* rowClicked);
 };
 #endif // BASEVIEW_H
