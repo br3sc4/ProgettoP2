@@ -27,7 +27,6 @@ SOURCES += EXCEPTIONS/emptyexception.cpp \
     MODELS/motorecombustione.cpp \
     MODELS/motoreelettrico.cpp \
     MODELS/veicolo.cpp \
-    VIEWS/COMPONENTS/headerview.cpp \
     VIEWS/baseabstractview.cpp \
     VIEWS/basebackabstractview.cpp \
     VIEWS/citieslistview.cpp \
@@ -50,7 +49,6 @@ HEADERS += EXCEPTIONS/emptyexception.h \
     MODELS/motorecombustione.h \
     MODELS/motoreelettrico.h \
     MODELS/veicolo.h \
-    VIEWS/COMPONENTS/headerview.h \
     VIEWS/baseabstractview.h \
     VIEWS/basebackabstractview.h \
     VIEWS/citieslistview.h \
