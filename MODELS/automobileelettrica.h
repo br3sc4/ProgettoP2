@@ -15,9 +15,9 @@ public:
      * @param capacitaBatteria
      * @param caricaSupportata
      */
-    AutomobileElettrica(string targa, string posizione, double km, double capacitaBatteria, double capacitaAttuale,
-                        VelocitaRicarica caricaSupportata, bool inCarica = false, Colonnina colonninaAttuale = nessuna,
-                        u_int numeroPosti = 2, u_int ingombro = 3);
+    AutomobileElettrica(string targa, string posizione, double km,
+                        u_int potenza, u_int numeroMotori, double capacitaBatteria, double capacitaAttuale, VelocitaRicarica caricaSupportata,
+                        bool inCarica = false, Colonnina colonninaAttuale = nessuna, u_int numeroPosti = 2, u_int ingombro = 3);
 
 };
 
