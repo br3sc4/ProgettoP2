@@ -8,13 +8,11 @@ MotoreElettrico::MotoreElettrico(string targa, string posizione, double km, u_in
 MotoreElettrico::~MotoreElettrico() {}
 
 double MotoreElettrico::consumoKm() const {
-    //TODO
-    return 0;
+    return ingombro() * _potenza * _numeroMotori;
 }
 
 double MotoreElettrico::autonomia() const {
-    //TODO
-    return 0;
+    return capacitaAttuale() * consumoKm();
 }
 
 short int MotoreElettrico::fattoreGreen() const {
