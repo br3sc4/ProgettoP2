@@ -22,23 +22,10 @@ public:
 
     double autonomia() const;
 
-    /**
-     * @brief fattoreGreen
-     * @return
-     */
     short int fattoreGreen() const;
 
-    /**
-     * @brief consumoKm
-     * @return
-     */
     double consumoKm() const;
 
-    /**
-     * @brief fattoreUtilizzo
-     * @return
-     */
-    short int fattoreUtilizzo() const;
 };
 
 #endif // AUTOIBRIDA_H
