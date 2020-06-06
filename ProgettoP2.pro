@@ -21,6 +21,7 @@ SOURCES += EXCEPTIONS/emptyexception.cpp \
     MODELS/automobile.cpp \
     MODELS/automobileelettrica.cpp \
     MODELS/bicicletta.cpp \
+    MODELS/citta.cpp \
     MODELS/monopattino.cpp \
     MODELS/moto.cpp \
     MODELS/motoelettrica.cpp \
@@ -43,6 +44,7 @@ HEADERS += EXCEPTIONS/emptyexception.h \
     MODELS/automobile.h \
     MODELS/automobileelettrica.h \
     MODELS/bicicletta.h \
+    MODELS/citta.h \
     MODELS/monopattino.h \
     MODELS/moto.h \
     MODELS/motoelettrica.h \
