@@ -22,8 +22,26 @@ double MotoreCombustione::autonomia() const {
 }
 
 short int MotoreCombustione::fattoreGreen() const {
-    //TODO funzione
-    return 1;
+    double somma = 0;
+    if(_tipoCarburante == benzina)
+        somma = somma - 2;              // benzina negativo
+    else if(_tipoCarburante == diesel)
+        somma = somma - 3;              // diesel negativo
+    else somma = somma - 1;             // metano, gpl negativo
+    somma = somma - _cilindrata / 100;  // cilindrata negativo
+    somma = somma - _emissioni / 10;    // emissioni negativo
+
+    if(ingombro() <= 2)
+        somma = somma + 1;              // meno ingombro positivo
+    if(capacitaPosti() > 1)
+        somma = somma + 2;              // piu' posti positivo
+    if(guasti() <= 10)
+        somma = somma + 1;              // meno guasti positivo
+
+    if(somma < -10) return -10;
+    if(somma > 10)  return 10;
+
+    return somma;
 }
 
 double MotoreCombustione::capacitaSerbatoio() const {
