@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
 
     Array<> v;
 
-    v.push_back(new Bicicletta("Pippo", "posizione", 10, 2000, 1000, Bicicletta::veloce));
+    v.push_back(new Bicicletta("Bici", "posizione", 10, 10, 10, 2000, 1000, Bicicletta::veloce));
     v.push_back(new Automobile("Auto", "pos", 100, 60, 20, Automobile::diesel, 1600, 60, 4));
 
     for (Array<>::iterator it = v.begin(); it != v.end(); it++) {
