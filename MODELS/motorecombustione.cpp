@@ -9,12 +9,12 @@ MotoreCombustione::MotoreCombustione(string targa, string posizione, double km, 
 MotoreCombustione::~MotoreCombustione() {}
 
 double MotoreCombustione::consumoKm() const {
-    double consumoGG = ingombro();
+    double consumo = ingombro();
     if(_tipoCarburante == benzina)
-        consumoGG = consumoGG * 1.2;
+        consumo = consumo * 1.2;
     else if(tipoCarburante() == gpl || tipoCarburante() == metano)
-         consumoGG = consumoGG * 1.5;
-    return (consumoGG * (_cilindrata / 1000)) / 100;
+         consumo = consumo * 1.5;
+    return (consumo * (_cilindrata / 1000)) / 100;
 }
 
 double MotoreCombustione::autonomia() const {
