@@ -2,11 +2,10 @@
 #define ARRAY_H
 
 #include <iostream>
-#include "veicolo.h"
 #include "EXCEPTIONS/emptyexception.h"
 #include "EXCEPTIONS/outofboundsexception.h"
 
-template <class T = Veicolo*> class Array;
+template <class T> class Array;
 template <class T> std::ostream& operator<< (std::ostream&, const Array<T>&);
 
 template <class T>

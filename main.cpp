@@ -1,6 +1,6 @@
 #include "MODELS/array.h"
 #include "MODELS/automobile.h"
-#include "MODELS/moto.h"
+#include "MODELS/autoibrida.h"
 #include "MODELS/bicicletta.h"
 #include "VIEWS/window.h"
 #include <QApplication>
@@ -10,12 +10,12 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    Array<> v;
+    Array<Veicolo*> v;
 
     v.push_back(new Bicicletta("Bici", "posizione", 10, 10, 10, 2000, 1000, Bicicletta::veloce));
     v.push_back(new Automobile("Auto", "pos", 100, 60, 20, Automobile::diesel, 1600, 60, 4));
 
-    for (Array<>::iterator it = v.begin(); it != v.end(); it++) {
+    for (Array<Veicolo*>::iterator it = v.begin(); it != v.end(); it++) {
         std::cout << (*it)->targa() << " ";
     }
     std::cout << std::endl;
