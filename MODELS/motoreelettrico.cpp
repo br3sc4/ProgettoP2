@@ -16,8 +16,20 @@ double MotoreElettrico::autonomia() const {
 }
 
 short int MotoreElettrico::fattoreGreen() const {
-    //TODO
-    return 0;
+    short int somma = 0;
+    if(ingombro() == 1)
+        somma = somma + 3;                          // meno ingombro positivo
+    else if(ingombro() == 2 || ingombro() == 3)
+        somma = somma + 2;
+    else    somma = somma + 1;
+    if(capacitaPosti() > 1)
+        somma = somma + 2;                          // piu' posti positivo
+    if(guasti() <= 5)
+        somma = somma + 2;                          // meno guasti positivo
+    else if(guasti() < 10)
+        somma = somma + 1;
+
+    return somma;
 }
 
 short MotoreElettrico::tempoRimanenteCaricaCompleta() const {
