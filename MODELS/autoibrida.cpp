@@ -9,7 +9,7 @@ AutoIbrida::AutoIbrida(string targa, string posizione, double km, double capacit
     MotoreElettrico(targa, posizione, km, numeroPosti, ingombro, potenza, numeroMotori, inCarica, capacitaBatteria, capacitaAttuale, caricaSupportata, colonninaAttuale) {}
 
 double AutoIbrida::autonomia() const {
-    return (consumoKm() * litriSerbatoio()) + (consumoKm() * capacitaAttuale());
+    return (MotoreCombustione::consumoKm() * litriSerbatoio()) + (MotoreElettrico::consumoKm() * capacitaAttuale());
 }
 
 short AutoIbrida::fattoreGreen() const {
@@ -22,5 +22,5 @@ short AutoIbrida::fattoreGreen() const {
 }
 
 double AutoIbrida::consumoKm() const {
-    return 0;
+    return MotoreElettrico::consumoKm() + MotoreCombustione::consumoKm();
 }
