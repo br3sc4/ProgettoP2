@@ -16,7 +16,7 @@ public:
      * @param ingombro
      */
     MotoElettrica(string targa, string posizione, double km, double capacitaBatteria, double capacitaAttuale,
-                  VelocitaRicarica caricaSupportata, bool inCarica = false, Colonnina colonninaAttuale = nessuna,
+                  VelocitaRicarica caricaSupportata, u_int potenza, u_int numeroMotori, bool inCarica = false, Colonnina colonninaAttuale = nessuna,
                   u_int numeroPosti = 1, u_int ingombro = 2);
 };
 
