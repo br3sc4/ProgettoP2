@@ -6,12 +6,13 @@
 
 class Citta {
 public:
+    Citta();
     Citta(const string& nome, const Array<Veicolo*> veicoli = Array<Veicolo*>());
 
     std::string getNome() const;
     Array<Veicolo *> getVeicoli() const;
     void addVeicolo(Veicolo* const veicolo);
-    Array<Veicolo*>::iterator deleteVeicolo(Array<Veicolo*>::iterator it);
+    void deleteVeicolo(Array<Veicolo*>::iterator it);
 
 private:
     const std::string _nome;

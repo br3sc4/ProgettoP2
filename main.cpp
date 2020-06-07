@@ -1,4 +1,4 @@
-#include "MODELS/array.h"
+#include "model.h"
 #include "MODELS/automobile.h"
 #include "MODELS/autoibrida.h"
 #include "MODELS/bicicletta.h"
@@ -10,17 +10,13 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    Array<Veicolo*> v;
+    Model model;
 
-    v.push_back(new Bicicletta("Bici", "posizione", 10, 10, 10, 2000, 1000, Bicicletta::veloce));
-    v.push_back(new Automobile("Auto", "pos", 100, 60, 20, Automobile::diesel, 1600, 60, 4));
+    model.addCity(new Citta("Prova"));
+    model.addVehicle("Prova", new Bicicletta("Bici", "posizione", 10, 10, 10, 2000, 1000, Bicicletta::veloce));
+    model.addVehicle("Prova", new Automobile("Auto", "pos", 100, 60, 20, Automobile::diesel, 1600, 60, 4));
 
-    for (Array<Veicolo*>::iterator it = v.begin(); it != v.end(); it++) {
-        std::cout << (*it)->targa() << " ";
-    }
-    std::cout << std::endl;
-
-    std::cout << v << std::endl;    // stampa l'indirizzo perché è un array di puntatori
+    std::cout << model.getCity("Prova")->getNome() << " " << model.getCity("Prova")->getVeicoli() << std::endl;
 
     Window w;
     w.show();
