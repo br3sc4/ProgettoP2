@@ -6,3 +6,7 @@ VehicleListView::VehicleListView(const QString& title, const QStringList& header
 }
 
 VehicleListView::~VehicleListView() {}
+
+void VehicleListView::update() {
+
+}

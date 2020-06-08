@@ -1,6 +1,7 @@
 #ifndef BASEABSTRACTCONTROLLER_H
 #define BASEABSTRACTCONTROLLER_H
 
+#include "VIEWS/baseabstractview.h"
 #include <QObject>
 
 class BaseAbstractController: public QObject {
@@ -8,13 +9,13 @@ class BaseAbstractController: public QObject {
 
 public:
     explicit BaseAbstractController(QObject *parent = nullptr);
-    virtual ~BaseAbstractController() = 0;
 
-    virtual void setHeader() = 0;
-    virtual void setTitle() = 0;
+    virtual void setViewHeader() = 0;
+    virtual void setViewTitle() = 0;
+    virtual void setView(BaseAbstractView* view) = 0;
 
 public slots:
-    virtual void rowSelected() = 0;
+//    virtual void rowSelected() = 0;
 };
 
 #endif // BASEABSTRACTCONTROLLER_H

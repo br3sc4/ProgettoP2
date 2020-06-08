@@ -52,13 +52,3 @@ void BaseAbstractView::setHederStrings(const QStringList &headerStrings) {
 void BaseAbstractView::resetTableSelection() {
     _table->clearSelection();
 }
-
-void BaseAbstractView::setData(const QStringList &headerStrings) {
-    _table->setRowCount(headerStrings.size());
-    for (int i = 0; i < _table->rowCount(); i++) {
-        QTableWidgetItem *item = new QTableWidgetItem(headerStrings[i]);
-        connect(_table, SIGNAL(itemDoubleClicked(QTableWidgetItem*)), this, SIGNAL(rowDoubleClicked(QTableWidgetItem*)));
-        _table->setItem(i, 0, item);
-    }
-    _table->resizeColumnsToContents();
-}

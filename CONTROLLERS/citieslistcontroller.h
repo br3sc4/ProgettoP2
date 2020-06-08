@@ -6,20 +6,22 @@
 #include "VIEWS/citieslistview.h"
 #include <QObject>
 
+class CitiesListView;
+
 class CitiesListController: public BaseAbstractController {
     Q_OBJECT
 
 public:
-    explicit CitiesListController(QObject* parent = nullptr);
-//    virtual ~CitiesListController();
-//    void setTitle() override;
-//    void setHeader() override;
+    explicit CitiesListController(Model* model, QObject* parent = nullptr);
+    virtual void setViewTitle() override;
+    virtual void setViewHeader() override;
+    virtual void setView(BaseAbstractView* view) override;
 
-//    void getCities() const;
+    Array<Citta*> getCities() const;
 
 private:
-//    CitiesListView* _view;
-//    Model* _model;
+    CitiesListView* _view;
+    Model* _model;
 
 public slots:
 //    void rowSelected() override;

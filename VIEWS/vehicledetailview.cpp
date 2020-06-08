@@ -22,6 +22,10 @@ VehicleDetailView::~VehicleDetailView() {
     delete _checkBox;
 }
 
+void VehicleDetailView::update() {
+
+}
+
 void VehicleDetailView::setupCheckBox() {
     _verticalLayout->addWidget(_checkBox);
 }

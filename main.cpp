@@ -2,7 +2,8 @@
 #include "MODELS/automobile.h"
 #include "MODELS/autoibrida.h"
 #include "MODELS/bicicletta.h"
-#include "VIEWS/window.h"
+#include "CONTROLLERS/citieslistcontroller.h"
+#include "VIEWS/view.h"
 #include <QApplication>
 #include <iostream>
 
@@ -18,7 +19,7 @@ int main(int argc, char *argv[])
 
     std::cout << model.getCity("Prova")->getNome() << " " << model.getCity("Prova")->getVeicoli() << std::endl;
 
-    Window w;
+    View w(new CitiesListController(&model));
     w.show();
 
     return a.exec();

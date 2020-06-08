@@ -11,6 +11,7 @@ class VehicleDetailView : public BaseBackAbstractView {
 public:
     explicit VehicleDetailView(const QString& title = "Vehicle", const QStringList& headerStrings = {}, QWidget *parent = nullptr);
     virtual ~VehicleDetailView();
+    virtual void update();
 
 private:
     QCheckBox *_checkBox;

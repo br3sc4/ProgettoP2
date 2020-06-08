@@ -35,7 +35,7 @@ SOURCES += EXCEPTIONS/emptyexception.cpp \
     VIEWS/citieslistview.cpp \
     VIEWS/vehicledetailview.cpp \
     VIEWS/vehiclelistview.cpp \
-    VIEWS/window.cpp \
+    VIEWS/view.cpp \
     main.cpp \
     model.cpp
 
@@ -61,5 +61,5 @@ HEADERS += EXCEPTIONS/emptyexception.h \
     VIEWS/citieslistview.h \
     VIEWS/vehicledetailview.h \
     VIEWS/vehiclelistview.h \
-    VIEWS/window.h \
+    VIEWS/view.h \
     model.h

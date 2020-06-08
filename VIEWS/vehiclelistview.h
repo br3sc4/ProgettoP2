@@ -9,6 +9,7 @@ class VehicleListView : public BaseBackAbstractView {
 public:
     explicit VehicleListView(const QString& title = "Vehicles", const QStringList& headerStrings = {}, QWidget *parent = nullptr);
     virtual ~VehicleListView();
+    virtual void update();
 
 signals:
     void selectedVehicle(QTableWidgetItem* itemClicked);

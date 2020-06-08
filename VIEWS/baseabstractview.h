@@ -18,7 +18,7 @@ public:
     void setTitle(const QString& title);
     void setHederStrings(const QStringList& headerStrings);
     void resetTableSelection();
-    void setData(const QStringList& headerStrings);
+    virtual void update() = 0;
 
 private:
     QLabel* _title;
