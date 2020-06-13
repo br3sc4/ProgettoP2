@@ -2,14 +2,21 @@
 #define VEHICLELISTVIEW_H
 
 #include "basebackabstractview.h"
+#include "CONTROLLERS/controller.h"
 #include <QPushButton>
+
+class Controller;
 
 class VehicleListView : public BaseBackAbstractView {
     Q_OBJECT
 public:
-    explicit VehicleListView(const QString& title = "Vehicles", const QStringList& headerStrings = {}, QWidget *parent = nullptr);
-    virtual ~VehicleListView();
+    explicit VehicleListView(Controller* controller, const QString& title = "Vehicles",
+                             const QStringList& headerStrings = {}, QWidget *parent = nullptr);
+
     virtual void update();
+
+private:
+    Controller* _controller;
 
 signals:
     void selectedVehicle(QTableWidgetItem* itemClicked);

@@ -2,22 +2,22 @@
 #define CITIESLISTVIEW_H
 
 #include "baseabstractview.h"
-#include "CONTROLLERS/citieslistcontroller.h"
+#include "CONTROLLERS/controller.h"
 #include <QWidget>
 
-class CitiesListController;
+class Controller;
 
 class CitiesListView: public BaseAbstractView {
     Q_OBJECT
 
 public:
-    explicit CitiesListView(CitiesListController* controller, const QString& title = "Cities",
+    explicit CitiesListView(Controller* controller, const QString& title = "Cities",
                             const QStringList& headerStrings = {}, QWidget *parent = nullptr);
-    virtual ~CitiesListView();
-    virtual void update() override;
+
+    virtual void update();
 
 private:
-    CitiesListController* _controller;
+    Controller* _controller;
 };
 
 #endif // CITIESLISTVIEW_H

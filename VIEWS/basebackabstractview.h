@@ -2,6 +2,8 @@
 #define BASEBACKABSTRACTVIEW_H
 
 #include "baseabstractview.h"
+#include "MODELS/array.h"
+#include "MODELS/veicolo.h"
 #include <QWidget>
 #include <QPushButton>
 

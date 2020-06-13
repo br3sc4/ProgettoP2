@@ -8,8 +8,16 @@ std::string Citta::getNome() const {
     return _nome;
 }
 
-Array<Veicolo*> Citta::getVeicoli() const {
-    return _veicoli;
+Veicolo *Citta::getVeicolo(unsigned int index) const {
+    return _veicoli[index];
+}
+
+const Array<Veicolo*>* Citta::getVeicoli() const {
+    return &_veicoli;
+}
+
+Array<Veicolo*>* Citta::getVeicoli() {
+    return &_veicoli;
 }
 
 void Citta::addVeicolo(Veicolo* const veicolo) {

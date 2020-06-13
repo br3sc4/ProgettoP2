@@ -11,8 +11,12 @@ public:
 
     Array<Citta*> getCities() const;
     Citta* getCity(const std::string &city) const;
+    Citta* getCity(unsigned int index) const;
     void addCity(Citta* const city);
+
     void addVehicle(const std::string& city, Veicolo* const vehicle);
+    Veicolo* getVehicle(const std::string& city, unsigned int vehicle) const;
+    Veicolo* getVehicle(const std::string& city, const std::string& vehicle) const;
     Array<Veicolo*>::iterator removeVehicle(const std::string& city, const std::string& vehicle);
     void moveVehicle(const std::string& from, const std::string& to, const std::string& vehicle);
 

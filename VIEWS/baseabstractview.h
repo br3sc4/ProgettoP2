@@ -15,10 +15,12 @@ class BaseAbstractView : public QWidget {
 public:
     explicit BaseAbstractView(const QString& title, const QStringList& headerStrings, QWidget *parent = nullptr);
     virtual ~BaseAbstractView() = 0;
+
+    virtual void update() = 0;
+
     void setTitle(const QString& title);
     void setHederStrings(const QStringList& headerStrings);
     void resetTableSelection();
-    virtual void update() = 0;
 
 private:
     QLabel* _title;
@@ -33,6 +35,6 @@ protected:
     QHBoxLayout* _horizontalLayout;
 
 signals:
-    void rowDoubleClicked(QTableWidgetItem* rowClicked);
+    void rowClicked(int row, int column);
 };
 #endif // BASEVIEW_H

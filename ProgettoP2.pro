@@ -15,8 +15,7 @@ QMAKE_CXXFLAGS += -std=c++11
 RESOURCES = resource.qrc
 
 SOURCES += EXCEPTIONS/emptyexception.cpp \
-    CONTROLLERS/baseabstractcontroller.cpp \
-    CONTROLLERS/citieslistcontroller.cpp \
+    CONTROLLERS/controller.cpp \
     EXCEPTIONS/notinchargeexception.cpp \
     EXCEPTIONS/outofboundsexception.cpp \
     MODELS/autoibrida.cpp \
@@ -40,8 +39,7 @@ SOURCES += EXCEPTIONS/emptyexception.cpp \
     model.cpp
 
 HEADERS += EXCEPTIONS/emptyexception.h \
-    CONTROLLERS/baseabstractcontroller.h \
-    CONTROLLERS/citieslistcontroller.h \
+    CONTROLLERS/controller.h \
     EXCEPTIONS/notinchargeexception.h \
     EXCEPTIONS/outofboundsexception.h \
     MODELS/array.h \
