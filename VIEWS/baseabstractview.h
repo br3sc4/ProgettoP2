@@ -19,6 +19,7 @@ public:
     virtual void update() = 0;
 
     void setTitle(const QString& title);
+    QString getTitle() const;
     void setHederStrings(const QStringList& headerStrings);
     void resetTableSelection();
 

@@ -15,6 +15,8 @@ public:
     virtual ~VehicleDetailView();
     virtual void update();
 
+    void createMoveDialog(const std::string& currentCity);
+
 private:
     Controller* _controller;
     QCheckBox *_checkBox;
@@ -26,6 +28,8 @@ private:
 
 signals:
     void maintenanceChanged(int);
+    void createMoveDialog();
+    void vehicleMove(int);
     void removeButtonClicked();
 };
 

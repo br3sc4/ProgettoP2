@@ -21,18 +21,21 @@ public:
     Array<Veicolo*> getVehicles() const;
     Veicolo* getVehicle() const;
 
+    QString getCurrentCity() const;
+    QString getCurrentVehicle() const;
+
 private:
     View *_view;
     Model* _model;
-    std::string _currentCity;
-    std::string _currentVehicle;
 
 private slots:
-    void goToVehiclesView(int row, int column);
-    void goToVehicleDetailView(int row, int column);
-    void goBack();
-    void toggleMaintenance(int state);
-    void removeVehicle();
+    void goToVehiclesView(int row, int column) const ;
+    void goToVehicleDetailView(int row, int column) const;
+    void goBack() const;
+    void toggleMaintenance(int state) const;
+    void createMoveModal() const;
+    void removeVehicle() const;
+    void saveChage(int row) const;
 };
 
 #endif // CITIESLISTCONTROLLER_H

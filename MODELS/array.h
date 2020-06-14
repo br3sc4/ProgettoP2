@@ -4,6 +4,7 @@
 #include <iostream>
 #include "EXCEPTIONS/emptyexception.h"
 #include "EXCEPTIONS/outofboundsexception.h"
+#include "EXCEPTIONS/notfoundexception.h"
 
 template <class T> class Array;
 template <class T> std::ostream& operator<< (std::ostream&, const Array<T>&);
@@ -24,8 +25,6 @@ private:
     }
 
 public:
-//    Array(int k = 0) : x(k == 0 ? nullptr : new T[k * 2]), _size(k), _capacity(k * 2) {}
-
     // costruttore
     Array(const T& t = T(), int k = 0) : x(k == 0 ? nullptr : new T[k * 2]), _size(k), _capacity(k * 2) {
         for (int i = 0; i < _size; i++)
@@ -97,7 +96,7 @@ public:
         T* i;
         bool isPastTheEnd;
 
-        // convertitore da T* => const_iterator
+        // convertitore da T* => iterator
         iterator(T* e, bool pte = false): i(e), isPastTheEnd(pte) {}
 
     public:
@@ -127,29 +126,9 @@ public:
             return tmp;
         }
 
-//        iterator& operator--() {
-//            if(i) {
-//                if(!isPastTheEnd) {
-//                    if(i - sizeof(T) != nullptr) --i;
-//                    else throw OutOfBoundsException();
-//                } else { --i; isPastTheEnd = false; }
-//            }
-//            return *this;
-//        }
-
-//        iterator operator--(int) {
-//            iterator tmp = i;
-//            --i;
-//            return tmp;
-//        }
-
         iterator operator+(int n) {
             return i + n; // verifica che sia contiguo
         }
-
-//        iterator operator-(int n) {
-//            return i - n;
-//        }
 
         iterator& operator=(iterator it) {
             i = it.i;
@@ -294,26 +273,12 @@ public:
             throw EmptyException();
     }
 
-    // insert Insert elements (public member function )
-//    iterator insert(iterator position, const T& val) {
-//        if (position.i == nullptr) push_back(val);
-//        else {
-//            if (_size + 1 > _capacity) resize();
-//            if (position != end()) {
-//                for (iterator it = end(); it != position; it--) {
-//                    *it = *(it - 1);
-//                }
-//            }
-//            *position = val;
-//            _size++;
-//        }
-
-//        return position;
-//    }
-
     // erase Erase elements (public member function )
-    iterator erase(iterator position) {
-        iterator aux = position;
+    T erase(iterator position) {
+        T aux = *position;
+
+        if (position == end()) throw new NotFoundException();
+
         for (; position != end(); position++) {
             *position = *(position + 1);
         }

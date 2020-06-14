@@ -19,6 +19,15 @@ int main(int argc, char *argv[])
     model.addCity(new Citta("Prova2"));
     model.addVehicle("Prova2", new Bicicletta("Bici", "posizione", 10, 10, 10, 2000, 1000, Bicicletta::veloce));
     model.addVehicle("Prova2", new Automobile("Auto", "pos", 100, 60, 20, Automobile::diesel, 1600, 60, 4));
+    model.addVehicle("Prova2", new Automobile("Auto", "pos", 100, 60, 20, Automobile::diesel, 1600, 60, 4));
+
+    try {
+        model.moveVehicle("Prova", "Prova2", "Auto");
+    } catch (std::exception e) {
+        std::cerr << e.what() << std::endl;
+    }
+
+    std::cout << model.getCity(1)->getVeicoli()->back()->targa() << " " << model.getCity(1)->getVeicoli()->back()->chilometraggio() << std::endl;
 
     Controller controller(&model);
     View w(&controller);

@@ -17,7 +17,7 @@ public:
     void addVehicle(const std::string& city, Veicolo* const vehicle);
     Veicolo* getVehicle(const std::string& city, unsigned int vehicle) const;
     Veicolo* getVehicle(const std::string& city, const std::string& vehicle) const;
-    Array<Veicolo*>::iterator removeVehicle(const std::string& city, const std::string& vehicle);
+    Veicolo* removeVehicle(const std::string& city, const std::string& vehicle);
     void moveVehicle(const std::string& from, const std::string& to, const std::string& vehicle);
 
 private:

@@ -14,7 +14,7 @@ void CitiesListView::update() {
         _table->setItem(i, 0, item);
         item = new QTableWidgetItem(QString::number(cities[i]->getVeicoli()->size()));
         _table->setItem(i, 1, item);
+
         connect(_table, SIGNAL(cellClicked(int, int)), this, SIGNAL(rowClicked(int, int)));
     }
-    _table->resizeColumnsToContents();
 }

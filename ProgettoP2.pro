@@ -16,6 +16,7 @@ RESOURCES = resource.qrc
 
 SOURCES += EXCEPTIONS/emptyexception.cpp \
     CONTROLLERS/controller.cpp \
+    EXCEPTIONS/notfoundexception.cpp \
     EXCEPTIONS/notinchargeexception.cpp \
     EXCEPTIONS/outofboundsexception.cpp \
     MODELS/autoibrida.cpp \
@@ -40,6 +41,7 @@ SOURCES += EXCEPTIONS/emptyexception.cpp \
 
 HEADERS += EXCEPTIONS/emptyexception.h \
     CONTROLLERS/controller.h \
+    EXCEPTIONS/notfoundexception.h \
     EXCEPTIONS/notinchargeexception.h \
     EXCEPTIONS/outofboundsexception.h \
     MODELS/array.h \

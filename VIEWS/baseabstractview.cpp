@@ -29,7 +29,6 @@ void BaseAbstractView::setupLabel(const QString& title) {
 
 void BaseAbstractView::setupTable(const QStringList& headerStrings) {
     setHederStrings(headerStrings);
-    _table->setRowCount(0);
     _table->setEditTriggers(QAbstractItemView::NoEditTriggers);
     _table->setSelectionBehavior(QAbstractItemView::SelectRows);
     _table->setSelectionMode(QAbstractItemView::SingleSelection);
@@ -41,12 +40,16 @@ void BaseAbstractView::setTitle(const QString& title) {
     _title->setText("<h1>" + title + "</h1>");
 }
 
-void BaseAbstractView::setHederStrings(const QStringList &headerStrings) {
+QString BaseAbstractView::getTitle() const {
+    return _title->text();
+}
+
+void BaseAbstractView::setHederStrings(const QStringList& headerStrings) {
     _table->setColumnCount(headerStrings.size());
     _table->setHorizontalHeaderLabels(headerStrings);
     QHeaderView *header = _table->horizontalHeader();
+    header->setSectionResizeMode(QHeaderView::Stretch);
     header->setStretchLastSection(true);
-    header->resizeSections(QHeaderView::ResizeToContents);
 }
 
 void BaseAbstractView::resetTableSelection() {

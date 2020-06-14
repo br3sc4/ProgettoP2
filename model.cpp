@@ -39,22 +39,26 @@ Veicolo* Model::getVehicle(const std::string& city, const std::string& vehicle) 
     return *it;
 }
 
-Array<Veicolo*>::iterator Model::removeVehicle(const std::string& city, const std::string& vehicle) {
+Veicolo* Model::removeVehicle(const std::string& city, const std::string& vehicle) {
     Array<Veicolo*>::iterator it = searchVehicle(city, vehicle);
     Array<Veicolo*>* vehicles = (*searchCity(city))->getVeicoli();
-    Array<Veicolo*>::iterator res;
+    Veicolo* res;
 
-    if (it != vehicles->end()) {
+    try {
         delete *it;
         res = vehicles->erase(it);
+        std::cout << res->targa() << std::endl;
+    } catch (std::exception exc) {
+        throw;
     }
 
     return res;
 }
 
 void Model::moveVehicle(const std::string& from, const std::string& to, const std::string& vehicle) {
-    Array<Veicolo*>::iterator it = removeVehicle(from, vehicle);
-    addVehicle(to, *it);
+    Veicolo* v = removeVehicle(from, vehicle);
+    std::cout << v->targa() << v->posizione() << std::endl;
+    addVehicle(to, v);
 }
 
 Array<Citta*>::iterator Model::searchCity(const std::string& city) const {

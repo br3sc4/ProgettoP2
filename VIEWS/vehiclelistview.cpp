@@ -1,9 +1,7 @@
 #include "VIEWS/vehiclelistview.h"
 
 VehicleListView::VehicleListView(Controller* controller, const QString& title, const QStringList& headerStrings, QWidget *parent):
-    BaseBackAbstractView(title, headerStrings, parent), _controller(controller) {
-    setMinimumSize(600, 400);
-}
+    BaseBackAbstractView(title, headerStrings, parent), _controller(controller) {}
 
 void VehicleListView::update() {
     Array<Veicolo*> vehicles = _controller->getVehicles();
@@ -17,7 +15,7 @@ void VehicleListView::update() {
         _table->setItem(i, 1, item);
         item = new QTableWidgetItem(QString::number(vehicles[i]->chilometraggio()));
         _table->setItem(i, 2, item);
+
         connect(_table, SIGNAL(cellClicked(int, int)), this, SIGNAL(rowClicked(int, int)));
     }
-    _table->resizeColumnsToContents();
 }
