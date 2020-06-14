@@ -22,13 +22,11 @@ Array<Citta *> Controller::getCities() const {
 }
 
 Array<Veicolo*> Controller::getVehicles() const {
-    std::string city = getCurrentCity().toStdString();
-    return *(_model->getCity(city)->getVeicoli());
+    return *(_model->getCity(_currentCityIndex)->getVeicoli());
 }
 
 Veicolo* Controller::getVehicle() const {
-    std::string city = getCurrentCity().toStdString();
-    return _model->getVehicle(city, getCurrentVehicle().toStdString());
+    return _model->getVehicle(_currentCityIndex, _currentVehicleIndex);
 }
 
 QString Controller::getCurrentCity() const {
@@ -41,25 +39,25 @@ QString Controller::getCurrentVehicle() const {
     return title.split(QLatin1Char(' ')).last().split(QLatin1Char('<')).first();
 }
 
-void Controller::goToVehiclesView(int row, int column) const {
+void Controller::goToVehiclesView(int row, int column) {
     _view->getCurrentView()->resetTableSelection();
     VehicleListView* vehicles = _view->getVehicleListView();
-    std::string city = _model->getCity(row)->getNome();
+    _currentCityIndex = row;
 
-    vehicles->setTitle("Elenco veicoli in " + QString::fromStdString(city));
+    vehicles->setTitle("Elenco veicoli in " + QString::fromStdString(_model->getCity(row)->getNome()));
     vehicles->setHederStrings({ "Targa", "Posizione", "Chilometraggio" });
     vehicles->update();
     _view->setCurrentView(vehicles);
 }
 
-void Controller::goToVehicleDetailView(int row, int column) const {
+void Controller::goToVehicleDetailView(int row, int column) {
     _view->getCurrentView()->resetTableSelection();
     VehicleDetailView* vehicleDetail = _view->getVehicleDetailView();
+    _currentVehicleIndex = row;
 
-    vehicleDetail->setHederStrings({ "Targa", "Posizione", "Chilometraggio" });
+    vehicleDetail->setHederStrings({ "Targa", "Posizione", "Chilometraggio" });    
+    vehicleDetail->setTitle("Veicolo " + QString::fromStdString(_model->getVehicle(_currentCityIndex, row)->targa()));
     vehicleDetail->update();
-    std::string city = getCurrentCity().toStdString();
-    vehicleDetail->setTitle("Veicolo " + QString::fromStdString(_model->getVehicle(city, row)->targa()));
     _view->setCurrentView(vehicleDetail);
 }
 
@@ -70,7 +68,7 @@ void Controller::goBack() const {
 }
 
 void Controller::toggleMaintenance(int state) const {
-    _model->getVehicle(getCurrentCity().toStdString(), getCurrentVehicle().toStdString())->setServeAssistenza(state);
+    _model->getVehicle(_currentCityIndex, _currentVehicleIndex)->setServeAssistenza(state);
 }
 
 void Controller::createMoveModal() const {
@@ -79,17 +77,13 @@ void Controller::createMoveModal() const {
 }
 
 void Controller::removeVehicle() const {
-    _model->removeVehicle(getCurrentCity().toStdString(), getCurrentVehicle().toStdString());
+    _model->removeVehicle(_currentCityIndex, _currentVehicleIndex);
     _view->getVehicleListView()->update();
     goBack();
 }
 
 void Controller::saveChage(int row) const {
-    std::string fromCity = getCurrentCity().toStdString();
-    std::string toCity = _model->getCity(row)->getNome();
-    std::string vehicle = getCurrentVehicle().toStdString();
-
-    _model->moveVehicle(fromCity, toCity, vehicle);
+    _model->moveVehicle(_currentCityIndex, row, _currentVehicleIndex);
 
     goBack();
 }

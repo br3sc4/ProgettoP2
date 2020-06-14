@@ -27,10 +27,11 @@ public:
 private:
     View *_view;
     Model* _model;
+    unsigned int _currentCityIndex, _currentVehicleIndex;
 
 private slots:
-    void goToVehiclesView(int row, int column) const ;
-    void goToVehicleDetailView(int row, int column) const;
+    void goToVehiclesView(int row, int column);
+    void goToVehicleDetailView(int row, int column);
     void goBack() const;
     void toggleMaintenance(int state) const;
     void createMoveModal() const;

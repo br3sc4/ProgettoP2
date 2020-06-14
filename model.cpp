@@ -12,10 +12,6 @@ Array<Citta *> Model::getCities() const {
     return _cities;
 }
 
-Citta* Model::getCity(const std::string& city) const {
-    return (*searchCity(city));
-}
-
 Citta *Model::getCity(unsigned int index) const {
     return _cities[index];
 }
@@ -24,25 +20,21 @@ void Model::addCity(Citta* const city) {
     _cities.push_back(city);
 }
 
-void Model::addVehicle(const std::string& city, Veicolo* const vehicle) {
-    Array<Citta*>::iterator it = searchCity(city);
-    (*it)->addVeicolo(vehicle);
+void Model::addVehicle(unsigned int city, Veicolo* const vehicle) {
+    _cities[city]->addVeicolo(vehicle);
 }
 
-Veicolo* Model::getVehicle(const std::string& city, unsigned int vehicle) const{
-    Array<Citta*>::iterator it = searchCity(city);
-    return (*it)->getVeicolo(vehicle);
+Veicolo* Model::getVehicle(unsigned int city, unsigned int vehicle) const {
+    return _cities[city]->getVeicoli()->operator[](vehicle);
 }
 
-Veicolo* Model::getVehicle(const std::string& city, const std::string& vehicle) const{
-    Array<Veicolo*>::iterator it = searchVehicle(city, vehicle);
-    return *it;
-}
-
-Veicolo* Model::removeVehicle(const std::string& city, const std::string& vehicle) {
-    Array<Veicolo*>::iterator it = searchVehicle(city, vehicle);
-    Array<Veicolo*>* vehicles = (*searchCity(city))->getVeicoli();
+Veicolo* Model::removeVehicle(unsigned int city, unsigned int vehicle) {
+    Array<Veicolo*>::iterator it = _cities[city]->getVeicoli()->begin();
+    Array<Veicolo*>* vehicles = _cities[city]->getVeicoli();
     Veicolo* res;
+
+    for (unsigned int i = 0; i < vehicle; i++)
+        it++;
 
     try {
         delete *it;
@@ -55,30 +47,7 @@ Veicolo* Model::removeVehicle(const std::string& city, const std::string& vehicl
     return res;
 }
 
-void Model::moveVehicle(const std::string& from, const std::string& to, const std::string& vehicle) {
-    Veicolo* v = removeVehicle(from, vehicle);
-    std::cout << v->targa() << v->posizione() << std::endl;
-    addVehicle(to, v);
-}
-
-Array<Citta*>::iterator Model::searchCity(const std::string& city) const {
-    Array<Citta*>::iterator it = _cities.begin();
-
-    while (it != _cities.end() && (*it)->getNome() != city) {
-        it++;
-    }
-
-    return it;
-}
-
-Array<Veicolo*>::iterator Model::searchVehicle(const std::string& city, const std::string& vehicle) const {
-    Array<Citta*>::iterator it = searchCity(city);
-    Array<Veicolo*>* vehicles = (*it)->getVeicoli();
-    Array<Veicolo*>::iterator vit = vehicles->begin();
-
-    while (vit != vehicles->end() && (*vit)->targa() != vehicle) {
-        vit++;
-    }
-
-    return vit;
+void Model::moveVehicle(unsigned int fromCity, unsigned int toCity, unsigned int vehicle) {
+    Veicolo* v = removeVehicle(fromCity, vehicle);
+    addVehicle(toCity, v);
 }

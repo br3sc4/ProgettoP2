@@ -282,6 +282,7 @@ public:
         for (; position != end(); position++) {
             *position = *(position + 1);
         }
+
         --_size;
         return aux;
     }
