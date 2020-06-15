@@ -48,6 +48,6 @@ Veicolo* Model::removeVehicle(unsigned int city, unsigned int vehicle) {
 }
 
 void Model::moveVehicle(unsigned int fromCity, unsigned int toCity, unsigned int vehicle) {
-    Veicolo* v = removeVehicle(fromCity, vehicle);
-    addVehicle(toCity, v);
+    if(fromCity == toCity) return;  // TODO eccezione ?
+    addVehicle(toCity, removeVehicle(fromCity, vehicle));
 }
