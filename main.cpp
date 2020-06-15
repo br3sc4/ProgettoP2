@@ -13,13 +13,13 @@ int main(int argc, char *argv[])
 
     Model model;
 
-    model.addCity(new Citta("Prova"));
-    model.addVehicle(0, new Bicicletta("Bici", "posizione", 10, 10, 10, 2000, 1000, Bicicletta::veloce));
-    model.addVehicle(0, new Automobile("Auto", "pos", 100, 60, 20, Automobile::diesel, 1600, 60, 4));
-    model.addCity(new Citta("Prova2"));
-    model.addVehicle(1, new Bicicletta("Bici", "posizione", 10, 10, 10, 2000, 1000, Bicicletta::veloce));
-    model.addVehicle(1, new Automobile("Auto", "pos", 100, 60, 20, Automobile::diesel, 1600, 60, 4));
-    model.addVehicle(1, new Automobile("Auto", "pos", 100, 60, 20, Automobile::diesel, 1600, 60, 4));
+    model.addCity(new Citta("Milano"));
+    model.addVehicle(0, new Bicicletta("Targa-Bici1", "posizione", 10, 10, 10, 2000, 1000, Bicicletta::veloce));
+    model.addVehicle(0, new Automobile("Targa-Auto1", "pos", 100, 60, 20, Automobile::diesel, 1600, 60, 4));
+    model.addCity(new Citta("Roma"));
+    model.addVehicle(1, new Bicicletta("Targa-Bici2", "posizione", 10, 10, 10, 2000, 1000, Bicicletta::veloce));
+    model.addVehicle(1, new Automobile("Targa-Auto2", "pos", 100, 60, 20, Automobile::diesel, 1600, 60, 4));
+    model.addVehicle(1, new Automobile("Targa-Auto3", "pos", 100, 60, 20, Automobile::diesel, 1600, 60, 4));
 
 //    try {
 //        model.moveVehicle(0, 1, 1);

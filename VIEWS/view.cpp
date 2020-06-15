@@ -1,7 +1,7 @@
 #include "VIEWS/view.h"
 
 View::View(Controller* controller, QWidget *parent) : QWidget(parent), _layout(new QVBoxLayout), _navigator(new QStackedWidget(this)),
-    _citiesView(new CitiesListView(controller, "Cities", { "Città", "Numero veicoli" })),
+    _citiesView(new CitiesListView(controller, "Città", { "Città", "Numero veicoli" })),
     _vehiclesView(new VehicleListView(controller)),
     _vehicleDetailView(new VehicleDetailView(controller)) {
     _citiesView->update();

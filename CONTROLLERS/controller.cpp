@@ -44,7 +44,7 @@ void Controller::goToVehiclesView(int row, int column) {
     VehicleListView* vehicles = _view->getVehicleListView();
     _currentCityIndex = row;
 
-    vehicles->setTitle("Elenco veicoli in " + QString::fromStdString(_model->getCity(row)->getNome()));
+    vehicles->setTitle("Flotta di " + QString::fromStdString(_model->getCity(row)->getNome()));
     vehicles->setHederStrings({ "Targa", "Posizione", "Chilometraggio" });
     vehicles->update();
     _view->setCurrentView(vehicles);
