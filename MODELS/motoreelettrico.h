@@ -15,10 +15,15 @@ public:
     };
 
     /**
-     * @brief Costruttore
+     * @brief costruttore MotoreElettrico
      * @param from Veicolo(targa, posizione, km, numeroPosti, ingombro)
-     * @param capacitaBatteria: la capacità totale della batteria del veicolo
-     * @param caricaSupportata: la velocità di carica a cui può essere caricato il veicolo
+     * @param potenza
+     * @param numeroMotori
+     * @param inCarica
+     * @param capacitaBatteria
+     * @param capacitaAttuale
+     * @param caricaSupportata
+     * @param colonninaAttuale
      */
     MotoreElettrico(string targa, string posizione, double km, u_int numeroPosti, u_int ingombro,
                     u_int potenza, u_int numeroMotori, bool inCarica, double capacitaBatteria, double capacitaAttuale, VelocitaRicarica caricaSupportata, Colonnina colonninaAttuale);
@@ -50,11 +55,11 @@ public:
 private:
     const u_int _potenza;                       // Potenza del motore
     const u_int _numeroMotori;                  // Il numero di motori presenti (da 1 a 4)
-    bool _inCarica;                             // E' in carica ?
-    const double _capacitaBatteria;             // Ampere-ora (Ah) massimi
-    double _capacitaAttuale;                    // Ampere-ora presenti
-    const VelocitaRicarica _caricaSupportata;   // la massima velocità alla quale può essere ricaricata (da 1 a 4)
-    Colonnina _colonninaAttuale;                // tipo di colonnina alla quale è inCarica
+    bool _inCarica;                             // Se si sta caricando
+    const double _capacitaBatteria;             // Ampere-ora massimi
+    double _capacitaAttuale;                    // Ampere-ora attuali
+    const VelocitaRicarica _caricaSupportata;   // La massima velocità alla quale può essere ricaricata (da 1 a 4)
+    Colonnina _colonninaAttuale;                // Tipo di colonnina alla quale è collegata se inCarica
 
 };
 

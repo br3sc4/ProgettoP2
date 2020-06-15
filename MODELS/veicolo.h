@@ -1,11 +1,9 @@
 #ifndef VEICOLO_H
 #define VEICOLO_H
 
+#define u_int unsigned short
 #include <string>
-
-#define u_int unsigned short        //  unsigned short abbreviato (NB da 0 a 65,535)
-
-using std::string;                  //  dichiarazione d'uso per string
+using std::string;
 
 class Veicolo {
 public:
@@ -13,35 +11,22 @@ public:
         libero, prenotato, occupato, manutenzione
     };
 
-    // costruttore di default
-    Veicolo();
-
     /**
-     * @brief Veicolo: costruttore
-     * @param targa: la targa del veicolo
-     * @param posizione: la posizione attuale del veicolo
-     * @param km: i chilometri percorsi dal veicolo
-     * @param numeroPosti: i posti per cui è omologato il veicolo
-     * @param ingombro: le dimensioni del veicolo
+     * @brief costruttore Veicolo
+     * @param targa
+     * @param posizione
+     * @param km
+     * @param numeroPosti
+     * @param ingombro
      */
     Veicolo(string targa, string posizione, double km, u_int numeroPosti, u_int ingombro);
 
-     // distruttore virtuale
-     virtual ~Veicolo();
+    virtual ~Veicolo();
 
-    // consumo al km in base ad alcune caratteristiche
     virtual double consumoKm() const =0;
-
-    // autonomia (o range) del veicolo
     virtual double autonomia() const =0;
-
-    // fattoreGreen (-10 a +10)
     virtual short int fattoreGreen() const =0;
-
-    // controlla autonomia e setta inRiserva
     virtual void checkRiserva();
-
-    // fattoreUtilizzo
     short int fattoreUtilizzo() const;
 
     // metodi get
@@ -69,17 +54,18 @@ public:
     void increaseGuasti(unsigned short guasti);
 
 private:
-    string _targa;
-    string _posizione;              //  gradi decimali con 4 cifre dopo il punto es: "41.8902, 12.4922"
-    double _chilometraggio;
-    u_int _capacitaPosti;
-    u_int _ingombro;                //  dimensioni del veicolo (da 1 a 5)
-    u_int _numeroUsi;               //  quante volte è stato usato
-    unsigned long _tempoServizio;   //  tempo totale di utilizzo in minuti
-    StatoVeicolo _statoAttuale;
-    bool _inRiserva;                //  se autonomia < di 30km
-    bool _serveAssistenza;
-    u_int _guasti;                  //  quante volte si è rotto
+    string _targa;                  // Targa del veicolo
+    string _posizione;              // Coordinate in gradi decimali con 4 cifre dopo il punto es: "41.8902, 12.4922"
+    double _chilometraggio;         // Chilometri percorsi
+    u_int _capacitaPosti;           // Posti per cui è omologato
+    u_int _ingombro;                // Dimensioni del veicolo (da 1 a 5)
+
+    u_int _numeroUsi;               // Quante volte è stato usato
+    unsigned long _tempoServizio;   // Tempo totale di utilizzo in minuti
+    StatoVeicolo _statoAttuale;     // Disponibilità (libero, prenotato, occupato, manutenzione)
+    bool _inRiserva;                // Se autonomia < di 30km
+    bool _serveAssistenza;          // Se è stata richiesta l'assistenza
+    u_int _guasti;                  // Quante volte si è guastato
 };
 
 #endif // VEICOLO_H
