@@ -1,5 +1,7 @@
 #include "MODELS/veicolo.h"
 
+Veicolo::Veicolo(){}
+
 Veicolo::Veicolo(string targa, string posizione, double km, u_int numeroPosti, u_int ingombro):
     _targa(targa), _posizione(posizione), _chilometraggio(km), _capacitaPosti(numeroPosti), _ingombro(ingombro),
     _numeroUsi(0), _tempoServizio(0), _statoAttuale(libero), _inRiserva(false), _serveAssistenza(false) {}

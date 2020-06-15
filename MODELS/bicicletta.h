@@ -6,17 +6,13 @@
 class Bicicletta: public MotoreElettrico {
 public:
     /**
-     * @brief Bicicletta: costruttore
-     * @param targa
-     * @param posizione
-     * @param km
-     * @param capacitaBatteria
-     * @param caricaSupportata
-     * @param numeroPosti
-     * @param ingombro
+     * @brief costruttore Bicicletta
+     * @param for Veicolo(targa, posizione, km, numeroPosti, ingombro)
+     * @param for MotoreElettrico(potenza, numeroMotori, inCarica, capacitaBatteria, capacitaAttuale, caricaSupportata, colonninaAttuale)
      */
-    Bicicletta(string targa, string posizione, double km, u_int potenza, u_int numeroMotori, double capacitaBatteria, double capacitaAttuale,
-               VelocitaRicarica caricaSupportata, bool inCarica = false, Colonnina colonninaAttuale = nessuna,
+    Bicicletta(string targa, string posizione, double km,
+               u_int potenza, u_int numeroMotori, double capacitaBatteria, double capacitaAttuale, VelocitaRicarica caricaSupportata,
+               bool inCarica = false, Colonnina colonninaAttuale = nessuna,
                u_int numeroPosti = 1, u_int ingombro = 1);
 };
 

@@ -7,13 +7,13 @@ class AutomobileElettrica: public MotoreElettrico {
 public:
     /**
      * @brief construttore AutomobileElettrica
-     * @param
-     * @param
-     * @param
-     * @param
-     * @param
+     * @param for Veicolo(targa, posizione, km, numeroPosti, ingombro)
+     * @param for MotoreElettrico(potenza, numeroMotori, inCarica, capacitaBatteria, capacitaAttuale, caricaSupportata, colonninaAttuale)
      */
-    AutomobileElettrica(string targa, string posizione, double km, u_int potenza, u_int numeroMotori, double capacitaBatteria, double capacitaAttuale, VelocitaRicarica caricaSupportata, bool inCarica = false, Colonnina colonninaAttuale = nessuna, u_int numeroPosti = 2, u_int ingombro = 3);
+    AutomobileElettrica(string targa, string posizione, double km,
+                        u_int potenza, u_int numeroMotori, double capacitaBatteria, double capacitaAttuale, VelocitaRicarica caricaSupportata,
+                        bool inCarica = false, Colonnina colonninaAttuale = nessuna,
+                        u_int numeroPosti = 2, u_int ingombro = 3);
 
 };
 

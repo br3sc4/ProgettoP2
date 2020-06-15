@@ -8,11 +8,10 @@ class AutoIbrida: public MotoreCombustione, public MotoreElettrico
 {
 public:
     /**
-     * @brief AutoIbrida: costruttore
-     *
-     * @param from Veicolo(targa, posizione, km, numeroPosti, ingombro)
-     * @param from MotoreCombustione(capacitaSerbatoio, litriSerbatoio, tipoCarburante, cilindrata, emissioni)
-     * @param from MotoreElettrico(potenza, numeroMotori, inCarica, capacitaBatteria, capacitaAttuale, caricaSupportata, colonninaAttuale)
+     * @brief costruttore AutoIbrida
+     * @param for Veicolo(targa, posizione, km, numeroPosti, ingombro)
+     * @param for MotoreCombustione(capacitaSerbatoio, litriSerbatoio, tipoCarburante, cilindrata, emissioni)
+     * @param for MotoreElettrico(potenza, numeroMotori, inCarica, capacitaBatteria, capacitaAttuale, caricaSupportata, colonninaAttuale)
      */
     AutoIbrida(string targa, string posizione, double km, double capacitaSerbatoio, double litriSerbatoio,
                Carburante tipoCarburante, u_int cilindrata, u_int emissioni,

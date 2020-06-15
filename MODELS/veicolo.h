@@ -7,9 +7,12 @@ using std::string;
 
 class Veicolo {
 public:
+
     enum StatoVeicolo {
         libero, prenotato, occupato, manutenzione
     };
+
+    Veicolo();
 
     /**
      * @brief costruttore Veicolo

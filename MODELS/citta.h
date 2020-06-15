@@ -9,7 +9,7 @@ public:
     Citta();
     Citta(const string& nome, const Array<Veicolo*> veicoli = Array<Veicolo*>());
 
-    std::string getNome() const;
+    string getNome() const;
     Veicolo* getVeicolo(unsigned int index) const;
     const Array<Veicolo *> *getVeicoli() const;
     Array<Veicolo *> *getVeicoli();
@@ -17,7 +17,7 @@ public:
     void deleteVeicolo(Array<Veicolo*>::iterator it);
 
 private:
-    const std::string _nome;
+    const string _nome;
     Array<Veicolo*> _veicoli;
 };
 

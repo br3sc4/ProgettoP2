@@ -6,6 +6,7 @@
 
 class MotoreElettrico : virtual public Veicolo {
 public:
+
     enum Colonnina {
         nessuna, lowHome, lowPublic, medium, ultraFast
     };
@@ -16,7 +17,7 @@ public:
 
     /**
      * @brief costruttore MotoreElettrico
-     * @param from Veicolo(targa, posizione, km, numeroPosti, ingombro)
+     * @param for Veicolo(targa, posizione, km, numeroPosti, ingombro)
      * @param potenza
      * @param numeroMotori
      * @param inCarica
