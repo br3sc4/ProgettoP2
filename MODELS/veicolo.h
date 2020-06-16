@@ -1,7 +1,6 @@
 #ifndef VEICOLO_H
 #define VEICOLO_H
 
-#define u_int unsigned short
 #include <string>
 using std::string;
 
@@ -22,7 +21,7 @@ public:
      * @param numeroPosti
      * @param ingombro
      */
-    Veicolo(string targa, string posizione, double km, u_int numeroPosti, u_int ingombro);
+    Veicolo(string targa, string posizione, double km, unsigned short numeroPosti, unsigned short ingombro);
 
     virtual ~Veicolo();
 
@@ -60,15 +59,15 @@ private:
     string _targa;                  // Targa del veicolo
     string _posizione;              // Coordinate in gradi decimali con 4 cifre dopo il punto es: "41.8902, 12.4922"
     double _chilometraggio;         // Chilometri percorsi
-    u_int _capacitaPosti;           // Posti per cui è omologato
-    u_int _ingombro;                // Dimensioni del veicolo (da 1 a 5)
+    unsigned short _capacitaPosti;           // Posti per cui è omologato
+    unsigned short _ingombro;                // Dimensioni del veicolo (da 1 a 5)
 
-    u_int _numeroUsi;               // Quante volte è stato usato
+    unsigned short _numeroUsi;               // Quante volte è stato usato
     unsigned long _tempoServizio;   // Tempo totale di utilizzo in minuti
     StatoVeicolo _statoAttuale;     // Disponibilità (libero, prenotato, occupato, manutenzione)
     bool _inRiserva;                // Se autonomia < di 30km
     bool _serveAssistenza;          // Se è stata richiesta l'assistenza
-    u_int _guasti;                  // Quante volte si è guastato
+    unsigned short _guasti;                  // Quante volte si è guastato
 };
 
 #endif // VEICOLO_H
