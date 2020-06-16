@@ -4,7 +4,6 @@
 #include <iostream>
 #include "EXCEPTIONS/emptyexception.h"
 #include "EXCEPTIONS/outofboundsexception.h"
-#include "EXCEPTIONS/notfoundexception.h"
 
 template <class T> class Array;
 template <class T> std::ostream& operator<< (std::ostream&, const Array<T>&);
@@ -51,7 +50,7 @@ public:
     }
 
     // operatore di uguaglianza
-    bool operator==(const Array& a) {
+    bool operator==(const Array& a) const {
         if (this == &a) return true;
         if (_size != a._size) return false;
         for (int i = 0; i < _size; i++)
@@ -126,7 +125,7 @@ public:
             return tmp;
         }
 
-        iterator operator+(int n) {
+        iterator operator+(int n) const {
             return i + n; // verifica che sia contiguo
         }
 
@@ -177,7 +176,7 @@ public:
             return tmp;
         }
 
-        const_iterator operator+(int n) {
+        const_iterator operator+(int n) const {
             return i + n;
         }
 
@@ -228,14 +227,14 @@ public:
     // Returns a reference to the first element in the vector.
     const T& front() const {
         if(empty())
-            throw EmptyException();    //undefined behavior
+            throw new EmptyException();    //undefined behavior
         else
             return x[0];
     }
 
     T& front() {
         if(empty())
-            throw EmptyException();    //undefined behavior
+            throw new EmptyException();    //undefined behavior
         else
             return x[0];
     }
@@ -243,14 +242,14 @@ public:
     // Returns a reference to the last element in the vector.
     const T& back() const {
         if(empty())
-            throw EmptyException();    //undefined behavior
+            throw new EmptyException();    //undefined behavior
         else
             return x[_size - 1];
     }
 
     T& back() {
         if(empty())
-            throw EmptyException();    //undefined behavior
+            throw new EmptyException();    //undefined behavior
         else
             return x[_size - 1];
     }
@@ -270,14 +269,12 @@ public:
             x[_size - 1] = x[_size];
             _size--;
         } else
-            throw EmptyException();
+            throw new EmptyException();
     }
 
     // erase Erase elements (public member function )
     T erase(iterator position) {
         T aux = *position;
-
-        if (position == end()) throw new NotFoundException();
 
         for (; position != end(); position++) {
             *position = *(position + 1);

@@ -5,6 +5,8 @@
 #include "VIEWS/view.h"
 #include "VIEWS/citieslistview.h"
 #include <QObject>
+#include <ostream>
+#include <sstream>
 
 class CitiesListView;
 class View;
@@ -30,8 +32,8 @@ private:
     unsigned int _currentCityIndex, _currentVehicleIndex;
 
 private slots:
-    void goToVehiclesView(int row, int column);
-    void goToVehicleDetailView(int row, int column);
+    void goToVehiclesView(int row);
+    void goToVehicleDetailView(int row);
     void goBack() const;
     void toggleMaintenance(int state) const;
     void createMoveModal() const;

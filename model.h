@@ -3,6 +3,7 @@
 
 #include "MODELS/array.h"
 #include "MODELS/citta.h"
+#include "EXCEPTIONS/samecityexception.h"
 
 class Model {
 public:

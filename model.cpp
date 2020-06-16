@@ -36,18 +36,12 @@ Veicolo* Model::removeVehicle(unsigned int city, unsigned int vehicle) {
     for (unsigned int i = 0; i < vehicle; i++)
         it++;
 
-    try {
-        delete *it;
-        res = vehicles->erase(it);
-        std::cout << res->targa() << std::endl;
-    } catch (std::exception exc) {
-        throw;
-    }
+    res = vehicles->erase(it);
 
     return res;
 }
 
 void Model::moveVehicle(unsigned int fromCity, unsigned int toCity, unsigned int vehicle) {
-    if(fromCity == toCity) return;  // TODO eccezione ?
+    if (fromCity == toCity) throw new SameCityException();
     addVehicle(toCity, removeVehicle(fromCity, vehicle));
 }

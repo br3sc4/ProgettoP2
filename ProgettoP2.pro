@@ -16,9 +16,9 @@ RESOURCES = resource.qrc
 
 SOURCES += EXCEPTIONS/emptyexception.cpp \
     CONTROLLERS/controller.cpp \
-    EXCEPTIONS/notfoundexception.cpp \
     EXCEPTIONS/notinchargeexception.cpp \
     EXCEPTIONS/outofboundsexception.cpp \
+    EXCEPTIONS/samecityexception.cpp \
     MODELS/autoibrida.cpp \
     MODELS/automobile.cpp \
     MODELS/automobileelettrica.cpp \
@@ -41,9 +41,9 @@ SOURCES += EXCEPTIONS/emptyexception.cpp \
 
 HEADERS += EXCEPTIONS/emptyexception.h \
     CONTROLLERS/controller.h \
-    EXCEPTIONS/notfoundexception.h \
     EXCEPTIONS/notinchargeexception.h \
     EXCEPTIONS/outofboundsexception.h \
+    EXCEPTIONS/samecityexception.h \
     MODELS/array.h \
     MODELS/autoibrida.h \
     MODELS/automobile.h \

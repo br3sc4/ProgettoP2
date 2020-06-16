@@ -15,6 +15,8 @@ void CitiesListView::update() {
         item = new QTableWidgetItem(QString::number(cities[i]->getVeicoli()->size()));
         _table->setItem(i, 1, item);
 
-        connect(_table, SIGNAL(cellClicked(int, int)), this, SIGNAL(rowClicked(int, int)));
+        connect(_table, &QTableWidget::itemClicked, this, [=](QTableWidgetItem* item) {
+            emit rowClicked(item->row());
+        });
     }
 }

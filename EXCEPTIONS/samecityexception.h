@@ -3,9 +3,9 @@
 
 #include <stdexcept>
 
-class NotFoundException : public std::runtime_error {
+class SameCityException : public std::runtime_error {
 public:
-    NotFoundException();
+    SameCityException();
 };
 
 #endif // NOTFOUNDEXCEPTION_H

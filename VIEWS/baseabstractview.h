@@ -22,6 +22,7 @@ public:
     QString getTitle() const;
     void setHederStrings(const QStringList& headerStrings);
     void resetTableSelection();
+    void showMessage(const QString& msg);
 
 private:
     QLabel* _title;
@@ -36,6 +37,6 @@ protected:
     QHBoxLayout* _horizontalLayout;
 
 signals:
-    void rowClicked(int row, int column);
+    void rowClicked(int row);
 };
 #endif // BASEVIEW_H

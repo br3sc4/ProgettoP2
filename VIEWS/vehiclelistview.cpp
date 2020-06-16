@@ -16,6 +16,8 @@ void VehicleListView::update() {
         item = new QTableWidgetItem(QString::number(vehicles[i]->chilometraggio()));
         _table->setItem(i, 2, item);
 
-        connect(_table, SIGNAL(cellClicked(int, int)), this, SIGNAL(rowClicked(int, int)));
+        connect(_table, &QTableWidget::itemClicked, this, [=](QTableWidgetItem* item) {
+            emit rowClicked(item->row());
+        });
     }
 }

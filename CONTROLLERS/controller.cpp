@@ -1,5 +1,4 @@
 #include "controller.h"
-#include <ostream>
 
 Controller::Controller(Model* model, QObject* parent): QObject(parent),
     _view(nullptr), _model(model) {}
@@ -7,9 +6,9 @@ Controller::Controller(Model* model, QObject* parent): QObject(parent),
 void Controller::setView(View *view) {
     _view = view;
 
-    connect(_view->getCitiesListView(), SIGNAL(rowClicked(int, int)), this, SLOT(goToVehiclesView(int, int)));
+    connect(_view->getCitiesListView(), SIGNAL(rowClicked(int)), this, SLOT(goToVehiclesView(int)));
     connect(_view->getVehicleListView(), SIGNAL(backButtonClicked()), this, SLOT(goBack()));
-    connect(_view->getVehicleListView(), SIGNAL(rowClicked(int, int)), this, SLOT(goToVehicleDetailView(int, int)));
+    connect(_view->getVehicleListView(), SIGNAL(rowClicked(int)), this, SLOT(goToVehicleDetailView(int)));
     connect(_view->getVehicleDetailView(), SIGNAL(backButtonClicked()), this, SLOT(goBack()));
     connect(_view->getVehicleDetailView(), SIGNAL(maintenanceChanged(int)), this, SLOT(toggleMaintenance(int)));
     connect(_view->getVehicleDetailView(), SIGNAL(removeButtonClicked()), this, SLOT(removeVehicle()));
@@ -39,7 +38,7 @@ QString Controller::getCurrentVehicle() const {
     return title.split(QLatin1Char(' ')).last().split(QLatin1Char('<')).first();
 }
 
-void Controller::goToVehiclesView(int row, int column) {
+void Controller::goToVehiclesView(int row) {
     _view->getCurrentView()->resetTableSelection();
     VehicleListView* vehicles = _view->getVehicleListView();
     _currentCityIndex = row;
@@ -50,7 +49,7 @@ void Controller::goToVehiclesView(int row, int column) {
     _view->setCurrentView(vehicles);
 }
 
-void Controller::goToVehicleDetailView(int row, int column) {
+void Controller::goToVehicleDetailView(int row) {
     _view->getCurrentView()->resetTableSelection();
     VehicleDetailView* vehicleDetail = _view->getVehicleDetailView();
     _currentVehicleIndex = row;
@@ -77,13 +76,23 @@ void Controller::createMoveModal() const {
 }
 
 void Controller::removeVehicle() const {
-    _model->removeVehicle(_currentCityIndex, _currentVehicleIndex);
+    Veicolo* vehicle = _model->removeVehicle(_currentCityIndex, _currentVehicleIndex);
     _view->getVehicleListView()->update();
     goBack();
+    std::stringstream msg;
+    msg << "Veicolo \"" << vehicle->targa() << "\" rimosso dalla flotta.";
+    _view->getCurrentView()->showMessage(QString::fromStdString(msg.str()));
 }
 
 void Controller::saveChage(int row) const {
-    _model->moveVehicle(_currentCityIndex, row, _currentVehicleIndex);
-
-    goBack();
+    try {
+        Veicolo* vehicle = _model->getVehicle(_currentCityIndex, _currentVehicleIndex);
+        _model->moveVehicle(_currentCityIndex, row, _currentVehicleIndex);
+        goBack();
+        std::stringstream msg;
+        msg << "Veicolo \"" << vehicle->targa() << "\" spostato a " << _model->getCity(row)->getNome() << ".";
+        _view->getCurrentView()->showMessage(QString::fromStdString(msg.str()));
+    } catch (std::exception* e) {
+        _view->getCurrentView()->showMessage(e->what());
+    }
 }

@@ -1,4 +1,5 @@
 #include "VIEWS/baseabstractview.h"
+#include <QMessageBox>
 
 BaseAbstractView::BaseAbstractView(const QString &title, const QStringList& headerStrings, QWidget *parent): QWidget(parent), _title(new QLabel(this)),
     _table(new QTableWidget(this)), _verticalLayout(new QVBoxLayout), _horizontalLayout(new QHBoxLayout) {
@@ -54,4 +55,11 @@ void BaseAbstractView::setHederStrings(const QStringList& headerStrings) {
 
 void BaseAbstractView::resetTableSelection() {
     _table->clearSelection();
+}
+
+void BaseAbstractView::showMessage(const QString &msg) {
+    QMessageBox* dialog = new QMessageBox(this);
+    dialog->setText(msg);
+
+    dialog->show();
 }
