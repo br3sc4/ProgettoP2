@@ -26,8 +26,9 @@ public:
      * @param caricaSupportata
      * @param colonninaAttuale
      */
-    MotoreElettrico(string targa, string posizione, double km, u_int numeroPosti, u_int ingombro,
-                    u_int potenza, u_int numeroMotori, bool inCarica, double capacitaBatteria, double capacitaAttuale, VelocitaRicarica caricaSupportata, Colonnina colonninaAttuale);
+    MotoreElettrico(string targa, string posizione, double km, unsigned short numeroPosti, unsigned short ingombro,
+                    unsigned short potenza, unsigned short numeroMotori, bool inCarica, double capacitaBatteria, double capacitaAttuale,
+                    VelocitaRicarica caricaSupportata, Colonnina colonninaAttuale);
 
     virtual ~MotoreElettrico();
 
@@ -54,8 +55,8 @@ public:
     void setCapacitaAttuale(double capacitaAttuale);
 
 private:
-    const u_int _potenza;                       // Potenza del motore
-    const u_int _numeroMotori;                  // Il numero di motori presenti (da 1 a 4)
+    const unsigned short _potenza;                       // Potenza del motore
+    const unsigned short _numeroMotori;                  // Il numero di motori presenti (da 1 a 4)
     bool _inCarica;                             // Se si sta caricando
     const double _capacitaBatteria;             // Ampere-ora massimi
     double _capacitaAttuale;                    // Ampere-ora attuali

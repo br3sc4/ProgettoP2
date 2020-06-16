@@ -11,9 +11,9 @@ public:
      * @param for MotoreElettrico(potenza, numeroMotori, inCarica, capacitaBatteria, capacitaAttuale, caricaSupportata, colonninaAttuale)
      */
     Bicicletta(string targa, string posizione, double km,
-               u_int potenza, u_int numeroMotori, double capacitaBatteria, double capacitaAttuale, VelocitaRicarica caricaSupportata,
+               unsigned short potenza, unsigned short numeroMotori, double capacitaBatteria, double capacitaAttuale, VelocitaRicarica caricaSupportata,
                bool inCarica = false, Colonnina colonninaAttuale = nessuna,
-               u_int numeroPosti = 1, u_int ingombro = 1);
+               unsigned short numeroPosti = 1, unsigned short ingombro = 1);
 };
 
 #endif // BICICLETTA_H

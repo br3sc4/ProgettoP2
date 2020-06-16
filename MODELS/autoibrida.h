@@ -14,10 +14,10 @@ public:
      * @param for MotoreElettrico(potenza, numeroMotori, inCarica, capacitaBatteria, capacitaAttuale, caricaSupportata, colonninaAttuale)
      */
     AutoIbrida(string targa, string posizione, double km, double capacitaSerbatoio, double litriSerbatoio,
-               Carburante tipoCarburante, u_int cilindrata, u_int emissioni,
-               u_int potenza, u_int numeroMotori, double capacitaBatteria, double capacitaAttuale,
+               Carburante tipoCarburante, unsigned short cilindrata, unsigned short emissioni,
+               unsigned short potenza, unsigned short numeroMotori, double capacitaBatteria, double capacitaAttuale,
                VelocitaRicarica caricaSupportata, bool inCarica = false,
-               Colonnina colonninaAttuale = nessuna, u_int numeroPosti = 2, u_int ingombro = 3);
+               Colonnina colonninaAttuale = nessuna, unsigned short numeroPosti = 2, unsigned short ingombro = 3);
 
     double autonomia() const;
 

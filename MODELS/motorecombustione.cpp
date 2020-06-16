@@ -1,8 +1,9 @@
 #include "MODELS/motorecombustione.h"
 
 
-MotoreCombustione::MotoreCombustione(string targa, string posizione, double km, u_int numeroPosti, u_int ingombro,
-                                     double capacitaSerbatoio,double litriSerbatoio, Carburante tipoCarburante, u_int cilindrata, u_int emissioni):
+MotoreCombustione::MotoreCombustione(string targa, string posizione, double km, unsigned short numeroPosti, unsigned short ingombro,
+                                     double capacitaSerbatoio,double litriSerbatoio, Carburante tipoCarburante, unsigned short cilindrata,
+                                     unsigned short emissioni):
     Veicolo(targa, posizione, km, numeroPosti, ingombro), _capacitaSerbatoio(capacitaSerbatoio), _litriSerbatoio(litriSerbatoio),
     _tipoCarburante(tipoCarburante), _cilindrata(cilindrata), _emissioni(emissioni) {}
 

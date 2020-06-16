@@ -19,8 +19,8 @@ public:
      * @param cilindrata
      * @param emissioni
      */
-    MotoreCombustione(string targa, string posizione, double km, u_int numeroPosti, u_int ingombro,
-                      double capacitaSerbatoio, double litriSerbatoio, Carburante tipoCarburante, u_int cilindrata, u_int emissioni);
+    MotoreCombustione(string targa, string posizione, double km, unsigned short numeroPosti, unsigned short ingombro,
+                      double capacitaSerbatoio, double litriSerbatoio, Carburante tipoCarburante, unsigned short cilindrata, unsigned short emissioni);
 
     virtual ~MotoreCombustione();
 
@@ -43,8 +43,8 @@ private:
     const double _capacitaSerbatoio;            // Litri di carburante che può contenere il serbatoio
     double _litriSerbatoio;                     // Litri di carburante rimasti
     const Carburante _tipoCarburante;           // Carburante utilizzato (benzina, diesel, gpl, metano)
-    const u_int _cilindrata;                    // Cilindrata motore
-    const u_int _emissioni;                     // Emissioni CO2
+    const unsigned short _cilindrata;                    // Cilindrata motore
+    const unsigned short _emissioni;                     // Emissioni CO2
 };
 
 #endif // MOTORECOMBUSTIONE_H
