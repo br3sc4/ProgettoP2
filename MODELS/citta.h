@@ -11,8 +11,8 @@ public:
 
     string getNome() const;
     Veicolo* getVeicolo(unsigned int index) const;
-    const Array<Veicolo *> *getVeicoli() const;
-    Array<Veicolo *> *getVeicoli();
+    const Array<Veicolo*>& getVeicoli() const;
+    Array<Veicolo*>& getVeicoli();
     void addVeicolo(Veicolo* const veicolo);
     void deleteVeicolo(Array<Veicolo*>::iterator it);
 

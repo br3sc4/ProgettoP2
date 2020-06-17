@@ -12,7 +12,7 @@ void CitiesListView::update() {
     for (int i = 0; i < _table->rowCount(); i++) {
         QTableWidgetItem *item = new QTableWidgetItem(QString::fromStdString(cities[i]->getNome()));
         _table->setItem(i, 0, item);
-        item = new QTableWidgetItem(QString::number(cities[i]->getVeicoli()->size()));
+        item = new QTableWidgetItem(QString::number(cities[i]->getVeicoli().size()));
         _table->setItem(i, 1, item);
 
         connect(_table, &QTableWidget::itemClicked, this, [=](QTableWidgetItem* item) {

@@ -224,6 +224,14 @@ public:
         return x[pos];
     }
 
+    const T& operator[] (Array::const_iterator pos) const {
+        return *(pos.i);
+    }
+
+    T& operator[] (Array::iterator pos) const {
+        return *(pos.i);
+    }
+
     // Returns a reference to the first element in the vector.
     const T& front() const {
         if(empty())
@@ -272,7 +280,7 @@ public:
             throw new EmptyException();
     }
 
-    // erase Erase elements (public member function )
+    // Erase elements (public member function )
     T erase(iterator position) {
         T aux = *position;
 
@@ -284,7 +292,7 @@ public:
         return aux;
     }
 
-    // clear Clear content (public member function )
+    // Clear content (public member function )
     void clear() {
         delete[] x;
         x = new T[_capacity];

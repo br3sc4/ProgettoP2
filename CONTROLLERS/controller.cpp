@@ -21,7 +21,7 @@ Array<Citta *> Controller::getCities() const {
 }
 
 Array<Veicolo*> Controller::getVehicles() const {
-    return *(_model->getCity(_currentCityIndex)->getVeicoli());
+    return _model->getCity(_currentCityIndex)->getVeicoli();
 }
 
 Veicolo* Controller::getVehicle() const {

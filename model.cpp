@@ -25,18 +25,17 @@ void Model::addVehicle(unsigned int city, Veicolo* const vehicle) {
 }
 
 Veicolo* Model::getVehicle(unsigned int city, unsigned int vehicle) const {
-    return _cities[city]->getVeicoli()->operator[](vehicle);
+    return _cities[city]->getVeicoli()[vehicle];
 }
 
 Veicolo* Model::removeVehicle(unsigned int city, unsigned int vehicle) {
-    Array<Veicolo*>::iterator it = _cities[city]->getVeicoli()->begin();
-    Array<Veicolo*>* vehicles = _cities[city]->getVeicoli();
+    Array<Veicolo*>::iterator it = _cities[city]->getVeicoli().begin();
     Veicolo* res;
 
     for (unsigned int i = 0; i < vehicle; i++)
         it++;
 
-    res = vehicles->erase(it);
+    res = _cities[city]->getVeicoli().erase(it);
 
     return res;
 }
