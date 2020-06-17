@@ -8,6 +8,7 @@
 #include <QTableWidget>
 #include <QHeaderView>
 #include <QSizePolicy>
+#include <QMenuBar>
 
 class BaseAbstractView : public QWidget {
     Q_OBJECT
@@ -30,13 +31,17 @@ private:
     void setupLayout();
     void setupLabel(const QString& title);
     virtual void setupTable(const QStringList& headerStrings);
+    virtual void setupMenuBar();
 
 protected:
+    QMenuBar* _menubar;
     QTableWidget* _table;
     QVBoxLayout* _verticalLayout;
     QHBoxLayout* _horizontalLayout;
 
 signals:
+    void closeSignal();
+    void showWizard();
     void rowClicked(int row);
 };
 #endif // BASEVIEW_H

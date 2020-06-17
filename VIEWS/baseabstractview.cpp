@@ -2,8 +2,9 @@
 #include <QMessageBox>
 
 BaseAbstractView::BaseAbstractView(const QString &title, const QStringList& headerStrings, QWidget *parent): QWidget(parent), _title(new QLabel(this)),
-    _table(new QTableWidget(this)), _verticalLayout(new QVBoxLayout), _horizontalLayout(new QHBoxLayout) {
+    _menubar(new QMenuBar(this)), _table(new QTableWidget(this)), _verticalLayout(new QVBoxLayout), _horizontalLayout(new QHBoxLayout) {
     setupLayout();
+    setupMenuBar();
     setupLabel(title);
     setupTable(headerStrings);
 
@@ -35,6 +36,19 @@ void BaseAbstractView::setupTable(const QStringList& headerStrings) {
     _table->setSelectionMode(QAbstractItemView::SingleSelection);
     _table->verticalHeader()->hide();
     _verticalLayout->addWidget(_table);
+}
+
+void BaseAbstractView::setupMenuBar() {
+    QMenu* file = _menubar->addMenu("File");
+    QAction* exit = file->addAction("Exit");
+    QAction* addCity = file->addAction("Add city");
+    addCity->setShortcut(QKeySequence::New);
+    QAction* addVehicle = file->addAction("Add vehicle");
+    addVehicle->setShortcut(QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_N));
+
+    connect(exit, &QAction::triggered, this, &BaseAbstractView::closeSignal);
+    connect(addCity, &QAction::triggered, this, &BaseAbstractView::showWizard);
+    connect(addVehicle, &QAction::triggered, this, &BaseAbstractView::showWizard);
 }
 
 void BaseAbstractView::setTitle(const QString& title) {

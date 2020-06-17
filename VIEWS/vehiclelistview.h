@@ -18,6 +18,8 @@ public:
 private:
     Controller* _controller;
 
+    virtual void setupMenuBar();
+
 signals:
     void selectedVehicle(QTableWidgetItem* itemClicked);
 };

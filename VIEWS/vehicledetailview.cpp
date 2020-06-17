@@ -61,11 +61,9 @@ void VehicleDetailView::createMoveDialog(const std::string& currentCity) {
     QDialog* modal = new QDialog(this);
     QVBoxLayout *layout = new QVBoxLayout(modal);
 
-    // Setup title
     QLabel* title = new QLabel("<h1>Move vehicle</h1>");
     title->setTextFormat(Qt::RichText);
 
-    // Setup table
     Array<Citta*> cities = _controller->getCities();
     QTableWidget* table = new QTableWidget;
     table->setEditTriggers(QAbstractItemView::NoEditTriggers);

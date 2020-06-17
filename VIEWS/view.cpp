@@ -12,6 +12,9 @@ View::View(Controller* controller, QWidget *parent) : QWidget(parent), _layout(n
     _layout->addWidget(_navigator);
     setLayout(_layout);
     setMinimumSize(600, 400);
+
+    connect(_citiesView, &BaseAbstractView::closeSignal, this, &View::close);    
+    connect(_citiesView, &BaseAbstractView::showWizard, this, &View::close);
 }
 
 View::~View() {
@@ -38,7 +41,7 @@ BaseAbstractView* View::getCurrentView() const {
     return dynamic_cast<BaseAbstractView*>(_navigator->currentWidget());
 }
 
-void View::setCurrentView(BaseAbstractView *view) {
+void View::setCurrentView(BaseAbstractView* view) {
     _navigator->setCurrentWidget(view);
 }
 
