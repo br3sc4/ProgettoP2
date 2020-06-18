@@ -1,28 +1,25 @@
 #include "VIEWS/view.h"
 
-View::View(Controller* controller, QWidget *parent) : QWidget(parent), _layout(new QVBoxLayout), _navigator(new QStackedWidget(this)),
+View::View(Controller* controller, QWidget *parent) : QStackedWidget(parent),
     _citiesView(new CitiesListView(controller, "Città", { "Città", "Numero veicoli" })),
     _vehiclesView(new VehicleListView(controller)),
     _vehicleDetailView(new VehicleDetailView(controller)) {
     _citiesView->update();
-    _navigator->addWidget(_citiesView);
-    _navigator->addWidget(_vehiclesView);
-    _navigator->addWidget(_vehicleDetailView);
 
-    _layout->addWidget(_navigator);
-    setLayout(_layout);
+    addWidget(_citiesView);
+    addWidget(_vehiclesView);
+    addWidget(_vehicleDetailView);
+
     setMinimumSize(600, 400);
 
-    connect(_citiesView, &BaseAbstractView::closeSignal, this, &View::close);    
-    connect(_citiesView, &BaseAbstractView::showWizard, this, &View::close);
+    connect(_citiesView, &BaseAbstractView::closeSignal, this, &View::close);
+//    connect(_citiesView, &BaseAbstractView::showWizard, this, &View::showWizard);
 }
 
 View::~View() {
     delete _vehicleDetailView;
     delete _vehiclesView;
     delete _citiesView;
-    delete _navigator;
-    delete _layout;
 }
 
 CitiesListView *View::getCitiesListView() const {
@@ -38,17 +35,17 @@ VehicleDetailView *View::getVehicleDetailView() const {
 }
 
 BaseAbstractView* View::getCurrentView() const {
-    return dynamic_cast<BaseAbstractView*>(_navigator->currentWidget());
+    return dynamic_cast<BaseAbstractView*>(currentWidget());
 }
 
 void View::setCurrentView(BaseAbstractView* view) {
-    _navigator->setCurrentWidget(view);
+    setCurrentWidget(view);
 }
 
 unsigned int View::getCurrentIndex() const {
-    return _navigator->currentIndex();
+    return currentIndex();
 }
 
-void View::setCurrentIndex(unsigned int index) {
-    _navigator->setCurrentIndex(index);
+void View::createWizard() {
+
 }

@@ -41,14 +41,14 @@ void BaseAbstractView::setupTable(const QStringList& headerStrings) {
 void BaseAbstractView::setupMenuBar() {
     QMenu* file = _menubar->addMenu("File");
     QAction* exit = file->addAction("Exit");
-    QAction* addCity = file->addAction("Add city");
-    addCity->setShortcut(QKeySequence::New);
     QAction* addVehicle = file->addAction("Add vehicle");
-    addVehicle->setShortcut(QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_N));
+    addVehicle->setShortcut(QKeySequence::New);
+    QAction* addCity = file->addAction("Add city");
+    addCity->setShortcut(QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_N));
 
-    connect(exit, &QAction::triggered, this, &BaseAbstractView::closeSignal);
-    connect(addCity, &QAction::triggered, this, &BaseAbstractView::showWizard);
+    connect(exit, &QAction::triggered, this, &BaseAbstractView::closeSignal);    
     connect(addVehicle, &QAction::triggered, this, &BaseAbstractView::showWizard);
+    connect(addCity, &QAction::triggered, this, &BaseAbstractView::showWizard);
 }
 
 void BaseAbstractView::setTitle(const QString& title) {

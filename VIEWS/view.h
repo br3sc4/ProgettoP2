@@ -5,7 +5,6 @@
 #include "VIEWS/citieslistview.h"
 #include "VIEWS/vehiclelistview.h"
 #include "VIEWS/vehicledetailview.h"
-#include <QWidget>
 #include <QStackedWidget>
 
 class Controller;
@@ -13,7 +12,7 @@ class CitiesListView;
 class VehicleListView;
 class VehicleDetailView;
 
-class View : public QWidget {
+class View : public QStackedWidget {
     Q_OBJECT
 
 public:
@@ -28,11 +27,10 @@ public:
     void setCurrentView(BaseAbstractView* view);
 
     unsigned int getCurrentIndex() const;
-    void setCurrentIndex(unsigned int index);
+
+    void createWizard();
 
 private:
-    QVBoxLayout *_layout;
-    QStackedWidget *_navigator;
     CitiesListView *_citiesView;
     VehicleListView *_vehiclesView;
     VehicleDetailView *_vehicleDetailView;
