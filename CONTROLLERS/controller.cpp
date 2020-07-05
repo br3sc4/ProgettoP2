@@ -16,7 +16,7 @@ void Controller::setView(View *view) {
     connect(view->getVehicleDetailView(), SIGNAL(vehicleMove(int)), this, SLOT(saveChage(int)));
 }
 
-Array<Citta *> Controller::getCities() const {
+Array<Citta*> Controller::getCities() const {
     return _model->getCities();
 }
 
@@ -36,6 +36,16 @@ QString Controller::getCurrentCity() const {
 QString Controller::getCurrentVehicle() const {
     QString title = _view->getVehicleDetailView()->getTitle();
     return title.split(QLatin1Char(' ')).last().split(QLatin1Char('<')).first();
+}
+
+void Controller::addCity(const std::string& nome) {
+    _model->addCity(new Citta(nome));
+    _view->getCurrentView()->update();
+}
+
+void Controller::addVehicle(unsigned int city, Veicolo* const vehicle) {
+    _model->addVehicle(city, vehicle);
+    _view->getCurrentView()->update();
 }
 
 void Controller::goToVehiclesView(int row) {

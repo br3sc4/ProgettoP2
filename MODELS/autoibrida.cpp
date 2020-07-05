@@ -1,6 +1,6 @@
 #include "MODELS/autoibrida.h"
 
-AutoIbrida::AutoIbrida(string targa, string posizione, double km, double capacitaSerbatoio, double litriSerbatoio,
+AutoIbrida::AutoIbrida(string targa, string posizione, unsigned long km, double capacitaSerbatoio, double litriSerbatoio,
                        Carburante tipoCarburante, unsigned short cilindrata, unsigned short emissioni, unsigned short potenza, unsigned short numeroMotori, double capacitaBatteria, double capacitaAttuale,
                        VelocitaRicarica caricaSupportata, bool inCarica,
                        Colonnina colonninaAttuale, unsigned short numeroPosti, unsigned short ingombro):

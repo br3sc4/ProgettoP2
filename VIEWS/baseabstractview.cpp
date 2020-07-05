@@ -47,8 +47,8 @@ void BaseAbstractView::setupMenuBar() {
     addCity->setShortcut(QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_N));
 
     connect(exit, &QAction::triggered, this, &BaseAbstractView::closeSignal);    
-    connect(addVehicle, &QAction::triggered, this, &BaseAbstractView::showWizard);
-    connect(addCity, &QAction::triggered, this, &BaseAbstractView::showWizard);
+    connect(addCity, &QAction::triggered, this, &BaseAbstractView::showAddCityWizard);
+    connect(addVehicle, &QAction::triggered, this, &BaseAbstractView::showAddVehicleWizard);
 }
 
 void BaseAbstractView::setTitle(const QString& title) {

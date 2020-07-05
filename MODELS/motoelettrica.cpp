@@ -1,6 +1,6 @@
 #include "MODELS/motoelettrica.h"
 
-MotoElettrica::MotoElettrica(string targa, string posizione, double km, double capacitaBatteria, double capacitaAttuale,
+MotoElettrica::MotoElettrica(string targa, string posizione, unsigned long km, double capacitaBatteria, double capacitaAttuale,
                              VelocitaRicarica caricaSupportata, unsigned short potenza, unsigned short numeroMotori, bool inCarica, Colonnina colonninaAttuale,
                              unsigned short numeroPosti, unsigned short ingombro):
     Veicolo(targa, posizione, km, numeroPosti, ingombro),

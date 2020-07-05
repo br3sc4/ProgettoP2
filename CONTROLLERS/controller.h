@@ -21,10 +21,13 @@ public:
 
     Array<Citta*> getCities() const;
     Array<Veicolo*> getVehicles() const;
-    Veicolo* getVehicle() const;
+    Veicolo* getVehicle() const;    
 
     QString getCurrentCity() const;
     QString getCurrentVehicle() const;
+
+    void addCity(const std::string& nome);
+    void addVehicle(unsigned int city, Veicolo* const vehicle);
 
 private:
     View *_view;
@@ -38,7 +41,7 @@ private slots:
     void toggleMaintenance(int state) const;
     void createMoveModal() const;
     void removeVehicle() const;
-    void saveChage(int row) const;
+    void saveChage(int row) const;    
 };
 
 #endif // CITIESLISTCONTROLLER_H

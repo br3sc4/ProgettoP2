@@ -2,7 +2,7 @@
 
 Veicolo::Veicolo(){}
 
-Veicolo::Veicolo(string targa, string posizione, double km, unsigned short numeroPosti, unsigned short ingombro):
+Veicolo::Veicolo(string targa, string posizione, unsigned long km, unsigned short numeroPosti, unsigned short ingombro):
     _targa(targa), _posizione(posizione), _chilometraggio(km), _capacitaPosti(numeroPosti), _ingombro(ingombro),
     _numeroUsi(0), _tempoServizio(0), _statoAttuale(libero), _inRiserva(false), _serveAssistenza(false) {}
 
@@ -29,11 +29,11 @@ void Veicolo::setPosizione(const string &posizione) {
     _posizione = posizione;
 }
 
-double Veicolo::chilometraggio() const {
+unsigned long Veicolo::chilometraggio() const {
     return _chilometraggio;
 }
 
-void Veicolo::increaseChilometraggio(double chilometraggio) {
+void Veicolo::increaseChilometraggio(unsigned long chilometraggio) {
     _chilometraggio += chilometraggio;
 }
 

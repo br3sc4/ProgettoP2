@@ -30,6 +30,13 @@ SOURCES += EXCEPTIONS/emptyexception.cpp \
     MODELS/motorecombustione.cpp \
     MODELS/motoreelettrico.cpp \
     MODELS/veicolo.cpp \
+    VIEWS/Wizard/addcitypage.cpp \
+    VIEWS/Wizard/citywizard.cpp \
+    VIEWS/Wizard/combustionenginepage.cpp \
+    VIEWS/Wizard/electricenginepage.cpp \
+    VIEWS/Wizard/selectcitypage.cpp \
+    VIEWS/Wizard/selectenginepage.cpp \
+    VIEWS/Wizard/vehiclefieldspage.cpp \
     VIEWS/baseabstractview.cpp \
     VIEWS/basebackabstractview.cpp \
     VIEWS/citieslistview.cpp \
@@ -56,6 +63,13 @@ HEADERS += EXCEPTIONS/emptyexception.h \
     MODELS/motorecombustione.h \
     MODELS/motoreelettrico.h \
     MODELS/veicolo.h \
+    VIEWS/Wizard/addcitypage.h \
+    VIEWS/Wizard/citywizard.h \
+    VIEWS/Wizard/combustionenginepage.h \
+    VIEWS/Wizard/electricenginepage.h \
+    VIEWS/Wizard/selectcitypage.h \
+    VIEWS/Wizard/selectenginepage.h \
+    VIEWS/Wizard/vehiclefieldspage.h \
     VIEWS/baseabstractview.h \
     VIEWS/basebackabstractview.h \
     VIEWS/citieslistview.h \

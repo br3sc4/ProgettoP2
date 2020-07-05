@@ -1,9 +1,7 @@
 #include "VIEWS/vehiclelistview.h"
 
 VehicleListView::VehicleListView(Controller* controller, const QString& title, const QStringList& headerStrings, QWidget *parent):
-    BaseBackAbstractView(title, headerStrings, parent), _controller(controller) {
-    setupMenuBar();
-}
+    BaseBackAbstractView(title, headerStrings, parent), _controller(controller) {}
 
 void VehicleListView::update() {
     Array<Veicolo*> vehicles = _controller->getVehicles();
@@ -22,12 +20,4 @@ void VehicleListView::update() {
             emit rowClicked(item->row());
         });
     }
-}
-
-void VehicleListView::setupMenuBar() {
-    QMenu* file = _menubar->findChildren<QMenu*>().first();
-    QAction* addVehicle = file->addAction("Add vehicle");
-    addVehicle->setShortcut(QKeySequence::New);
-
-    connect(addVehicle, &QAction::triggered, this, &CitiesListView::showWizard);
 }

@@ -13,7 +13,7 @@ public:
      * @param for MotoreCombustione(capacitaSerbatoio, litriSerbatoio, tipoCarburante, cilindrata, emissioni)
      * @param for MotoreElettrico(potenza, numeroMotori, inCarica, capacitaBatteria, capacitaAttuale, caricaSupportata, colonninaAttuale)
      */
-    AutoIbrida(string targa, string posizione, double km, double capacitaSerbatoio, double litriSerbatoio,
+    AutoIbrida(string targa, string posizione, unsigned long km, double capacitaSerbatoio, double litriSerbatoio,
                Carburante tipoCarburante, unsigned short cilindrata, unsigned short emissioni,
                unsigned short potenza, unsigned short numeroMotori, double capacitaBatteria, double capacitaAttuale,
                VelocitaRicarica caricaSupportata, bool inCarica = false,

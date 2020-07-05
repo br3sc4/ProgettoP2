@@ -1,6 +1,6 @@
 #include "citta.h"
 
-Citta::Citta(): _nome(), _veicoli(nullptr) {}
+Citta::Citta(): _nome(), _veicoli() {}
 
 Citta::Citta(const std::string& nome, const Array<Veicolo*> veicoli): _nome(nome), _veicoli(veicoli) {}
 

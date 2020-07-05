@@ -13,15 +13,7 @@ public:
 
     Veicolo();
 
-    /**
-     * @brief costruttore Veicolo
-     * @param targa
-     * @param posizione
-     * @param km
-     * @param numeroPosti
-     * @param ingombro
-     */
-    Veicolo(string targa, string posizione, double km, unsigned short numeroPosti, unsigned short ingombro);
+    Veicolo(string targa, string posizione, unsigned long km, unsigned short numeroPosti, unsigned short ingombro);
 
     virtual ~Veicolo();
 
@@ -34,7 +26,7 @@ public:
     // metodi get
     string targa() const;
     string posizione() const;
-    double chilometraggio() const;
+    unsigned long chilometraggio() const;
     unsigned short capacitaPosti() const;
     unsigned short ingombro() const;
     unsigned short numeroUsi() const;
@@ -50,7 +42,7 @@ public:
     void setServeAssistenza(bool serveAssistenza);
 
     // metodi incremento
-    void increaseChilometraggio(double chilometraggio);
+    void increaseChilometraggio(unsigned long chilometraggio);
     void increaseNumeroUsi(unsigned short numeroUsi);
     void increaseTempoServizio(unsigned long tempoServizio);
     void increaseGuasti(unsigned short guasti);
@@ -58,7 +50,7 @@ public:
 private:
     string _targa;                  // Targa del veicolo
     string _posizione;              // Coordinate in gradi decimali con 4 cifre dopo il punto es: "41.8902, 12.4922"
-    double _chilometraggio;         // Chilometri percorsi
+    unsigned long _chilometraggio;         // Chilometri percorsi
     unsigned short _capacitaPosti;           // Posti per cui è omologato
     unsigned short _ingombro;                // Dimensioni del veicolo (da 1 a 5)
 

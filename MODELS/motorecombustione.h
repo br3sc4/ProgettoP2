@@ -19,7 +19,7 @@ public:
      * @param cilindrata
      * @param emissioni
      */
-    MotoreCombustione(string targa, string posizione, double km, unsigned short numeroPosti, unsigned short ingombro,
+    MotoreCombustione(string targa, string posizione, unsigned long km, unsigned short numeroPosti, unsigned short ingombro,
                       double capacitaSerbatoio, double litriSerbatoio, Carburante tipoCarburante, unsigned short cilindrata, unsigned short emissioni);
 
     virtual ~MotoreCombustione();

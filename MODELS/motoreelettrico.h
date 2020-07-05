@@ -15,18 +15,7 @@ public:
         lenta = 1, media, veloce
     };
 
-    /**
-     * @brief costruttore MotoreElettrico
-     * @param for Veicolo(targa, posizione, km, numeroPosti, ingombro)
-     * @param potenza
-     * @param numeroMotori
-     * @param inCarica
-     * @param capacitaBatteria
-     * @param capacitaAttuale
-     * @param caricaSupportata
-     * @param colonninaAttuale
-     */
-    MotoreElettrico(string targa, string posizione, double km, unsigned short numeroPosti, unsigned short ingombro,
+    MotoreElettrico(string targa, string posizione, unsigned long km, unsigned short numeroPosti, unsigned short ingombro,
                     unsigned short potenza, unsigned short numeroMotori, bool inCarica, double capacitaBatteria, double capacitaAttuale,
                     VelocitaRicarica caricaSupportata, Colonnina colonninaAttuale);
 

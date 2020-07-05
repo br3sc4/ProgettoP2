@@ -5,6 +5,7 @@
 #include "VIEWS/citieslistview.h"
 #include "VIEWS/vehiclelistview.h"
 #include "VIEWS/vehicledetailview.h"
+#include "Wizard/citywizard.h"
 #include <QStackedWidget>
 
 class Controller;
@@ -28,12 +29,14 @@ public:
 
     unsigned int getCurrentIndex() const;
 
-    void createWizard();
-
 private:
-    CitiesListView *_citiesView;
-    VehicleListView *_vehiclesView;
-    VehicleDetailView *_vehicleDetailView;
+    CitiesListView* _citiesView;
+    VehicleListView* _vehiclesView;
+    VehicleDetailView* _vehicleDetailView;
+    Controller* _controller;
+
+private slots:
+    void createWizard(bool addCityMode = false);
 };
 
 #endif // WINDOW_H

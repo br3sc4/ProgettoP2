@@ -10,7 +10,7 @@ public:
      * @param for Veicolo(targa, posizione, km, numeroPosti, ingombro)
      * @param for MotoreElettrico(potenza, numeroMotori, inCarica, capacitaBatteria, capacitaAttuale, caricaSupportata, colonninaAttuale)
      */
-    Bicicletta(string targa, string posizione, double km,
+    Bicicletta(string targa, string posizione, unsigned long km,
                unsigned short potenza, unsigned short numeroMotori, double capacitaBatteria, double capacitaAttuale, VelocitaRicarica caricaSupportata,
                bool inCarica = false, Colonnina colonninaAttuale = nessuna,
                unsigned short numeroPosti = 1, unsigned short ingombro = 1);

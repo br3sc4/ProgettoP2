@@ -41,7 +41,8 @@ protected:
 
 signals:
     void closeSignal();
-    void showWizard();
+    void showAddCityWizard();
+    void showAddVehicleWizard();
     void rowClicked(int row);
 };
 #endif // BASEVIEW_H
