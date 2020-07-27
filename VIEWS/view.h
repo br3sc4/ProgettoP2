@@ -35,6 +35,10 @@ private:
     VehicleDetailView* _vehicleDetailView;
     Controller* _controller;
 
+    const char* _titoloApp = "CitySharing";
+    const unsigned int _minAltezza = 800;
+    const unsigned int _minLarghezza = 600;
+
 private slots:
     void createWizard(bool addCityMode = false);
 };
