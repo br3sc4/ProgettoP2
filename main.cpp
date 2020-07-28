@@ -34,9 +34,16 @@ int main(int argc, char *argv[])
     }else std::cout << "non riesco ad aprire il file dBBiciclette\n";
     dBBiciclette.close();
 
-    //model.addVehicle(0, new Automobile("Targa-Auto1", "pos", 100, 60, 20, Automobile::diesel, 1600, 60, 4));
-    //model.addVehicle(1, new Automobile("Targa-Auto2", "pos", 100, 60, 20, Automobile::diesel, 1600, 60, 4));
-    //model.addVehicle(1, new Automobile("Targa-Auto3", "pos", 100, 60, 20, Automobile::diesel, 1600, 60, 4));
+    std::ifstream dBAutomobili("database/dataBaseAutomobili.txt");
+    if (dBAutomobili.is_open()){
+        int citta, km, capSerba, litSerba, carburante, cilindrata, emissioni, numPost, ingombro;
+        string targa, posizione;
+        while(dBAutomobili >> citta >> targa >> posizione >> km >> capSerba >> litSerba >> carburante >> cilindrata >> emissioni >> numPost >> ingombro){
+            model.addVehicle(citta, new Automobile(targa, posizione, km, capSerba, litSerba, static_cast<Automobile::Carburante>(carburante), cilindrata, emissioni, numPost, ingombro));
+        }
+    }else std::cout << "non riesco ad aprire il file dBAutomobile\n";
+    dBAutomobili.close();
+
 
     Controller controller(&model);
     View w(&controller);
