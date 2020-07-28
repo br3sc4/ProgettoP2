@@ -16,7 +16,7 @@ public:
     };
 
     MotoreElettrico(string targa, string posizione, unsigned long km, unsigned short numeroPosti, unsigned short ingombro,
-                    unsigned short potenza, unsigned short numeroMotori, bool inCarica, double capacitaBatteria, double capacitaAttuale,
+                    unsigned int potenza, unsigned short numeroMotori, bool inCarica, double capacitaBatteria, double capacitaAttuale,
                     VelocitaRicarica caricaSupportata, Colonnina colonninaAttuale);
 
     virtual ~MotoreElettrico();
@@ -44,7 +44,7 @@ public:
     void setCapacitaAttuale(double capacitaAttuale);
 
 private:
-    const unsigned short _potenza;                       // Potenza del motore
+    const unsigned int _potenza;                       // Potenza del motore (Wh)
     const unsigned short _numeroMotori;                  // Il numero di motori presenti (da 1 a 4)
     bool _inCarica;                             // Se si sta caricando
     const double _capacitaBatteria;             // Ampere-ora massimi

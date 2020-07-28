@@ -1,7 +1,7 @@
 #include "model.h"
 #include "MODELS/automobile.h"
-#include "MODELS/autoibrida.h"
 #include "MODELS/bicicletta.h"
+#include "MODELS/automobileelettrica.h"
 #include "CONTROLLERS/controller.h"
 #include "VIEWS/view.h"
 #include <QApplication>
@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
     }else std::cout << "non riesco ad aprire il file dBCitta\n";
     dBCitta.close();
 
-    std::ifstream dBBiciclette("database/dataBaseBiciclette.txt");
+/*    std::ifstream dBBiciclette("database/dataBaseBiciclette.txt");
     if (dBBiciclette.is_open()){
         int citta, km, potenza, nMotori, velocita;
         double capBatt, capAttuale;
@@ -33,7 +33,8 @@ int main(int argc, char *argv[])
         }
     }else std::cout << "non riesco ad aprire il file dBBiciclette\n";
     dBBiciclette.close();
-
+*/
+/*
     std::ifstream dBAutomobili("database/dataBaseAutomobili.txt");
     if (dBAutomobili.is_open()){
         int citta, km, capSerba, litSerba, carburante, cilindrata, emissioni, numPost, ingombro;
@@ -43,6 +44,17 @@ int main(int argc, char *argv[])
         }
     }else std::cout << "non riesco ad aprire il file dBAutomobile\n";
     dBAutomobili.close();
+*/
+    std::ifstream dBAutoElettriche("database/dataBaseAutoElettriche.txt");
+    if (dBAutoElettriche.is_open()){
+        int citta, km, numPost, ingombro, potenza, numMotori, capBatteria, inCarica, capAttuale, caricaSupp, colonninaAtt;
+        string targa, posizione;
+        while(dBAutoElettriche >> citta >> targa >> posizione >> km >> potenza >> numMotori >> capBatteria >> capAttuale >> caricaSupp >> inCarica >> colonninaAtt >> numPost >> ingombro){
+            model.addVehicle(citta, new AutomobileElettrica(targa, posizione, km, potenza, numMotori, capBatteria, capAttuale, static_cast<AutomobileElettrica::VelocitaRicarica>(caricaSupp), inCarica, static_cast<AutomobileElettrica::Colonnina>(colonninaAtt), numPost, ingombro));
+        }
+    }else std::cout << "non riesco ad aprire il file dBAutoElettriche\n";
+    dBAutoElettriche.close();
+
 
 
     Controller controller(&model);
@@ -53,4 +65,4 @@ int main(int argc, char *argv[])
     return a.exec();
 }
 
-// fare controllo su add city per nomi di citta uguali
+// TODO: fare controllo su add city per nomi di citta uguali
