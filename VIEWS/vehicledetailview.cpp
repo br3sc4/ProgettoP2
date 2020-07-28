@@ -17,7 +17,7 @@ VehicleDetailView::VehicleDetailView(Controller* controller, const QString& titl
     setupMoveButton();
     setupRemoveButton();
 
-    _verticalLayout->addSpacerItem(new QSpacerItem(10, 100));
+    _verticalLayout->addSpacerItem(new QSpacerItem(10, 100, QSizePolicy::Minimum, QSizePolicy::MinimumExpanding));
 
     connect(_checkBox, SIGNAL(stateChanged(int)), this, SIGNAL(maintenanceChanged(int)));
     connect(_moveButton, SIGNAL(clicked()), this, SIGNAL(createMoveDialog()));
