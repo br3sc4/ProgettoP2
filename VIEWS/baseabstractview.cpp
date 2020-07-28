@@ -2,9 +2,9 @@
 #include <QMessageBox>
 
 BaseAbstractView::BaseAbstractView(const QString &title, const QStringList& headerStrings, QWidget *parent): QWidget(parent), _title(new QLabel(this)),
-    _menubar(new QMenuBar(this)), _table(new QTableWidget(this)), _verticalLayout(new QVBoxLayout), _horizontalLayout(new QHBoxLayout) {
-    setupLayout();
+    _menubar(new QMenuBar(this)), _table(new QTableWidget(this)), _verticalLayout(new QVBoxLayout), _horizontalLayout(new QHBoxLayout) {    
     setupMenuBar();
+    setupLayout();
     setupLabel(title);
     setupTable(headerStrings);
 
@@ -19,7 +19,7 @@ BaseAbstractView::~BaseAbstractView() {
 }
 
 void BaseAbstractView::setupLayout() {
-    _verticalLayout->insertLayout(0, _horizontalLayout);
+    _verticalLayout->insertLayout(1, _horizontalLayout);
     _verticalLayout->setAlignment(Qt::AlignLeft);
 }
 
@@ -45,6 +45,8 @@ void BaseAbstractView::setupMenuBar() {
     addVehicle->setShortcut(QKeySequence::New);
     QAction* addCity = file->addAction("Add city");
     addCity->setShortcut(QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_N));
+
+    _verticalLayout->addWidget(_menubar);
 
     connect(exit, &QAction::triggered, this, &BaseAbstractView::closeSignal);    
     connect(addCity, &QAction::triggered, this, &BaseAbstractView::showAddCityWizard);
