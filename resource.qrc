@@ -1,3 +1,5 @@
-<RCC>
-    <qresource prefix="/"/>
+<!DOCTYPE RCC><RCC version="1.0">
+    <qresource>
+        <file>dataBase/dataBaseCitta.txt</file>
+    </qresource>
 </RCC>

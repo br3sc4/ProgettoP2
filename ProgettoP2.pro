@@ -12,7 +12,7 @@ TEMPLATE = app
 CONFIG += c++11
 CONFIG += qt
 QMAKE_CXXFLAGS += -std=c++11
-RESOURCES = resource.qrc
+RESOURCES =
 
 SOURCES += EXCEPTIONS/emptyexception.cpp \
     CONTROLLERS/controller.cpp \
