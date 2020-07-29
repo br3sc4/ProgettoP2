@@ -1,4 +1,5 @@
 #include "model.h"
+#include "EXCEPTIONS/filenotfound.h"
 
 #include <fstream>
 
@@ -10,7 +11,7 @@ void loadCitta(Model& model) {
       model.addCity(new Citta(nomeCitta));
     }
   } else
-    std::cout << "non riesco ad aprire il file dBCitta\n";
+    throw FileNotFound(0);
   dBCitta.close();
 }
 
@@ -33,7 +34,7 @@ void loadVeicoli(Model& model) {
               ingombro));
     }
   } else
-    std::cout << "non riesco ad aprire il file dBBiciclette\n";
+    throw FileNotFound(1);
   dBBiciclette.close();
 
   std::ifstream dBAutomobili("database/dataBaseAutomobili.txt");
@@ -50,7 +51,7 @@ void loadVeicoli(Model& model) {
                                 cilindrata, emissioni, numPost, ingombro));
     }
   } else
-    std::cout << "non riesco ad aprire il file dBAutomobile\n";
+    throw FileNotFound(2);
   dBAutomobili.close();
 
   std::ifstream dBAutoElettriche("database/dataBaseAutoElettriche.txt");
@@ -72,7 +73,7 @@ void loadVeicoli(Model& model) {
               numPost, ingombro));
     }
   } else
-    std::cout << "non riesco ad aprire il file dBAutoElettriche\n";
+    throw FileNotFound(3);
   dBAutoElettriche.close();
 
   std::ifstream dBAutoIbride("database/dataBaseAutoIbride.txt");
@@ -96,7 +97,7 @@ void loadVeicoli(Model& model) {
               ingombro));
     }
   } else
-    std::cout << "non riesco ad aprire il file dBAutoIbride\n";
+    throw FileNotFound(4);
   dBAutoIbride.close();
 
   std::ifstream dBMonopattini("database/dataBaseMonopattini.txt");
@@ -117,7 +118,7 @@ void loadVeicoli(Model& model) {
               ingombro));
     }
   } else
-    std::cout << "non riesco ad aprire il file dBMonopattini\n";
+    throw FileNotFound(5);
   dBMonopattini.close();
 
   std::ifstream dBMotoElettriche("database/dataBaseMotoElettriche.txt");
@@ -138,7 +139,7 @@ void loadVeicoli(Model& model) {
               ingombro));
     }
   } else
-    std::cout << "non riesco ad aprire il file dBMotoElettriche\n";
+    throw FileNotFound(6);
   dBMotoElettriche.close();
 
   std::ifstream dBMoto("database/dataBaseMoto.txt");
@@ -155,6 +156,6 @@ void loadVeicoli(Model& model) {
                                 cilindrata, emissioni, numPost, ingombro));
     }
   } else
-    std::cout << "non riesco ad aprire il file dBMoto\n";
+    throw FileNotFound(7);
   dBMoto.close();
 }
