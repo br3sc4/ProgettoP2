@@ -3,6 +3,15 @@
 
 #include "MODELS/array.h"
 #include "MODELS/citta.h"
+
+#include "MODELS/automobile.h"
+#include "MODELS/bicicletta.h"
+#include "MODELS/automobileelettrica.h"
+#include "MODELS/autoibrida.h"
+#include "MODELS/monopattino.h"
+#include "MODELS/moto.h"
+#include "MODELS/motoelettrica.h"
+
 #include "EXCEPTIONS/samecityexception.h"
 
 class Model {

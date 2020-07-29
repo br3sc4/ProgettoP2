@@ -60,11 +60,11 @@ void CityWizard::accept() {
         if (tipoVeicolo == SelectEnginePage::Vehicles::Auto)
             _controller->addVehicle(_city, new AutomobileElettrica(targa, pos, km, potenza, motori, capacita, capacita, carica, false, MotoreElettrico::Colonnina::nessuna, posti, ingombro));
         else if (tipoVeicolo == SelectEnginePage::Vehicles::Moto)
-            _controller->addVehicle(_city, new MotoElettrica(targa, pos, km, capacita, capacita, carica, potenza, posti, false, MotoreElettrico::Colonnina::nessuna, posti, ingombro));
+            _controller->addVehicle(_city, new MotoElettrica(targa, pos, km, potenza, motori, capacita, capacita, carica, false, MotoreElettrico::Colonnina::nessuna, posti, ingombro));
         else if (tipoVeicolo == SelectEnginePage::Vehicles::Bici)
             _controller->addVehicle(_city, new Bicicletta(targa, pos, km, potenza, motori, capacita, capacita, carica, false, MotoreElettrico::Colonnina::nessuna, posti, ingombro));
         else
-            _controller->addVehicle(_city, new Monopattino(targa, pos, km, capacita, capacita, carica, potenza, posti, false, MotoreElettrico::Colonnina::nessuna, posti, ingombro));
+            _controller->addVehicle(_city, new Monopattino(targa, pos, km, potenza, motori, capacita, capacita, carica, false, MotoreElettrico::Colonnina::nessuna, posti, ingombro));
     } else {
         double capacita = field("capacità").toDouble();
         MotoreCombustione::Carburante carburante = MotoreCombustione::Carburante(field("carburante").toUInt());

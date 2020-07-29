@@ -43,6 +43,7 @@ SOURCES += EXCEPTIONS/emptyexception.cpp \
     VIEWS/vehicledetailview.cpp \
     VIEWS/vehiclelistview.cpp \
     VIEWS/view.cpp \
+    loadDataBase.cpp \
     main.cpp \
     model.cpp
 
