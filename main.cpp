@@ -23,22 +23,23 @@ int main(int argc, char *argv[])
         }
     }else std::cout << "non riesco ad aprire il file dBCitta\n";
     dBCitta.close();
-
-/*    std::ifstream dBBiciclette("database/dataBaseBiciclette.txt");
+/*
+    std::ifstream dBBiciclette("database/dataBaseBiciclette.txt");
     if (dBBiciclette.is_open()){
-        int citta, km, potenza, nMotori, velocita;
-        double capBatt, capAttuale;
+        int citta, km, numPost, ingombro, potenza, numMotori, inCarica, caricaSupp, colonninaAtt;
         string targa, posizione;
-        while(dBBiciclette >> citta >> targa >> posizione >> km >> potenza >> nMotori >> capBatt >> capAttuale >> velocita){
-            model.addVehicle(citta, new Bicicletta(targa, posizione, km, potenza, nMotori, capBatt, capAttuale, static_cast<Bicicletta::VelocitaRicarica>(velocita)));
+        double capBatteria, capAttuale;
+        while(dBBiciclette >> citta >> targa >> posizione >> km >> potenza >> numMotori >> capBatteria >> capAttuale >> caricaSupp >> inCarica >> colonninaAtt >> numPost >> ingombro){
+            model.addVehicle(citta, new Bicicletta(targa, posizione, km, potenza, numMotori, capBatteria, capAttuale, static_cast<Bicicletta::VelocitaRicarica>(caricaSupp), inCarica, static_cast<Bicicletta::Colonnina>(colonninaAtt), numPost, ingombro));
         }
     }else std::cout << "non riesco ad aprire il file dBBiciclette\n";
     dBBiciclette.close();
 
     std::ifstream dBAutomobili("database/dataBaseAutomobili.txt");
     if (dBAutomobili.is_open()){
-        int citta, km, capSerba, litSerba, carburante, cilindrata, emissioni, numPost, ingombro;
+        int citta, km, carburante, cilindrata, emissioni, numPost, ingombro;
         string targa, posizione;
+        double capSerba, litSerba;
         while(dBAutomobili >> citta >> targa >> posizione >> km >> capSerba >> litSerba >> carburante >> cilindrata >> emissioni >> numPost >> ingombro){
             model.addVehicle(citta, new Automobile(targa, posizione, km, capSerba, litSerba, static_cast<Automobile::Carburante>(carburante), cilindrata, emissioni, numPost, ingombro));
         }
@@ -47,24 +48,37 @@ int main(int argc, char *argv[])
 
     std::ifstream dBAutoElettriche("database/dataBaseAutoElettriche.txt");
     if (dBAutoElettriche.is_open()){
-        int citta, km, numPost, ingombro, potenza, numMotori, capBatteria, inCarica, capAttuale, caricaSupp, colonninaAtt;
+        int citta, km, numPost, ingombro, potenza, numMotori, inCarica, caricaSupp, colonninaAtt;
         string targa, posizione;
+        double capBatteria, capAttuale;
         while(dBAutoElettriche >> citta >> targa >> posizione >> km >> potenza >> numMotori >> capBatteria >> capAttuale >> caricaSupp >> inCarica >> colonninaAtt >> numPost >> ingombro){
             model.addVehicle(citta, new AutomobileElettrica(targa, posizione, km, potenza, numMotori, capBatteria, capAttuale, static_cast<AutomobileElettrica::VelocitaRicarica>(caricaSupp), inCarica, static_cast<AutomobileElettrica::Colonnina>(colonninaAtt), numPost, ingombro));
         }
     }else std::cout << "non riesco ad aprire il file dBAutoElettriche\n";
     dBAutoElettriche.close();
-*/
 
     std::ifstream dBAutoIbride("database/dataBaseAutoIbride.txt");
     if (dBAutoIbride.is_open()){
-        int citta, km, capSerba, litSerba, carburante, cilindrata, emissioni, numPost, ingombro, potenza, numMotori, capBatteria, inCarica, capAttuale, caricaSupp, colonninaAtt;
+        int citta, km, carburante, cilindrata, emissioni, numPost, ingombro, potenza, numMotori, inCarica, caricaSupp, colonninaAtt;
         string targa, posizione;
+        double capBatteria, capAttuale, capSerba, litSerba;
         while(dBAutoIbride >> citta >> targa >> posizione >> km >> capSerba >> litSerba >> carburante >> cilindrata >> emissioni >> potenza >> numMotori >> capBatteria >> capAttuale >> caricaSupp >> inCarica >> colonninaAtt >> numPost >> ingombro){
             model.addVehicle(citta, new AutoIbrida(targa, posizione, km, capSerba, litSerba, static_cast<AutoIbrida::Carburante>(carburante), cilindrata, emissioni, potenza, numMotori, capBatteria, capAttuale, static_cast<AutoIbrida::VelocitaRicarica>(caricaSupp), inCarica, static_cast<AutoIbrida::Colonnina>(colonninaAtt), numPost, ingombro));
         }
     }else std::cout << "non riesco ad aprire il file dBAutoIbride\n";
     dBAutoIbride.close();
+*/
+
+    std::ifstream dBBiciclette("database/dataBaseBiciclette.txt");
+    if (dBBiciclette.is_open()){
+        int citta, km, numPost, ingombro, potenza, numMotori, inCarica, caricaSupp, colonninaAtt;
+        string targa, posizione;
+        double capBatteria, capAttuale;
+        while(dBBiciclette >> citta >> targa >> posizione >> km >> potenza >> numMotori >> capBatteria >> capAttuale >> caricaSupp >> inCarica >> colonninaAtt >> numPost >> ingombro){
+            model.addVehicle(citta, new Bicicletta(targa, posizione, km, potenza, numMotori, capBatteria, capAttuale, static_cast<Bicicletta::VelocitaRicarica>(caricaSupp), inCarica, static_cast<Bicicletta::Colonnina>(colonninaAtt), numPost, ingombro));
+        }
+    }else std::cout << "non riesco ad aprire il file dBBiciclette\n";
+    dBBiciclette.close();
 
 
     Controller controller(&model);
