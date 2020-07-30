@@ -1,5 +1,5 @@
-#ifndef NOTFOUNDEXCEPTION_H
-#define NOTFOUNDEXCEPTION_H
+#ifndef SAMECITYEXCEPTION_H
+#define SAMECITYEXCEPTION_H
 
 #include <stdexcept>
 
@@ -8,4 +8,4 @@ public:
     SameCityException();
 };
 
-#endif // NOTFOUNDEXCEPTION_H
+#endif // SAMECITYEXCEPTION_H

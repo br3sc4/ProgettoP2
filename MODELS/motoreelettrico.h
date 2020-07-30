@@ -15,9 +15,20 @@ public:
         lenta = 1, media, veloce
     };
 
-    MotoreElettrico(string targa, string posizione, unsigned long km, unsigned short numeroPosti, unsigned short ingombro,
-                    unsigned int potenza, unsigned short numeroMotori, bool inCarica, double capacitaBatteria, double capacitaAttuale,
-                    VelocitaRicarica caricaSupportata, Colonnina colonninaAttuale);
+    MotoreElettrico(
+                    string targa,
+                    string posizione,
+                    unsigned long km,
+                    unsigned short numeroPosti,
+                    unsigned short ingombro,
+                    unsigned int potenza,
+                    unsigned short numeroMotori,
+                    bool inCarica,
+                    double capacitaBatteria,
+                    double capacitaAttuale,
+                    VelocitaRicarica caricaSupportata,
+                    Colonnina colonninaAttuale
+                   );
 
     virtual ~MotoreElettrico();
 
