@@ -2,7 +2,15 @@
 #define VEHICLELISTVIEW_H
 
 #include "basebackabstractview.h"
+#include "MODELS/automobile.h"
+#include "MODELS/automobileelettrica.h"
+#include "MODELS/autoibrida.h"
+#include "MODELS/moto.h"
+#include "MODELS/motoelettrica.h"
+#include "MODELS/monopattino.h"
+#include "MODELS/bicicletta.h"
 #include "CONTROLLERS/controller.h"
+#include <typeinfo>
 #include <QPushButton>
 
 class Controller;
@@ -17,6 +25,8 @@ public:
 
 private:
     Controller* _controller;
+
+    const QString& getIconPath(Veicolo* const vehicle);
 
 signals:
     void selectedVehicle(QTableWidgetItem* itemClicked);
