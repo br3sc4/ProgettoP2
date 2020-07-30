@@ -5,7 +5,7 @@
 
 class FileNotFound : public std::runtime_error {
 public:
-    FileNotFound(int);
+    FileNotFound();
 };
 
 #endif // FILENOTFOUNDEXCEPTION_H

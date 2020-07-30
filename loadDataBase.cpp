@@ -11,7 +11,7 @@ void loadCitta(Model& model) {
       model.addCity(new Citta(nomeCitta));
     }
   } else
-    throw FileNotFound(0);
+    throw FileNotFound();
   dBCitta.close();
 }
 
@@ -34,7 +34,7 @@ void loadVeicoli(Model& model) {
               ingombro));
     }
   } else
-    throw FileNotFound(1);
+    throw FileNotFound();
   dBBiciclette.close();
 
   std::ifstream dBAutomobili("database/dataBaseAutomobili.txt");
@@ -51,7 +51,7 @@ void loadVeicoli(Model& model) {
                                 cilindrata, emissioni, numPost, ingombro));
     }
   } else
-    throw FileNotFound(2);
+    throw FileNotFound();
   dBAutomobili.close();
 
   std::ifstream dBAutoElettriche("database/dataBaseAutoElettriche.txt");
@@ -73,7 +73,7 @@ void loadVeicoli(Model& model) {
               numPost, ingombro));
     }
   } else
-    throw FileNotFound(3);
+    throw FileNotFound();
   dBAutoElettriche.close();
 
   std::ifstream dBAutoIbride("database/dataBaseAutoIbride.txt");
@@ -97,7 +97,7 @@ void loadVeicoli(Model& model) {
               ingombro));
     }
   } else
-    throw FileNotFound(4);
+    throw FileNotFound();
   dBAutoIbride.close();
 
   std::ifstream dBMonopattini("database/dataBaseMonopattini.txt");
@@ -118,7 +118,7 @@ void loadVeicoli(Model& model) {
               ingombro));
     }
   } else
-    throw FileNotFound(5);
+    throw FileNotFound();
   dBMonopattini.close();
 
   std::ifstream dBMotoElettriche("database/dataBaseMotoElettriche.txt");
@@ -139,7 +139,7 @@ void loadVeicoli(Model& model) {
               ingombro));
     }
   } else
-    throw FileNotFound(6);
+    throw FileNotFound();
   dBMotoElettriche.close();
 
   std::ifstream dBMoto("database/dataBaseMoto.txt");
@@ -156,6 +156,6 @@ void loadVeicoli(Model& model) {
                                 cilindrata, emissioni, numPost, ingombro));
     }
   } else
-    throw FileNotFound(7);
+    throw FileNotFound();
   dBMoto.close();
 }
