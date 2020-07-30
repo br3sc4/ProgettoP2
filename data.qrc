@@ -1,10 +1,19 @@
 <RCC>
     <qresource prefix="/">
         <file>icons/auto.png</file>
-        <file>icons/auto_elettrica.png</file>
+        <file>icons/auto_ibrida.png</file>
         <file>icons/bici.png</file>
         <file>icons/monopattino.png</file>
         <file>icons/moto.png</file>
-        <file>icons/auto_ibrida.png</file>
+        <file>icons/auto_elettrica.png</file>
+        <file>database/dataBaseAutoElettriche.txt</file>
+        <file>database/dataBaseAutoIbride.txt</file>
+        <file>database/dataBaseAutomobili.txt</file>
+        <file>database/dataBaseBiciclette.txt</file>
+        <file>database/dataBaseCitta.txt</file>
+        <file>database/dataBaseMonopattini.txt</file>
+        <file>database/dataBaseMoto.txt</file>
+        <file>database/dataBaseMotoElettriche.txt</file>
+        <file>icons/moto_elettrica.png</file>
     </qresource>
 </RCC>

@@ -37,8 +37,8 @@ const QString VehicleListView::getIconPath(const Veicolo& vehicle) {
         return basePath + "auto_elettrica.png";
     else if (typeid(vehicle) == typeid(Moto))
         return basePath + "moto.png";
-//    else if (typeid(vehicle) == typeid(MotoElettrica))
-//        return basePath + "moto_elettrica.png";
+    else if (typeid(vehicle) == typeid(MotoElettrica))
+        return basePath + "moto_elettrica.png";
     else if (typeid(vehicle) == typeid(Bicicletta))
         return basePath + "bici.png";
     else
