@@ -32,23 +32,23 @@ const QString VehicleListView::getIconPath(const Veicolo& vehicle) {
 
     std::cout << typeid(vehicle).name() << std::endl;
     if (typeid(vehicle) == typeid(Automobile))
-        std::cout << typeid(vehicle).name() << " " << typeid(Automobile).name() << std::endl;
-//        return basePath += "auto.png";
+//        std::cout << typeid(vehicle).name() << " " << typeid(Automobile).name() << std::endl;
+        return basePath + "auto.png";
     else if (typeid(vehicle) == typeid(AutoIbrida))
-        std::cout << typeid(vehicle).name() << " " << typeid(AutoIbrida).name() << std::endl;
-//        return basePath += "auto_ibrida.png";
+//        std::cout << typeid(vehicle).name() << " " << typeid(AutoIbrida).name() << std::endl;
+        return basePath + "auto_ibrida.png";
     else if (typeid(vehicle) == typeid(AutomobileElettrica))
-        std::cout << typeid(vehicle).name() << " " << typeid(AutomobileElettrica).name() << std::endl;
-//        return basePath += "auto_elettrica.png";
+//        std::cout << typeid(vehicle).name() << " " << typeid(AutomobileElettrica).name() << std::endl;
+        return basePath + "auto_elettrica.png";
     else if (typeid(vehicle) == typeid(Moto))
-        std::cout << typeid(vehicle).name() << " " << typeid(Moto).name() << std::endl;
-//        return basePath+= "moto.png";
+//        std::cout << typeid(vehicle).name() << " " << typeid(Moto).name() << std::endl;
+        return basePath + "moto.png";
 //    else if (typeid(vehicle) == typeid(MotoElettrica))
 //        return basePath += "moto_elettrica.png";
     else if (typeid(vehicle) == typeid(Bicicletta))
 //        std::cout << typeid(vehicle).name() << " " << typeid(Bicicletta).name() << std::endl;
         return basePath + "bici.png";
     else
-        std::cout << typeid(vehicle).name() << " " << typeid(Monopattino).name() << std::endl;
-//        return basePath += "monopattino.png";
+//        std::cout << typeid(vehicle).name() << " " << typeid(Monopattino).name() << std::endl;
+        return basePath + "monopattino.png";
 }
