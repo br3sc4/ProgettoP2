@@ -29,20 +29,18 @@ void VehicleListView::update() {
 const QString& VehicleListView::getIconPath(const Veicolo& vehicle) {
     QString basePath = ":/icons/";
 
-    std::cout << typeid(vehicle).name() << " " << typeid(Automobile*).name() << std::endl;
     if (typeid(vehicle) == typeid(Automobile))
-        std::cout << "Auto";
-//        return basePath += "auto.png";
-//    else if (typeid(vehicle) == typeid(AutoIbrida))
-//        return basePath += "auto_ibrida.png";
-//    else if (typeid(vehicle) == typeid(AutomobileElettrica))
-//        return basePath += "auto_elettrica.png";
-//    else if (typeid(vehicle) == typeid(Moto))
-//        return basePath+= "moto.png";
-//    else if (typeid(vehicle) == typeid(MotoElettrica))
-//        return basePath += "moto_elettrica.png";
-//    else if (typeid(vehicle) == typeid(Bicicletta))
-//        return basePath += "bici.png";
-//    else
-//        return basePath += "monopattino.png";
+        return basePath += "auto.png";
+    else if (typeid(vehicle) == typeid(AutoIbrida))
+        return basePath += "auto_ibrida.png";
+    else if (typeid(vehicle) == typeid(AutomobileElettrica))
+        return basePath += "auto_elettrica.png";
+    else if (typeid(vehicle) == typeid(Moto))
+        return basePath+= "moto.png";
+    else if (typeid(vehicle) == typeid(MotoElettrica))
+        return basePath += "moto_elettrica.png";
+    else if (typeid(vehicle) == typeid(Bicicletta))
+        return basePath += "bici.png";
+    else
+        return basePath += "monopattino.png";
 }
