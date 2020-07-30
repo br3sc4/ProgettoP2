@@ -9,11 +9,11 @@ void VehicleListView::update() {
     _table->clearSelection();
 
     for (int i = 0; i < _table->rowCount(); i++) {
-        QTableWidgetItem *item = new QTableWidgetItem(QString::fromStdString(vehicles[i]->targa()));
-        _table->setItem(i, 0, item);
         QLabel *icon = new QLabel;
         icon->setPixmap(QPixmap(":/icons/auto.png"));
-        _table->setCellWidget(i, 1, icon);
+        _table->setCellWidget(i, 0, icon);
+        QTableWidgetItem *item = new QTableWidgetItem(QString::fromStdString(vehicles[i]->targa()));
+        _table->setItem(i, 1, item);
         item = new QTableWidgetItem(QString::fromStdString(vehicles[i]->posizione()));
         _table->setItem(i, 2, item);
         item = new QTableWidgetItem(QString::number(vehicles[i]->chilometraggio()));
