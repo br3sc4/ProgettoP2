@@ -35,7 +35,7 @@ private:
     VehicleDetailView* _vehicleDetailView;
     Controller* _controller;
 
-    const char* _titoloApp = "CitySharing";
+    const QString _titoloApp = "CitySharing";
     const unsigned int _minAltezza = 800;
     const unsigned int _minLarghezza = 600;
 
