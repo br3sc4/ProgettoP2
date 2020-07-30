@@ -26,7 +26,7 @@ public:
 private:
     Controller* _controller;
 
-    const QString& getIconPath(Veicolo* const vehicle);
+    const QString& getIconPath(const Veicolo& vehicle);
 
 signals:
     void selectedVehicle(QTableWidgetItem* itemClicked);
