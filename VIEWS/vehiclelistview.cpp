@@ -12,12 +12,12 @@ void VehicleListView::update() {
         QTableWidgetItem *item = new QTableWidgetItem(QString::fromStdString(vehicles[i]->targa()));
         _table->setItem(i, 0, item);
         QLabel *icon = new QLabel;
-        icon->setPixmap(QPixmap(getIconPath(vehicles[i])));
+        icon->setPixmap(QPixmap(":/icons/auto.png"));
         _table->setCellWidget(i, 1, icon);
         item = new QTableWidgetItem(QString::fromStdString(vehicles[i]->posizione()));
         _table->setItem(i, 2, item);
-        //item = new QTableWidgetItem(QString::number(vehicles[i]->chilometraggio()));
-        //_table->setItem(i, 3, item);
+        item = new QTableWidgetItem(QString::number(vehicles[i]->chilometraggio()));
+        _table->setItem(i, 3, item);
 
         connect(_table, &QTableWidget::itemClicked, this, [=](QTableWidgetItem* item) {
             emit rowClicked(item->row());
