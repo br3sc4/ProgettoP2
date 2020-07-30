@@ -11,6 +11,7 @@ void VehicleListView::update() {
     for (int i = 0; i < _table->rowCount(); i++) {
         QLabel *icon = new QLabel;
         const QString iconPath = getIconPath(*vehicles[i]);
+
 //        icon->setPixmap(QPixmap());
 //        _table->setCellWidget(i, 0, icon);
         QTableWidgetItem *item = new QTableWidgetItem(QString::fromStdString(vehicles[i]->targa()));
@@ -26,7 +27,7 @@ void VehicleListView::update() {
     }
 }
 
-const QString& VehicleListView::getIconPath(const Veicolo& vehicle) {
+const QString VehicleListView::getIconPath(const Veicolo& vehicle) {
     QString basePath = ":/icons/";
 
     std::cout << typeid(vehicle).name() << std::endl;
@@ -45,8 +46,8 @@ const QString& VehicleListView::getIconPath(const Veicolo& vehicle) {
 //    else if (typeid(vehicle) == typeid(MotoElettrica))
 //        return basePath += "moto_elettrica.png";
     else if (typeid(vehicle) == typeid(Bicicletta))
-        std::cout << typeid(vehicle).name() << " " << typeid(Bicicletta).name() << std::endl;
-//        return basePath += "bici.png";
+//        std::cout << typeid(vehicle).name() << " " << typeid(Bicicletta).name() << std::endl;
+        return basePath + "bici.png";
     else
         std::cout << typeid(vehicle).name() << " " << typeid(Monopattino).name() << std::endl;
 //        return basePath += "monopattino.png";
