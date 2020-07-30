@@ -11,7 +11,7 @@ void VehicleListView::update() {
     for (int i = 0; i < _table->rowCount(); i++) {
         QLabel *icon = new QLabel;
         QString iconPath = getIconPath(*vehicles[i]);
-        std::cout << iconPath << std::endl;
+        std::cout << iconPath.toStdString() << std::endl;
 //        icon->setPixmap(QPixmap());
         _table->setCellWidget(i, 0, icon);
         QTableWidgetItem *item = new QTableWidgetItem(QString::fromStdString(vehicles[i]->targa()));
