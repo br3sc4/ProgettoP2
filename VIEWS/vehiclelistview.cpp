@@ -28,7 +28,7 @@ void VehicleListView::update() {
 const QString& VehicleListView::getIconPath(Veicolo* const vehicle) {
     QString basePath = ":/icons/";
 
-    if (typeid(vehicle) == typeid(Automobile))
+//    if (typeid(vehicle) == typeid(Automobile))
         return basePath += "auto.png";
 //    else if (typeid(vehicle) == typeid(AutoIbrida))
 //        return basePath += "auto_ibrida.png";
