@@ -30,6 +30,7 @@ void VehicleListView::update() {
 const QString& VehicleListView::getIconPath(const Veicolo& vehicle) {
     QString basePath = ":/icons/";
 
+    std::cout << typeid(vehicle).name() << " " << typeid(Automobile).name() << std::endl;
     if (typeid(vehicle) == typeid(Automobile))
         return basePath += "auto.png";
     else if (typeid(vehicle) == typeid(AutoIbrida))
