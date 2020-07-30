@@ -64,7 +64,8 @@ void Controller::goToVehicleDetailView(int row) {
     VehicleDetailView* vehicleDetail = _view->getVehicleDetailView();
     _currentVehicleIndex = row;
 
-    vehicleDetail->setHederStrings({ "Tipo", "Targa", "Posizione", "Chilometraggio" });
+    vehicleDetail->setHederStrings({ "Tipo", "Targa", "Posizione", "Chilometraggio", "Consumo al km",
+                                     "Fattore green", "Autonomia", "Fattore di utilizzo" });
     vehicleDetail->setTitle("Veicolo " + QString::fromStdString(_model->getVehicle(_currentCityIndex, row)->targa()));
     vehicleDetail->update();
     _view->setCurrentView(vehicleDetail);

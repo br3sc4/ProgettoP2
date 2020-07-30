@@ -5,6 +5,9 @@
 #include "CONTROLLERS/controller.h"
 #include <QCheckBox>
 #include <QPushButton>
+#include <QScrollBar>
+#include <QDialog>
+#include <QDialogButtonBox>
 
 class VehicleDetailView : public BaseBackAbstractView {
     Q_OBJECT
@@ -25,6 +28,7 @@ private:
     void setupCheckBox();
     void setupMoveButton();
     void setupRemoveButton();
+    void setDynamicData(const Veicolo& veicolo);
 
 signals:
     void maintenanceChanged(int);
