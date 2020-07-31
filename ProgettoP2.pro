@@ -14,6 +14,7 @@ CONFIG += qt
 QMAKE_CXXFLAGS += -std=c++11
 RESOURCES = \
     data.qrc
+RC_ICONS = icons/logo_app.ico
 
 SOURCES += EXCEPTIONS/emptyexception.cpp \
     CONTROLLERS/controller.cpp \
