@@ -1,6 +1,5 @@
 #include "model.h"
 #include "EXCEPTIONS/filenotfound.h"
-
 #include <fstream>
 #include <QFile>
 #include <QTextStream>
@@ -82,7 +81,7 @@ void loadVeicoliElettrici(Model& model, int tipo, QString file) {
                double capBatteria = line[6].toDouble(),
                       capAttuale = line[7].toDouble();
                switch (tipo) {
-               case 0:
+               case 0:{
                    model.addVehicle(
                        citta,
                        new Bicicletta(
@@ -90,7 +89,8 @@ void loadVeicoliElettrici(Model& model, int tipo, QString file) {
                            static_cast<Bicicletta::VelocitaRicarica>(caricaSupp), inCarica,
                            static_cast<Bicicletta::Colonnina>(colonninaAtt), numPost,
                            ingombro));
-               case 1:
+               break;}
+               case 1:{
                    model.addVehicle(
                        citta,
                        new AutomobileElettrica(
@@ -99,7 +99,8 @@ void loadVeicoliElettrici(Model& model, int tipo, QString file) {
                            inCarica,
                            static_cast<AutomobileElettrica::Colonnina>(colonninaAtt),
                            numPost, ingombro));
-               case 2:
+               break;}
+               case 2:{
                    model.addVehicle(
                        citta,
                        new Monopattino(
@@ -108,7 +109,8 @@ void loadVeicoliElettrici(Model& model, int tipo, QString file) {
                            inCarica,
                            static_cast<AutomobileElettrica::Colonnina>(colonninaAtt),
                            numPost, ingombro));
-               case 3:
+               break;}
+               case 3:{
                    model.addVehicle(
                        citta,
                        new MotoElettrica(
@@ -117,7 +119,8 @@ void loadVeicoliElettrici(Model& model, int tipo, QString file) {
                            inCarica,
                            static_cast<AutomobileElettrica::Colonnina>(colonninaAtt),
                            numPost, ingombro));
-                };
+               break;}
+                }
                }
            }
            inputFile.close();
@@ -156,16 +159,17 @@ void loadVeicoliNormali(Model& model, int tipo, QString file) {
                                              static_cast<Automobile::Carburante>(carburante),
                                              cilindrata, emissioni, numPost, ingombro));
                  }
-               };
+               }
              }
            }
            inputFile.close();
 }
 
-
 void loadVeicoli(Model& model) {
-    loadVeicoliElettrici(model, 0, ":/database/dataBaseBiciclette.txt");
-    loadVeicoliElettrici(model, 1, ":/database/dataBaseAutoElettriche.txt");
+    QString a = ":/database/dataBaseBiciclette.txt",
+            b = ":/database/dataBaseAutoElettriche.txt";
+    loadVeicoliElettrici(model, 0, a);
+    loadVeicoliElettrici(model, 1, b);
     loadVeicoliElettrici(model, 2, ":/database/dataMonopattini.txt");
     loadVeicoliElettrici(model, 3, ":/database/dataBaseMotoElettriche.txt");
 
