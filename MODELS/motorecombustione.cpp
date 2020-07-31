@@ -1,11 +1,42 @@
 #include "MODELS/motorecombustione.h"
 
 
-MotoreCombustione::MotoreCombustione(string targa, string posizione, unsigned long km, unsigned short numeroPosti, unsigned short ingombro,
-                                     double capacitaSerbatoio,double litriSerbatoio, Carburante tipoCarburante, unsigned short cilindrata,
-                                     unsigned short emissioni):
-    Veicolo(targa, posizione, km, numeroPosti, ingombro), _capacitaSerbatoio(capacitaSerbatoio), _litriSerbatoio(litriSerbatoio),
-    _tipoCarburante(tipoCarburante), _cilindrata(cilindrata), _emissioni(emissioni) {}
+MotoreCombustione::MotoreCombustione(
+    string targa,
+    string posizione,
+    unsigned long km,
+    unsigned short numeroPosti,
+    unsigned short ingombro,
+    unsigned short numeroUsi,
+    unsigned long tempoServizio,
+    StatoVeicolo statoAttuale,
+    bool inRiserva,
+    bool serveAssistenza,
+    unsigned short numeroGuasti,
+    double capacitaSerbatoio,
+    double litriSerbatoio,
+    Carburante tipoCarburante,
+    unsigned short cilindrata,
+    unsigned short emissioni):
+
+    Veicolo(
+        targa,
+        posizione,
+        km,
+        numeroPosti,
+        ingombro,
+        numeroUsi,
+        tempoServizio,
+        statoAttuale,
+        inRiserva,
+        serveAssistenza,
+        numeroGuasti),
+
+    _capacitaSerbatoio(capacitaSerbatoio),
+    _litriSerbatoio(litriSerbatoio),
+    _tipoCarburante(tipoCarburante),
+    _cilindrata(cilindrata),
+    _emissioni(emissioni) {}
 
 MotoreCombustione::~MotoreCombustione() {}
 
@@ -36,7 +67,7 @@ short int MotoreCombustione::fattoreGreen() const {
         somma = somma + 1;              // meno ingombro positivo
     if(capacitaPosti() > 1)
         somma = somma + 2;              // piu' posti positivo
-    if(guasti() <= 10)
+    if(numeroGuasti() <= 10)
         somma = somma + 1;              // meno guasti positivo
 
     if(somma < -10) return -10;

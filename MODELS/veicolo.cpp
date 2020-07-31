@@ -2,9 +2,29 @@
 
 Veicolo::Veicolo(){}
 
-Veicolo::Veicolo(string targa, string posizione, unsigned long km, unsigned short numeroPosti, unsigned short ingombro):
-    _targa(targa), _posizione(posizione), _chilometraggio(km), _capacitaPosti(numeroPosti), _ingombro(ingombro),
-    _numeroUsi(0), _tempoServizio(0), _statoAttuale(libero), _inRiserva(false), _serveAssistenza(false) {}
+Veicolo::Veicolo(
+        string targa,
+        string posizione,
+        unsigned long km,
+        unsigned short numeroPosti,
+        unsigned short ingombro,
+        unsigned short numeroUsi,
+        unsigned long tempoServizio,
+        Veicolo::StatoVeicolo statoAttuale,
+        bool inRiserva,
+        bool serveAssistenza,
+        unsigned short numeroGuasti):
+        _targa(targa),
+        _posizione(posizione),
+        _chilometraggio(km),
+        _capacitaPosti(numeroPosti),
+        _ingombro(ingombro),
+        _numeroUsi(numeroUsi),
+        _tempoServizio(tempoServizio),
+        _statoAttuale(statoAttuale),
+        _inRiserva(inRiserva),
+        _serveAssistenza(serveAssistenza),
+        _numeroGuasti(numeroGuasti){}
 
 Veicolo::~Veicolo() {}
 
@@ -81,10 +101,10 @@ void Veicolo::setServeAssistenza(bool serveAssistenza) {
     _serveAssistenza = serveAssistenza;
 }
 
-unsigned short Veicolo::guasti() const {
-    return _guasti;
+unsigned short Veicolo::numeroGuasti() const {
+    return _numeroGuasti;
 }
 
-void Veicolo::increaseGuasti(unsigned short guasti) {
-    _guasti += guasti;
+void Veicolo::increaseNumeroGuasti(unsigned short x) {
+    _numeroGuasti += x;
 }

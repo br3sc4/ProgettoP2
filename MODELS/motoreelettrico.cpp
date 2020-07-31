@@ -1,11 +1,45 @@
 #include "MODELS/motoreelettrico.h"
 
-MotoreElettrico::MotoreElettrico(string targa, string posizione, unsigned long km, unsigned short numeroPosti, unsigned short ingombro,
-                                 unsigned int potenza, unsigned short numeroMotori, bool inCarica, double capacitaBatteria,
-                                 double capacitaAttuale, VelocitaRicarica caricaSupportata, Colonnina colonninaAttuale):
-    Veicolo(targa, posizione, km, numeroPosti, ingombro),
-    _potenza(potenza), _numeroMotori(numeroMotori) , _inCarica(inCarica), _capacitaBatteria(capacitaBatteria), _capacitaAttuale(capacitaAttuale),
-    _caricaSupportata(caricaSupportata), _colonninaAttuale(colonninaAttuale) {}
+MotoreElettrico::MotoreElettrico(
+    string targa,
+    string posizione,
+    unsigned long km,
+    unsigned short numeroPosti,
+    unsigned short ingombro,
+    unsigned short numeroUsi,
+    unsigned long tempoServizio,
+    StatoVeicolo statoAttuale,
+    bool inRiserva,
+    bool serveAssistenza,
+    unsigned short numeroGuasti,
+    unsigned int potenza,
+    unsigned short numeroMotori,
+    bool inCarica,
+    double capacitaBatteria,
+    double capacitaAttuale,
+    VelocitaRicarica caricaSupportata,
+    Colonnina colonninaAttuale):
+
+    Veicolo(
+        targa,
+        posizione,
+        km,
+        numeroPosti,
+        ingombro,
+        numeroUsi,
+        tempoServizio,
+        statoAttuale,
+        inRiserva,
+        serveAssistenza,
+        numeroGuasti),
+
+    _potenza(potenza),
+    _numeroMotori(numeroMotori),
+    _inCarica(inCarica),
+    _capacitaBatteria(capacitaBatteria),
+    _capacitaAttuale(capacitaAttuale),
+    _caricaSupportata(caricaSupportata),
+    _colonninaAttuale(colonninaAttuale) {}
 
 MotoreElettrico::~MotoreElettrico() {}
 
@@ -26,9 +60,9 @@ short int MotoreElettrico::fattoreGreen() const {
     else    somma = somma + 1;
     if(capacitaPosti() > 1)
         somma = somma + 2;                          // piu' posti positivo
-    if(guasti() <= 5)
+    if(numeroGuasti() <= 5)
         somma = somma + 2;                          // meno guasti positivo
-    else if(guasti() < 10)
+    else if(numeroGuasti() < 10)
         somma = somma + 1;
 
     return somma;

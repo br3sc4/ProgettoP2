@@ -13,7 +13,18 @@ public:
 
     Veicolo();
 
-    Veicolo(string targa, string posizione, unsigned long km, unsigned short numeroPosti, unsigned short ingombro);
+    Veicolo(
+        string targa,
+        string posizione,
+        unsigned long km,
+        unsigned short numeroPosti,
+        unsigned short ingombro,
+        unsigned short numeroUsi,
+        unsigned long tempoServizio,
+        Veicolo::StatoVeicolo statoAttuale,
+        bool inRiserva,
+        bool serveAssistenza,
+        unsigned short numeroGuasti);
 
     virtual ~Veicolo();
 
@@ -34,7 +45,7 @@ public:
     StatoVeicolo statoAttuale() const;
     bool inRiserva() const;
     bool serveAssistenza() const;
-    unsigned short guasti() const;
+    unsigned short numeroGuasti() const;
 
     // metodi set
     void setPosizione(const string& posizione);
@@ -45,21 +56,20 @@ public:
     void increaseChilometraggio(unsigned long chilometraggio);
     void increaseNumeroUsi(unsigned short numeroUsi);
     void increaseTempoServizio(unsigned long tempoServizio);
-    void increaseGuasti(unsigned short guasti);
+    void increaseNumeroGuasti(unsigned short x);
 
 private:
     string _targa;                  // Targa del veicolo
     string _posizione;              // Coordinate in gradi decimali con 4 cifre dopo il punto es: "41.8902, 12.4922"
-    unsigned long _chilometraggio;         // Chilometri percorsi
-    unsigned short _capacitaPosti;           // Posti per cui è omologato
-    unsigned short _ingombro;                // Dimensioni del veicolo (da 1 a 5)
-
-    unsigned short _numeroUsi;               // Quante volte è stato usato
+    unsigned long _chilometraggio;  // Chilometri percorsi
+    unsigned short _capacitaPosti;  // Posti per cui è omologato
+    unsigned short _ingombro;       // Dimensioni del veicolo (da 1 a 5)
+    unsigned short _numeroUsi;      // Quante volte è stato usato
     unsigned long _tempoServizio;   // Tempo totale di utilizzo in minuti
     StatoVeicolo _statoAttuale;     // Disponibilità (libero, prenotato, occupato, manutenzione)
     bool _inRiserva;                // Se autonomia < di 30km
     bool _serveAssistenza;          // Se è stata richiesta l'assistenza
-    unsigned short _guasti;                  // Quante volte si è guastato
+    unsigned short _numeroGuasti;   // Quante volte si è guastato
 };
 
 #endif // VEICOLO_H

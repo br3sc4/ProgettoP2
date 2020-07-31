@@ -21,6 +21,12 @@ public:
                     unsigned long km,
                     unsigned short numeroPosti,
                     unsigned short ingombro,
+                    unsigned short numeroUsi,
+                    unsigned long tempoServizio,
+                    Veicolo::StatoVeicolo statoAttuale,
+                    bool inRiserva,
+                    bool serveAssistenza,
+                    unsigned short numeroGuasti,
                     unsigned int potenza,
                     unsigned short numeroMotori,
                     bool inCarica,
@@ -55,8 +61,8 @@ public:
     void setCapacitaAttuale(double capacitaAttuale);
 
 private:
-    const unsigned int _potenza;                       // Potenza del motore (Wh)
-    const unsigned short _numeroMotori;                  // Il numero di motori presenti (da 1 a 4)
+    const unsigned int _potenza;                // Potenza del motore (Wh)
+    const unsigned short _numeroMotori;         // Il numero di motori presenti (da 1 a 4)
     bool _inCarica;                             // Se si sta caricando
     const double _capacitaBatteria;             // Ampere-ora massimi
     double _capacitaAttuale;                    // Ampere-ora attuali

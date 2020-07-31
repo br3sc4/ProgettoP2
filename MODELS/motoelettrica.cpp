@@ -9,11 +9,46 @@ MotoElettrica::MotoElettrica(
         double capacitaBatteria,
         double capacitaAttuale,
         VelocitaRicarica caricaSupportata,
+        unsigned short numeroUsi,
+        unsigned long tempoServizio,
+        StatoVeicolo statoAttuale,
+        bool inRiserva,
+        bool serveAssistenza,
+        unsigned short numeroGuasti,
         bool inCarica,
         Colonnina colonninaAttuale,
         unsigned short numeroPosti,
-        unsigned short ingombro
-        ):
-    Veicolo(targa, posizione, km, numeroPosti, ingombro),
-    MotoreElettrico(targa, posizione, km, numeroPosti, ingombro, potenza, numeroMotori, inCarica, capacitaBatteria, capacitaAttuale, caricaSupportata, colonninaAttuale)
-{}
+        unsigned short ingombro):
+
+    Veicolo(
+        targa,
+        posizione,
+        km,
+        numeroPosti,
+        ingombro,
+        numeroUsi,
+        tempoServizio,
+        statoAttuale,
+        inRiserva,
+        serveAssistenza,
+        numeroGuasti),
+
+        MotoreElettrico(
+            targa,
+            posizione,
+            km,
+            numeroPosti,
+            ingombro,
+            numeroUsi,
+            tempoServizio,
+            statoAttuale,
+            inRiserva,
+            serveAssistenza,
+            numeroGuasti,
+            potenza,
+            numeroMotori,
+            inCarica,
+            capacitaBatteria,
+            capacitaAttuale,
+            caricaSupportata,
+            colonninaAttuale) {}
