@@ -1,0 +1,12 @@
+QTableWidget {
+    alternate-background-color: #d9d9d9;
+    gridline-color: #d9d9d9;
+}
+
+QHeaderView::section {
+    background-color: #d9d9d9;
+    border: none;
+    border-bottom: 1px solid #bdbdbd;
+    padding: 10;
+    font-size: 15px;
+}

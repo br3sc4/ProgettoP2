@@ -3,7 +3,7 @@
 VehicleDetailView::VehicleDetailView(Controller* controller, const QString& title, const QStringList& headerStrings, QWidget *parent):
     BaseBackAbstractView(title, headerStrings, parent), _controller(controller), _checkBox(new QCheckBox("in manutenzione", parent)),
     _moveButton(new QPushButton("Cambia città", parent)), _removeButton(new QPushButton("Rimuovi dalla flotta", parent)) {
-    _table->setFixedHeight(65);
+    _table->setFixedHeight(90);
     _table->setSelectionMode(QAbstractItemView::SelectionMode::NoSelection);
     _table->horizontalScrollBar()->setDisabled(false);
     _table->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
@@ -134,7 +134,9 @@ void VehicleDetailView::setDynamicData(const Veicolo& veicolo) {
         }
     }
     _table->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
+    _table->verticalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
     _table->resizeColumnsToContents();
+    _table->resizeRowsToContents();
 }
 
 void VehicleDetailView::createMoveDialog(const std::string& currentCity) {

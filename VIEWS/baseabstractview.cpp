@@ -1,5 +1,5 @@
 #include "VIEWS/baseabstractview.h"
-#include <QMessageBox>
+
 
 BaseAbstractView::BaseAbstractView(const QString &title, const QStringList& headerStrings, QWidget *parent): QWidget(parent), _title(new QLabel(this)),
     _menubar(new QMenuBar(this)), _table(new QTableWidget(this)), _verticalLayout(new QVBoxLayout), _horizontalLayout(new QHBoxLayout) {    
@@ -9,6 +9,8 @@ BaseAbstractView::BaseAbstractView(const QString &title, const QStringList& head
     setupTable(headerStrings);
 
     setLayout(_verticalLayout);
+
+    setupStyle();
 
     setMinimumSize(200,200);
 }
@@ -36,6 +38,7 @@ void BaseAbstractView::setupTable(const QStringList& headerStrings) {
     _table->setEditTriggers(QAbstractItemView::NoEditTriggers);
     _table->setSelectionBehavior(QAbstractItemView::SelectRows);
     _table->setSelectionMode(QAbstractItemView::SingleSelection);
+    _table->setAlternatingRowColors(true);
     _table->verticalHeader()->hide();
     _verticalLayout->addWidget(_table);
 }
@@ -53,6 +56,14 @@ void BaseAbstractView::setupMenuBar() {
     connect(exit, &QAction::triggered, this, &BaseAbstractView::closeSignal);    
     connect(addCity, &QAction::triggered, this, &BaseAbstractView::showAddCityWizard);
     connect(addVehicle, &QAction::triggered, this, &BaseAbstractView::showAddVehicleWizard);
+}
+
+void BaseAbstractView::setupStyle() {
+    QFile file(":/stylesheets/table.css");
+    file.open(QFile::ReadOnly);
+    QString styleSheet = QLatin1String(file.readAll());
+
+    setStyleSheet(styleSheet);
 }
 
 void BaseAbstractView::setTitle(const QString& title) {

@@ -9,6 +9,8 @@
 #include <QHeaderView>
 #include <QSizePolicy>
 #include <QMenuBar>
+#include <QMessageBox>
+#include <QFile>
 
 class BaseAbstractView : public QWidget {
     Q_OBJECT
@@ -30,8 +32,9 @@ private:
 
     void setupLayout();
     void setupLabel(const QString& title);
-    virtual void setupTable(const QStringList& headerStrings);
-    virtual void setupMenuBar();
+    void setupTable(const QStringList& headerStrings);
+    void setupMenuBar();
+    void setupStyle();
 
 protected:
     QMenuBar* _menubar;

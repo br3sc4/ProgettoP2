@@ -28,14 +28,14 @@ int VehicleFieldsPage::nextId() const {
 }
 
 void VehicleFieldsPage::setupTarga() {
-    QRegExp targa("[A-Z]{2}[0-9]{3}[A-Z]{2}");
+    QRegExp targa("[A-Z, 1-9]{4,7}");
     _targaLineEdit->setValidator(new QRegExpValidator(targa));
     _targaLineEdit->setPlaceholderText("Es. AB123CD");
     _targaLabel->setBuddy(_targaLineEdit);
 }
 
 void VehicleFieldsPage::setupPosizione() {
-    QRegExp pos("[0-9]{1,3}\\.[0-9]{4}\\,\\s?[0-9]{1,3}\\.[0-9]{4}");
+    QRegExp pos("\\-?[0-9]{1,3}\\.[0-9]{4}\\,\\s?\\-?[0-9]{1,3}\\.[0-9]{4}");
     _posizioneLineEdit->setValidator(new QRegExpValidator(pos));
     _posizioneLineEdit->setPlaceholderText("Es. 41.40338, 2.17403");
     _posizioneLabel->setBuddy(_posizioneLineEdit);
