@@ -9,6 +9,8 @@ BaseAbstractView::BaseAbstractView(const QString &title, const QStringList& head
     setupTable(headerStrings);
 
     setLayout(_verticalLayout);
+
+    setMinimumSize(200,200);
 }
 
 BaseAbstractView::~BaseAbstractView() {
