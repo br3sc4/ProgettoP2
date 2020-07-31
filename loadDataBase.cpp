@@ -5,7 +5,7 @@
 #include <QTextStream>
 
 void loadCitta(Model& model) {
-    QFile inputFile(":/database/dataBaseCitta.txt");
+    QFile inputFile(":/database/Citta.txt");
     if (inputFile.open(QIODevice::ReadOnly)) {
        QTextStream in(&inputFile);
        while (!in.atEnd()) {
@@ -17,7 +17,7 @@ void loadCitta(Model& model) {
 }
 
 void loadIbrida(Model& model) {
-    QFile inputFile(":/database/dataBaseAutoIbride.txt");
+    QFile inputFile(":/database/AutoIbride.txt");
     if (inputFile.open(QIODevice::ReadOnly)) {
         QTextStream in(&inputFile);
         while (!in.atEnd()) {
@@ -148,16 +148,18 @@ void loadVeicoliNormali(Model& model, int tipo, QString file) {
                double capSerba = line[4].toDouble(),
                       litSerba = line[5].toDouble();
                switch (tipo) {
-               case 0:
+               case 0:{
                    model.addVehicle(
                        citta, new Automobile(targa, posizione, km, capSerba, litSerba,
                                              static_cast<Automobile::Carburante>(carburante),
                                              cilindrata, emissioni, numPost, ingombro));
-               case 1:
+               break;}
+               case 1:{
                    model.addVehicle(
                        citta, new Moto(targa, posizione, km, capSerba, litSerba,
                                              static_cast<Automobile::Carburante>(carburante),
                                              cilindrata, emissioni, numPost, ingombro));
+               break;}
                  }
                }
              }
@@ -166,15 +168,19 @@ void loadVeicoliNormali(Model& model, int tipo, QString file) {
 }
 
 void loadVeicoli(Model& model) {
-    QString a = ":/database/dataBaseBiciclette.txt",
-            b = ":/database/dataBaseAutoElettriche.txt";
+    QString a = ":/database/Biciclette.txt",
+            b = ":/database/AutoElettriche.txt",
+            c = ":/database/Monopattini.txt",
+            d = ":/database/MotoElettriche.txt";
     loadVeicoliElettrici(model, 0, a);
     loadVeicoliElettrici(model, 1, b);
-    loadVeicoliElettrici(model, 2, ":/database/dataMonopattini.txt");
-    loadVeicoliElettrici(model, 3, ":/database/dataBaseMotoElettriche.txt");
+    loadVeicoliElettrici(model, 2, c);
+    loadVeicoliElettrici(model, 3, d);
 
-    loadVeicoliNormali(model, 0, ":/database/dataAutomobili.txt");
-    loadVeicoliNormali(model, 1, ":/database/dataMoto.txt");
+    QString e = ":/database/Automobili.txt",
+            f = ":/database/Moto.txt";
+    loadVeicoliNormali(model, 0, e);
+    loadVeicoliNormali(model, 1, f);
 
     loadIbrida(model);
 }

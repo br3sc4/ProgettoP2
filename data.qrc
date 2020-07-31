@@ -6,14 +6,14 @@
         <file>icons/monopattino.png</file>
         <file>icons/moto.png</file>
         <file>icons/auto_elettrica.png</file>
-        <file>database/dataBaseAutoElettriche.txt</file>
-        <file>database/dataBaseAutoIbride.txt</file>
-        <file>database/dataBaseAutomobili.txt</file>
-        <file>database/dataBaseBiciclette.txt</file>
-        <file>database/dataBaseCitta.txt</file>
-        <file>database/dataBaseMonopattini.txt</file>
-        <file>database/dataBaseMoto.txt</file>
-        <file>database/dataBaseMotoElettriche.txt</file>
         <file>icons/moto_elettrica.png</file>
+        <file>database/AutoElettriche.txt</file>
+        <file>database/AutoIbride.txt</file>
+        <file>database/Automobili.txt</file>
+        <file>database/Biciclette.txt</file>
+        <file>database/Citta.txt</file>
+        <file>database/Monopattini.txt</file>
+        <file>database/Moto.txt</file>
+        <file>database/MotoElettriche.txt</file>
     </qresource>
 </RCC>
