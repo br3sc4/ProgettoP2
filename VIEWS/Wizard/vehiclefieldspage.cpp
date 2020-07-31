@@ -28,7 +28,7 @@ int VehicleFieldsPage::nextId() const {
 }
 
 void VehicleFieldsPage::setupTarga() {
-    QRegExp targa("[A-Z]{2}[0-9]{3}[A-Z]{2}");
+    QRegExp targa("[A-Z, 1-9]{4,7}");
     _targaLineEdit->setValidator(new QRegExpValidator(targa));
     _targaLineEdit->setPlaceholderText("Es. AB123CD");
     _targaLabel->setBuddy(_targaLineEdit);
