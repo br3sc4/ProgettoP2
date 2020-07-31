@@ -1,7 +1,8 @@
 #include "VIEWS/vehiclelistview.h"
 
 VehicleListView::VehicleListView(Controller* controller, const QString& title, const QStringList& headerStrings, QWidget *parent):
-    BaseBackAbstractView(title, headerStrings, parent), _controller(controller) {}
+    BaseBackAbstractView(title, headerStrings, parent), _controller(controller) {
+}
 
 void VehicleListView::update() {
     Array<Veicolo*> vehicles = _controller->getVehicles();
@@ -25,5 +26,6 @@ void VehicleListView::update() {
         connect(_table, &QTableWidget::itemClicked, this, [=](QTableWidgetItem* item) {
             emit rowClicked(item->row());
         });
-    }
+        _table->setRowHeight(i, 45);
+    }    
 }

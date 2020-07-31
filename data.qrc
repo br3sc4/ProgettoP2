@@ -15,5 +15,6 @@
         <file>database/Monopattini.txt</file>
         <file>database/Moto.txt</file>
         <file>database/MotoElettriche.txt</file>
+        <file>stylesheets/table.css</file>
     </qresource>
 </RCC>
