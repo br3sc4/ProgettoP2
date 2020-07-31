@@ -7,13 +7,9 @@
         <file>icons/moto.png</file>
         <file>icons/auto_elettrica.png</file>
         <file>icons/moto_elettrica.png</file>
-        <file>database/AutoElettriche.txt</file>
-        <file>database/AutoIbride.txt</file>
-        <file>database/Automobili.txt</file>
-        <file>database/Biciclette.txt</file>
         <file>database/Citta.txt</file>
-        <file>database/Monopattini.txt</file>
-        <file>database/Moto.txt</file>
-        <file>database/MotoElettriche.txt</file>
+        <file>database/veicoliElettrici.txt</file>
+        <file>database/veicoliIbridi.txt</file>
+        <file>database/veicoliNormali.txt</file>
     </qresource>
 </RCC>

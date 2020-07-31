@@ -16,8 +16,8 @@ void loadCitta(Model& model) {
     }
 }
 
-void loadIbrida(Model& model) {
-    QFile inputFile(":/database/AutoIbride.txt");
+void loadVeicoliIbridi(Model& model, QString file) {
+    QFile inputFile(file);
     if (inputFile.open(QIODevice::ReadOnly)) {
         QTextStream in(&inputFile);
         while (!in.atEnd()) {
@@ -31,34 +31,57 @@ void loadIbrida(Model& model) {
                    cilindrata = line[7].toInt(),
                    emissioni = line[8].toInt(),
                    potenza = line[9].toInt(),
-                   numMotori = line[10].toInt(),
-                   caricaSupp = line[13].toInt(),
-                   inCarica = line[14].toInt(),
-                   colonninaAtt = line[15].toInt(),
-                   numPost = line[16].toInt(),
-                   ingombro = line[17].toInt();
+                   numeroMotori = line[10].toInt(),
+                   caricaSupportata = line[13].toInt(),
+                   numeroUsi = line[14].toInt(),
+                   tempoServizio = line[15].toInt(),
+                   statoAttuale = line[16].toInt(),
+                   inRiserva = line[17].toInt(),
+                   serveAssistenza = line[18].toInt(),
+                   numeroGuasti = line[19].toInt(),
+                   inCarica = line[20].toInt(),
+                   colonninaAttuale = line[21].toInt(),
+                   numeroPosti = line[22].toInt(),
+                   ingombro = line[23].toInt();
                string targa = line[1].toStdString(),
                       posizione = line[2].toStdString();
-               double capSerba = line[4].toDouble(),
-                      litSerba = line[5].toDouble(),
-                      capBatteria = line[11].toDouble(),
-                      capAttuale = line[12].toDouble();
+               double capacitaSerbatoio = line[4].toDouble(),
+                      litriSerbatoio = line[5].toDouble(),
+                      capacitaBatteria = line[11].toDouble(),
+                      capacitaAttuale = line[12].toDouble();
                model.addVehicle(
                    citta,
                    new AutoIbrida(
-                       targa, posizione, km, capSerba, litSerba,
-                       static_cast<AutoIbrida::Carburante>(carburante), cilindrata,
-                       emissioni, potenza, numMotori, capBatteria, capAttuale,
-                       static_cast<AutoIbrida::VelocitaRicarica>(caricaSupp), inCarica,
-                       static_cast<AutoIbrida::Colonnina>(colonninaAtt), numPost,
-                       ingombro));
+                             targa,
+                             posizione,
+                             km,
+                             capacitaSerbatoio,
+                             litriSerbatoio,
+                             static_cast<MotoreCombustione::Carburante>(carburante),
+                             cilindrata,
+                             emissioni,
+                             potenza,
+                             numeroMotori,
+                             capacitaBatteria,
+                             capacitaAttuale,
+                             static_cast<MotoreElettrico::VelocitaRicarica>(caricaSupportata),
+                             numeroUsi,
+                             tempoServizio,
+                             static_cast<Veicolo::StatoVeicolo>(statoAttuale),
+                             inRiserva,
+                             serveAssistenza,
+                             numeroGuasti,
+                             inCarica,
+                             static_cast<MotoreElettrico::Colonnina>(colonninaAttuale),
+                             numeroPosti,
+                             ingombro));
              }
            }
            inputFile.close();
         }
 }
 
-void loadVeicoliElettrici(Model& model, int tipo, QString file) {
+void loadVeicoliElettrici(Model& model, QString file) {
     QFile inputFile(file);
     if (inputFile.open(QIODevice::ReadOnly)) {
         QTextStream in(&inputFile);
@@ -70,55 +93,114 @@ void loadVeicoliElettrici(Model& model, int tipo, QString file) {
                int citta = line[0].toInt(),
                    km = line[3].toInt(),
                    potenza = line[4].toInt(),
-                   numMotori = line[5].toInt(),
-                   caricaSupp = line[8].toInt(),
-                   inCarica = line[9].toInt(),
-                   colonninaAtt = line[10].toInt(),
-                   numPost = line[11].toInt(),
-                   ingombro = line[12].toInt();
+                   numeroMotori = line[5].toInt(),
+                   caricaSupportata = line[8].toInt(),
+                   numeroUsi = line[9].toInt(),
+                   tempoServizio = line[10].toInt(),
+                   statoAttuale = line[11].toInt(),
+                   inRiserva = line[12].toInt(),
+                   serveAssistenza = line[13].toInt(),
+                   numeroGuasti = line[14].toInt(),
+                   inCarica = line[15].toInt(),
+                   colonninaAttuale = line[16].toInt(),
+                   numeroPosti = line[17].toInt(),
+                   ingombro = line[18].toInt();
                string targa = line[1].toStdString(),
                       posizione = line[2].toStdString();
-               double capBatteria = line[6].toDouble(),
-                      capAttuale = line[7].toDouble();
-               switch (tipo) {
+               double capacitaBatteria = line[6].toDouble(),
+                      capacitaAttuale = line[7].toDouble();
+               switch (line[19].toInt()) {
                case 0:{
                    model.addVehicle(
                        citta,
                        new Bicicletta(
-                           targa, posizione, km, potenza, numMotori, capBatteria, capAttuale,
-                           static_cast<Bicicletta::VelocitaRicarica>(caricaSupp), inCarica,
-                           static_cast<Bicicletta::Colonnina>(colonninaAtt), numPost,
-                           ingombro));
+                                   targa,
+                                   posizione,
+                                   km,
+                                   potenza,
+                                   numeroMotori,
+                                   capacitaBatteria,
+                                   capacitaAttuale,
+                                   static_cast<MotoreElettrico::VelocitaRicarica>(caricaSupportata),
+                                   numeroUsi,
+                                   tempoServizio,
+                                   static_cast<Veicolo::StatoVeicolo>(statoAttuale),
+                                   inRiserva,
+                                   serveAssistenza,
+                                   numeroGuasti,
+                                   inCarica,
+                                   static_cast<MotoreElettrico::Colonnina>(colonninaAttuale),
+                                   numeroPosti,
+                                   ingombro));
                break;}
                case 1:{
                    model.addVehicle(
                        citta,
                        new AutomobileElettrica(
-                           targa, posizione, km, potenza, numMotori, capBatteria, capAttuale,
-                           static_cast<AutomobileElettrica::VelocitaRicarica>(caricaSupp),
-                           inCarica,
-                           static_cast<AutomobileElettrica::Colonnina>(colonninaAtt),
-                           numPost, ingombro));
+                                   targa,
+                                   posizione,
+                                   km,
+                                   potenza,
+                                   numeroMotori,
+                                   capacitaBatteria,
+                                   capacitaAttuale,
+                                   static_cast<MotoreElettrico::VelocitaRicarica>(caricaSupportata),
+                                   numeroUsi,
+                                   tempoServizio,
+                                   static_cast<Veicolo::StatoVeicolo>(statoAttuale),
+                                   inRiserva,
+                                   serveAssistenza,
+                                   numeroGuasti,
+                                   inCarica,
+                                   static_cast<MotoreElettrico::Colonnina>(colonninaAttuale),
+                                   numeroPosti,
+                                   ingombro));
                break;}
                case 2:{
                    model.addVehicle(
                        citta,
                        new Monopattino(
-                           targa, posizione, km, potenza, numMotori, capBatteria, capAttuale,
-                           static_cast<AutomobileElettrica::VelocitaRicarica>(caricaSupp),
-                           inCarica,
-                           static_cast<AutomobileElettrica::Colonnina>(colonninaAtt),
-                           numPost, ingombro));
+                                   targa,
+                                   posizione,
+                                   km,
+                                   potenza,
+                                   numeroMotori,
+                                   capacitaBatteria,
+                                   capacitaAttuale,
+                                   static_cast<MotoreElettrico::VelocitaRicarica>(caricaSupportata),
+                                   numeroUsi,
+                                   tempoServizio,
+                                   static_cast<Veicolo::StatoVeicolo>(statoAttuale),
+                                   inRiserva,
+                                   serveAssistenza,
+                                   numeroGuasti,
+                                   inCarica,
+                                   static_cast<MotoreElettrico::Colonnina>(colonninaAttuale),
+                                   numeroPosti,
+                                   ingombro));
                break;}
                case 3:{
                    model.addVehicle(
                        citta,
                        new MotoElettrica(
-                           targa, posizione, km, potenza, numMotori, capBatteria, capAttuale,
-                           static_cast<AutomobileElettrica::VelocitaRicarica>(caricaSupp),
-                           inCarica,
-                           static_cast<AutomobileElettrica::Colonnina>(colonninaAtt),
-                           numPost, ingombro));
+                                   targa,
+                                   posizione,
+                                   km,
+                                   potenza,
+                                   numeroMotori,
+                                   capacitaBatteria,
+                                   capacitaAttuale,
+                                   static_cast<MotoreElettrico::VelocitaRicarica>(caricaSupportata),
+                                   numeroUsi,
+                                   tempoServizio,
+                                   static_cast<Veicolo::StatoVeicolo>(statoAttuale),
+                                   inRiserva,
+                                   serveAssistenza,
+                                   numeroGuasti,
+                                   inCarica,
+                                   static_cast<MotoreElettrico::Colonnina>(colonninaAttuale),
+                                   numeroPosti,
+                                   ingombro));
                break;}
                 }
                }
@@ -127,7 +209,7 @@ void loadVeicoliElettrici(Model& model, int tipo, QString file) {
         }
 }
 
-void loadVeicoliNormali(Model& model, int tipo, QString file) {
+void loadVeicoliNormali(Model& model, QString file) {
     QFile inputFile(file);
     if (inputFile.open(QIODevice::ReadOnly)) {
         QTextStream in(&inputFile);
@@ -141,24 +223,58 @@ void loadVeicoliNormali(Model& model, int tipo, QString file) {
                    carburante = line[6].toInt(),
                    cilindrata = line[7].toInt(),
                    emissioni = line[8].toInt(),
-                   numPost = line[9].toInt(),
-                   ingombro = line[10].toInt();
+                   numeroUsi = line[9].toInt(),
+                   tempoServizio = line[10].toInt(),
+                   statoAttuale = line[11].toInt(),
+                   inRiserva = line[12].toInt(),
+                   serveAssistenza = line[13].toInt(),
+                   numeroGuasti = line[14].toInt(),
+                   numeroPosti = line[15].toInt(),
+                   ingombro = line[16].toInt();
                string targa = line[1].toStdString(),
                       posizione = line[2].toStdString();
-               double capSerba = line[4].toDouble(),
-                      litSerba = line[5].toDouble();
-               switch (tipo) {
+               double capacitaSerbatoio = line[4].toDouble(),
+                      litriSerbatoio = line[5].toDouble();
+               switch (line[17].toInt()) {
                case 0:{
                    model.addVehicle(
-                       citta, new Automobile(targa, posizione, km, capSerba, litSerba,
-                                             static_cast<Automobile::Carburante>(carburante),
-                                             cilindrata, emissioni, numPost, ingombro));
+                       citta, new Automobile(
+                                   targa,
+                                   posizione,
+                                   km,
+                                   capacitaSerbatoio,
+                                   litriSerbatoio,
+                                   static_cast<MotoreCombustione::Carburante>(carburante),
+                                   cilindrata,
+                                   emissioni,
+                                   numeroUsi,
+                                   tempoServizio,
+                                   static_cast<Veicolo::StatoVeicolo>(statoAttuale),
+                                   inRiserva,
+                                   serveAssistenza,
+                                   numeroGuasti,
+                                   numeroPosti,
+                                   ingombro));
                break;}
                case 1:{
                    model.addVehicle(
-                       citta, new Moto(targa, posizione, km, capSerba, litSerba,
-                                             static_cast<Automobile::Carburante>(carburante),
-                                             cilindrata, emissioni, numPost, ingombro));
+                       citta, new Moto(
+                                   targa,
+                                   posizione,
+                                   km,
+                                   capacitaSerbatoio,
+                                   litriSerbatoio,
+                                   static_cast<MotoreCombustione::Carburante>(carburante),
+                                   cilindrata,
+                                   emissioni,
+                                   numeroUsi,
+                                   tempoServizio,
+                                   static_cast<Veicolo::StatoVeicolo>(statoAttuale),
+                                   inRiserva,
+                                   serveAssistenza,
+                                   numeroGuasti,
+                                   numeroPosti,
+                                   ingombro));
                break;}
                  }
                }
@@ -168,19 +284,11 @@ void loadVeicoliNormali(Model& model, int tipo, QString file) {
 }
 
 void loadVeicoli(Model& model) {
-    QString a = ":/database/Biciclette.txt",
-            b = ":/database/AutoElettriche.txt",
-            c = ":/database/Monopattini.txt",
-            d = ":/database/MotoElettriche.txt";
-    loadVeicoliElettrici(model, 0, a);
-    loadVeicoliElettrici(model, 1, b);
-    loadVeicoliElettrici(model, 2, c);
-    loadVeicoliElettrici(model, 3, d);
+    QString a = ":/database/veicoliElettrici.txt",
+            b = ":/database/veicoliNormali.txt",
+            c = ":/database/veicoliIbridi.txt";
 
-    QString e = ":/database/Automobili.txt",
-            f = ":/database/Moto.txt";
-    loadVeicoliNormali(model, 0, e);
-    loadVeicoliNormali(model, 1, f);
-
-    loadIbrida(model);
+    loadVeicoliElettrici(model, a);
+    loadVeicoliNormali(model, b);
+    loadVeicoliIbridi(model, c);
 }
