@@ -5,7 +5,6 @@
 #include <QFile>
 #include <QTextStream>
 
-
 void loadCitta(Model& model) {
     QFile inputFile(":/database/dataBaseCitta.txt");
     if (inputFile.open(QIODevice::ReadOnly)) {
@@ -16,210 +15,6 @@ void loadCitta(Model& model) {
        }
        inputFile.close();
     }
-}
-
-void loadBicicletta(Model& model) {
-    QFile inputFile(":/database/dataBaseBiciclette.txt");
-    if (inputFile.open(QIODevice::ReadOnly)) {
-        QTextStream in(&inputFile);
-        while (!in.atEnd()) {
-            QString text = in.readLine();
-            if (!text.isEmpty()) {
-               QStringList line = text.split(' ');
-
-               int citta = line[0].toInt(),
-                   km = line[3].toInt(),
-                   potenza = line[4].toInt(),
-                   numMotori = line[5].toInt(),
-                   caricaSupp = line[8].toInt(),
-                   inCarica = line[9].toInt(),
-                   colonninaAtt = line[10].toInt(),
-                   numPost = line[11].toInt(),
-                   ingombro = line[12].toInt();
-               string targa = line[1].toStdString(),
-                      posizione = line[2].toStdString();
-               double capBatteria = line[6].toDouble(),
-                      capAttuale = line[7].toDouble();
-               model.addVehicle(
-                   citta,
-                   new Bicicletta(
-                       targa, posizione, km, potenza, numMotori, capBatteria, capAttuale,
-                       static_cast<Bicicletta::VelocitaRicarica>(caricaSupp), inCarica,
-                       static_cast<Bicicletta::Colonnina>(colonninaAtt), numPost,
-                       ingombro));
-             }
-           }
-           inputFile.close();
-        }
-}
-
-void loadAutomobileElettrica(Model& model) {
-    QFile inputFile(":/database/dataBaseAutoElettriche.txt");
-    if (inputFile.open(QIODevice::ReadOnly)) {
-        QTextStream in(&inputFile);
-        while (!in.atEnd()) {
-            QString text = in.readLine();
-            if (!text.isEmpty()) {
-               QStringList line = text.split(' ');
-
-               int citta = line[0].toInt(),
-                   km = line[3].toInt(),
-                   potenza = line[4].toInt(),
-                   numMotori = line[5].toInt(),
-                   caricaSupp = line[8].toInt(),
-                   inCarica = line[9].toInt(),
-                   colonninaAtt = line[10].toInt(),
-                   numPost = line[11].toInt(),
-                   ingombro = line[12].toInt();
-               string targa = line[1].toStdString(),
-                      posizione = line[2].toStdString();
-               double capBatteria = line[6].toDouble(),
-                      capAttuale = line[7].toDouble();
-               model.addVehicle(
-                   citta,
-                   new AutomobileElettrica(
-                       targa, posizione, km, potenza, numMotori, capBatteria, capAttuale,
-                       static_cast<AutomobileElettrica::VelocitaRicarica>(caricaSupp),
-                       inCarica,
-                       static_cast<AutomobileElettrica::Colonnina>(colonninaAtt),
-                       numPost, ingombro));
-             }
-           }
-           inputFile.close();
-        }
-}
-
-void loadMonopattino(Model& model) {
-    QFile inputFile(":/database/dataBaseMonopattini.txt");
-    if (inputFile.open(QIODevice::ReadOnly)) {
-        QTextStream in(&inputFile);
-        while (!in.atEnd()) {
-            QString text = in.readLine();
-            if (!text.isEmpty()) {
-               QStringList line = text.split(' ');
-
-               int citta = line[0].toInt(),
-                   km = line[3].toInt(),
-                   potenza = line[4].toInt(),
-                   numMotori = line[5].toInt(),
-                   caricaSupp = line[8].toInt(),
-                   inCarica = line[9].toInt(),
-                   colonninaAtt = line[10].toInt(),
-                   numPost = line[11].toInt(),
-                   ingombro = line[12].toInt();
-               string targa = line[1].toStdString(),
-                      posizione = line[2].toStdString();
-               double capBatteria = line[6].toDouble(),
-                      capAttuale = line[7].toDouble();
-               model.addVehicle(
-                   citta,
-                   new Monopattino(
-                       targa, posizione, km, potenza, numMotori, capBatteria, capAttuale,
-                       static_cast<AutomobileElettrica::VelocitaRicarica>(caricaSupp),
-                       inCarica,
-                       static_cast<AutomobileElettrica::Colonnina>(colonninaAtt),
-                       numPost, ingombro));
-             }
-           }
-           inputFile.close();
-        }
-}
-
-void loadMotoElettrica(Model& model) {
-    QFile inputFile(":/database/dataBaseMotoElettriche.txt");
-    if (inputFile.open(QIODevice::ReadOnly)) {
-        QTextStream in(&inputFile);
-        while (!in.atEnd()) {
-            QString text = in.readLine();
-            if (!text.isEmpty()) {
-               QStringList line = text.split(' ');
-
-               int citta = line[0].toInt(),
-                   km = line[3].toInt(),
-                   potenza = line[4].toInt(),
-                   numMotori = line[5].toInt(),
-                   caricaSupp = line[8].toInt(),
-                   inCarica = line[9].toInt(),
-                   colonninaAtt = line[10].toInt(),
-                   numPost = line[11].toInt(),
-                   ingombro = line[12].toInt();
-               string targa = line[1].toStdString(),
-                      posizione = line[2].toStdString();
-               double capBatteria = line[6].toDouble(),
-                      capAttuale = line[7].toDouble();
-               model.addVehicle(
-                   citta,
-                   new MotoElettrica(
-                       targa, posizione, km, potenza, numMotori, capBatteria, capAttuale,
-                       static_cast<AutomobileElettrica::VelocitaRicarica>(caricaSupp),
-                       inCarica,
-                       static_cast<AutomobileElettrica::Colonnina>(colonninaAtt),
-                       numPost, ingombro));
-             }
-           }
-           inputFile.close();
-        }
-}
-
-void loadAutomobile(Model& model) {
-    QFile inputFile(":/database/dataBaseAutomobili.txt");
-    if (inputFile.open(QIODevice::ReadOnly)) {
-        QTextStream in(&inputFile);
-        while (!in.atEnd()) {
-            QString text = in.readLine();
-            if (!text.isEmpty()) {
-               QStringList line = text.split(' ');
-
-               int citta = line[0].toInt(),
-                   km = line[3].toInt(),
-                   carburante = line[6].toInt(),
-                   cilindrata = line[7].toInt(),
-                   emissioni = line[8].toInt(),
-                   numPost = line[9].toInt(),
-                   ingombro = line[10].toInt();
-               string targa = line[1].toStdString(),
-                      posizione = line[2].toStdString();
-               double capSerba = line[4].toDouble(),
-                      litSerba = line[5].toDouble();
-               model.addVehicle(
-                   citta, new Automobile(targa, posizione, km, capSerba, litSerba,
-                                         static_cast<Automobile::Carburante>(carburante),
-                                         cilindrata, emissioni, numPost, ingombro));
-             }
-           }
-           inputFile.close();
-        }
-}
-
-
-void loadMoto(Model& model) {
-    QFile inputFile(":/database/dataBaseMoto.txt");
-    if (inputFile.open(QIODevice::ReadOnly)) {
-        QTextStream in(&inputFile);
-        while (!in.atEnd()) {
-            QString text = in.readLine();
-            if (!text.isEmpty()) {
-               QStringList line = text.split(' ');
-
-               int citta = line[0].toInt(),
-                   km = line[3].toInt(),
-                   carburante = line[6].toInt(),
-                   cilindrata = line[7].toInt(),
-                   emissioni = line[8].toInt(),
-                   numPost = line[9].toInt(),
-                   ingombro = line[10].toInt();
-               string targa = line[1].toStdString(),
-                      posizione = line[2].toStdString();
-               double capSerba = line[4].toDouble(),
-                      litSerba = line[5].toDouble();
-               model.addVehicle(
-                   citta, new Moto(targa, posizione, km, capSerba, litSerba,
-                                         static_cast<Automobile::Carburante>(carburante),
-                                         cilindrata, emissioni, numPost, ingombro));
-             }
-           }
-           inputFile.close();
-        }
 }
 
 void loadIbrida(Model& model) {
@@ -264,12 +59,118 @@ void loadIbrida(Model& model) {
         }
 }
 
+void loadVeicoliElettrici(Model& model, int tipo, QString file) {
+    QFile inputFile(file);
+    if (inputFile.open(QIODevice::ReadOnly)) {
+        QTextStream in(&inputFile);
+        while (!in.atEnd()) {
+            QString text = in.readLine();
+            if (!text.isEmpty()) {
+               QStringList line = text.split(' ');
+
+               int citta = line[0].toInt(),
+                   km = line[3].toInt(),
+                   potenza = line[4].toInt(),
+                   numMotori = line[5].toInt(),
+                   caricaSupp = line[8].toInt(),
+                   inCarica = line[9].toInt(),
+                   colonninaAtt = line[10].toInt(),
+                   numPost = line[11].toInt(),
+                   ingombro = line[12].toInt();
+               string targa = line[1].toStdString(),
+                      posizione = line[2].toStdString();
+               double capBatteria = line[6].toDouble(),
+                      capAttuale = line[7].toDouble();
+               switch (tipo) {
+               case 0:
+                   model.addVehicle(
+                       citta,
+                       new Bicicletta(
+                           targa, posizione, km, potenza, numMotori, capBatteria, capAttuale,
+                           static_cast<Bicicletta::VelocitaRicarica>(caricaSupp), inCarica,
+                           static_cast<Bicicletta::Colonnina>(colonninaAtt), numPost,
+                           ingombro));
+               case 1:
+                   model.addVehicle(
+                       citta,
+                       new AutomobileElettrica(
+                           targa, posizione, km, potenza, numMotori, capBatteria, capAttuale,
+                           static_cast<AutomobileElettrica::VelocitaRicarica>(caricaSupp),
+                           inCarica,
+                           static_cast<AutomobileElettrica::Colonnina>(colonninaAtt),
+                           numPost, ingombro));
+               case 2:
+                   model.addVehicle(
+                       citta,
+                       new Monopattino(
+                           targa, posizione, km, potenza, numMotori, capBatteria, capAttuale,
+                           static_cast<AutomobileElettrica::VelocitaRicarica>(caricaSupp),
+                           inCarica,
+                           static_cast<AutomobileElettrica::Colonnina>(colonninaAtt),
+                           numPost, ingombro));
+               case 3:
+                   model.addVehicle(
+                       citta,
+                       new MotoElettrica(
+                           targa, posizione, km, potenza, numMotori, capBatteria, capAttuale,
+                           static_cast<AutomobileElettrica::VelocitaRicarica>(caricaSupp),
+                           inCarica,
+                           static_cast<AutomobileElettrica::Colonnina>(colonninaAtt),
+                           numPost, ingombro));
+                };
+               }
+           }
+           inputFile.close();
+        }
+}
+
+void loadVeicoliNormali(Model& model, int tipo, QString file) {
+    QFile inputFile(file);
+    if (inputFile.open(QIODevice::ReadOnly)) {
+        QTextStream in(&inputFile);
+        while (!in.atEnd()) {
+            QString text = in.readLine();
+            if (!text.isEmpty()) {
+               QStringList line = text.split(' ');
+
+               int citta = line[0].toInt(),
+                   km = line[3].toInt(),
+                   carburante = line[6].toInt(),
+                   cilindrata = line[7].toInt(),
+                   emissioni = line[8].toInt(),
+                   numPost = line[9].toInt(),
+                   ingombro = line[10].toInt();
+               string targa = line[1].toStdString(),
+                      posizione = line[2].toStdString();
+               double capSerba = line[4].toDouble(),
+                      litSerba = line[5].toDouble();
+               switch (tipo) {
+               case 0:
+                   model.addVehicle(
+                       citta, new Automobile(targa, posizione, km, capSerba, litSerba,
+                                             static_cast<Automobile::Carburante>(carburante),
+                                             cilindrata, emissioni, numPost, ingombro));
+               case 1:
+                   model.addVehicle(
+                       citta, new Moto(targa, posizione, km, capSerba, litSerba,
+                                             static_cast<Automobile::Carburante>(carburante),
+                                             cilindrata, emissioni, numPost, ingombro));
+                 }
+               };
+             }
+           }
+           inputFile.close();
+}
+
+
 void loadVeicoli(Model& model) {
-    loadBicicletta(model);
-    loadAutomobileElettrica(model);
-    loadMonopattino(model);
-    loadMotoElettrica(model);
-    loadAutomobile(model);
-    loadMoto(model);
+    loadVeicoliElettrici(model, 0, ":/database/dataBaseBiciclette.txt");
+    loadVeicoliElettrici(model, 1, ":/database/dataBaseAutoElettriche.txt");
+    loadVeicoliElettrici(model, 2, ":/database/dataMonopattini.txt");
+    loadVeicoliElettrici(model, 3, ":/database/dataBaseMotoElettriche.txt");
+
+    loadVeicoliNormali(model, 0, ":/database/dataAutomobili.txt");
+    loadVeicoliNormali(model, 1, ":/database/dataMoto.txt");
+
     loadIbrida(model);
 }
