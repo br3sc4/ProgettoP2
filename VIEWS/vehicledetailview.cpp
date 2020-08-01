@@ -3,7 +3,7 @@
 VehicleDetailView::VehicleDetailView(Controller* controller, const QString& title, const QStringList& headerStrings, QWidget *parent):
     BaseBackAbstractView(title, headerStrings, parent), _controller(controller), _checkBox(new QCheckBox("in manutenzione", parent)),
     _moveButton(new QPushButton("Cambia città", parent)), _removeButton(new QPushButton("Rimuovi dalla flotta", parent)) {
-    _table->setFixedHeight(90);
+    _table->setFixedHeight(100);
     _table->setSelectionMode(QAbstractItemView::SelectionMode::NoSelection);
     _table->horizontalScrollBar()->setDisabled(false);
     _table->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
@@ -35,7 +35,7 @@ void VehicleDetailView::update() {
 
     QLabel *icon = new QLabel;
     QPixmap* pixmap = new QPixmap(getIconPath(*vehicle));
-    icon->setPixmap(pixmap->scaled(40, 40, Qt::KeepAspectRatio));
+    icon->setPixmap(pixmap->scaled(50, 50, Qt::KeepAspectRatio));
     _table->setCellWidget(0, 0, icon);
     QTableWidgetItem *item = new QTableWidgetItem(QString::fromStdString(vehicle->targa()));
     _table->setItem(0, 1, item);
@@ -59,7 +59,7 @@ void VehicleDetailView::update() {
     _table->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
     _table->verticalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
     _table->resizeColumnsToContents();
-    _table->resizeRowsToContents();
+    _table->setRowHeight(0, 60);
 }
 
 void VehicleDetailView::setupCheckBox() {

@@ -10,3 +10,8 @@ QHeaderView::section {
     padding: 10;
     font-size: 15px;
 }
+
+QLabel {
+    padding: 5px;
+}
+

@@ -59,7 +59,7 @@ void BaseAbstractView::setupMenuBar() {
 }
 
 void BaseAbstractView::setupStyle() {
-    QFile file(":/stylesheets/table.css");
+    QFile file(":/stylesheets/css.css");
     file.open(QFile::ReadOnly);
     QString styleSheet = QLatin1String(file.readAll());
 

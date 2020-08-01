@@ -12,7 +12,7 @@ void VehicleListView::update() {
     for (int i = 0; i < _table->rowCount(); i++) {
         QLabel *icon = new QLabel;
         QPixmap* pixmap = new QPixmap(getIconPath(*vehicles[i]));
-        icon->setPixmap(pixmap->scaled(40, 40, Qt::KeepAspectRatio));
+        icon->setPixmap(pixmap->scaled(50, 50, Qt::KeepAspectRatio));
         _table->setCellWidget(i, 0, icon);
         QTableWidgetItem *item = new QTableWidgetItem(QString::fromStdString(vehicles[i]->targa()));
         _table->setItem(i, 1, item);
@@ -31,7 +31,7 @@ void VehicleListView::update() {
         connect(_table, &QTableWidget::itemClicked, this, [=](QTableWidgetItem* item) {
             emit rowClicked(item->row());
         });
-        _table->setRowHeight(i, 45);
-    }    
+        _table->setRowHeight(i, 60);
+    }
     _table->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
 }

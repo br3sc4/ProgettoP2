@@ -11,6 +11,6 @@
         <file>database/veicoliElettrici.txt</file>
         <file>database/veicoliIbridi.txt</file>
         <file>database/veicoliNormali.txt</file>
-        <file>stylesheets/table.css</file>
+        <file>stylesheets/css.css</file>
     </qresource>
 </RCC>
