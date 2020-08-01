@@ -44,11 +44,13 @@ MotoreElettrico::MotoreElettrico(
 MotoreElettrico::~MotoreElettrico() {}
 
 double MotoreElettrico::consumoKm() const {
-    return ingombro() * _potenza * _numeroMotori;
+    if(ingombro()<=2)
+         return _potenza/10 / _numeroMotori;
+    return  _potenza/1000 / _numeroMotori;
 }
 
 double MotoreElettrico::autonomia() const {
-    return (capacitaAttuale() * consumoKm()) / 1000;
+    return capacitaAttuale() / consumoKm();
 }
 
 short int MotoreElettrico::fattoreGreen() const {

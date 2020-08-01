@@ -46,7 +46,7 @@ double MotoreCombustione::consumoKm() const {
         consumo = consumo * 1.2;
     else if(tipoCarburante() == gpl || tipoCarburante() == metano)
          consumo = consumo * 1.5;
-    return (consumo * (_cilindrata / 1000)) / 100;
+    return consumo * (_cilindrata / 1000);
 }
 
 double MotoreCombustione::autonomia() const {
