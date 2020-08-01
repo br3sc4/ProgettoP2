@@ -3,7 +3,11 @@
 VehicleDetailView::VehicleDetailView(Controller* controller, const QString& title, const QStringList& headerStrings, QWidget *parent):
     BaseBackAbstractView(title, headerStrings, parent), _controller(controller), _checkBox(new QCheckBox("in manutenzione", parent)),
     _moveButton(new QPushButton("Cambia città", parent)), _removeButton(new QPushButton("Rimuovi dalla flotta", parent)) {
-    _table->setFixedHeight(100);
+    #ifdef Q_OS_LINUX
+        _table->setFixedHeight(150);
+    #else
+        _table->setFixedHeight(100);
+    #endif
     _table->setSelectionMode(QAbstractItemView::SelectionMode::NoSelection);
     _table->horizontalScrollBar()->setDisabled(false);
     _table->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
