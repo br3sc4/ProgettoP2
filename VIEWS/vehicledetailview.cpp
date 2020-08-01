@@ -4,7 +4,7 @@ VehicleDetailView::VehicleDetailView(Controller* controller, const QString& titl
     BaseBackAbstractView(title, headerStrings, parent), _controller(controller), _checkBox(new QCheckBox("in manutenzione", parent)),
     _moveButton(new QPushButton("Cambia città", parent)), _removeButton(new QPushButton("Rimuovi dalla flotta", parent)) {
     #ifdef Q_OS_LINUX
-        _table->setFixedHeight(150);
+        _table->setFixedHeight(120);
     #else
         _table->setFixedHeight(100);
     #endif
