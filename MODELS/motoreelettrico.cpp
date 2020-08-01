@@ -48,7 +48,7 @@ double MotoreElettrico::consumoKm() const {
 }
 
 double MotoreElettrico::autonomia() const {
-    return capacitaAttuale() * consumoKm();
+    return (capacitaAttuale() * consumoKm()) / 1000;
 }
 
 short int MotoreElettrico::fattoreGreen() const {

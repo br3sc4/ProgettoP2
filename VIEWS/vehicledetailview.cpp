@@ -41,7 +41,7 @@ void VehicleDetailView::update() {
     _table->setItem(0, 1, item);
     item = new QTableWidgetItem(QString::fromStdString(vehicle->posizione()));
     _table->setItem(0, 2, item);
-    item = new QTableWidgetItem(QString::number(vehicle->chilometraggio()));
+    item = new QTableWidgetItem(QString("%1").arg(vehicle->chilometraggio()));
     _table->setItem(0, 3, item);
     item = new QTableWidgetItem(QString::number(vehicle->capacitaPosti()));
     _table->setItem(0, 4, item);
@@ -49,12 +49,17 @@ void VehicleDetailView::update() {
     _table->setItem(0, 5, item);
     item = new QTableWidgetItem(QString::number(vehicle->fattoreGreen()));
     _table->setItem(0, 6, item);
-    item = new QTableWidgetItem(QString::number(vehicle->autonomia()));
+    item = new QTableWidgetItem(QString("%1").arg(vehicle->autonomia(), 0, 'f', 2));
     _table->setItem(0, 7, item);
     item = new QTableWidgetItem(QString::number(vehicle->fattoreUtilizzo()));
     _table->setItem(0, 8, item);
 
     setDynamicData(*vehicle);
+
+    _table->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
+    _table->verticalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
+    _table->resizeColumnsToContents();
+    _table->resizeRowsToContents();
 }
 
 void VehicleDetailView::setupCheckBox() {
@@ -132,11 +137,7 @@ void VehicleDetailView::setDynamicData(const Veicolo& veicolo) {
             _table->setHorizontalHeaderItem(13, new QTableWidgetItem("Tempo di carica rimanente"));
             _table->setItem(0, 13, new QTableWidgetItem(QString::number(electric->tempoRimanenteCaricaCompleta())));
         }
-    }
-    _table->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
-    _table->verticalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
-    _table->resizeColumnsToContents();
-    _table->resizeRowsToContents();
+    }    
 }
 
 void VehicleDetailView::createMoveDialog(const std::string& currentCity) {

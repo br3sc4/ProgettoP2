@@ -16,16 +16,22 @@ void VehicleListView::update() {
         _table->setCellWidget(i, 0, icon);
         QTableWidgetItem *item = new QTableWidgetItem(QString::fromStdString(vehicles[i]->targa()));
         _table->setItem(i, 1, item);
-        item = new QTableWidgetItem(QString::fromStdString(vehicles[i]->posizione()));
+        item = new QTableWidgetItem(vehicles[i]->serveAssistenza() ? "Si" : "No");
         _table->setItem(i, 2, item);
-        item = new QTableWidgetItem(QString::number(vehicles[i]->chilometraggio()));
+        vehicles[i]->checkRiserva();
+        item = new QTableWidgetItem(vehicles[i]->inRiserva() ? "Si" : "No");
         _table->setItem(i, 3, item);
-        item = new QTableWidgetItem(QString::number(vehicles[i]->capacitaPosti()));
+        item = new QTableWidgetItem(QString("%1").arg(vehicles[i]->autonomia(), 0, 'f', 2));
         _table->setItem(i, 4, item);
+        item = new QTableWidgetItem(QString::number(vehicles[i]->fattoreGreen()));
+        _table->setItem(i, 5, item);
+        item = new QTableWidgetItem(QString::number(vehicles[i]->fattoreUtilizzo()));
+        _table->setItem(i, 6, item);
 
         connect(_table, &QTableWidget::itemClicked, this, [=](QTableWidgetItem* item) {
             emit rowClicked(item->row());
         });
         _table->setRowHeight(i, 45);
     }    
+    _table->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
 }

@@ -54,7 +54,7 @@ void Controller::goToVehiclesView(int row) {
     _currentCityIndex = row;
 
     vehicles->setTitle("Flotta di " + QString::fromStdString(_model->getCity(row)->getNome()));
-    vehicles->setHederStrings({ "Tipo", "Targa", "Posizione", "Chilometraggio", "N. Posti" });
+    vehicles->setHederStrings({ "Tipo", "Targa", "In manutenzione", "In riserva", "Autonomia (km)", "Fattore green", "Fattore utilizzo" });
     vehicles->update();
     _view->setCurrentView(vehicles);
 }
@@ -64,8 +64,8 @@ void Controller::goToVehicleDetailView(int row) {
     VehicleDetailView* vehicleDetail = _view->getVehicleDetailView();
     _currentVehicleIndex = row;
 
-    vehicleDetail->setHederStrings({ "Tipo", "Targa", "Posizione", "Chilometraggio", "N. Posti",
-                                     "Consumo al km", "Fattore green", "Autonomia", "Fattore di utilizzo" });
+    vehicleDetail->setHederStrings({ "Tipo", "Targa", "Posizione", "Chilometraggio (km)", "N. Posti",
+                                     "Consumo al km", "Fattore green", "Autonomia (km)", "Fattore di utilizzo" });
     vehicleDetail->setTitle("Veicolo " + QString::fromStdString(_model->getVehicle(_currentCityIndex, row)->targa()));
     vehicleDetail->update();
     _view->setCurrentView(vehicleDetail);
