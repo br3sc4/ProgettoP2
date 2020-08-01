@@ -78,64 +78,69 @@ void VehicleDetailView::setupRemoveButton() {
 
 void VehicleDetailView::setDynamicData(const Veicolo& veicolo) {    
     const MotoreCombustione* combustion = dynamic_cast<const MotoreCombustione*>(&veicolo);
+    const MotoreElettrico* electric = dynamic_cast<const MotoreElettrico*>(&veicolo);
     if (combustion && typeid(combustion) == typeid(const MotoreCombustione*)) {
-        _table->setColumnCount(14);
-        _table->setHorizontalHeaderItem(9, new QTableWidgetItem("Cilindrata"));
-        _table->setItem(0, 9, new QTableWidgetItem(QString::number(combustion->cilindrata())));
+        unsigned int columns = _table->columnCount();
+        _table->setColumnCount(columns + 5);
 
-        _table->setHorizontalHeaderItem(10, new QTableWidgetItem("Emissioni CO_2"));
-        _table->setItem(0, 10, new QTableWidgetItem(QString::number(combustion->emissioni())));
+        _table->setHorizontalHeaderItem(columns + 1, new QTableWidgetItem("Cilindrata"));
+        _table->setItem(0, columns + 1, new QTableWidgetItem(QString::number(combustion->cilindrata())));
 
-        _table->setHorizontalHeaderItem(11, new QTableWidgetItem("Carburante"));
+        _table->setHorizontalHeaderItem(columns + 2, new QTableWidgetItem("Emissioni CO_2"));
+        _table->setItem(0, columns + 2, new QTableWidgetItem(QString::number(combustion->emissioni())));
+
+        _table->setHorizontalHeaderItem(columns + 3, new QTableWidgetItem("Carburante"));
         switch (combustion->tipoCarburante()) {
         case MotoreCombustione::gpl:
-            _table->setItem(0, 11, new QTableWidgetItem("GPL"));
+            _table->setItem(0, columns + 3, new QTableWidgetItem("GPL"));
             break;
         case MotoreCombustione::metano:
-            _table->setItem(0, 11, new QTableWidgetItem("Metano"));
+            _table->setItem(0, columns + 3, new QTableWidgetItem("Metano"));
             break;
         case MotoreCombustione::diesel:
-            _table->setItem(0, 11, new QTableWidgetItem("Diesel"));
+            _table->setItem(0, columns + 3, new QTableWidgetItem("Diesel"));
             break;
         default:
-            _table->setItem(0, 11, new QTableWidgetItem("Benzina"));
+            _table->setItem(0, columns + 3, new QTableWidgetItem("Benzina"));
             break;
         }
 
-        _table->setHorizontalHeaderItem(12, new QTableWidgetItem("Carburante disponibile"));
-        _table->setItem(0, 12, new QTableWidgetItem(QString::number(combustion->litriSerbatoio())));
+        _table->setHorizontalHeaderItem(columns + 4, new QTableWidgetItem("Carburante disponibile"));
+        _table->setItem(0, columns + 4, new QTableWidgetItem(QString::number(combustion->litriSerbatoio())));
 
-        _table->setHorizontalHeaderItem(13, new QTableWidgetItem("Capacità serbatoio"));
-        _table->setItem(0, 13, new QTableWidgetItem(QString::number(combustion->capacitaSerbatoio())));
-    } else {
-        const MotoreElettrico* electric = dynamic_cast<const MotoreElettrico*>(&veicolo);
-        _table->setColumnCount(14);
+        _table->setHorizontalHeaderItem(columns + 5, new QTableWidgetItem("Capacità serbatoio"));
+        _table->setItem(0, columns + 5, new QTableWidgetItem(QString::number(combustion->capacitaSerbatoio())));
+    }
 
-        _table->setHorizontalHeaderItem(9, new QTableWidgetItem("Percentuale batteria"));
-        _table->setItem(0, 9, new QTableWidgetItem(QString::number(electric->percentualeCarica())));
+    if (electric && typeid(electric) == typeid(const MotoreElettrico*)) {
+        unsigned int columns = _table->columnCount();
+        _table->setColumnCount(columns + 5);
 
-        _table->setHorizontalHeaderItem(10, new QTableWidgetItem("Capacità batteria"));
-        _table->setItem(0, 10, new QTableWidgetItem(QString::number(electric->capacitaBatteria())));
+        _table->setHorizontalHeaderItem(columns + 1, new QTableWidgetItem("Percentuale batteria"));
+        _table->setItem(0, columns + 1, new QTableWidgetItem(QString::number(electric->percentualeCarica())));
 
-        _table->setHorizontalHeaderItem(11, new QTableWidgetItem("Velocità di carica supportata"));
+        _table->setHorizontalHeaderItem(columns + 2, new QTableWidgetItem("Capacità batteria"));
+        _table->setItem(0, columns + 2, new QTableWidgetItem(QString::number(electric->capacitaBatteria())));
+
+        _table->setHorizontalHeaderItem(columns + 3, new QTableWidgetItem("Velocità di carica supportata"));
         switch (electric->caricaSupportata()) {
         case MotoreElettrico::lenta:
-            _table->setItem(0, 11, new QTableWidgetItem("Lenta"));
+            _table->setItem(0, columns + 3, new QTableWidgetItem("Lenta"));
             break;
         case MotoreElettrico::media:
-            _table->setItem(0, 11, new QTableWidgetItem("Media"));
+            _table->setItem(0, columns + 3, new QTableWidgetItem("Media"));
             break;
         default:
-            _table->setItem(0, 11, new QTableWidgetItem("Veloce"));
+            _table->setItem(0, columns + 3, new QTableWidgetItem("Veloce"));
             break;
         }
 
-        _table->setHorizontalHeaderItem(12, new QTableWidgetItem("In carica"));
-        _table->setItem(0, 12, new QTableWidgetItem(QString::number(electric->inCarica())));
+        _table->setHorizontalHeaderItem(columns + 4, new QTableWidgetItem("In carica"));
+        _table->setItem(0, columns + 4, new QTableWidgetItem(QString::number(electric->inCarica())));
 
         if (electric->inCarica()) {
-            _table->setHorizontalHeaderItem(13, new QTableWidgetItem("Tempo di carica rimanente"));
-            _table->setItem(0, 13, new QTableWidgetItem(QString::number(electric->tempoRimanenteCaricaCompleta())));
+            _table->setHorizontalHeaderItem(columns + 5, new QTableWidgetItem("Tempo di carica rimanente"));
+            _table->setItem(0, columns + 5, new QTableWidgetItem(QString::number(electric->tempoRimanenteCaricaCompleta())));
         }
     }    
 }
