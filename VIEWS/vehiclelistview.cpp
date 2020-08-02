@@ -10,11 +10,11 @@ void VehicleListView::update() {
     _table->clearSelection();
 
     for (int i = 0; i < _table->rowCount(); i++) {
-        QLabel *icon = new QLabel;
         QPixmap* pixmap = new QPixmap(getIconPath(*vehicles[i]));
-        icon->setPixmap(pixmap->scaled(50, 50, Qt::KeepAspectRatio));
-        _table->setCellWidget(i, 0, icon);
-        QTableWidgetItem *item = new QTableWidgetItem(QString::fromStdString(vehicles[i]->targa()));
+        QTableWidgetItem *item = new QTableWidgetItem();
+        item->setData(Qt::DecorationRole, pixmap->scaled(50, 50, Qt::KeepAspectRatio));
+        _table->setItem(i, 0, item);
+        item = new QTableWidgetItem(QString::fromStdString(vehicles[i]->targa()));
         _table->setItem(i, 1, item);
         item = new QTableWidgetItem(vehicles[i]->serveAssistenza() ? "Si" : "No");
         _table->setItem(i, 2, item);
