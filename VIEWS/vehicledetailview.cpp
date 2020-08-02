@@ -83,7 +83,7 @@ void VehicleDetailView::setupRemoveButton() {
 void VehicleDetailView::setDynamicData(const Veicolo& veicolo) {    
     const MotoreCombustione* combustion = dynamic_cast<const MotoreCombustione*>(&veicolo);
     const MotoreElettrico* electric = dynamic_cast<const MotoreElettrico*>(&veicolo);
-    if (combustion && typeid(combustion) == typeid(const MotoreCombustione*)) {
+    if (combustion) {
         unsigned int columns = _table->columnCount();
         _table->setColumnCount(columns + 5);
 
@@ -116,7 +116,7 @@ void VehicleDetailView::setDynamicData(const Veicolo& veicolo) {
         _table->setItem(0, columns, new QTableWidgetItem(QString::number(combustion->capacitaSerbatoio())));
     }
 
-    if (electric && typeid(electric) == typeid(const MotoreElettrico*)) {
+    if (electric) {
         unsigned int columns = _table->columnCount();
         _table->setColumnCount(columns + 4);
 

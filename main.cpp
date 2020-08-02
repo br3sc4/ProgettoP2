@@ -10,7 +10,6 @@ int main(int argc, char *argv[])
 
     Model model;
 
-    // TODO: fare controllo su add city per nomi di citta uguali
     loadCitta(model);
     loadVeicoli(model);
 

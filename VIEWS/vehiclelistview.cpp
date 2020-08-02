@@ -9,6 +9,9 @@ void VehicleListView::update() {
     _table->setRowCount(vehicles.size());
     _table->clearSelection();
 
+    QPixmap* si = new QPixmap(":/icons/true.png");
+    QPixmap* no = new QPixmap(":/icons/false.png");
+
     for (int i = 0; i < _table->rowCount(); i++) {
         QPixmap* pixmap = new QPixmap(getIconPath(*vehicles[i]));
         QTableWidgetItem *item = new QTableWidgetItem();
@@ -16,10 +19,19 @@ void VehicleListView::update() {
         _table->setItem(i, 0, item);
         item = new QTableWidgetItem(QString::fromStdString(vehicles[i]->targa()));
         _table->setItem(i, 1, item);
-        item = new QTableWidgetItem(vehicles[i]->serveAssistenza() ? "Si" : "No");
+        item = new QTableWidgetItem();
+        if(vehicles[i]->serveAssistenza())
+            item->setData(Qt::DecorationRole, si->scaled(20, 20, Qt::KeepAspectRatio));
+         else
+            item->setData(Qt::DecorationRole, no->scaled(20, 20, Qt::KeepAspectRatio));
         _table->setItem(i, 2, item);
         vehicles[i]->checkRiserva();
-        item = new QTableWidgetItem(vehicles[i]->inRiserva() ? "Si" : "No");
+        item = new QTableWidgetItem();
+        if(vehicles[i]->inRiserva())
+            item->setData(Qt::DecorationRole, si->scaled(20, 20, Qt::KeepAspectRatio));
+         else
+            item->setData(Qt::DecorationRole, no->scaled(20, 20, Qt::KeepAspectRatio));
+        //item = new QTableWidgetItem(vehicles[i]->inRiserva() ? "Si" : "No");
         _table->setItem(i, 3, item);
         item = new QTableWidgetItem(QString("%1").arg(vehicles[i]->autonomia(), 0, 'f', 2));
         _table->setItem(i, 4, item);
