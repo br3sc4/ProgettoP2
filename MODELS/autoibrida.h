@@ -32,11 +32,10 @@ public:
         unsigned short numeroPosti = 2,
         unsigned short ingombro = 3);
 
-    double autonomia() const;
-
-    short int fattoreGreen() const;
-
-    double consumoKm() const;
+    // Metodi virtuali implementati
+    virtual double autonomia() const;
+    virtual short int fattoreGreen() const;
+    virtual double consumoKm() const;
 
 };
 

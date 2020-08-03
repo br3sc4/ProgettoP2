@@ -23,7 +23,6 @@ public:
         unsigned short numeroGuasti,
         unsigned short numeroPosti = 2,
         unsigned short ingombro = 3);
-
 };
 
 #endif // AUTOMOBILE_H

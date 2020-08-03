@@ -30,27 +30,27 @@ public:
 
     virtual ~MotoreCombustione();
 
-    // metodi virtuali implementati
+    // Metodi virtuali implementati
     virtual double consumoKm() const;
     virtual double autonomia() const;
     virtual short int fattoreGreen() const;
 
-    // metodi get
+    // Metodi get
     double capacitaSerbatoio() const;
     double litriSerbatoio() const;
     Carburante tipoCarburante() const;
     unsigned short cilindrata() const;
     unsigned short emissioni() const;
 
-    // metodi set
+    // Metodi set
     void setLitriSerbatoio(double litriSerbatoio);
 
 private:
     const double _capacitaSerbatoio;            // Litri di carburante che può contenere il serbatoio
     double _litriSerbatoio;                     // Litri di carburante rimasti
     const Carburante _tipoCarburante;           // Carburante utilizzato (benzina, diesel, gpl, metano)
-    const unsigned short _cilindrata;                    // Cilindrata motore
-    const unsigned short _emissioni;                     // Emissioni CO2
+    const unsigned short _cilindrata;           // Cilindrata motore
+    const unsigned short _emissioni;            // Emissioni CO2
 };
 
 #endif // MOTORECOMBUSTIONE_H
