@@ -37,11 +37,11 @@ void VehicleDetailView::update() {
 
     _checkBox->setChecked(vehicle->serveAssistenza());
 
-    QLabel *icon = new QLabel;
     QPixmap* pixmap = new QPixmap(getIconPath(*vehicle));
-    icon->setPixmap(pixmap->scaled(50, 50, Qt::KeepAspectRatio));
-    _table->setCellWidget(0, 0, icon);
-    QTableWidgetItem *item = new QTableWidgetItem(QString::fromStdString(vehicle->targa()));
+    QTableWidgetItem *item = new QTableWidgetItem();
+    item->setData(Qt::DecorationRole, pixmap->scaled(50, 50, Qt::KeepAspectRatio));
+    _table->setItem(0, 0, item);
+    item = new QTableWidgetItem(QString::fromStdString(vehicle->targa()));
     _table->setItem(0, 1, item);
     item = new QTableWidgetItem(QString::fromStdString(vehicle->posizione()));
     _table->setItem(0, 2, item);
@@ -83,6 +83,7 @@ void VehicleDetailView::setupRemoveButton() {
 void VehicleDetailView::setDynamicData(const Veicolo& veicolo) {    
     const MotoreCombustione* combustion = dynamic_cast<const MotoreCombustione*>(&veicolo);
     const MotoreElettrico* electric = dynamic_cast<const MotoreElettrico*>(&veicolo);
+
     if (combustion) {
         unsigned int columns = _table->columnCount();
         _table->setColumnCount(columns + 5);

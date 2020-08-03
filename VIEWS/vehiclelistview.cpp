@@ -31,7 +31,6 @@ void VehicleListView::update() {
             item->setData(Qt::DecorationRole, si->scaled(20, 20, Qt::KeepAspectRatio));
          else
             item->setData(Qt::DecorationRole, no->scaled(20, 20, Qt::KeepAspectRatio));
-        //item = new QTableWidgetItem(vehicles[i]->inRiserva() ? "Si" : "No");
         _table->setItem(i, 3, item);
         item = new QTableWidgetItem(QString("%1").arg(vehicles[i]->autonomia(), 0, 'f', 2));
         _table->setItem(i, 4, item);

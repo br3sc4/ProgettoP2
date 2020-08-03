@@ -4,7 +4,6 @@
 #include "basebackabstractview.h"
 #include "CONTROLLERS/controller.h"
 #include <QPushButton>
-#include <QIcon>
 
 class Controller;
 
