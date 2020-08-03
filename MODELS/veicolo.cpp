@@ -1,6 +1,6 @@
 #include "MODELS/veicolo.h"
 
-Veicolo::Veicolo(){}
+Veicolo::Veicolo() {}
 
 Veicolo::Veicolo(
         string targa,
@@ -24,7 +24,7 @@ Veicolo::Veicolo(
         _statoAttuale(statoAttuale),
         _inRiserva(inRiserva),
         _serveAssistenza(serveAssistenza),
-        _numeroGuasti(numeroGuasti){}
+        _numeroGuasti(numeroGuasti) {}
 
 Veicolo::~Veicolo() {}
 
@@ -45,16 +45,8 @@ string Veicolo::posizione() const {
     return _posizione;
 }
 
-void Veicolo::setPosizione(const string &posizione) {
-    _posizione = posizione;
-}
-
 unsigned long Veicolo::chilometraggio() const {
     return _chilometraggio;
-}
-
-void Veicolo::increaseChilometraggio(unsigned long chilometraggio) {
-    _chilometraggio += chilometraggio;
 }
 
 unsigned short Veicolo::capacitaPosti() const {
@@ -69,16 +61,8 @@ unsigned short Veicolo::numeroUsi() const {
     return _numeroUsi;
 }
 
-void Veicolo::increaseNumeroUsi(unsigned short numeroUsi) {
-    _numeroUsi += numeroUsi;
-}
-
 unsigned long Veicolo::tempoServizio() const {
     return _tempoServizio;
-}
-
-void Veicolo::increaseTempoServizio(unsigned long tempoServizio) {
-    _tempoServizio += tempoServizio;
 }
 
 Veicolo::StatoVeicolo Veicolo::statoAttuale() const {
@@ -103,8 +87,4 @@ void Veicolo::setServeAssistenza(bool serveAssistenza) {
 
 unsigned short Veicolo::numeroGuasti() const {
     return _numeroGuasti;
-}
-
-void Veicolo::increaseNumeroGuasti(unsigned short x) {
-    _numeroGuasti += x;
 }
