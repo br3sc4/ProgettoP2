@@ -31,7 +31,20 @@ Moto::Moto(
         serveAssistenza,
         numeroGuasti),
 
-        MotoreCombustione(targa, posizione, km, numeroPosti, ingombro, numeroUsi,
-                          tempoServizio, statoAttuale, inRiserva, serveAssistenza,
-                          numeroGuasti, capacitaSerbatoio, litriSerbatoio,
-                          tipoCarburante, cilindrata, emissioni) {}
+    MotoreCombustione(
+        targa,
+        posizione,
+        km,
+        numeroPosti,
+        ingombro,
+        numeroUsi,
+        tempoServizio,
+        statoAttuale,
+        inRiserva,
+        serveAssistenza,
+        numeroGuasti,
+        capacitaSerbatoio,
+        litriSerbatoio,
+        tipoCarburante,
+        cilindrata,
+        emissioni) {}

@@ -24,6 +24,7 @@ AutoIbrida::AutoIbrida(
     Colonnina colonninaAttuale,
     unsigned short numeroPosti,
     unsigned short ingombro):
+
     Veicolo(
         targa,
         posizione,
@@ -36,6 +37,7 @@ AutoIbrida::AutoIbrida(
         inRiserva,
         serveAssistenza,
         numeroGuasti),
+
     MotoreCombustione(
         targa,
         posizione,
@@ -53,6 +55,7 @@ AutoIbrida::AutoIbrida(
         tipoCarburante,
         cilindrata,
         emissioni),
+
     MotoreElettrico(
         targa,
         posizione,
