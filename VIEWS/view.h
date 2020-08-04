@@ -6,7 +6,7 @@
 #include "VIEWS/vehiclelistview.h"
 #include "VIEWS/vehicledetailview.h"
 #include "Wizard/citywizard.h"
-#include <QStackedWidget>
+#include "QStackedWidget"
 
 class Controller;
 class CitiesListView;

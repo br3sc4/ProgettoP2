@@ -3,7 +3,7 @@
 
 #include "baseabstractview.h"
 #include "CONTROLLERS/controller.h"
-#include <QWidget>
+#include "QWidget"
 
 class Controller;
 

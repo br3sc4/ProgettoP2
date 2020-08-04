@@ -3,11 +3,11 @@
 
 #include "basebackabstractview.h"
 #include "CONTROLLERS/controller.h"
-#include <QCheckBox>
-#include <QPushButton>
-#include <QScrollBar>
-#include <QDialog>
-#include <QDialogButtonBox>
+#include "QCheckBox"
+#include "QPushButton"
+#include "QScrollBar"
+#include "QDialog"
+#include "QDialogButtonBox"
 
 class VehicleDetailView : public BaseBackAbstractView {
     Q_OBJECT

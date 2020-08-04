@@ -1,16 +1,16 @@
 #ifndef BASEVIEW_H
 #define BASEVIEW_H
 
-#include <QWidget>
-#include <QVBoxLayout>
-#include <QHBoxLayout>
-#include <QLabel>
-#include <QTableWidget>
-#include <QHeaderView>
-#include <QSizePolicy>
-#include <QMenuBar>
-#include <QMessageBox>
-#include <QFile>
+#include "QWidget"
+#include "QVBoxLayout"
+#include "QHBoxLayout"
+#include "QLabel"
+#include "QTableWidget"
+#include "QHeaderView"
+#include "QSizePolicy"
+#include "QMenuBar"
+#include "QMessageBox"
+#include "QFile"
 
 class BaseAbstractView : public QWidget {
     Q_OBJECT

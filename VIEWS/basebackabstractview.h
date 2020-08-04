@@ -11,9 +11,9 @@
 #include "MODELS/motoelettrica.h"
 #include "MODELS/monopattino.h"
 #include "MODELS/bicicletta.h"
-#include <typeinfo>
-#include <QWidget>
-#include <QPushButton>
+#include "typeinfo"
+#include "QWidget"
+#include "QPushButton"
 
 class BaseBackAbstractView: public BaseAbstractView {
     Q_OBJECT

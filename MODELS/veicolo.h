@@ -26,12 +26,13 @@ public:
         bool serveAssistenza,
         unsigned short numeroGuasti);
 
-    virtual ~Veicolo();
+    virtual ~Veicolo() = 0;
 
     virtual double consumoKm() const =0;
     virtual double autonomia() const =0;
     virtual short int fattoreGreen() const =0;
-    virtual void checkRiserva();
+
+    void checkRiserva();
     short int fattoreUtilizzo() const;
 
     // Metodi get
