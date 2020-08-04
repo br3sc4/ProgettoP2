@@ -10,9 +10,7 @@
         <file>icons/auto_elettrica.png</file>
         <file>icons/moto_elettrica.png</file>
         <file>database/Citta.txt</file>
-        <file>database/veicoliElettrici.txt</file>
-        <file>database/veicoliIbridi.txt</file>
-        <file>database/veicoliNormali.txt</file>
+        <file>database/Veicoli.txt</file>
         <file>stylesheets/css.css</file>
     </qresource>
 </RCC>

@@ -19,7 +19,6 @@ ICON = icons/logo_app.icns
 
 SOURCES += EXCEPTIONS/emptyexception.cpp \
     CONTROLLERS/controller.cpp \
-    EXCEPTIONS/filenotfound.cpp \
     EXCEPTIONS/notinchargeexception.cpp \
     EXCEPTIONS/outofboundsexception.cpp \
     EXCEPTIONS/samecityexception.cpp \
@@ -53,7 +52,6 @@ SOURCES += EXCEPTIONS/emptyexception.cpp \
 
 HEADERS += EXCEPTIONS/emptyexception.h \
     CONTROLLERS/controller.h \
-    EXCEPTIONS/filenotfound.h \
     EXCEPTIONS/notinchargeexception.h \
     EXCEPTIONS/outofboundsexception.h \
     EXCEPTIONS/samecityexception.h \
