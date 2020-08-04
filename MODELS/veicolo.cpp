@@ -34,7 +34,7 @@ void Veicolo::checkRiserva() {
 }
 
 short Veicolo::fattoreUtilizzo() const {
-    return _tempoServizio ;
+    return (_tempoServizio/52560) % 52560 ;
 }
 
 string Veicolo::targa() const {
