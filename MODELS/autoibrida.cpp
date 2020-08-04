@@ -77,7 +77,7 @@ AutoIbrida::AutoIbrida(
         colonninaAttuale) {}
 
 double AutoIbrida::autonomia() const {
-    return (litriSerbatoio() / MotoreCombustione::consumoKm()) + (capacitaAttuale() / MotoreElettrico::consumoKm());
+    return MotoreCombustione::autonomia() + MotoreElettrico::autonomia();
 }
 
 short AutoIbrida::fattoreGreen() const {

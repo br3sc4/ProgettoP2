@@ -1,5 +1,7 @@
 #include "MODELS/motorecombustione.h"
+#include "iostream"
 
+using namespace std;
 
 MotoreCombustione::MotoreCombustione(
     string targa,
@@ -41,16 +43,27 @@ MotoreCombustione::MotoreCombustione(
 MotoreCombustione::~MotoreCombustione() {}
 
 double MotoreCombustione::consumoKm() const {
-    double consumo = ingombro();
+    double consumo;
+
+    if(ingombro()<3)
+        consumo = 1;
+    else
+        consumo = ingombro();
+
     if(_tipoCarburante == benzina)
-        consumo = consumo * 1.2;
+        consumo = consumo * 1.1;
     else if(tipoCarburante() == gpl || tipoCarburante() == metano)
-         consumo = consumo * 1.5;
-    return consumo * (_cilindrata / 1000);
+         consumo = consumo * 1.4;
+
+    if(ingombro()<3)
+        return consumo * (_cilindrata / 100);
+    else
+         return consumo * (_cilindrata / 1000);
 }
 
 double MotoreCombustione::autonomia() const {
-        return consumoKm() * litriSerbatoio();
+    cout << "litri serba: " << litriSerbatoio() << " ,consumo al km: " << consumoKm() <<  " ,autonomia: " << litriSerbatoio()/consumoKm() << endl;
+    return litriSerbatoio()/consumoKm();
 }
 
 short int MotoreCombustione::fattoreGreen() const {
