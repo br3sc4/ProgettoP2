@@ -45,6 +45,7 @@ SOURCES += EXCEPTIONS/emptyexception.cpp \
     VIEWS/vehicledetailview.cpp \
     VIEWS/vehiclelistview.cpp \
     VIEWS/view.cpp \
+    VIEWS/viewinterface.cpp \
     loadDataBase.cpp \
     main.cpp \
     model.cpp
@@ -75,10 +76,9 @@ HEADERS += EXCEPTIONS/emptyexception.h \
     VIEWS/Wizard/selectcitypage.h \
     VIEWS/Wizard/selectenginepage.h \
     VIEWS/Wizard/vehiclefieldspage.h \
-    VIEWS/baseabstractview.h \
-    VIEWS/basebackabstractview.h \
     VIEWS/citieslistview.h \
     VIEWS/vehicledetailview.h \
     VIEWS/vehiclelistview.h \
     VIEWS/view.h \
+    VIEWS/viewinterface.h \
     model.h

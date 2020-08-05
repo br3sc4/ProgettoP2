@@ -1,22 +1,22 @@
 #include "citieslistview.h"
 
 CitiesListView::CitiesListView(Controller* controller, const QString& title, const QStringList& headerStrings, QWidget *parent)
-    : QWidget(parent), _controller(controller), _topBar(new BaseTopBar(title, parent)), _table(new QTableWidget(parent)) {
+    : ViewInterface(parent), _controller(controller), _topBar(new BaseTopBar(title, parent)), _table(new QTableWidget(parent)) {
     setupTable(headerStrings);
 
     setupLayout();
 
     setMinimumSize(600, 400);
 
-    connect(_topBar, &BaseTopBar::closeSignal, this, &CitiesListView::closeSignal);
-    connect(_topBar, &BaseTopBar::showAddCityWizard, this, &CitiesListView::showAddCityWizard);
-    connect(_topBar, &BaseTopBar::showAddVehicleWizard, this, &CitiesListView::showAddVehicleWizard);
-    connect(_table, &QTableWidget::itemClicked, this, [=](QTableWidgetItem* item) {
+    connect(_topBar, &BaseTopBar::closeSignal, this, &ViewInterface::closeSignal);
+    connect(_topBar, &BaseTopBar::showAddCityWizard, this, &ViewInterface::showAddCityWizard);
+    connect(_topBar, &BaseTopBar::showAddVehicleWizard, this, &ViewInterface::showAddVehicleWizard);
+    connect(_table, &QTableWidget::itemClicked, this, [=](QTableWidgetItem* item) {        
         emit rowClicked(item->row());
     });
 }
 
-void CitiesListView::update() {
+void CitiesListView::reload() {
     Array<Citta*> cities = _controller->getCities();
     _table->setRowCount(cities.size());
 

@@ -9,19 +9,19 @@
 #include "QDialog"
 #include "QDialogButtonBox"
 
-class VehicleDetailView: public QWidget {
+class VehicleDetailView: public ViewInterface {
     Q_OBJECT
 
 public:
     explicit VehicleDetailView(Controller* controller, const QString& title = "Vehicle", QWidget *parent = nullptr);
     ~VehicleDetailView();
-    void update();
+
+    void reload() override;
 
     QString title() const;
     void setTitle(const QString& title);
 
     void createMoveDialog(const std::string& currentCity);
-    void showMessage(const QString& msg);
 
 private:
     Controller* _controller;
@@ -39,7 +39,6 @@ private:
     void clearDynamicData();
 
 signals:
-    void backButtonClicked();
     void maintenanceChanged(int);
     void createMoveDialog();
     void vehicleMove(int);

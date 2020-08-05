@@ -24,7 +24,7 @@ View::View(Controller* controller, QWidget *parent) : QStackedWidget(parent),
         createWizard();
     });
 
-    _citiesView->update();
+    _citiesView->reload();
 }
 
 View::~View() {

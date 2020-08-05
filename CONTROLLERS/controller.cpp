@@ -41,12 +41,12 @@ QString Controller::getCurrentVehicle() const {
 
 void Controller::addCity(const std::string& nome) {
     _model->addCity(new Citta(nome));
-    _view->currentWidget()->update();
+    dynamic_cast<ViewInterface*>(_view->currentWidget())->reload();
 }
 
 void Controller::addVehicle(unsigned int city, Veicolo* const vehicle) {
     _model->addVehicle(city, vehicle);
-    _view->currentWidget()->update();
+    dynamic_cast<ViewInterface*>(_view->currentWidget())->reload();
 }
 
 void Controller::goToVehiclesView(int row) {
@@ -57,28 +57,32 @@ void Controller::goToVehiclesView(int row) {
 
     vehicles->setTitle("Flotta di " + QString::fromStdString(_model->getCity(row)->getNome()));
     vehicles->setHederStrings({ "Tipo", "Targa", "In manutenzione", "In riserva", "Autonomia (km)", "Fattore green", "Fattore utilizzo" });
-    vehicles->update();
+    vehicles->reload();
     _view->setCurrentWidget(vehicles);
 }
 
 void Controller::goToVehicleDetailView(int row) {
     _view->getVehicleListView()->resetTableSelection();
+
     VehicleDetailView* vehicleDetail = _view->getVehicleDetailView();
     _currentVehicleIndex = row;
 
     vehicleDetail->setTitle("Veicolo " + QString::fromStdString(_model->getVehicle(_currentCityIndex, row)->targa()));
-    vehicleDetail->update();
+    vehicleDetail->reload();
     _view->setCurrentWidget(vehicleDetail);
 }
 
 void Controller::goBack() const {
-    int currentView = _view->currentIndex();
+    int currentView = _view->currentIndex();    
     _view->setCurrentIndex(currentView - 1);
-    _view->widget(currentView)->update();
+
+    if (CitiesListView* view = dynamic_cast<CitiesListView*>(_view->currentWidget()))
+        view->reload();
 }
 
 void Controller::toggleMaintenance(int state) const {
     _model->getVehicle(_currentCityIndex, _currentVehicleIndex)->setServeAssistenza(state);
+    dynamic_cast<ViewInterface*>(_view->widget(_view->currentIndex() - 1))->reload();
 }
 
 void Controller::createMoveModal() const {
@@ -88,22 +92,24 @@ void Controller::createMoveModal() const {
 
 void Controller::removeVehicle() const {
     Veicolo* vehicle = _model->removeVehicle(_currentCityIndex, _currentVehicleIndex);
-    _view->getVehicleListView()->update();
+    _view->getVehicleListView()->reload();
     goBack();
     std::stringstream msg;
     msg << "Veicolo \"" << vehicle->targa() << "\" rimosso dalla flotta.";
-    dynamic_cast<VehicleDetailView*>(_view->currentWidget())->showMessage(QString::fromStdString(msg.str()));
+    _view->showMessage(QString::fromStdString(msg.str()));
 }
 
 void Controller::saveChage(int row) const {
     try {
         Veicolo* vehicle = _model->getVehicle(_currentCityIndex, _currentVehicleIndex);
         _model->moveVehicle(_currentCityIndex, row, _currentVehicleIndex);
-        goBack();
+
         std::stringstream msg;
         msg << "Veicolo \"" << vehicle->targa() << "\" spostato a " << _model->getCity(row)->getNome() << ".";
-        dynamic_cast<VehicleDetailView*>(_view->currentWidget())->showMessage(QString::fromStdString(msg.str()));
+        _view->showMessage(QString::fromStdString(msg.str()));
+        dynamic_cast<ViewInterface*>(_view->widget(_view->currentIndex() - 1))->reload();
+        goBack();
     } catch (std::exception* e) {
-        dynamic_cast<VehicleDetailView*>(_view->currentWidget())->showMessage(e->what());
+        _view->showMessage(e->what());
     }
 }

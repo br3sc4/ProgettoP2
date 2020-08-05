@@ -62,7 +62,6 @@ double MotoreCombustione::consumoKm() const {
 }
 
 double MotoreCombustione::autonomia() const {
-    cout << "litri serba: " << litriSerbatoio() << " ,consumo al km: " << consumoKm() <<  " ,autonomia: " << litriSerbatoio()/consumoKm() << endl;
     return litriSerbatoio()/consumoKm();
 }
 

@@ -1,6 +1,7 @@
 #ifndef VEHICLELISTVIEW_H
 #define VEHICLELISTVIEW_H
 
+#include "viewinterface.h"
 #include "Components/backtopbar.h"
 #include "CONTROLLERS/controller.h"
 #include <typeinfo>
@@ -11,14 +12,14 @@
 
 class Controller;
 
-class VehicleListView: public QWidget {
+class VehicleListView: public ViewInterface {
     Q_OBJECT
 
 public:
     explicit VehicleListView(Controller* controller, const QString& title = "Cities",
                             const QStringList& headerStrings = {}, QWidget *parent = nullptr);
 
-    void update();
+    void reload() override;
 
     void setHederStrings(const QStringList& headerStrings);
     void resetTableSelection();
@@ -35,14 +36,6 @@ private:
     void setupLayout();
 
     const QString getIconPath(const Veicolo& vehicle) const;
-
-signals:
-    void closeSignal();
-    void showAddCityWizard();
-    void showAddVehicleWizard();
-    void backButtonClicked();
-    void rowClicked(int row);
-    void selectedVehicle(QTableWidgetItem* itemClicked);
 };
 
 #endif // VEHICLELISTVIEW_H

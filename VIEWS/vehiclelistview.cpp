@@ -1,20 +1,20 @@
 #include "VIEWS/vehiclelistview.h"
 
 VehicleListView::VehicleListView(Controller* controller, const QString& title, const QStringList& headerStrings, QWidget *parent):
-    QWidget(parent), _controller(controller), _topBar(new BackTopBar(title, parent)), _table(new QTableWidget(parent)) {
+    ViewInterface(parent), _controller(controller), _topBar(new BackTopBar(title, parent)), _table(new QTableWidget(parent)) {
     setupTable(headerStrings);
 
     setupLayout();
 
     setMinimumSize(600, 400);
 
-    connect(_topBar, &BackTopBar::backButtonClicked, this, &VehicleListView::backButtonClicked);
-    connect(_table, &QTableWidget::itemClicked, this, [this](QTableWidgetItem* item) {
+    connect(_topBar, &BackTopBar::backButtonClicked, this, &ViewInterface::backButtonClicked);
+    connect(_table, &QTableWidget::itemClicked, this, [=](QTableWidgetItem* item) {        
         emit rowClicked(item->row());
     });
 }
 
-void VehicleListView::update() {
+void VehicleListView::reload() {
     Array<Veicolo*> vehicles = _controller->getVehicles();
     _table->setRowCount(vehicles.size());
     _table->clearSelection();

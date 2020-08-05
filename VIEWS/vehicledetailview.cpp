@@ -1,7 +1,7 @@
 #include "VIEWS/vehicledetailview.h"
 
 VehicleDetailView::VehicleDetailView(Controller* controller, const QString& title, QWidget *parent):
-    QWidget(parent), _controller(controller), _verticalLayout(new QVBoxLayout), _gridLayout(new QGridLayout),
+    ViewInterface(parent), _controller(controller), _verticalLayout(new QVBoxLayout), _gridLayout(new QGridLayout),
     _topBar(new BackTopBar(title, parent)), _checkBox(new QCheckBox("in manutenzione", parent)),
     _moveButton(new QPushButton("Cambia città", parent)), _removeButton(new QPushButton("Rimuovi dalla flotta", parent)) {
     setupMoveButton();
@@ -9,7 +9,7 @@ VehicleDetailView::VehicleDetailView(Controller* controller, const QString& titl
 
     setupLayout();
 
-    connect(_topBar, &BackTopBar::backButtonClicked, this, &VehicleDetailView::backButtonClicked);
+    connect(_topBar, &BackTopBar::backButtonClicked, this, &ViewInterface::backButtonClicked);
     connect(_checkBox, SIGNAL(stateChanged(int)), this, SIGNAL(maintenanceChanged(int)));
     connect(_moveButton, SIGNAL(clicked()), this, SIGNAL(createMoveDialog()));
     connect(_removeButton, SIGNAL(clicked()), this, SIGNAL(removeButtonClicked()));
@@ -21,7 +21,7 @@ VehicleDetailView::~VehicleDetailView() {
     delete _checkBox;
 }
 
-void VehicleDetailView::update() {
+void VehicleDetailView::reload() {
     Veicolo* vehicle = _controller->getVehicle();
 
     // Prima colonna
@@ -215,11 +215,4 @@ void VehicleDetailView::createMoveDialog(const std::string& currentCity) {
     modal->setLayout(layout);
     modal->show();
     modal->activateWindow();
-}
-
-void VehicleDetailView::showMessage(const QString& msg) {
-    QMessageBox* dialog = new QMessageBox(this);
-    dialog->setText(msg);
-
-    dialog->show();
 }

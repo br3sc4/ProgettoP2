@@ -1,6 +1,7 @@
 #ifndef CITIESLISTVIEW_H
 #define CITIESLISTVIEW_H
 
+#include "viewinterface.h"
 #include "Components/basetopbar.h"
 #include "CONTROLLERS/controller.h"
 #include <QWidget>
@@ -10,14 +11,14 @@
 
 class Controller;
 
-class CitiesListView: public QWidget {
+class CitiesListView: public ViewInterface {
     Q_OBJECT
 
 public:
     explicit CitiesListView(Controller* controller, const QString& title = "Cities",
                             const QStringList& headerStrings = {}, QWidget *parent = nullptr);
 
-    void update();
+    void reload() override;
 
     void setHederStrings(const QStringList& headerStrings);
     void resetTableSelection();
@@ -34,13 +35,6 @@ private:
 
     void setupTable(const QStringList& headerStrings);
     void setupLayout();
-
-signals:
-    void closeSignal();
-    void showAddCityWizard();
-    void showAddVehicleWizard();
-    void backButtonClicked();
-    void rowClicked(int row);
 };
 
 #endif // CITIESLISTVIEW_H
