@@ -1,9 +1,11 @@
 #include "VIEWS/view.h"
 
+#include "Components/basetopbar.h"
 View::View(Controller* controller, QWidget *parent) : QStackedWidget(parent),
     _citiesView(new CitiesListView(controller, "Città", { "Città", "Numero veicoli" })),
     _vehiclesView(new VehicleListView(controller)),
-    _vehicleDetailView(new VehicleDetailView(controller)), _controller(controller) {
+    _vehicleDetailView(new VehicleDetailView(controller)),
+    _controller(controller) {
 
     setMinimumSize(_minAltezza, _minLarghezza);
     setWindowTitle(_titoloApp);
@@ -12,12 +14,13 @@ View::View(Controller* controller, QWidget *parent) : QStackedWidget(parent),
     addWidget(_vehiclesView);
     addWidget(_vehicleDetailView);
 
-    connect(_citiesView, &BaseAbstractView::closeSignal, this, &View::close);
+    setupStyle();
 
-    connect(_citiesView, &BaseAbstractView::showAddCityWizard, this, [=]() {
+    connect(_citiesView, &CitiesListView::closeSignal, this, &View::close);
+    connect(_citiesView, &CitiesListView::showAddCityWizard, this, [=]() {
         createWizard(true);
     });
-    connect(_citiesView, &BaseAbstractView::showAddVehicleWizard, this, [=]() {
+    connect(_citiesView, &CitiesListView::showAddVehicleWizard, this, [=]() {
         createWizard();
     });
 
@@ -34,7 +37,7 @@ CitiesListView *View::getCitiesListView() const {
     return _citiesView;
 }
 
-VehicleListView *View::getVehicleListView() const {
+VehicleListView* View::getVehicleListView() const {
     return _vehiclesView;
 }
 
@@ -42,16 +45,19 @@ VehicleDetailView *View::getVehicleDetailView() const {
     return _vehicleDetailView;
 }
 
-BaseAbstractView* View::getCurrentView() const {
-    return dynamic_cast<BaseAbstractView*>(currentWidget());
+void View::showMessage(const QString &msg) {
+    QMessageBox* dialog = new QMessageBox(this);
+    dialog->setText(msg);
+
+    dialog->show();
 }
 
-void View::setCurrentView(BaseAbstractView* view) {
-    setCurrentWidget(view);
-}
+void View::setupStyle() {
+    QFile file(":/stylesheets/css.css");
+    file.open(QFile::ReadOnly);
+    QString styleSheet = QLatin1String(file.readAll());
 
-unsigned int View::getCurrentIndex() const {
-    return currentIndex();
+    setStyleSheet(styleSheet);
 }
 
 void View::createWizard(bool addCityMode) {

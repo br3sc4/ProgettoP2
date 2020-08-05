@@ -41,7 +41,7 @@ private slots:
     void toggleMaintenance(int state) const;
     void createMoveModal() const;
     void removeVehicle() const;
-    void saveChage(int row) const;    
+    void saveChage(int row) const;
 };
 
 #endif // CITIESLISTCONTROLLER_H
