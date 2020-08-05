@@ -1,28 +1,18 @@
 #include "VIEWS/vehicledetailview.h"
 
-VehicleDetailView::VehicleDetailView(Controller* controller, const QString& title, const QStringList& headerStrings, QWidget *parent):
-    BaseBackAbstractView(title, headerStrings, parent), _controller(controller), _checkBox(new QCheckBox("in manutenzione", parent)),
+VehicleDetailView::VehicleDetailView(Controller* controller, const QString& title, QWidget *parent):
+    QWidget(parent), _controller(controller), _verticalLayout(new QVBoxLayout), _gridLayout(new QGridLayout),
+    _topBar(new BackTopBar(title, parent)), _checkBox(new QCheckBox("in manutenzione", parent)),
     _moveButton(new QPushButton("Cambia città", parent)), _removeButton(new QPushButton("Rimuovi dalla flotta", parent)) {
-    #ifdef Q_OS_LINUX
-        _table->setFixedHeight(115);
-    #else
-        _table->setFixedHeight(100);
-    #endif
-    _table->setSelectionMode(QAbstractItemView::SelectionMode::NoSelection);
-    _table->horizontalScrollBar()->setDisabled(false);
-    _table->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
-    _table->verticalScrollBar()->setDisabled(true);
-    _table->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-
-    setupCheckBox();
     setupMoveButton();
     setupRemoveButton();
 
-    _verticalLayout->addSpacerItem(new QSpacerItem(10, 100, QSizePolicy::Minimum, QSizePolicy::MinimumExpanding));
+    setupLayout();
 
+    connect(_topBar, &BackTopBar::backButtonClicked, this, &VehicleDetailView::backButtonClicked);
     connect(_checkBox, SIGNAL(stateChanged(int)), this, SIGNAL(maintenanceChanged(int)));
     connect(_moveButton, SIGNAL(clicked()), this, SIGNAL(createMoveDialog()));
-    connect(_removeButton, SIGNAL(clicked()), this, SIGNAL(removeButtonClicked()));   
+    connect(_removeButton, SIGNAL(clicked()), this, SIGNAL(removeButtonClicked()));
 }
 
 VehicleDetailView::~VehicleDetailView() {
@@ -33,122 +23,152 @@ VehicleDetailView::~VehicleDetailView() {
 
 void VehicleDetailView::update() {
     Veicolo* vehicle = _controller->getVehicle();
-    _table->setRowCount(1);
 
-    _checkBox->setChecked(vehicle->serveAssistenza());
+    // Prima colonna
+    dynamic_cast<QLabel*>(_gridLayout->itemAtPosition(0, 0)->widget())->setText("Posizione: " + QString::fromStdString(vehicle->posizione()));
+    dynamic_cast<QLabel*>(_gridLayout->itemAtPosition(1, 0)->widget())->setText("Chilometraggio: " + QString::number(vehicle->chilometraggio()));
+    dynamic_cast<QLabel*>(_gridLayout->itemAtPosition(2, 0)->widget())->setText("Consumo al km: " + QString::number(vehicle->consumoKm()));
+    dynamic_cast<QLabel*>(_gridLayout->itemAtPosition(3, 0)->widget())->setText("Numero posti: " + QString::number(vehicle->capacitaPosti()));
+    dynamic_cast<QLabel*>(_gridLayout->itemAtPosition(4, 0)->widget())->setText("Ingombro: " + QString::number(vehicle->ingombro()));
+    dynamic_cast<QLabel*>(_gridLayout->itemAtPosition(5, 0)->widget())->setText("Numero usi: " + QString::number(vehicle->numeroUsi()));
+    dynamic_cast<QLabel*>(_gridLayout->itemAtPosition(6, 0)->widget())->setText("Tempo in servizio: " + QString::number(vehicle->tempoServizio()));
+    dynamic_cast<QLabel*>(_gridLayout->itemAtPosition(7, 0)->widget())->setText("Numero guasti: " + QString::number(vehicle->numeroGuasti()));
+    dynamic_cast<QLabel*>(_gridLayout->itemAtPosition(8, 0)->widget())->setText("Fattore green: " + QString::number(vehicle->fattoreGreen()));
+    dynamic_cast<QLabel*>(_gridLayout->itemAtPosition(9, 0)->widget())->setText("Fattore utilizzo: " + QString::number(vehicle->fattoreUtilizzo()));
+    dynamic_cast<QLabel*>(_gridLayout->itemAtPosition(10, 0)->widget())->setText("Autonomia: " + QString("%1").arg(vehicle->autonomia(), 0, 'f', 2));
 
-    QPixmap* pixmap = new QPixmap(getIconPath(*vehicle));
-    QTableWidgetItem *item = new QTableWidgetItem();
-    item->setData(Qt::DecorationRole, pixmap->scaled(50, 50, Qt::KeepAspectRatio));
-    _table->setItem(0, 0, item);
-    item = new QTableWidgetItem(QString::fromStdString(vehicle->targa()));
-    _table->setItem(0, 1, item);
-    item = new QTableWidgetItem(QString::fromStdString(vehicle->posizione()));
-    _table->setItem(0, 2, item);
-    item = new QTableWidgetItem(QString("%1").arg(vehicle->chilometraggio()));
-    _table->setItem(0, 3, item);
-    item = new QTableWidgetItem(QString::number(vehicle->capacitaPosti()));
-    _table->setItem(0, 4, item);
-    item = new QTableWidgetItem(QString::number(vehicle->consumoKm()));
-    _table->setItem(0, 5, item);
-    item = new QTableWidgetItem(QString::number(vehicle->fattoreGreen()));
-    _table->setItem(0, 6, item);
-    item = new QTableWidgetItem(QString("%1").arg(vehicle->autonomia(), 0, 'f', 2));
-    _table->setItem(0, 7, item);
-    item = new QTableWidgetItem(QString::number(vehicle->fattoreUtilizzo()));
-    _table->setItem(0, 8, item);
+    vehicle->checkRiserva();
+    QLabel* riserva = dynamic_cast<QLabel*>(_gridLayout->itemAtPosition(11, 0)->widget());
+    if (vehicle->inRiserva())
+        riserva->setText("In riserva: <img src=:/icons/true.png width=20 height=20>");
+    else
+        riserva->setText("In riserva: <img src=:/icons/false.png width=20 height=20>");
+    riserva->setTextFormat(Qt::RichText);
 
+    if (_gridLayout->itemAtPosition(0, 1))
+        clearDynamicData();
+
+    // Seconda colonna
     setDynamicData(*vehicle);
-
-    _table->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
-    _table->verticalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
-    _table->resizeColumnsToContents();
-    _table->setRowHeight(0, 60);
 }
 
-void VehicleDetailView::setupCheckBox() {
-    _verticalLayout->addWidget(_checkBox);
+QString VehicleDetailView::title() const {
+    return _topBar->title();
+}
+
+void VehicleDetailView::setTitle(const QString &title) {
+    _topBar->setTitle(title);
+}
+
+void VehicleDetailView::setupLayout() {    
+    _verticalLayout->addWidget(_topBar);
+    _verticalLayout->addLayout(_gridLayout);
+
+    // Prima colonna
+    _gridLayout->addWidget(new QLabel("Posizione: "), 0, 0);
+    _gridLayout->addWidget(new QLabel("Chilometraggio: "), 1, 0);
+    _gridLayout->addWidget(new QLabel("Consumo al km: "), 2, 0);
+    _gridLayout->addWidget(new QLabel("Numero posti: "), 3, 0);
+    _gridLayout->addWidget(new QLabel("Ingombro: "), 4, 0);
+    _gridLayout->addWidget(new QLabel("Numero usi: "), 5, 0);
+    _gridLayout->addWidget(new QLabel("Tempo in servizio: "), 6, 0);
+    _gridLayout->addWidget(new QLabel("Numero guasti: "), 7, 0);
+    _gridLayout->addWidget(new QLabel("Fattore green: "), 8, 0);
+    _gridLayout->addWidget(new QLabel("Fattore di utilizzo: "), 9, 0);
+    _gridLayout->addWidget(new QLabel("Autonomia: "), 10, 0);   
+    _gridLayout->addWidget(new QLabel("In riserva: "), 11, 0);
+
+    // Seconda colonna
+    _gridLayout->addWidget(_checkBox, 0, 1);
+    _gridLayout->addWidget(_moveButton, 1, 1);
+    _gridLayout->addWidget(_removeButton, 2, 1);
+
+    _verticalLayout->addSpacerItem(new QSpacerItem(10, 10, QSizePolicy::Minimum, QSizePolicy::MinimumExpanding));
+
+    setLayout(_verticalLayout);
 }
 
 void VehicleDetailView::setupMoveButton() {
     _moveButton->setMaximumWidth(200);
-    _verticalLayout->addWidget(_moveButton);
 }
 
 void VehicleDetailView::setupRemoveButton() {
     _removeButton->setMaximumWidth(200);
-    _verticalLayout->addWidget(_removeButton);
 }
 
-void VehicleDetailView::setDynamicData(const Veicolo& veicolo) {    
+
+void VehicleDetailView::setDynamicData(const Veicolo& veicolo) {
     const MotoreCombustione* combustion = dynamic_cast<const MotoreCombustione*>(&veicolo);
     const MotoreElettrico* electric = dynamic_cast<const MotoreElettrico*>(&veicolo);
 
+    unsigned row = 2;
+
     if (combustion) {
-        unsigned int columns = _table->columnCount();
-        _table->setColumnCount(columns + 5);
+        _gridLayout->addWidget(new QLabel("Cilindrata: " + QString::number(combustion->cilindrata())), ++row, 1);
+        _gridLayout->addWidget(new QLabel("Emissioni CO_2: " + QString::number(combustion->emissioni())), ++row, 1);
 
-        _table->setHorizontalHeaderItem(columns, new QTableWidgetItem("Cilindrata"));
-        _table->setItem(0, columns, new QTableWidgetItem(QString::number(combustion->cilindrata())));
-
-        _table->setHorizontalHeaderItem(++columns, new QTableWidgetItem("Emissioni CO_2"));
-        _table->setItem(0, columns, new QTableWidgetItem(QString::number(combustion->emissioni())));
-
-        _table->setHorizontalHeaderItem(++columns, new QTableWidgetItem("Carburante"));
+        QString text = "Carburante: ";
         switch (combustion->tipoCarburante()) {
         case MotoreCombustione::gpl:
-            _table->setItem(0, columns, new QTableWidgetItem("GPL"));
+            text += "GPL";
             break;
         case MotoreCombustione::metano:
-            _table->setItem(0, columns, new QTableWidgetItem("Metano"));
+            text += "Metano";
             break;
         case MotoreCombustione::diesel:
-            _table->setItem(0, columns, new QTableWidgetItem("Diesel"));
+            text += "Diesel";
             break;
         default:
-            _table->setItem(0, columns, new QTableWidgetItem("Benzina"));
+            text += "Benzina";
             break;
         }
+        _gridLayout->addWidget(new QLabel(text), ++row, 1);
 
-        _table->setHorizontalHeaderItem(++columns, new QTableWidgetItem("Carburante disponibile"));
-        _table->setItem(0, columns, new QTableWidgetItem(QString::number(combustion->litriSerbatoio())));
-
-        _table->setHorizontalHeaderItem(++columns, new QTableWidgetItem("Capacità serbatoio"));
-        _table->setItem(0, columns, new QTableWidgetItem(QString::number(combustion->capacitaSerbatoio())));
+        _gridLayout->addWidget(new QLabel("Carburante disponibile: " + QString::number(combustion->litriSerbatoio())), ++row, 1);
+        _gridLayout->addWidget(new QLabel("Capacità serbatoio: " + QString::number(combustion->capacitaSerbatoio())), ++row, 1);
     }
 
     if (electric) {
-        unsigned int columns = _table->columnCount();
-        _table->setColumnCount(columns + 4);
+        _gridLayout->addWidget(new QLabel("Percentuale batteria: " + QString::number(electric->percentualeCarica())), ++row, 1);
+        _gridLayout->addWidget(new QLabel("Capacità batteria: " + QString::number(electric->capacitaBatteria())), ++row, 1);
 
-        _table->setHorizontalHeaderItem(columns, new QTableWidgetItem("Percentuale batteria"));
-        _table->setItem(0, columns, new QTableWidgetItem(QString::number(electric->percentualeCarica())));
-
-        _table->setHorizontalHeaderItem(++columns, new QTableWidgetItem("Capacità batteria"));
-        _table->setItem(0, columns, new QTableWidgetItem(QString::number(electric->capacitaBatteria())));
-
-        _table->setHorizontalHeaderItem(++columns, new QTableWidgetItem("Velocità di carica supportata"));
+        QString text = "Velocità di carica supportata: ";
         switch (electric->caricaSupportata()) {
         case MotoreElettrico::lenta:
-            _table->setItem(0, columns, new QTableWidgetItem("Lenta"));
+            text += "Lenta";
             break;
         case MotoreElettrico::media:
-            _table->setItem(0, columns, new QTableWidgetItem("Media"));
+            text += "Media";
             break;
         default:
-            _table->setItem(0, columns, new QTableWidgetItem("Veloce"));
+            text += "Veloce";
             break;
         }
+        _gridLayout->addWidget(new QLabel(text), ++row, 1);
 
-        _table->setHorizontalHeaderItem(++columns, new QTableWidgetItem("In carica"));
-        _table->setItem(0, columns, new QTableWidgetItem(electric->inCarica() ? "Si" : "No"));
+        text = "In carica: ";
+        if (electric->inCarica())
+            text += "<img src=:/icons/true.png width=20 height=20>";
+        else
+            text += "<img src=:/icons/false.png width=20 height=20>";
+        QLabel* inCarica = new QLabel(text);
+        inCarica->setTextFormat(Qt::RichText);
+        _gridLayout->addWidget(inCarica, ++row, 1);
 
-        if (electric->inCarica()) {
-            _table->setColumnCount(_table->columnCount() + 1);
-            _table->setHorizontalHeaderItem(++columns, new QTableWidgetItem("Tempo di carica rimanente"));
-            _table->setItem(0, columns, new QTableWidgetItem(QString::number(electric->tempoRimanenteCaricaCompleta())));
-        }
-    }    
+        if (electric->inCarica())
+            _gridLayout->addWidget(new QLabel("Tempo di carica rimanente: " + QString::number(electric->tempoRimanenteCaricaCompleta())), ++row, 1);
+    }
+}
+
+void VehicleDetailView::clearDynamicData() {
+    unsigned row = 0;
+
+    do {
+        QLabel* label = dynamic_cast<QLabel*>(_gridLayout->itemAtPosition(row, 1)->widget());
+        _gridLayout->removeWidget(label);
+        delete label;
+        ++row;
+    } while (_gridLayout->itemAtPosition(row, 1));
 }
 
 void VehicleDetailView::createMoveDialog(const std::string& currentCity) {
@@ -195,4 +215,11 @@ void VehicleDetailView::createMoveDialog(const std::string& currentCity) {
     modal->setLayout(layout);
     modal->show();
     modal->activateWindow();
+}
+
+void VehicleDetailView::showMessage(const QString& msg) {
+    QMessageBox* dialog = new QMessageBox(this);
+    dialog->setText(msg);
+
+    dialog->show();
 }

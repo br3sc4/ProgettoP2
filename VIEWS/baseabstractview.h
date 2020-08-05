@@ -1,16 +1,17 @@
 #ifndef BASEVIEW_H
 #define BASEVIEW_H
 
-#include "QWidget"
-#include "QVBoxLayout"
-#include "QHBoxLayout"
-#include "QLabel"
-#include "QTableWidget"
-#include "QHeaderView"
-#include "QSizePolicy"
-#include "QMenuBar"
-#include "QMessageBox"
-#include "QFile"
+#include "Components/basetopbar.h"
+#include <QWidget>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
+#include <QLabel>
+#include <QTableWidget>
+#include <QHeaderView>
+#include <QSizePolicy>
+#include <QMenuBar>
+#include <QMessageBox>
+#include <QFile>
 
 class BaseAbstractView : public QWidget {
     Q_OBJECT
@@ -28,16 +29,13 @@ public:
     void showMessage(const QString& msg);
 
 private:
-    QLabel* _title;
+    BaseTopBar* _topBar;
 
     void setupLayout();
-    void setupLabel(const QString& title);
     void setupTable(const QStringList& headerStrings);
-    void setupMenuBar();
     void setupStyle();
 
 protected:
-    QMenuBar* _menubar;
     QTableWidget* _table;
     QVBoxLayout* _verticalLayout;
     QHBoxLayout* _horizontalLayout;

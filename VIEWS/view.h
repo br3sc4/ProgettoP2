@@ -6,7 +6,10 @@
 #include "VIEWS/vehiclelistview.h"
 #include "VIEWS/vehicledetailview.h"
 #include "Wizard/citywizard.h"
-#include "QStackedWidget"
+#include <QStackedWidget>
+#include <QDialog>
+#include <QMessageBox>
+#include <QFile>
 
 class Controller;
 class CitiesListView;
@@ -24,16 +27,18 @@ public:
     VehicleListView* getVehicleListView() const;
     VehicleDetailView* getVehicleDetailView() const;
 
-    BaseAbstractView* getCurrentView() const;
-    void setCurrentView(BaseAbstractView* view);
+    void showMessage(const QString& msg);
 
-    unsigned int getCurrentIndex() const;
+    QWidget* getCurrentView() const;
+    void setCurrentView(QWidget* view);
 
 private:
     CitiesListView* _citiesView;
     VehicleListView* _vehiclesView;
     VehicleDetailView* _vehicleDetailView;
     Controller* _controller;
+
+    void setupStyle();
 
     const QString _titoloApp = "CitySharing";
     const unsigned int _minAltezza = 800;

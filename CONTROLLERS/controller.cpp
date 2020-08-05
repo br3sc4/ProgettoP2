@@ -1,4 +1,5 @@
 #include "controller.h"
+#include <typeinfo>
 
 Controller::Controller(Model* model, QObject* parent): QObject(parent),
     _view(nullptr), _model(model) {}
@@ -29,52 +30,51 @@ Veicolo* Controller::getVehicle() const {
 }
 
 QString Controller::getCurrentCity() const {
-    QString title = _view->getVehicleListView()->getTitle();
+    QString title = _view->getVehicleListView()->title();
     return title.split(QLatin1Char(' ')).last().split(QLatin1Char('<')).first();
 }
 
 QString Controller::getCurrentVehicle() const {
-    QString title = _view->getVehicleDetailView()->getTitle();
+    QString title = _view->getVehicleDetailView()->title();
     return title.split(QLatin1Char(' ')).last().split(QLatin1Char('<')).first();
 }
 
 void Controller::addCity(const std::string& nome) {
     _model->addCity(new Citta(nome));
-    _view->getCurrentView()->update();
+    _view->currentWidget()->update();
 }
 
 void Controller::addVehicle(unsigned int city, Veicolo* const vehicle) {
     _model->addVehicle(city, vehicle);
-    _view->getCurrentView()->update();
+    _view->currentWidget()->update();
 }
 
 void Controller::goToVehiclesView(int row) {
-    _view->getCurrentView()->resetTableSelection();
+    _view->getCitiesListView()->resetTableSelection();
+
     VehicleListView* vehicles = _view->getVehicleListView();
     _currentCityIndex = row;
 
     vehicles->setTitle("Flotta di " + QString::fromStdString(_model->getCity(row)->getNome()));
     vehicles->setHederStrings({ "Tipo", "Targa", "In manutenzione", "In riserva", "Autonomia (km)", "Fattore green", "Fattore utilizzo" });
     vehicles->update();
-    _view->setCurrentView(vehicles);
+    _view->setCurrentWidget(vehicles);
 }
 
 void Controller::goToVehicleDetailView(int row) {
-    _view->getCurrentView()->resetTableSelection();
+    _view->getVehicleListView()->resetTableSelection();
     VehicleDetailView* vehicleDetail = _view->getVehicleDetailView();
     _currentVehicleIndex = row;
 
-    vehicleDetail->setHederStrings({ "Tipo", "Targa", "Posizione", "Chilometraggio (km)", "N. Posti",
-                                     "Consumo al km", "Fattore green", "Autonomia (km)", "Fattore di utilizzo" });
     vehicleDetail->setTitle("Veicolo " + QString::fromStdString(_model->getVehicle(_currentCityIndex, row)->targa()));
     vehicleDetail->update();
-    _view->setCurrentView(vehicleDetail);
+    _view->setCurrentWidget(vehicleDetail);
 }
 
 void Controller::goBack() const {
-    unsigned int currentView = _view->getCurrentIndex();
+    int currentView = _view->currentIndex();
     _view->setCurrentIndex(currentView - 1);
-    _view->getCurrentView()->update();
+    _view->widget(currentView)->update();
 }
 
 void Controller::toggleMaintenance(int state) const {
@@ -92,7 +92,7 @@ void Controller::removeVehicle() const {
     goBack();
     std::stringstream msg;
     msg << "Veicolo \"" << vehicle->targa() << "\" rimosso dalla flotta.";
-    _view->getCurrentView()->showMessage(QString::fromStdString(msg.str()));
+    dynamic_cast<VehicleDetailView*>(_view->currentWidget())->showMessage(QString::fromStdString(msg.str()));
 }
 
 void Controller::saveChage(int row) const {
@@ -102,8 +102,8 @@ void Controller::saveChage(int row) const {
         goBack();
         std::stringstream msg;
         msg << "Veicolo \"" << vehicle->targa() << "\" spostato a " << _model->getCity(row)->getNome() << ".";
-        _view->getCurrentView()->showMessage(QString::fromStdString(msg.str()));
+        dynamic_cast<VehicleDetailView*>(_view->currentWidget())->showMessage(QString::fromStdString(msg.str()));
     } catch (std::exception* e) {
-        _view->getCurrentView()->showMessage(e->what());
+        dynamic_cast<VehicleDetailView*>(_view->currentWidget())->showMessage(e->what());
     }
 }
