@@ -68,6 +68,7 @@ double MotoreCombustione::autonomia() const {
 }
 
 short int MotoreCombustione::fattoreGreen() const {
+    cout << targa() << " fattore GREEN combustione" << endl;
     double somma = 0;
     if(_tipoCarburante == benzina)
         somma = somma - 2;                  // benzina negativo

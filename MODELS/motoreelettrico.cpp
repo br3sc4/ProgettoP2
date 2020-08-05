@@ -58,6 +58,7 @@ double MotoreElettrico::autonomia() const {
 }
 
 short int MotoreElettrico::fattoreGreen() const {
+    cout << targa() << " fattore GREEN elettrico" << endl;
     short int somma = 0;
     if(ingombro() == 1)
         somma = somma + 3;                          // meno ingombro positivo

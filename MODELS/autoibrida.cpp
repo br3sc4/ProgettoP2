@@ -84,6 +84,7 @@ double AutoIbrida::autonomia() const {
 }
 
 short AutoIbrida::fattoreGreen() const {
+    cout << targa() << " fattore GREEN ibrida" << endl;
     short int somma = MotoreElettrico::fattoreGreen() + MotoreCombustione::fattoreGreen();
 
     if(somma < -10) return -10;
