@@ -47,7 +47,7 @@ MotoreElettrico::MotoreElettrico(
 MotoreElettrico::~MotoreElettrico() {}
 
 double MotoreElettrico::consumoKm() const {
-    cout << "consumoKm() auto elettrica: "<< targa() << endl;
+    cout << targa() << " consumoKm() auto elettrica" << endl;
     if(ingombro()<=2)
          return _potenza/10 / _numeroMotori;
     return  _potenza/1000 / _numeroMotori;

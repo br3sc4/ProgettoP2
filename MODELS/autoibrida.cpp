@@ -93,6 +93,6 @@ short AutoIbrida::fattoreGreen() const {
 }
 
 double AutoIbrida::consumoKm() const {
-    cout << "consumoKm() ibrida: "<< targa() << endl;
+    cout << targa() << " consumoKm() auto ibrida" << endl;
     return MotoreElettrico::consumoKm() + MotoreCombustione::consumoKm();
 }

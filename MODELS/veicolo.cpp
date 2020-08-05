@@ -1,6 +1,13 @@
 #include "MODELS/veicolo.h"
+#include "iostream"
 
-Veicolo::Veicolo() {}
+using namespace std;
+
+
+Veicolo::Veicolo() {
+
+    cout << "veicolo()" << endl;
+}
 
 Veicolo::Veicolo(
         string targa,
