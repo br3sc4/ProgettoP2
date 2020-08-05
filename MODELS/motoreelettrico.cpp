@@ -1,4 +1,7 @@
 #include "MODELS/motoreelettrico.h"
+#include "iostream"
+
+using namespace std;
 
 MotoreElettrico::MotoreElettrico(
     string targa,
@@ -44,6 +47,7 @@ MotoreElettrico::MotoreElettrico(
 MotoreElettrico::~MotoreElettrico() {}
 
 double MotoreElettrico::consumoKm() const {
+    cout << "consumoKm() auto elettrica: "<< targa() << endl;
     if(ingombro()<=2)
          return _potenza/10 / _numeroMotori;
     return  _potenza/1000 / _numeroMotori;

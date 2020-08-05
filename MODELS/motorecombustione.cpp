@@ -43,6 +43,8 @@ MotoreCombustione::MotoreCombustione(
 MotoreCombustione::~MotoreCombustione() {}
 
 double MotoreCombustione::consumoKm() const {
+   cout << "consumoKm() auto combustione: "<< targa() << endl;
+
     double consumo;
 
     if(ingombro()<3)
