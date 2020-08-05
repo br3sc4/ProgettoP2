@@ -1,4 +1,8 @@
 #include "VIEWS/vehicledetailview.h"
+#include "iostream"
+
+using namespace std;
+
 
 VehicleDetailView::VehicleDetailView(Controller* controller, const QString& title, QWidget *parent):
     ViewInterface(parent), _controller(controller), _verticalLayout(new QVBoxLayout), _gridLayout(new QGridLayout),
@@ -22,7 +26,11 @@ VehicleDetailView::~VehicleDetailView() {
 }
 
 void VehicleDetailView::reload() {
+    cout << "reload()" << endl;
+
     Veicolo* vehicle = _controller->getVehicle();
+
+
 
     // Prima colonna
     dynamic_cast<QLabel*>(_gridLayout->itemAtPosition(0, 0)->widget())->setText("Posizione: " + QString::fromStdString(vehicle->posizione()));
