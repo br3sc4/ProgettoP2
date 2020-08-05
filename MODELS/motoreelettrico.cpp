@@ -1,7 +1,4 @@
 #include "MODELS/motoreelettrico.h"
-#include "iostream"
-
-using namespace std;
 
 MotoreElettrico::MotoreElettrico(
     string targa,
@@ -47,7 +44,6 @@ MotoreElettrico::MotoreElettrico(
 MotoreElettrico::~MotoreElettrico() {}
 
 double MotoreElettrico::consumoKm() const {
-    cout << targa() << " consumoKm() auto elettrica" << endl;
     if(ingombro()<=2)
          return _potenza/10 / _numeroMotori;
     return  _potenza/1000 / _numeroMotori;
@@ -58,7 +54,6 @@ double MotoreElettrico::autonomia() const {
 }
 
 short int MotoreElettrico::fattoreGreen() const {
-    cout << targa() << " fattore GREEN elettrico" << endl;
     short int somma = 0;
     if(ingombro() == 1)
         somma = somma + 3;                          // meno ingombro positivo

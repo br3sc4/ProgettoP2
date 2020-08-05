@@ -1,7 +1,4 @@
 #include "MODELS/autoibrida.h"
-#include "iostream"
-
-using namespace std;
 
 AutoIbrida::AutoIbrida(
     string targa,
@@ -84,7 +81,6 @@ double AutoIbrida::autonomia() const {
 }
 
 short AutoIbrida::fattoreGreen() const {
-    cout << targa() << " fattore GREEN ibrida" << endl;
     short int somma = MotoreElettrico::fattoreGreen() + MotoreCombustione::fattoreGreen();
 
     if(somma < -10) return -10;
@@ -94,6 +90,5 @@ short AutoIbrida::fattoreGreen() const {
 }
 
 double AutoIbrida::consumoKm() const {
-    cout << targa() << " consumoKm() auto ibrida" << endl;
     return MotoreElettrico::consumoKm() + MotoreCombustione::consumoKm();
 }

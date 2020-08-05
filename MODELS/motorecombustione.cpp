@@ -43,8 +43,6 @@ MotoreCombustione::MotoreCombustione(
 MotoreCombustione::~MotoreCombustione() {}
 
 double MotoreCombustione::consumoKm() const {
-   cout << targa() << " consumoKm() auto combustione" << endl;
-
     double consumo;
 
     if(ingombro()<3)
@@ -68,7 +66,6 @@ double MotoreCombustione::autonomia() const {
 }
 
 short int MotoreCombustione::fattoreGreen() const {
-    cout << targa() << " fattore GREEN combustione" << endl;
     double somma = 0;
     if(_tipoCarburante == benzina)
         somma = somma - 2;                  // benzina negativo
