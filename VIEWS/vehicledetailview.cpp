@@ -46,10 +46,31 @@ void VehicleDetailView::reload() {
         riserva->setText("In riserva: <img src=:/icons/false.png width=20 height=20>");
     riserva->setTextFormat(Qt::RichText);
 
-    if (_gridLayout->itemAtPosition(0, 1))
+    // Se è stato aperto un altro veicolo prima
+    if (_gridLayout->itemAtPosition(4, 1))
         clearDynamicData();
 
     // Seconda colonna
+    Veicolo::StatoVeicolo state = vehicle->statoAttuale();
+//    _checkBox->setCheckState(state == Veicolo::manutenzione ? Qt::Checked : Qt::Unchecked);
+
+    QString stato = "Stato: ";
+    switch (state) {
+        case Veicolo::libero:
+            stato += "<img src=:/icons/available.png width=20 height=20> libero";
+            break;
+        case Veicolo::prenotato:
+            stato += "<img src=:/icons/reserved.png width=20 height=20> prenotato";
+            break;
+        case Veicolo::occupato:
+            stato += "<img src=:/icons/occupate.png width=20 height=20> occupato";
+            break;
+        case Veicolo::manutenzione:
+            stato += "<img src=:/icons/manutenzione.png width=20 height=20> manutenzione";
+            break;
+    }
+    static_cast<QLabel*>(_gridLayout->itemAtPosition(3, 1)->widget())->setText(stato);
+
     setDynamicData(*vehicle);
 }
 
@@ -85,6 +106,7 @@ void VehicleDetailView::setupLayout() {
     _gridLayout->addWidget(_checkBox, 0, 1, 1, 2);
     _gridLayout->addWidget(_moveButton, 1, 1, 1, 2);
     _gridLayout->addWidget(_removeButton, 2, 1, 1, 2);
+    _gridLayout->addWidget(new QLabel("Stato: "), 3, 1, 1, 2);
 
     _verticalLayout->addSpacerItem(new QSpacerItem(10, 10, QSizePolicy::Minimum, QSizePolicy::MinimumExpanding));
 
@@ -110,24 +132,7 @@ void VehicleDetailView::setDynamicData(const Veicolo& veicolo) {
     const MotoreCombustione* combustion = dynamic_cast<const MotoreCombustione*>(&veicolo);
     const MotoreElettrico* electric = dynamic_cast<const MotoreElettrico*>(&veicolo);
 
-    unsigned row = 2;
-
-    QString stato = "Stato: ";
-    switch(veicolo.statoAttuale()){
-        case Veicolo::libero:
-        stato += "<img src=:/icons/available.png width=20 height=20> libero";
-        break;
-        case Veicolo::prenotato:
-        stato += "<img src=:/icons/reserved.png width=20 height=20> prenotato";
-        break;
-        case Veicolo::occupato:
-        stato += "<img src=:/icons/occupate.png width=20 height=20> occupato";
-        break;
-        case Veicolo::manutenzione:
-        stato += "<img src=:/icons/manutenzione.png width=20 height=20> manutenzione";
-        break;
-    }
-    _gridLayout->addWidget(new QLabel(stato), ++row, 1);
+    unsigned row = 3;
 
     if (combustion) {
         _gridLayout->addWidget(new QLabel("Cilindrata: " + QString::number(combustion->cilindrata())), ++row, 1, 1, 2);
@@ -135,18 +140,18 @@ void VehicleDetailView::setDynamicData(const Veicolo& veicolo) {
 
         QString text = "Carburante: ";
         switch (combustion->tipoCarburante()) {
-        case MotoreCombustione::gpl:
-            text += "GPL";
-            break;
-        case MotoreCombustione::metano:
-            text += "Metano";
-            break;
-        case MotoreCombustione::diesel:
-            text += "Diesel";
-            break;
-        default:
-            text += "Benzina";
-            break;
+            case MotoreCombustione::gpl:
+                text += "GPL";
+                break;
+            case MotoreCombustione::metano:
+                text += "Metano";
+                break;
+            case MotoreCombustione::diesel:
+                text += "Diesel";
+                break;
+            default:
+                text += "Benzina";
+                break;
         }
         _gridLayout->addWidget(new QLabel(text), ++row, 1, 1, 2);
 
@@ -173,10 +178,9 @@ void VehicleDetailView::setDynamicData(const Veicolo& veicolo) {
         _gridLayout->addWidget(new QLabel(text), ++row, 1, 1, 2);
 
         text = "In carica: ";
-        if (electric->inCarica()){
+        if (electric->inCarica())
             text += "<img src=:/icons/charging.png width=40 height=40>";
-
-        }else
+        else
             text += "<img src=:/icons/not_charging.png width=40 height=40>";
         QLabel* inCarica = new QLabel(text);
         inCarica->setTextFormat(Qt::RichText);
@@ -211,7 +215,7 @@ void VehicleDetailView::setDynamicData(const Veicolo& veicolo) {
 }
 
 void VehicleDetailView::clearDynamicData() {
-    unsigned row = 0;
+    unsigned row = 4;
 
     do {
         QLabel* label = dynamic_cast<QLabel*>(_gridLayout->itemAtPosition(row, 1)->widget());
