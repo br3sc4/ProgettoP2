@@ -1,7 +1,6 @@
 #include "CONTROLLERS/controller.h"
 #include "VIEWS/view.h"
 #include <QApplication>
-#include <iostream>
 #include "loadDataBase.cpp"
 
 int main(int argc, char *argv[])
