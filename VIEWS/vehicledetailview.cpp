@@ -1,5 +1,6 @@
 #include "VIEWS/vehicledetailview.h"
 
+
 VehicleDetailView::VehicleDetailView(Controller* controller, const QString& title, QWidget *parent):
     ViewInterface(parent), _controller(controller), _verticalLayout(new QVBoxLayout), _gridLayout(new QGridLayout),
     _topBar(new BackTopBar(title, parent)), _checkBox(new QCheckBox("imposta in manutenzione", parent)),
@@ -52,21 +53,26 @@ void VehicleDetailView::reload() {
 
     // Seconda colonna
     Veicolo::StatoVeicolo state = vehicle->statoAttuale();
-//    _checkBox->setCheckState(state == Veicolo::manutenzione ? Qt::Checked : Qt::Unchecked);
+    const QSignalBlocker blocker(_checkBox);
+    _checkBox->setCheckState(state == 3 ? Qt::Checked : Qt::Unchecked);
 
     QString stato = "Stato: ";
     switch (state) {
         case Veicolo::libero:
             stato += "<img src=:/icons/available.png width=20 height=20> libero";
+            _checkBox->setDisabled(false);
             break;
         case Veicolo::prenotato:
             stato += "<img src=:/icons/reserved.png width=20 height=20> prenotato";
+            _checkBox->setDisabled(true);
             break;
         case Veicolo::occupato:
             stato += "<img src=:/icons/occupate.png width=20 height=20> occupato";
+            _checkBox->setDisabled(true);
             break;
         case Veicolo::manutenzione:
             stato += "<img src=:/icons/manutenzione.png width=20 height=20> manutenzione";
+            _checkBox->setDisabled(false);
             break;
     }
     static_cast<QLabel*>(_gridLayout->itemAtPosition(3, 1)->widget())->setText(stato);
@@ -210,7 +216,7 @@ void VehicleDetailView::setDynamicData(const Veicolo& veicolo) {
         }
 
         if (electric->inCarica())
-            _gridLayout->addWidget(new QLabel("Tempo di carica rimanente: " + QString::number(electric->tempoRimanenteCaricaCompleta())), ++row, 1, 1, 2);
+            _gridLayout->addWidget(new QLabel("Tempo di carica rimanente: " + QString::number(electric->tempoRimanenteCaricaCompleta()) + " min"), ++row, 1, 1, 2);
     }
 }
 
