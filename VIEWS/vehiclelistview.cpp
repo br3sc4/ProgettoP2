@@ -26,11 +26,15 @@ void VehicleListView::reload() {
 
     for (int i = 0; i < _table->rowCount(); i++) {
         QPixmap* pixmap = new QPixmap(getIconPath(*vehicles[i]));
+
         QTableWidgetItem *item = new QTableWidgetItem();
-        item->setData(Qt::DecorationRole, pixmap->scaled(50, 50, Qt::KeepAspectRatio));
+        item->setData(Qt::DecorationRole, pixmap->scaled(50, 50));
+        item->setTextAlignment(Qt::AlignCenter);
         _table->setItem(i, 0, item);
+
         item = new QTableWidgetItem(QString::fromStdString(vehicles[i]->targa()));
         _table->setItem(i, 1, item);
+
         item = new QTableWidgetItem();
         Veicolo::StatoVeicolo stato = vehicles[i]->statoAttuale();
         QPixmap* iconaStato;
@@ -48,25 +52,30 @@ void VehicleListView::reload() {
                 iconaStato = new QPixmap(":/icons/manutenzione.png");
                 break;
         }
-        item->setData(Qt::DecorationRole, iconaStato->scaled(20, 20, Qt::KeepAspectRatio));
+        item->setData(Qt::DecorationRole, iconaStato->scaled(20, 20));
         _table->setItem(i, 2, item);
+
         item = new QTableWidgetItem();
         if(vehicles[i]->serveAssistenza())
-            item->setData(Qt::DecorationRole, help->scaled(20, 20, Qt::KeepAspectRatio));
+            item->setData(Qt::DecorationRole, help->scaled(20, 20));
          else
-            item->setData(Qt::DecorationRole, ok->scaled(20, 20, Qt::KeepAspectRatio));
+            item->setData(Qt::DecorationRole, ok->scaled(20, 20));
         _table->setItem(i, 3, item);
+
         vehicles[i]->checkRiserva();
         item = new QTableWidgetItem();
         if(vehicles[i]->inRiserva())
-            item->setData(Qt::DecorationRole, si->scaled(20, 20, Qt::KeepAspectRatio));
+            item->setData(Qt::DecorationRole, si->scaled(20, 20));
          else
-            item->setData(Qt::DecorationRole, no->scaled(20, 20, Qt::KeepAspectRatio));
+            item->setData(Qt::DecorationRole, no->scaled(20, 20));
         _table->setItem(i, 4, item);
+
         item = new QTableWidgetItem(QString("%1").arg(vehicles[i]->autonomia(), 0, 'f', 2));
         _table->setItem(i, 5, item);
+
         item = new QTableWidgetItem(QString::number(vehicles[i]->fattoreGreen()));
         _table->setItem(i, 6, item);
+
         item = new QTableWidgetItem(QString::number(vehicles[i]->fattoreUtilizzo()));
         _table->setItem(i, 7, item);
 
@@ -101,6 +110,7 @@ void VehicleListView::setupTable(const QStringList& headerStrings) {
     _table->setSelectionBehavior(QAbstractItemView::SelectRows);
     _table->setSelectionMode(QAbstractItemView::SingleSelection);
     _table->setAlternatingRowColors(true);
+
     _table->verticalHeader()->hide();
 }
 

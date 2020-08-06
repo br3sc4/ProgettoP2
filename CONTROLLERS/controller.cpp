@@ -56,7 +56,7 @@ void Controller::goToVehiclesView(int row) {
     _currentCityIndex = row;
 
     vehicles->setTitle("Flotta di " + QString::fromStdString(_model->getCity(row)->getNome()));
-    vehicles->setHederStrings({ "Tipo", "Targa","Stato", "Serve assistenza", "In riserva", "Autonomia (km)", "Fattore green", "Fattore utilizzo" });
+    vehicles->setHederStrings({ "Tipologia", "Targa", "Stato", "Serve assistenza", "In riserva", "Autonomia", "Fattore green", "Fattore utilizzo" });
     vehicles->reload();
     _view->setCurrentWidget(vehicles);
 }
