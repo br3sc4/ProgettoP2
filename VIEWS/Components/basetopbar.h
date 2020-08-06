@@ -33,6 +33,7 @@ signals:
     void closeSignal();
     void showAddCityWizard();
     void showAddVehicleWizard();
+    void showInfoWizard();
 };
 
 #endif // BASETOPBAR_H
