@@ -24,9 +24,8 @@
         <file>stylesheets/style.css</file>
         <file>icons/change_city.png</file>
         <file>icons/delete.png</file>
-        <file>icons/fixing.png</file>
         <file>icons/logo_app.icns</file>
         <file>icons/logo_app.ico</file>
-        <file>icons/not_fixing.png</file>
+        <file>icons/help.png</file>
     </qresource>
 </RCC>

@@ -46,11 +46,6 @@ void BaseTopBar::setupMenuBar() {
     connect(addCity, &QAction::triggered, this, &BaseTopBar::showAddCityWizard);
     connect(addVehicle, &QAction::triggered, this, &BaseTopBar::showAddVehicleWizard);
 
-     QMenu* help = _menubar->addMenu("Help");
-     QAction* infoIcon = help->addAction("Info icon");
-
-     connect(infoIcon, &QAction::triggered, this, &BaseTopBar::showInfoWizard);
-
 }
 
 void BaseTopBar::setupLabel(const QString &title) {

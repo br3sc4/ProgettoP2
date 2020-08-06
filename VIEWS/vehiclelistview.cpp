@@ -21,6 +21,8 @@ void VehicleListView::reload() {
 
     QPixmap* si = new QPixmap(":/icons/true.png");
     QPixmap* no = new QPixmap(":/icons/false.png");
+    QPixmap* help = new QPixmap(":/icons/help.png");
+    QPixmap* ok = new QPixmap(":/icons/available.png");
 
     for (int i = 0; i < _table->rowCount(); i++) {
         QPixmap* pixmap = new QPixmap(getIconPath(*vehicles[i]));
@@ -31,9 +33,9 @@ void VehicleListView::reload() {
         _table->setItem(i, 1, item);
         item = new QTableWidgetItem();
         if(vehicles[i]->serveAssistenza())
-            item->setData(Qt::DecorationRole, si->scaled(20, 20, Qt::KeepAspectRatio));
+            item->setData(Qt::DecorationRole, help->scaled(20, 20, Qt::KeepAspectRatio));
          else
-            item->setData(Qt::DecorationRole, no->scaled(20, 20, Qt::KeepAspectRatio));
+            item->setData(Qt::DecorationRole, ok->scaled(20, 20, Qt::KeepAspectRatio));
         _table->setItem(i, 2, item);
         vehicles[i]->checkRiserva();
         item = new QTableWidgetItem();
