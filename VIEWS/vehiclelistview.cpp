@@ -32,24 +32,43 @@ void VehicleListView::reload() {
         item = new QTableWidgetItem(QString::fromStdString(vehicles[i]->targa()));
         _table->setItem(i, 1, item);
         item = new QTableWidgetItem();
+        Veicolo::StatoVeicolo stato = vehicles[i]->statoAttuale();
+        QPixmap* iconaStato;
+        switch (stato) {
+            case Veicolo::libero:
+                iconaStato = new QPixmap(":/icons/available.png");
+                break;
+            case Veicolo::prenotato:
+                iconaStato = new QPixmap(":/icons/reserved.png");
+                break;
+            case Veicolo::occupato:
+                iconaStato = new QPixmap(":/icons/occupate.png");
+                break;
+            case Veicolo::manutenzione:
+                iconaStato = new QPixmap(":/icons/manutenzione.png");
+                break;
+        }
+        item->setData(Qt::DecorationRole, iconaStato->scaled(20, 20, Qt::KeepAspectRatio));
+        _table->setItem(i, 2, item);
+        item = new QTableWidgetItem();
         if(vehicles[i]->serveAssistenza())
             item->setData(Qt::DecorationRole, help->scaled(20, 20, Qt::KeepAspectRatio));
          else
             item->setData(Qt::DecorationRole, ok->scaled(20, 20, Qt::KeepAspectRatio));
-        _table->setItem(i, 2, item);
+        _table->setItem(i, 3, item);
         vehicles[i]->checkRiserva();
         item = new QTableWidgetItem();
         if(vehicles[i]->inRiserva())
             item->setData(Qt::DecorationRole, si->scaled(20, 20, Qt::KeepAspectRatio));
          else
             item->setData(Qt::DecorationRole, no->scaled(20, 20, Qt::KeepAspectRatio));
-        _table->setItem(i, 3, item);
-        item = new QTableWidgetItem(QString("%1").arg(vehicles[i]->autonomia(), 0, 'f', 2));
         _table->setItem(i, 4, item);
-        item = new QTableWidgetItem(QString::number(vehicles[i]->fattoreGreen()));
+        item = new QTableWidgetItem(QString("%1").arg(vehicles[i]->autonomia(), 0, 'f', 2));
         _table->setItem(i, 5, item);
-        item = new QTableWidgetItem(QString::number(vehicles[i]->fattoreUtilizzo()));
+        item = new QTableWidgetItem(QString::number(vehicles[i]->fattoreGreen()));
         _table->setItem(i, 6, item);
+        item = new QTableWidgetItem(QString::number(vehicles[i]->fattoreUtilizzo()));
+        _table->setItem(i, 7, item);
 
         _table->setRowHeight(i, 60);
     }
