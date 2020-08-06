@@ -1,5 +1,11 @@
 <RCC>
     <qresource prefix="/">
+        <file>icons/charger_lvl1.png</file>
+        <file>icons/charger_lvl2.png</file>
+        <file>icons/charger_lvl3.png</file>
+        <file>icons/charger_lvl4.png</file>
+        <file>icons/charging.png</file>
+        <file>icons/not_charging.png</file>
         <file>icons/true.png</file>
         <file>icons/false.png</file>
         <file>icons/auto.png</file>
