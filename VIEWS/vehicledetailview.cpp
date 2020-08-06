@@ -110,19 +110,19 @@ void VehicleDetailView::setDynamicData(const Veicolo& veicolo) {
 
     unsigned row = 2;
 
-    QString stato = "stato: ";
+    QString stato = "Stato: ";
     switch(veicolo.statoAttuale()){
         case Veicolo::libero:
-        stato += "<img src=:/icons/available.png width=40 height=40>";
+        stato += "<img src=:/icons/available.png width=20 height=20> libero";
         break;
         case Veicolo::prenotato:
-        stato += "<img src=:/icons/reserved.png width=40 height=40>";
+        stato += "<img src=:/icons/reserved.png width=20 height=20> prenotato";
         break;
         case Veicolo::occupato:
-        stato += "<img src=:/icons/occupate.png width=40 height=40>";
+        stato += "<img src=:/icons/occupate.png width=20 height=20> occupato";
         break;
         case Veicolo::manutenzione:
-        stato += "<img src=:/icons/manutenzione.png width=40 height=40>";
+        stato += "<img src=:/icons/manutenzione.png width=20 height=20> manutenzione";
         break;
     }
     _gridLayout->addWidget(new QLabel(stato), ++row, 1);
