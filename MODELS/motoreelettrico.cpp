@@ -41,7 +41,7 @@ MotoreElettrico::MotoreElettrico(
     _caricaSupportata(caricaSupportata),
     _colonninaAttuale(colonninaAttuale) {}
 
-MotoreElettrico::~MotoreElettrico() {}
+MotoreElettrico::~MotoreElettrico() = default;
 
 double MotoreElettrico::consumoKm() const {
     if(ingombro()<=2)

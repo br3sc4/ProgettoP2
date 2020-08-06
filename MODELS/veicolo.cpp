@@ -33,7 +33,7 @@ Veicolo::Veicolo(
         _serveAssistenza(serveAssistenza),
         _numeroGuasti(numeroGuasti) {}
 
-Veicolo::~Veicolo() {}
+Veicolo::~Veicolo() = default;
 
 void Veicolo::checkRiserva() {
     if (autonomia() < 30) _inRiserva = true;

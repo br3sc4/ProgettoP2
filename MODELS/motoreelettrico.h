@@ -35,7 +35,7 @@ public:
         VelocitaRicarica caricaSupportata,
         Colonnina colonninaAttuale);
 
-    virtual ~MotoreElettrico();
+    virtual ~MotoreElettrico() = 0;
 
     // Metodi virtuali implementati
     virtual double consumoKm() const;

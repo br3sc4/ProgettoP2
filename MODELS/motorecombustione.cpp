@@ -1,7 +1,4 @@
 #include "MODELS/motorecombustione.h"
-#include "iostream"
-
-using namespace std;
 
 MotoreCombustione::MotoreCombustione(
     string targa,
@@ -40,7 +37,7 @@ MotoreCombustione::MotoreCombustione(
     _cilindrata(cilindrata),
     _emissioni(emissioni) {}
 
-MotoreCombustione::~MotoreCombustione() {}
+MotoreCombustione::~MotoreCombustione() = default;
 
 double MotoreCombustione::consumoKm() const {
     double consumo;

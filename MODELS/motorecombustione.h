@@ -28,7 +28,7 @@ public:
         unsigned short cilindrata,
         unsigned short emissioni);
 
-    virtual ~MotoreCombustione();
+    virtual ~MotoreCombustione() = 0;
 
     // Metodi virtuali implementati
     virtual double consumoKm() const;
