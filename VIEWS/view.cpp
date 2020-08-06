@@ -16,11 +16,27 @@ View::View(Controller* controller, QWidget *parent) : QStackedWidget(parent),
 
     setupStyle();
 
-    connect(_citiesView, &CitiesListView::closeSignal, this, &View::close);
-    connect(_citiesView, &CitiesListView::showAddCityWizard, this, [=]() {
+    connect(_citiesView, &ViewInterface::closeSignal, this, &View::close);
+    connect(_citiesView, &ViewInterface::showAddCityWizard, this, [=]() {
         createWizard(true);
     });
-    connect(_citiesView, &CitiesListView::showAddVehicleWizard, this, [=]() {
+    connect(_citiesView, &ViewInterface::showAddVehicleWizard, this, [=]() {
+        createWizard();
+    });
+
+    connect(_vehiclesView, &ViewInterface::closeSignal, this, &View::close);
+    connect(_vehiclesView, &ViewInterface::showAddCityWizard, this, [=]() {
+        createWizard(true);
+    });
+    connect(_vehiclesView, &ViewInterface::showAddVehicleWizard, this, [=]() {
+        createWizard();
+    });
+
+    connect(_vehicleDetailView, &ViewInterface::closeSignal, this, &View::close);
+    connect(_vehicleDetailView, &ViewInterface::showAddCityWizard, this, [=]() {
+        createWizard(true);
+    });
+    connect(_vehicleDetailView, &ViewInterface::showAddVehicleWizard, this, [=]() {
         createWizard();
     });
 
