@@ -4,6 +4,7 @@ VehicleDetailView::VehicleDetailView(Controller* controller, const QString& titl
     ViewInterface(parent), _controller(controller), _verticalLayout(new QVBoxLayout), _gridLayout(new QGridLayout),
     _topBar(new BackTopBar(title, parent)), _checkBox(new QCheckBox("imposta in manutenzione", parent)),
     _moveButton(new QPushButton("Cambia città", parent)), _removeButton(new QPushButton("Rimuovi dalla flotta", parent)) {
+
     setupMoveButton();
     setupRemoveButton();
 
@@ -89,10 +90,16 @@ void VehicleDetailView::setupLayout() {
 }
 
 void VehicleDetailView::setupMoveButton() {
+    QPixmap pixmap1(":/icons/change_city.png");
+    QIcon ButtonIcon1(pixmap1.scaled(40, 40));
+    _moveButton->setIcon(ButtonIcon1);
     _moveButton->setMaximumWidth(200);
 }
 
 void VehicleDetailView::setupRemoveButton() {
+    QPixmap pixmap2(":/icons/delete.png");
+    QIcon ButtonIcon2(pixmap2.scaled(40, 40));
+    _removeButton->setIcon(ButtonIcon2);
     _removeButton->setMaximumWidth(200);
 }
 
