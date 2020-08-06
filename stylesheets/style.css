@@ -9,6 +9,12 @@ QHeaderView::section {
     border-bottom: 1px solid #bdbdbd;
     padding: 10;
     font-size: 15px;
+    font-weight: bold;
+
+}
+
+QTableWidget, td {
+    font-size: 18px;
 }
 
 QLabel {

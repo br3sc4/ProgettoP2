@@ -36,6 +36,7 @@ void BaseTopBar::setupLayout() {
 void BaseTopBar::setupMenuBar() {
     QMenu* file = _menubar->addMenu("File");
     QAction* exit = file->addAction("Exit");
+    exit->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_W));
     QAction* addVehicle = file->addAction("Add vehicle");
     addVehicle->setShortcut(QKeySequence::New);
     QAction* addCity = file->addAction("Add city");
@@ -44,6 +45,12 @@ void BaseTopBar::setupMenuBar() {
     connect(exit, &QAction::triggered, this, &BaseTopBar::closeSignal);
     connect(addCity, &QAction::triggered, this, &BaseTopBar::showAddCityWizard);
     connect(addVehicle, &QAction::triggered, this, &BaseTopBar::showAddVehicleWizard);
+
+     QMenu* help = _menubar->addMenu("Help");
+     QAction* infoIcon = help->addAction("Info icon");
+
+     connect(infoIcon, &QAction::triggered, this, &BaseTopBar::showInfoWizard);
+
 }
 
 void BaseTopBar::setupLabel(const QString &title) {

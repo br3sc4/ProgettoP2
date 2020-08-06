@@ -41,7 +41,7 @@ private:
     void setupStyle();
 
     const QString _titoloApp = "CitySharing";
-    const unsigned int _minAltezza = 800;
+    const unsigned int _minAltezza = 900;
     const unsigned int _minLarghezza = 600;
 
 private slots:

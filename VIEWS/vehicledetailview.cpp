@@ -2,8 +2,9 @@
 
 VehicleDetailView::VehicleDetailView(Controller* controller, const QString& title, QWidget *parent):
     ViewInterface(parent), _controller(controller), _verticalLayout(new QVBoxLayout), _gridLayout(new QGridLayout),
-    _topBar(new BackTopBar(title, parent)), _checkBox(new QCheckBox("in manutenzione", parent)),
+    _topBar(new BackTopBar(title, parent)), _checkBox(new QCheckBox("imposta in manutenzione", parent)),
     _moveButton(new QPushButton("Cambia città", parent)), _removeButton(new QPushButton("Rimuovi dalla flotta", parent)) {
+
     setupMoveButton();
     setupRemoveButton();
 
@@ -25,17 +26,17 @@ void VehicleDetailView::reload() {
     Veicolo* vehicle = _controller->getVehicle();
 
     // Prima colonna
-    static_cast<QLabel*>(_gridLayout->itemAtPosition(0, 0)->widget())->setText("Posizione: " + QString::fromStdString(vehicle->posizione()));
-    static_cast<QLabel*>(_gridLayout->itemAtPosition(1, 0)->widget())->setText("Chilometraggio: " + QString::number(vehicle->chilometraggio()));
-    static_cast<QLabel*>(_gridLayout->itemAtPosition(2, 0)->widget())->setText("Consumo al km: " + QString::number(vehicle->consumoKm()));
-    static_cast<QLabel*>(_gridLayout->itemAtPosition(3, 0)->widget())->setText("Numero posti: " + QString::number(vehicle->capacitaPosti()));
-    static_cast<QLabel*>(_gridLayout->itemAtPosition(4, 0)->widget())->setText("Ingombro: " + QString::number(vehicle->ingombro()));
-    static_cast<QLabel*>(_gridLayout->itemAtPosition(5, 0)->widget())->setText("Numero usi: " + QString::number(vehicle->numeroUsi()));
-    static_cast<QLabel*>(_gridLayout->itemAtPosition(6, 0)->widget())->setText("Tempo in servizio: " + QString::number(vehicle->tempoServizio()));
-    static_cast<QLabel*>(_gridLayout->itemAtPosition(7, 0)->widget())->setText("Numero guasti: " + QString::number(vehicle->numeroGuasti()));
-    static_cast<QLabel*>(_gridLayout->itemAtPosition(8, 0)->widget())->setText("Fattore green: " + QString::number(vehicle->fattoreGreen()));
-    static_cast<QLabel*>(_gridLayout->itemAtPosition(9, 0)->widget())->setText("Fattore utilizzo: " + QString::number(vehicle->fattoreUtilizzo()));
-    static_cast<QLabel*>(_gridLayout->itemAtPosition(10, 0)->widget())->setText("Autonomia: " + QString("%1").arg(vehicle->autonomia(), 0, 'f', 2));
+    dynamic_cast<QLabel*>(_gridLayout->itemAtPosition(0, 0)->widget())->setText("Posizione: " + QString::fromStdString(vehicle->posizione()));
+    dynamic_cast<QLabel*>(_gridLayout->itemAtPosition(1, 0)->widget())->setText("Chilometraggio: " + QString::number(vehicle->chilometraggio()) + " km");
+    dynamic_cast<QLabel*>(_gridLayout->itemAtPosition(2, 0)->widget())->setText("Consumo al km: " + QString::number(vehicle->consumoKm()));
+    dynamic_cast<QLabel*>(_gridLayout->itemAtPosition(3, 0)->widget())->setText("Numero posti: " + QString::number(vehicle->capacitaPosti()));
+    dynamic_cast<QLabel*>(_gridLayout->itemAtPosition(4, 0)->widget())->setText("Ingombro: " + QString::number(vehicle->ingombro()));
+    dynamic_cast<QLabel*>(_gridLayout->itemAtPosition(5, 0)->widget())->setText("Numero usi: " + QString::number(vehicle->numeroUsi()));
+    dynamic_cast<QLabel*>(_gridLayout->itemAtPosition(6, 0)->widget())->setText("Tempo in servizio: " + QString::number(vehicle->tempoServizio()) + " min");
+    dynamic_cast<QLabel*>(_gridLayout->itemAtPosition(7, 0)->widget())->setText("Numero guasti: " + QString::number(vehicle->numeroGuasti()));
+    dynamic_cast<QLabel*>(_gridLayout->itemAtPosition(8, 0)->widget())->setText("Fattore green: " + QString::number(vehicle->fattoreGreen()));
+    dynamic_cast<QLabel*>(_gridLayout->itemAtPosition(9, 0)->widget())->setText("Fattore utilizzo: " + QString::number(vehicle->fattoreUtilizzo()));
+    dynamic_cast<QLabel*>(_gridLayout->itemAtPosition(10, 0)->widget())->setText("Autonomia: " + QString("%1").arg(vehicle->autonomia(), 0, 'f', 2));
 
     vehicle->checkRiserva();
     QLabel* riserva = static_cast<QLabel*>(_gridLayout->itemAtPosition(11, 0)->widget());
@@ -89,10 +90,16 @@ void VehicleDetailView::setupLayout() {
 }
 
 void VehicleDetailView::setupMoveButton() {
+    QPixmap pixmap1(":/icons/change_city.png");
+    QIcon ButtonIcon1(pixmap1.scaled(40, 40));
+    _moveButton->setIcon(ButtonIcon1);
     _moveButton->setMaximumWidth(200);
 }
 
 void VehicleDetailView::setupRemoveButton() {
+    QPixmap pixmap2(":/icons/delete.png");
+    QIcon ButtonIcon2(pixmap2.scaled(40, 40));
+    _removeButton->setIcon(ButtonIcon2);
     _removeButton->setMaximumWidth(200);
 }
 
@@ -102,6 +109,23 @@ void VehicleDetailView::setDynamicData(const Veicolo& veicolo) {
     const MotoreElettrico* electric = dynamic_cast<const MotoreElettrico*>(&veicolo);
 
     unsigned row = 2;
+
+    QString stato = "stato: ";
+    switch(veicolo.statoAttuale()){
+        case Veicolo::libero:
+        stato += "<img src=:/icons/available.png width=40 height=40>";
+        break;
+        case Veicolo::prenotato:
+        stato += "<img src=:/icons/reserved.png width=40 height=40>";
+        break;
+        case Veicolo::occupato:
+        stato += "<img src=:/icons/occupate.png width=40 height=40>";
+        break;
+        case Veicolo::manutenzione:
+        stato += "<img src=:/icons/manutenzione.png width=40 height=40>";
+        break;
+    }
+    _gridLayout->addWidget(new QLabel(stato), ++row, 1);
 
     if (combustion) {
         _gridLayout->addWidget(new QLabel("Cilindrata: " + QString::number(combustion->cilindrata())), ++row, 1, 1, 2);
@@ -147,13 +171,37 @@ void VehicleDetailView::setDynamicData(const Veicolo& veicolo) {
         _gridLayout->addWidget(new QLabel(text), ++row, 1, 1, 2);
 
         text = "In carica: ";
-        if (electric->inCarica())
-            text += "<img src=:/icons/true.png width=20 height=20>";
-        else
-            text += "<img src=:/icons/false.png width=20 height=20>";
+        if (electric->inCarica()){
+            text += "<img src=:/icons/charging.png width=40 height=40>";
+
+        }else
+            text += "<img src=:/icons/not_charging.png width=40 height=40>";
         QLabel* inCarica = new QLabel(text);
         inCarica->setTextFormat(Qt::RichText);
         _gridLayout->addWidget(inCarica, ++row, 1, 1, 2);
+
+        if (electric->inCarica()){
+            text = "Colonnina in uso: ";
+            switch(electric->colonninaAttuale()){
+                case MotoreElettrico::nessuna:
+                    break;
+            case MotoreElettrico::lowHome:
+                    text += "<img src=:/icons/charger_lvl1.png width=40 height=40>";
+                break;
+                case MotoreElettrico::lowPublic:
+                    text += "<img src=:/icons/charger_lvl2.png width=40 height=40>";
+                break;
+                case MotoreElettrico::medium:
+                    text += "<img src=:/icons/charger_lvl3.png width=40 height=40>";
+                break;
+                case MotoreElettrico::ultraFast:
+                    text += "<img src=:/icons/charger_lvl4.png width=40 height=40>";
+                break;
+            }
+            QLabel* colonnina = new QLabel(text);
+            colonnina->setTextFormat(Qt::RichText);
+            _gridLayout->addWidget(colonnina, ++row, 1);
+        }
 
         if (electric->inCarica())
             _gridLayout->addWidget(new QLabel("Tempo di carica rimanente: " + QString::number(electric->tempoRimanenteCaricaCompleta())), ++row, 1, 1, 2);

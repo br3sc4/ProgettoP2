@@ -1,5 +1,15 @@
 <RCC>
     <qresource prefix="/">
+        <file>icons/available.png</file>
+        <file>icons/occupate.png</file>
+        <file>icons/reserved.png</file>
+        <file>icons/manutenzione.png</file>
+        <file>icons/charger_lvl1.png</file>
+        <file>icons/charger_lvl2.png</file>
+        <file>icons/charger_lvl3.png</file>
+        <file>icons/charger_lvl4.png</file>
+        <file>icons/charging.png</file>
+        <file>icons/not_charging.png</file>
         <file>icons/true.png</file>
         <file>icons/false.png</file>
         <file>icons/auto.png</file>
@@ -11,6 +21,12 @@
         <file>icons/moto_elettrica.png</file>
         <file>database/Citta.txt</file>
         <file>database/Veicoli.txt</file>
-        <file>stylesheets/css.css</file>
+        <file>stylesheets/style.css</file>
+        <file>icons/change_city.png</file>
+        <file>icons/delete.png</file>
+        <file>icons/fixing.png</file>
+        <file>icons/logo_app.icns</file>
+        <file>icons/logo_app.ico</file>
+        <file>icons/not_fixing.png</file>
     </qresource>
 </RCC>
