@@ -6,7 +6,7 @@ CitiesListView::CitiesListView(Controller* controller, const QString& title, con
 
     setupLayout();
 
-    setMinimumSize(600, 400);
+    setMinimumSize(900, 600);
 
     connect(_topBar, &BaseTopBar::closeSignal, this, &ViewInterface::closeSignal);
     connect(_topBar, &BaseTopBar::showAddCityWizard, this, &ViewInterface::showAddCityWizard);

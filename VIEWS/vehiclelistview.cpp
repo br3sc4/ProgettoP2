@@ -6,7 +6,7 @@ VehicleListView::VehicleListView(Controller* controller, const QString& title, c
 
     setupLayout();
 
-    setMinimumSize(600, 400);
+    setMinimumSize(900, 600);
 
     connect(_topBar, &BackTopBar::backButtonClicked, this, &ViewInterface::backButtonClicked);
     connect(_table, &QTableWidget::itemClicked, this, [=](QTableWidgetItem* item) {        

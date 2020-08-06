@@ -4,10 +4,13 @@
         <file>icons/charger_lvl2.png</file>
         <file>icons/charger_lvl3.png</file>
         <file>icons/charger_lvl4.png</file>
+
         <file>icons/charging.png</file>
         <file>icons/not_charging.png</file>
+
         <file>icons/true.png</file>
         <file>icons/false.png</file>
+
         <file>icons/auto.png</file>
         <file>icons/auto_ibrida.png</file>
         <file>icons/bici.png</file>
@@ -15,8 +18,10 @@
         <file>icons/moto.png</file>
         <file>icons/auto_elettrica.png</file>
         <file>icons/moto_elettrica.png</file>
+
         <file>database/Citta.txt</file>
         <file>database/Veicoli.txt</file>
-        <file>stylesheets/css.css</file>
+
+        <file>stylesheets/style.css</file>
     </qresource>
 </RCC>
