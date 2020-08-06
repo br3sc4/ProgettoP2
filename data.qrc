@@ -1,5 +1,11 @@
 <RCC>
     <qresource prefix="/">
+
+        <file>icons/available.png</file>
+        <file>icons/occupate.png</file>
+        <file>icons/reserved.png</file>
+        <file>icons/manutenzione.png</file>
+
         <file>icons/charger_lvl1.png</file>
         <file>icons/charger_lvl2.png</file>
         <file>icons/charger_lvl3.png</file>
