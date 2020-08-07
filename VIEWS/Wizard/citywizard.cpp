@@ -17,7 +17,7 @@ CityWizard::CityWizard(bool addCityMode, Controller* controller, QWidget* parent
 
     setStartId(addCityMode ? AddCity_Page : SelectCity_Page);
 
-    setWindowTitle(tr("Strumento aggiungi citta"));
+    setWindowTitle(tr("Strumento aggiunta"));
 }
 
 void CityWizard::accept() {
