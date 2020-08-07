@@ -59,7 +59,7 @@ void VehicleDetailView::reload() {
     QString stato = "Stato: ";
     switch (state) {
         case Veicolo::libero:
-            stato += "<img src=:/icons/available.png width=20 height=20> libero";
+            stato += "<img alt=""Girl in a jacket"" src=:/icons/available.png width=20 height=20> libero";
             _checkBox->setDisabled(false);
             break;
         case Veicolo::prenotato:

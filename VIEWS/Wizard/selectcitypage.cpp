@@ -1,6 +1,6 @@
 #include "selectcitypage.h"
 
-SelectCityPage::SelectCityPage(QWidget* parent): QWizardPage(parent), _vehiclesLabel(new QLabel("Lista veicoli:")),
+SelectCityPage::SelectCityPage(QWidget* parent): QWizardPage(parent), _vehiclesLabel(new QLabel("Lista città:")),
     _vehiclesList(new QTableWidget) {
     setupTable();
 

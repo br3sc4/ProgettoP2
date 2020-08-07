@@ -34,13 +34,15 @@ void BaseTopBar::setupLayout() {
 }
 
 void BaseTopBar::setupMenuBar() {
-    QMenu* file = _menubar->addMenu("File");
-    QAction* exit = file->addAction("Exit");
-    exit->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_W));
-    QAction* addVehicle = file->addAction("Add vehicle");
+    QMenu* file = _menubar->addMenu("Opzioni");
+
+    QAction* addVehicle = file->addAction("Aggiungi veicolo");
     addVehicle->setShortcut(QKeySequence::New);
-    QAction* addCity = file->addAction("Add city");
+    QAction* addCity = file->addAction("Aggiungi città");
     addCity->setShortcut(QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_N));
+    file->addSeparator();
+    QAction* exit = file->addAction("Esci");
+    exit->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_W));
 
     connect(exit, &QAction::triggered, this, &BaseTopBar::closeSignal);
     connect(addCity, &QAction::triggered, this, &BaseTopBar::showAddCityWizard);
