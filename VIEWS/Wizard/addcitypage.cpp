@@ -3,7 +3,7 @@
 AddCityPage::AddCityPage(QWidget* parent): QWizardPage(parent), _cityLabel(new QLabel("Nome città:")), _cityLineEdit(new QLineEdit) {
     QRegExp re("[A-Z][a-z]+");
     _cityLineEdit->setValidator(new QRegExpValidator(re));
-    _cityLineEdit->setPlaceholderText("Es. Milano");
+    _cityLineEdit->setPlaceholderText("Es. Milano (NB prima lettera MAIUSCOLA)");
     _cityLabel->setBuddy(_cityLineEdit);
 
     QVBoxLayout* layout = new QVBoxLayout(this);
