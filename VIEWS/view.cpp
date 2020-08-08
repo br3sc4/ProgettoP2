@@ -5,7 +5,7 @@ View::View(Controller* controller, QWidget *parent) : QStackedWidget(parent),
     _citiesView(new CitiesListView(controller, "Città", { "Città", "Numero veicoli" })),
     _vehiclesView(new VehicleListView(controller)),
     _vehicleDetailView(new VehicleDetailView(controller)),
-    _controller(controller), _titoloApp("CitySharing"), _altezza(900), _larghezza(600) {
+    _controller(controller), _titoloApp("CitySharing"), _altezza(1000), _larghezza(700) {
 
     setFixedSize(_altezza, _larghezza);
     setWindowTitle(_titoloApp);

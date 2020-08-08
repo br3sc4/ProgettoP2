@@ -1,5 +1,7 @@
 <RCC>
     <qresource prefix="/">
+        <file>icons/low_fuel.png</file>
+        <file>icons/normal_fuel.png</file>
         <file>icons/available.png</file>
         <file>icons/occupate.png</file>
         <file>icons/reserved.png</file>

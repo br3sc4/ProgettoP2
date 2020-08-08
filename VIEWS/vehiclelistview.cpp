@@ -54,8 +54,8 @@ void VehicleListView::reload() {
 
         int hIcon = 30, wIcon = 30;
 
-        QPixmap* si = new QPixmap(":/icons/true.png");
-        QPixmap* no = new QPixmap(":/icons/false.png");
+        QPixmap* low = new QPixmap(":/icons/low_fuel.png");
+        QPixmap* normal = new QPixmap(":/icons/normal_fuel.png");
         QPixmap* help = new QPixmap(":/icons/help.png");
         QPixmap* ok = new QPixmap(":/icons/available.png");
 
@@ -72,10 +72,13 @@ void VehicleListView::reload() {
 
         vehicles[i]->checkRiserva();
         item = new QTableWidgetItem();
-        if(vehicles[i]->inRiserva())
-            item->setData(Qt::DecorationRole, si->scaled(hIcon, wIcon));
-         else
-            item->setData(Qt::DecorationRole, no->scaled(hIcon, wIcon));
+        if(vehicles[i]->inRiserva()) {
+            item->setData(Qt::DecorationRole, low->scaled(hIcon, wIcon));
+            item->setText(" Sì");
+        } else {
+            item->setData(Qt::DecorationRole, normal->scaled(hIcon, wIcon));
+            item->setText(" No");
+        }
         _table->setItem(i, 4, item);
 
         item = new QTableWidgetItem(QString("%1").arg(vehicles[i]->autonomia(), 0, 'f', 2));
