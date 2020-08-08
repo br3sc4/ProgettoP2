@@ -75,14 +75,12 @@ void VehicleListView::reload() {
         item = new QTableWidgetItem();
         if(vehicles[i]->inRiserva()) {
             item->setData(Qt::DecorationRole, low->scaled(hIcon, wIcon));
-            item->setText(" Sì");
         } else {
             item->setData(Qt::DecorationRole, normal->scaled(hIcon, wIcon));
-            item->setText(" No");
         }
         _table->setItem(i, 4, item);
 
-        item = new QTableWidgetItem(QString("%1").arg(vehicles[i]->autonomia(), 0, 'f', 2));
+        item = new QTableWidgetItem(QString("%1").arg(vehicles[i]->autonomia(), 0, 'f', 2) + " km");
         item->setTextAlignment(Qt::AlignCenter);
         _table->setItem(i, 5, item);
 

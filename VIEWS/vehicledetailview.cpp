@@ -167,7 +167,7 @@ void VehicleDetailView::setDynamicData(const Veicolo& veicolo) {
 
     if (electric) {
         _gridLayout->addWidget(new QLabel("Carica batteria: " + QString::number(electric->percentualeCarica()) + "%"), ++row, 1, 1, 2);
-        _gridLayout->addWidget(new QLabel("Capacità batteria: " + QString::number(electric->capacitaBatteria())), ++row, 1, 1, 2);
+        _gridLayout->addWidget(new QLabel("Capacità massima batteria: " + QString::number(electric->capacitaBatteria()) + "Ah"), ++row, 1, 1, 2);
 
         QString text = "Velocità di carica supportata: ";
         switch (electric->caricaSupportata()) {
