@@ -15,6 +15,8 @@ VehicleListView::VehicleListView(Controller* controller, const QString& title, c
 }
 
 void VehicleListView::reload() {
+    std::cout << "VehicleListView::reload()" << std::endl;
+
     Array<Veicolo*> vehicles = _controller->getVehicles();
     _table->setRowCount(vehicles.size());
     _table->clearSelection();

@@ -120,16 +120,16 @@ void VehicleDetailView::setupLayout() {
 }
 
 void VehicleDetailView::setupMoveButton() {
-    QPixmap pixmap1(":/icons/change_city.png");
-    QIcon ButtonIcon1(pixmap1.scaled(40, 40));
-    _moveButton->setIcon(ButtonIcon1);
+    QPixmap pixmap(":/icons/change_city.png");
+    QIcon buttonIcon(pixmap.scaled(40, 40));
+    _moveButton->setIcon(buttonIcon);
     _moveButton->setMaximumWidth(200);
 }
 
 void VehicleDetailView::setupRemoveButton() {
-    QPixmap pixmap2(":/icons/delete.png");
-    QIcon ButtonIcon2(pixmap2.scaled(40, 40));
-    _removeButton->setIcon(ButtonIcon2);
+    QPixmap pixmap(":/icons/delete.png");
+    QIcon buttonIcon(pixmap.scaled(40, 40));
+    _removeButton->setIcon(buttonIcon);
     _removeButton->setMaximumWidth(200);
 }
 

@@ -4,8 +4,7 @@
 #
 #-------------------------------------------------
 
-QT += core gui
-QT += widgets
+QT += core gui widgets
 
 TARGET = ProgettoP2
 TEMPLATE = app

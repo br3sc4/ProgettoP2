@@ -83,12 +83,13 @@ void Controller::goBack() const {
 void Controller::toggleMaintenance(int state) const {
     Veicolo* vehicle = _model->getVehicle(_currentCityIndex, _currentVehicleIndex);
 
-    if (state == Qt::Checked && vehicle->statoAttuale() == Veicolo::libero)
+    if (state == Qt::Checked)
         vehicle->setStatoAttuale(Veicolo::manutenzione);
-    else if (state == Qt::Unchecked && vehicle->statoAttuale() == Veicolo::manutenzione)
+    else if (state == Qt::Unchecked)
         vehicle->setStatoAttuale(Veicolo::libero);
 
     dynamic_cast<ViewInterface*>(_view->widget(_view->currentIndex()))->reload();
+    dynamic_cast<ViewInterface*>(_view->widget(_view->currentIndex() - 1))->reload();
 }
 
 void Controller::createMoveModal() const {
