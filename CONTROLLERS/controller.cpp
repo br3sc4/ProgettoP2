@@ -49,6 +49,18 @@ void Controller::addVehicle(unsigned int city, Veicolo* const vehicle) {
     dynamic_cast<ViewInterface*>(_view->currentWidget())->reload();
 }
 
+bool Controller::searchCity(const std::string& nome) const {
+    return _model->searchCity(nome);
+}
+
+bool Controller::searchVehicle(unsigned int city, const std::string& vehicle) const {
+    return _model->searchVehicle(city, vehicle);
+}
+
+void Controller::showMessage(const QString& msg) const {
+    _view->showMessage(msg);
+}
+
 void Controller::goToVehiclesView(int row) {
     _view->getCitiesListView()->resetTableSelection();
 

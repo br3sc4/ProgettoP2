@@ -29,6 +29,11 @@ public:
     void addCity(const std::string& nome);
     void addVehicle(unsigned int city, Veicolo* const vehicle);
 
+    bool searchCity(const std::string& nome) const;
+    bool searchVehicle(unsigned int city, const std::string& vehicle) const;
+
+    void showMessage(const QString& msg) const;
+
 private:
     View *_view;
     Model* _model;

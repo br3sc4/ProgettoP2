@@ -6,8 +6,6 @@ VehicleListView::VehicleListView(Controller* controller, const QString& title, c
 
     setupLayout();
 
-    setMinimumSize(900, 600);
-
     connect(_topBar, &BackTopBar::backButtonClicked, this, &ViewInterface::backButtonClicked);
     connect(_table, &QTableWidget::itemClicked, this, [=](QTableWidgetItem* item) {        
         emit rowClicked(item->row());
@@ -15,8 +13,6 @@ VehicleListView::VehicleListView(Controller* controller, const QString& title, c
 }
 
 void VehicleListView::reload() {
-    std::cout << "VehicleListView::reload()" << std::endl;
-
     Array<Veicolo*> vehicles = _controller->getVehicles();
     _table->setRowCount(vehicles.size());
     _table->clearSelection();

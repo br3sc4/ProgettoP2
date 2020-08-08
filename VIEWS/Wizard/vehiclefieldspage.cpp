@@ -20,7 +20,7 @@ VehicleFieldsPage::VehicleFieldsPage(QWidget* parent): QWizardPage(parent), _tar
 }
 
 bool VehicleFieldsPage::isComplete() const {
-    return !field("targa").toString().isEmpty() && !field("posizione").toString().isEmpty() && !field("km").toString().isEmpty();
+    return !field("targa").toString().isEmpty() && field("posizione").toString().length() >= 13 && !field("km").toString().isEmpty();
 }
 
 int VehicleFieldsPage::nextId() const {
@@ -28,7 +28,7 @@ int VehicleFieldsPage::nextId() const {
 }
 
 void VehicleFieldsPage::setupTarga() {
-    QRegExp targa("[A-Z, 1-9]{4,7}");
+    QRegExp targa("[A-Z, 0-9]{4,7}");
     _targaLineEdit->setValidator(new QRegExpValidator(targa));
     _targaLineEdit->setPlaceholderText("Es. AB123CD");
     _targaLabel->setBuddy(_targaLineEdit);

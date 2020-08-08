@@ -40,9 +40,9 @@ private:
 
     void setupStyle();
 
-    const QString _titoloApp = "CitySharing";
-    const unsigned int _minAltezza = 900;
-    const unsigned int _minLarghezza = 600;
+    const QString _titoloApp;
+    const unsigned int _altezza;
+    const unsigned int _larghezza;
 
 private slots:
     void createWizard(bool addCityMode = false);

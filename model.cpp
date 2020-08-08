@@ -44,3 +44,27 @@ void Model::moveVehicle(unsigned int fromCity, unsigned int toCity, unsigned int
     if (fromCity == toCity) throw new SameCityException();
     addVehicle(toCity, removeVehicle(fromCity, vehicle));
 }
+
+bool Model::searchCity(const std::string& city) const {
+    bool found = false;
+    Array<Citta*>::const_iterator it = _cities.cbegin();
+
+    while (!found && it != _cities.cend()) {
+        if ((*it)->getNome() == city) found = true;
+        ++it;
+    }
+
+    return found;
+}
+
+bool Model::searchVehicle(unsigned int city, const std::string& vehicle) const {
+    bool found = false;
+    Array<Veicolo*>::const_iterator it = _cities[city]->getVeicoli().cbegin();
+
+    while (!found && it != _cities[city]->getVeicoli().cend()) {
+        if ((*it)->targa() == vehicle) found = true;
+        ++it;
+    }
+
+    return found;
+}

@@ -92,23 +92,19 @@ bool MotoreElettrico::inCarica() const {
     return _inCarica;
 }
 
-double MotoreElettrico::capacitaBatteria() const
-{
+double MotoreElettrico::capacitaBatteria() const {
     return _capacitaBatteria;
 }
 
-double MotoreElettrico::capacitaAttuale() const
-{
+double MotoreElettrico::capacitaAttuale() const {
     return _capacitaAttuale;
 }
 
-MotoreElettrico::VelocitaRicarica MotoreElettrico::caricaSupportata() const
-{
+MotoreElettrico::VelocitaRicarica MotoreElettrico::caricaSupportata() const {
     return _caricaSupportata;
 }
 
-MotoreElettrico::Colonnina MotoreElettrico::colonninaAttuale() const
-{
+MotoreElettrico::Colonnina MotoreElettrico::colonninaAttuale() const {
     return _colonninaAttuale;
 }
 

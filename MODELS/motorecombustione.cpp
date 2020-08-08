@@ -59,7 +59,7 @@ double MotoreCombustione::consumoKm() const {
 }
 
 double MotoreCombustione::autonomia() const {
-    return litriSerbatoio()/consumoKm();
+    return litriSerbatoio() / consumoKm();
 }
 
 short int MotoreCombustione::fattoreGreen() const {
@@ -105,7 +105,6 @@ unsigned short MotoreCombustione::emissioni() const {
     return _emissioni;
 }
 
-void MotoreCombustione::setLitriSerbatoio(double litriSerbatoio)
-{
+void MotoreCombustione::setLitriSerbatoio(double litriSerbatoio) {
     _litriSerbatoio = litriSerbatoio;
 }

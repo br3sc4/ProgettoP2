@@ -3,7 +3,6 @@
 
 #include "MODELS/array.h"
 #include "MODELS/citta.h"
-
 #include "MODELS/automobile.h"
 #include "MODELS/bicicletta.h"
 #include "MODELS/automobileelettrica.h"
@@ -11,7 +10,6 @@
 #include "MODELS/monopattino.h"
 #include "MODELS/moto.h"
 #include "MODELS/motoelettrica.h"
-
 #include "EXCEPTIONS/samecityexception.h"
 
 class Model {
@@ -27,6 +25,9 @@ public:
     Veicolo* getVehicle(unsigned int city, unsigned int vehicle) const;
     Veicolo* removeVehicle(unsigned int city, unsigned int vehicle);
     void moveVehicle(unsigned int fromCity, unsigned int toCity, unsigned int vehicle);
+
+    bool searchCity(const std::string& city) const;
+    bool searchVehicle(unsigned int city, const std::string& vehicle) const;
 
 private:
     Array<Citta*> _cities;
