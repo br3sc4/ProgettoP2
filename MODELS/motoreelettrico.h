@@ -41,6 +41,7 @@ public:
     virtual double consumoKm() const;
     virtual double autonomia() const;
     virtual short int fattoreGreen() const;
+    virtual void checkRiserva();
 
     short tempoRimanenteCaricaCompleta() const;
     unsigned short percentualeCarica() const;

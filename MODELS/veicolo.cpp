@@ -28,11 +28,6 @@ Veicolo::Veicolo(
 
 Veicolo::~Veicolo() = default;
 
-void Veicolo::checkRiserva() {
-    if (autonomia() < 30) _inRiserva = true;
-    else _inRiserva = false;
-}
-
 short Veicolo::fattoreUtilizzo() const {
     return (_tempoServizio / 52560) % 52560 ;
 }
@@ -75,6 +70,10 @@ void Veicolo::setStatoAttuale(const StatoVeicolo &statoAttuale) {
 
 bool Veicolo::inRiserva() const {
     return _inRiserva;
+}
+
+void Veicolo::setInRiserva(bool inRiserva) {
+    _inRiserva = inRiserva;
 }
 
 bool Veicolo::serveAssistenza() const {

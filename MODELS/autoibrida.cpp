@@ -92,3 +92,10 @@ short AutoIbrida::fattoreGreen() const {
 double AutoIbrida::consumoKm() const {
     return MotoreElettrico::consumoKm() + MotoreCombustione::consumoKm();
 }
+
+void AutoIbrida::checkRiserva() {
+    if(MotoreCombustione::autonomia() < (capacitaSerbatoio()/MotoreCombustione::consumoKm())*0.3 &&
+       MotoreElettrico::autonomia() < (capacitaBatteria()/MotoreElettrico::consumoKm())*0.3)
+       setInRiserva(true);
+    else setInRiserva(false);
+}

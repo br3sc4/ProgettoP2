@@ -53,6 +53,11 @@ double MotoreElettrico::autonomia() const {
     return capacitaAttuale() / consumoKm();
 }
 
+void MotoreElettrico::checkRiserva() {
+    if (autonomia() < (capacitaBatteria()/consumoKm())*0.3) setInRiserva(true);
+    else setInRiserva(false);
+}
+
 short int MotoreElettrico::fattoreGreen() const {
     short int somma = 0;
     if(ingombro() == 1)

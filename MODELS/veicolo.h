@@ -31,8 +31,8 @@ public:
     virtual double consumoKm() const =0;
     virtual double autonomia() const =0;
     virtual short int fattoreGreen() const =0;
+    virtual void checkRiserva() =0;
 
-    void checkRiserva();
     short int fattoreUtilizzo() const;
 
     // Metodi get
@@ -49,8 +49,9 @@ public:
     unsigned short numeroGuasti() const;
 
     // Metodi set
-    void setStatoAttuale(const StatoVeicolo& statoAttuale);
-    void setServeAssistenza(bool serveAssistenza);
+    void setStatoAttuale(const StatoVeicolo&);
+    void setServeAssistenza(bool);
+    void setInRiserva(bool);
 
 private:
     string _targa;                      // Targa del veicolo

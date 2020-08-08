@@ -59,7 +59,7 @@ void VehicleDetailView::reload() {
     QString stato = "Stato: ";
     switch (state) {
         case Veicolo::libero:
-            stato += "<img alt=""Girl in a jacket"" src=:/icons/available.png width=20 height=20> libero";
+            stato += "<img src=:/icons/available.png width=20 height=20> libero";
             _checkBox->setDisabled(false);
             break;
         case Veicolo::prenotato:
@@ -166,7 +166,7 @@ void VehicleDetailView::setDynamicData(const Veicolo& veicolo) {
     }
 
     if (electric) {
-        _gridLayout->addWidget(new QLabel("Percentuale batteria: " + QString::number(electric->percentualeCarica())), ++row, 1, 1, 2);
+        _gridLayout->addWidget(new QLabel("Carica batteria: " + QString::number(electric->percentualeCarica()) + "%"), ++row, 1, 1, 2);
         _gridLayout->addWidget(new QLabel("Capacità batteria: " + QString::number(electric->capacitaBatteria())), ++row, 1, 1, 2);
 
         QString text = "Velocità di carica supportata: ";

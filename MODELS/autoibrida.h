@@ -36,6 +36,7 @@ public:
     virtual double autonomia() const;
     virtual short int fattoreGreen() const;
     virtual double consumoKm() const;
+    virtual void checkRiserva();
 
 };
 

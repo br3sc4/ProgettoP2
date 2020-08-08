@@ -34,6 +34,7 @@ public:
     virtual double consumoKm() const;
     virtual double autonomia() const;
     virtual short int fattoreGreen() const;
+    virtual void checkRiserva();
 
     // Metodi get
     double capacitaSerbatoio() const;

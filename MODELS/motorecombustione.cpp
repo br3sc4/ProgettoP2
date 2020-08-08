@@ -62,6 +62,11 @@ double MotoreCombustione::autonomia() const {
     return litriSerbatoio() / consumoKm();
 }
 
+void MotoreCombustione::checkRiserva() {
+    if (autonomia() < (capacitaSerbatoio()/consumoKm())*0.3) setInRiserva(true);
+    else setInRiserva(false);
+}
+
 short int MotoreCombustione::fattoreGreen() const {
     double somma = 0;
     if(_tipoCarburante == benzina)
