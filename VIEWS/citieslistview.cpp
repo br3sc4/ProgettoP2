@@ -1,16 +1,30 @@
 #include "citieslistview.h"
 
 CitiesListView::CitiesListView(Controller* controller, const QString& title, const QStringList& headerStrings, QWidget *parent)
-    : ViewInterface(parent), _controller(controller), _topBar(new BaseTopBar(title, parent)), _table(new QTableWidget(parent)) {
+    : ViewInterface(parent), _controller(controller), _topBar(new BaseTopBar(title, parent)), _table(new QTableWidget(parent)),
+      _deleteButton(new QPushButton("Elimina città", parent)) {
     setupTable(headerStrings);
+    setupButton();
 
     setupLayout();
 
     connect(_topBar, &BaseTopBar::closeSignal, this, &ViewInterface::closeSignal);
     connect(_topBar, &BaseTopBar::showAddCityWizard, this, &ViewInterface::showAddCityWizard);
     connect(_topBar, &BaseTopBar::showAddVehicleWizard, this, &ViewInterface::showAddVehicleWizard);
-    connect(_table, &QTableWidget::itemClicked, this, [=](QTableWidgetItem* item) {        
+    connect(_table, &QTableWidget::itemSelectionChanged, this, [this]() {
+        _deleteButton->setDisabled(false);
+    });
+    connect(_table, &QTableWidget::itemDoubleClicked, this, [=](QTableWidgetItem* item) {
         emit rowClicked(item->row());
+        _table->clearSelection();
+        _deleteButton->setDisabled(true);
+    });
+    connect(_deleteButton, &QPushButton::clicked, this, [this](bool checked) {
+        if (_table->selectedItems().size() > 0) {
+            emit deleteCityButtonClicked(_table->selectedItems().first()->row());
+            _table->clearSelection();
+            _deleteButton->setDisabled(true);
+        }
     });
 }
 
@@ -32,20 +46,12 @@ void CitiesListView::setHederStrings(const QStringList& headerStrings) {
     header->setStretchLastSection(true);
 }
 
-void CitiesListView::resetTableSelection() {
-    _table->clearSelection();
-}
-
 QString CitiesListView::title() const {
     return _topBar->title();
 }
 
 void CitiesListView::setTitle(const QString &title) {
     _topBar->setTitle(title);
-}
-
-QTableWidget* CitiesListView::table() {
-    return _table;
 }
 
 void CitiesListView::setupTable(const QStringList& headerStrings) {
@@ -57,11 +63,17 @@ void CitiesListView::setupTable(const QStringList& headerStrings) {
     _table->verticalHeader()->hide();
 }
 
+void CitiesListView::setupButton() {
+    _deleteButton->setMaximumWidth(250);
+    _deleteButton->setDisabled(true);
+}
+
 void CitiesListView::setupLayout() {
     QVBoxLayout* layout = new QVBoxLayout;
 
     layout->addWidget(_topBar);
     layout->addWidget(_table);
+    layout->addWidget(_deleteButton);
 
     setLayout(layout);
 }

@@ -20,6 +20,18 @@ void Model::addCity(Citta* const city) {
     _cities.push_back(city);
 }
 
+Citta* Model::removeCity(unsigned int city) {
+    Array<Citta*>::iterator it = _cities.begin();
+    Citta* res;
+
+    for (unsigned int i = 0; i < city; i++)
+        it++;
+
+    res = _cities.erase(it);
+
+    return res;
+}
+
 void Model::addVehicle(unsigned int city, Veicolo* const vehicle) {
     _cities[city]->addVeicolo(vehicle);
 }

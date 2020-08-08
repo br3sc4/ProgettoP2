@@ -22,7 +22,6 @@ public:
     void reload() override;
 
     void setHederStrings(const QStringList& headerStrings);
-    void resetTableSelection();
 
     QString title() const;
     void setTitle(const QString& title);

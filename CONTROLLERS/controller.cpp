@@ -8,6 +8,7 @@ void Controller::setView(View *view) {
     _view = view;
 
     connect(_view->getCitiesListView(), SIGNAL(rowClicked(int)), this, SLOT(goToVehiclesView(int)));
+    connect(_view->getCitiesListView(), SIGNAL(deleteCityButtonClicked(unsigned)), this, SLOT(deleteCity(unsigned)));
     connect(_view->getVehicleListView(), SIGNAL(backButtonClicked()), this, SLOT(goBack()));
     connect(_view->getVehicleListView(), SIGNAL(rowClicked(int)), this, SLOT(goToVehicleDetailView(int)));
     connect(_view->getVehicleDetailView(), SIGNAL(backButtonClicked()), this, SLOT(goBack()));
@@ -62,8 +63,6 @@ void Controller::showMessage(const QString& msg) const {
 }
 
 void Controller::goToVehiclesView(int row) {
-    _view->getCitiesListView()->resetTableSelection();
-
     VehicleListView* vehicles = _view->getVehicleListView();
     _currentCityIndex = row;
 
@@ -74,8 +73,6 @@ void Controller::goToVehiclesView(int row) {
 }
 
 void Controller::goToVehicleDetailView(int row) {
-    _view->getVehicleListView()->resetTableSelection();
-
     VehicleDetailView* vehicleDetail = _view->getVehicleDetailView();
     _currentVehicleIndex = row;
 
@@ -131,4 +128,14 @@ void Controller::saveChage(int row) const {
     } catch (std::exception* e) {
         _view->showMessage(e->what());
     }
+}
+
+void Controller::deleteCity(unsigned index) const {
+    Citta* city = _model->removeCity(index);
+    CitiesListView* cities = _view->getCitiesListView();
+    cities->reload();
+
+    std::stringstream msg;
+    msg << "Città \"" << city->getNome() << "\" rimossa dalla piattaforma.";
+    _view->showMessage(QString::fromStdString(msg.str()));
 }

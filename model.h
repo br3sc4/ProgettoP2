@@ -20,6 +20,7 @@ public:
     Array<Citta*> getCities() const;
     Citta* getCity(unsigned int index) const;
     void addCity(Citta* const city);
+    Citta* removeCity(unsigned int city);
 
     void addVehicle(unsigned int city, Veicolo* const vehicle);
     Veicolo* getVehicle(unsigned int city, unsigned int vehicle) const;

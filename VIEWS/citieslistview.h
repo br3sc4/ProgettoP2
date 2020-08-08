@@ -8,6 +8,7 @@
 #include <QVBoxLayout>
 #include <QTableWidget>
 #include <QHeaderView>
+#include <QPushButton>
 
 class Controller;
 
@@ -21,20 +22,22 @@ public:
     void reload() override;
 
     void setHederStrings(const QStringList& headerStrings);
-    void resetTableSelection();
 
     QString title() const;
     void setTitle(const QString& title);
-
-    QTableWidget* table();
 
 private:
     Controller* _controller;
     BaseTopBar* _topBar;
     QTableWidget* _table;
+    QPushButton* _deleteButton;
 
     void setupTable(const QStringList& headerStrings);
+    void setupButton();
     void setupLayout();
+
+signals:
+    void deleteCityButtonClicked(unsigned row);
 };
 
 #endif // CITIESLISTVIEW_H

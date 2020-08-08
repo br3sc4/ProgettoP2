@@ -7,8 +7,9 @@ VehicleListView::VehicleListView(Controller* controller, const QString& title, c
     setupLayout();
 
     connect(_topBar, &BackTopBar::backButtonClicked, this, &ViewInterface::backButtonClicked);
-    connect(_table, &QTableWidget::itemClicked, this, [=](QTableWidgetItem* item) {        
+    connect(_table, &QTableWidget::itemDoubleClicked, this, [=](QTableWidgetItem* item) {
         emit rowClicked(item->row());
+        _table->clearSelection();
     });
 }
 
@@ -104,10 +105,6 @@ void VehicleListView::setHederStrings(const QStringList& headerStrings) {
     QHeaderView *header = _table->horizontalHeader();
     header->setSectionResizeMode(QHeaderView::Stretch);
     header->setStretchLastSection(true);
-}
-
-void VehicleListView::resetTableSelection() {
-    _table->clearSelection();
 }
 
 QString VehicleListView::title() const {
