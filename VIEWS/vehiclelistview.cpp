@@ -82,12 +82,15 @@ void VehicleListView::reload() {
         _table->setItem(i, 4, item);
 
         item = new QTableWidgetItem(QString("%1").arg(vehicles[i]->autonomia(), 0, 'f', 2));
+        item->setTextAlignment(Qt::AlignCenter);
         _table->setItem(i, 5, item);
 
         item = new QTableWidgetItem(QString::number(vehicles[i]->fattoreGreen()));
+        item->setTextAlignment(Qt::AlignCenter);
         _table->setItem(i, 6, item);
 
         item = new QTableWidgetItem(QString::number(vehicles[i]->fattoreUtilizzo()));
+        item->setTextAlignment(Qt::AlignCenter);
         _table->setItem(i, 7, item);
 
         _table->setRowHeight(i, 60);
