@@ -17,11 +17,6 @@ void VehicleListView::reload() {
     _table->setRowCount(vehicles.size());
     _table->clearSelection();
 
-    QPixmap* si = new QPixmap(":/icons/true.png");
-    QPixmap* no = new QPixmap(":/icons/false.png");
-    QPixmap* help = new QPixmap(":/icons/help.png");
-    QPixmap* ok = new QPixmap(":/icons/available.png");
-
     for (int i = 0; i < _table->rowCount(); i++) {
         QPixmap* pixmap = new QPixmap(getIconPath(*vehicles[i]));
 
@@ -39,33 +34,48 @@ void VehicleListView::reload() {
         switch (stato) {
             case Veicolo::libero:
                 iconaStato = new QPixmap(":/icons/available.png");
+                item->setText(" Libero");
                 break;
             case Veicolo::prenotato:
                 iconaStato = new QPixmap(":/icons/reserved.png");
+                item->setText(" Prenotato");
                 break;
             case Veicolo::occupato:
                 iconaStato = new QPixmap(":/icons/occupate.png");
+                item->setText(" Occupato");
                 break;
             case Veicolo::manutenzione:
                 iconaStato = new QPixmap(":/icons/manutenzione.png");
+                item->setText(" Manutenzione");
                 break;
         }
-        item->setData(Qt::DecorationRole, iconaStato->scaled(20, 20));
+        item->setData(Qt::DecorationRole, iconaStato->scaled(30, 30));
         _table->setItem(i, 2, item);
 
+        int hIcon = 30, wIcon = 30;
+
+        QPixmap* si = new QPixmap(":/icons/true.png");
+        QPixmap* no = new QPixmap(":/icons/false.png");
+        QPixmap* help = new QPixmap(":/icons/help.png");
+        QPixmap* ok = new QPixmap(":/icons/available.png");
+
+
         item = new QTableWidgetItem();
-        if(vehicles[i]->serveAssistenza())
-            item->setData(Qt::DecorationRole, help->scaled(20, 20));
-         else
-            item->setData(Qt::DecorationRole, ok->scaled(20, 20));
+        if(vehicles[i]->serveAssistenza()) {
+            item->setData(Qt::DecorationRole, help->scaled(hIcon, wIcon));
+            item->setText(" Problema");
+         } else {
+            item->setData(Qt::DecorationRole, ok->scaled(hIcon, wIcon));
+            item->setText(" Tutto ok");
+        }
         _table->setItem(i, 3, item);
 
         vehicles[i]->checkRiserva();
         item = new QTableWidgetItem();
         if(vehicles[i]->inRiserva())
-            item->setData(Qt::DecorationRole, si->scaled(20, 20));
+            item->setData(Qt::DecorationRole, si->scaled(hIcon, wIcon));
          else
-            item->setData(Qt::DecorationRole, no->scaled(20, 20));
+            item->setData(Qt::DecorationRole, no->scaled(hIcon, wIcon));
         _table->setItem(i, 4, item);
 
         item = new QTableWidgetItem(QString("%1").arg(vehicles[i]->autonomia(), 0, 'f', 2));
