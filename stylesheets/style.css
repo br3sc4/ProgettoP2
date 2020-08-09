@@ -1,23 +1,34 @@
 QTableWidget {
     alternate-background-color: #d9d9d9;
     gridline-color: #bdbdbd;
+    font-size: 15px;
 }
 
 QHeaderView::section {
     background-color: #d9d9d9;
     border: none;
-    border-bottom: 1px solid #bdbdbd;
-    padding: 10;
+    border: 1px solid #bdbdbd;
     font-size: 15px;
     font-weight: bold;
-
-}
-
-QTableWidget, td {
-    font-size: 18px;
+    padding: 5px;
 }
 
 QLabel {
     padding: 5px;
+    font-size: 15px;
 }
 
+VehicleDetailView > QLabel {
+    padding: 5px;
+    font-size: 18px;
+}
+
+VehicleDetailView > QPushButton {
+padding: 5px;
+font-size: 18px;
+}
+
+VehicleDetailView > QCheckBox {
+padding: 5px;
+font-size: 18px;
+}

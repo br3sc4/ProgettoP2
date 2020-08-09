@@ -109,9 +109,9 @@ void VehicleDetailView::setupLayout() {
     _gridLayout->addWidget(new QLabel("In riserva: "), 11, 0, 1, 1);
 
     // Seconda colonna
-    _gridLayout->addWidget(_checkBox, 0, 1, 1, 2);
-    _gridLayout->addWidget(_moveButton, 1, 1, 1, 2);
-    _gridLayout->addWidget(_removeButton, 2, 1, 1, 2);
+    _gridLayout->addWidget(_checkBox, 0, 2, 1, 2);
+    _gridLayout->addWidget(_moveButton, 1, 2, 1, 2);
+    _gridLayout->addWidget(_removeButton, 2, 2, 1, 2);
     _gridLayout->addWidget(new QLabel("Stato: "), 3, 1, 1, 2);
 
     _verticalLayout->addSpacerItem(new QSpacerItem(10, 10, QSizePolicy::Minimum, QSizePolicy::MinimumExpanding));
@@ -138,11 +138,11 @@ void VehicleDetailView::setDynamicData(const Veicolo& veicolo) {
     const MotoreCombustione* combustion = dynamic_cast<const MotoreCombustione*>(&veicolo);
     const MotoreElettrico* electric = dynamic_cast<const MotoreElettrico*>(&veicolo);
 
-    unsigned row = 3;
+    unsigned row = 0;
 
     if (combustion) {
-        _gridLayout->addWidget(new QLabel("Cilindrata: " + QString::number(combustion->cilindrata())), ++row, 1, 1, 2);
-        _gridLayout->addWidget(new QLabel("Emissioni CO_2: " + QString::number(combustion->emissioni())), ++row, 1, 1, 2);
+        _gridLayout->addWidget(new QLabel("Cilindrata: " + QString::number(combustion->cilindrata()) + " cc"), ++row, 1, 1, 2);
+        _gridLayout->addWidget(new QLabel("Emissioni CO2: " + QString::number(combustion->emissioni()) + " g/Km"), ++row, 1, 1, 2);
 
         QString text = "Carburante: ";
         switch (combustion->tipoCarburante()) {

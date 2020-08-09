@@ -75,8 +75,10 @@ void VehicleListView::reload() {
         item = new QTableWidgetItem();
         if(vehicles[i]->inRiserva()) {
             item->setData(Qt::DecorationRole, low->scaled(hIcon, wIcon));
+            item->setText(" Si");
         } else {
             item->setData(Qt::DecorationRole, normal->scaled(hIcon, wIcon));
+            item->setText(" No");
         }
         _table->setItem(i, 4, item);
 
@@ -85,16 +87,19 @@ void VehicleListView::reload() {
         _table->setItem(i, 5, item);
 
         item = new QTableWidgetItem(QString::number(vehicles[i]->fattoreGreen()));
+        if(vehicles[i]->fattoreGreen() >= 0) item->setTextColor("#52AE49");
+        else item->setTextColor("#E6212B");
         item->setTextAlignment(Qt::AlignCenter);
+
         _table->setItem(i, 6, item);
 
-        item = new QTableWidgetItem(QString::number(vehicles[i]->fattoreUtilizzo()));
+        item = new QTableWidgetItem(QString::number(vehicles[i]->fattoreUtilizzo()) + "/10");
         item->setTextAlignment(Qt::AlignCenter);
         _table->setItem(i, 7, item);
 
         _table->setRowHeight(i, 60);
     }
-    _table->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);    
+    _table->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
 }
 
 void VehicleListView::setHederStrings(const QStringList& headerStrings) {
