@@ -14,7 +14,7 @@ VehicleDetailView::VehicleDetailView(Controller* controller, const QString& titl
     connect(_topBar, &BaseTopBar::showAddCityWizard, this, &ViewInterface::showAddCityWizard);
     connect(_topBar, &BaseTopBar::showAddVehicleWizard, this, &ViewInterface::showAddVehicleWizard);
     connect(_topBar, &BackTopBar::backButtonClicked, this, &ViewInterface::backButtonClicked);
-    connect(_checkBox, SIGNAL(stateChanged(int)), this, SIGNAL(maintenanceChanged(int)));
+    connect(_checkBox, &QCheckBox::stateChanged, this, &VehicleDetailView::maintenanceChanged);
     connect(_moveButton, SIGNAL(clicked()), this, SIGNAL(createMoveDialog()));
     connect(_removeButton, SIGNAL(clicked()), this, SIGNAL(removeButtonClicked()));
 }
@@ -111,7 +111,7 @@ void VehicleDetailView::setupLayout() {
     _gridLayout->addWidget(new QLabel("In riserva: "), 11, 0, 1, 1);
 
     // Seconda colonna
-    _gridLayout->addWidget(new QLabel("Stato: "), 0, 1, 1, 2);
+    _gridLayout->addWidget(new QLabel("Stato: "), 0, 1, 1, 1);
 
     // Terza colonna
     _gridLayout->addWidget(_checkBox, 0, 2, 1, 1);
@@ -145,8 +145,8 @@ void VehicleDetailView::setDynamicData(const Veicolo& veicolo) {
     unsigned row = 0;
 
     if (combustion) {
-        _gridLayout->addWidget(new QLabel("Cilindrata: " + QString::number(combustion->cilindrata()) + " cc"), ++row, 1, 1, 2);
-        _gridLayout->addWidget(new QLabel("Emissioni CO2: " + QString::number(combustion->emissioni()) + " g/Km"), ++row, 1, 1, 2);
+        _gridLayout->addWidget(new QLabel("Cilindrata: " + QString::number(combustion->cilindrata()) + " cc"), ++row, 1, 1, 1);
+        _gridLayout->addWidget(new QLabel("Emissioni CO2: " + QString::number(combustion->emissioni()) + " g/Km"), ++row, 1, 1, 1);
 
         QString text = "Carburante: ";
         switch (combustion->tipoCarburante()) {
@@ -163,15 +163,15 @@ void VehicleDetailView::setDynamicData(const Veicolo& veicolo) {
                 text += "Benzina";
                 break;
         }
-        _gridLayout->addWidget(new QLabel(text), ++row, 1, 1, 2);
+        _gridLayout->addWidget(new QLabel(text), ++row, 1, 1, 1);
 
-        _gridLayout->addWidget(new QLabel("Carburante disponibile: " + QString::number(combustion->litriSerbatoio())), ++row, 1, 1, 2);
-        _gridLayout->addWidget(new QLabel("Capacità serbatoio: " + QString::number(combustion->capacitaSerbatoio())), ++row, 1, 1, 2);
+        _gridLayout->addWidget(new QLabel("Carburante disponibile: " + QString::number(combustion->litriSerbatoio())), ++row, 1, 1, 1);
+        _gridLayout->addWidget(new QLabel("Capacità serbatoio: " + QString::number(combustion->capacitaSerbatoio())), ++row, 1, 1, 1);
     }
 
     if (electric) {
-        _gridLayout->addWidget(new QLabel("Carica batteria: " + QString::number(electric->percentualeCarica()) + "%"), ++row, 1, 1, 2);
-        _gridLayout->addWidget(new QLabel("Capacità massima batteria: " + QString::number(electric->capacitaBatteria()) + "Ah"), ++row, 1, 1, 2);
+        _gridLayout->addWidget(new QLabel("Carica batteria: " + QString::number(electric->percentualeCarica()) + "%"), ++row, 1, 1, 1);
+        _gridLayout->addWidget(new QLabel("Capacità massima batteria: " + QString::number(electric->capacitaBatteria()) + "Ah"), ++row, 1, 1, 1);
 
         QString text = "Velocità di carica supportata: ";
         switch (electric->caricaSupportata()) {
@@ -185,7 +185,7 @@ void VehicleDetailView::setDynamicData(const Veicolo& veicolo) {
             text += "Veloce";
             break;
         }
-        _gridLayout->addWidget(new QLabel(text), ++row, 1, 1, 2);
+        _gridLayout->addWidget(new QLabel(text), ++row, 1, 1, 1);
 
         text = "In carica: ";
         if (electric->inCarica())
@@ -194,7 +194,7 @@ void VehicleDetailView::setDynamicData(const Veicolo& veicolo) {
             text += "<img src=:/ExtraFiles/Icons/not_charging.png width=40 height=40>";
         QLabel* inCarica = new QLabel(text);
         inCarica->setTextFormat(Qt::RichText);
-        _gridLayout->addWidget(inCarica, ++row, 1, 1, 2);
+        _gridLayout->addWidget(inCarica, ++row, 1, 1, 1);
 
         if (electric->inCarica()){
             text = "Colonnina in uso: ";
@@ -216,11 +216,11 @@ void VehicleDetailView::setDynamicData(const Veicolo& veicolo) {
             }
             QLabel* colonnina = new QLabel(text);
             colonnina->setTextFormat(Qt::RichText);
-            _gridLayout->addWidget(colonnina, ++row, 1);
+            _gridLayout->addWidget(colonnina, ++row, 1, 1, 1);
         }
 
         if (electric->inCarica())
-            _gridLayout->addWidget(new QLabel("Tempo di carica rimanente: " + QString::number(electric->tempoRimanenteCaricaCompleta()) + " min"), ++row, 1, 1, 2);
+            _gridLayout->addWidget(new QLabel("Tempo di carica rimanente: " + QString::number(electric->tempoRimanenteCaricaCompleta()) + " min"), ++row, 1, 1, 1);
     }
 }
 
