@@ -29,7 +29,7 @@ Veicolo::Veicolo(
 Veicolo::~Veicolo() = default;
 
 short Veicolo::fattoreUtilizzo() const {
-    return (_tempoServizio / 52560) % 52560 ;
+    return 1 + (_tempoServizio / 52560) % 52560 ;
 }
 
 string Veicolo::targa() const {

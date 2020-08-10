@@ -1,11 +1,11 @@
 #ifndef WINDOW_H
 #define WINDOW_H
 
-#include "Controllers/controller.h"
+#include "controller.h"
 #include "Views/citieslistview.h"
 #include "Views/vehiclelistview.h"
 #include "Views/vehicledetailview.h"
-#include "Wizard/citywizard.h"
+#include "Views/Wizard/citywizard.h"
 #include <QStackedWidget>
 #include <QDialog>
 #include <QMessageBox>

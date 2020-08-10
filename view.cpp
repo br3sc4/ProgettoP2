@@ -1,6 +1,6 @@
-#include "Views/view.h"
+#include "view.h"
+#include "Views/Components/basetopbar.h"
 
-#include "Components/basetopbar.h"
 View::View(Controller* controller, QWidget *parent) : QStackedWidget(parent),
     _citiesView(new CitiesListView(controller, "Città", { "Città", "Numero veicoli" })),
     _vehiclesView(new VehicleListView(controller)),

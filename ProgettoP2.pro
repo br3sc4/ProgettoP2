@@ -16,7 +16,6 @@ RC_ICONS = ExtraFiles/Icons/logo_app.ico
 ICON = ExtraFiles/Icons/logo_app.icns
 
 SOURCES += Exceptions/emptyexception.cpp \
-    Controllers/controller.cpp \
     Exceptions/notinchargeexception.cpp \
     Exceptions/outofboundsexception.cpp \
     Exceptions/samecityexception.cpp \
@@ -44,14 +43,14 @@ SOURCES += Exceptions/emptyexception.cpp \
     Views/citieslistview.cpp \
     Views/vehicledetailview.cpp \
     Views/vehiclelistview.cpp \
-    Views/view.cpp \
     Views/viewinterface.cpp \
     loadDataBase.cpp \
+    controller.cpp \
+    view.cpp \
     main.cpp \
     model.cpp
 
 HEADERS += Exceptions/emptyexception.h \
-    Controllers/controller.h \
     Exceptions/notinchargeexception.h \
     Exceptions/outofboundsexception.h \
     Exceptions/samecityexception.h \
@@ -80,6 +79,7 @@ HEADERS += Exceptions/emptyexception.h \
     Views/citieslistview.h \
     Views/vehicledetailview.h \
     Views/vehiclelistview.h \
-    Views/view.h \
     Views/viewinterface.h \
+    controller.h \
+    view.h \
     model.h

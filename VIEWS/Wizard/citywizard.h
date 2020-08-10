@@ -1,7 +1,7 @@
 #ifndef CITYWIZARD_H
 #define CITYWIZARD_H
 
-#include "Controllers/controller.h"
+#include "controller.h"
 #include <QWizard>
 
 class CityWizard : public QWizard {

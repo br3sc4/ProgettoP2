@@ -3,7 +3,7 @@
 
 #include "viewinterface.h"
 #include "Components/basetopbar.h"
-#include "Controllers/controller.h"
+#include "controller.h"
 #include <QWidget>
 #include <QVBoxLayout>
 #include <QTableWidget>

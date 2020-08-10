@@ -2,7 +2,7 @@
 #define CITIESLISTCONTROLLER_H
 
 #include "model.h"
-#include "Views/view.h"
+#include "view.h"
 #include "Views/citieslistview.h"
 #include <QObject>
 #include <ostream>

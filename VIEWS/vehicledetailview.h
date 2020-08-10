@@ -2,7 +2,7 @@
 #define VEHICLEDETAILVIEW_H
 
 #include "Components/backtopbar.h"
-#include "Controllers/controller.h"
+#include "controller.h"
 #include "QCheckBox"
 #include "QPushButton"
 #include "QScrollBar"
