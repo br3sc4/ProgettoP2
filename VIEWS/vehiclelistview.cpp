@@ -6,6 +6,9 @@ VehicleListView::VehicleListView(Controller* controller, const QString& title, c
 
     setupLayout();
 
+    connect(_topBar, &BaseTopBar::closeSignal, this, &ViewInterface::closeSignal);
+    connect(_topBar, &BaseTopBar::showAddCityWizard, this, &ViewInterface::showAddCityWizard);
+    connect(_topBar, &BaseTopBar::showAddVehicleWizard, this, &ViewInterface::showAddVehicleWizard);
     connect(_topBar, &BackTopBar::backButtonClicked, this, &ViewInterface::backButtonClicked);
     connect(_table, &QTableWidget::itemDoubleClicked, this, [=](QTableWidgetItem* item) {
         emit rowClicked(item->row());

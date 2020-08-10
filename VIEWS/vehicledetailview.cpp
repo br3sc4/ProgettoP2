@@ -11,6 +11,9 @@ VehicleDetailView::VehicleDetailView(Controller* controller, const QString& titl
 
     setupLayout();
 
+    connect(_topBar, &BaseTopBar::closeSignal, this, &ViewInterface::closeSignal);
+    connect(_topBar, &BaseTopBar::showAddCityWizard, this, &ViewInterface::showAddCityWizard);
+    connect(_topBar, &BaseTopBar::showAddVehicleWizard, this, &ViewInterface::showAddVehicleWizard);
     connect(_topBar, &BackTopBar::backButtonClicked, this, &ViewInterface::backButtonClicked);
     connect(_checkBox, SIGNAL(stateChanged(int)), this, SIGNAL(maintenanceChanged(int)));
     connect(_moveButton, SIGNAL(clicked()), this, SIGNAL(createMoveDialog()));

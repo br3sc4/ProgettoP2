@@ -4,7 +4,7 @@ BackTopBar::BackTopBar(const QString& title, QWidget* parent)
     : BaseTopBar(title, parent), _backButton(new QPushButton("Back", this)) {
     setupBackButton();
 
-    connect(_backButton, SIGNAL(clicked()), this, SIGNAL(backButtonClicked()));
+    connect(_backButton, &QPushButton::clicked, this, &BackTopBar::backButtonClicked);
 }
 
 BackTopBar::~BackTopBar() {

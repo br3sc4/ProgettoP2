@@ -19,7 +19,7 @@ CitiesListView::CitiesListView(Controller* controller, const QString& title, con
         _table->clearSelection();
         _deleteButton->setDisabled(true);
     });
-    connect(_deleteButton, &QPushButton::clicked, this, [this](bool checked) {
+    connect(_deleteButton, &QPushButton::clicked, this, [this]() {
         if (_table->selectedItems().size() > 0) {
             emit deleteCityButtonClicked(_table->selectedItems().first()->row());
             _table->clearSelection();
