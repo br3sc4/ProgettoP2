@@ -10,7 +10,7 @@ template <class T> std::ostream& operator<< (std::ostream&, const Array<T>&);
 
 template <class T>
 class Array {
-    friend std::ostream& operator<<<T>(std::ostream&, const Array<T>&);
+    friend std::ostream& operator<< <T>(std::ostream&, const Array<T>&);
 
 private:
     T* x;
@@ -19,46 +19,43 @@ private:
     static T* copia(T* t, int sz, int cap);
 
 public:
-    // costruttore
+    // Costruttore
     Array(const T& t = T(), int k = 0);
 
-    // costruttore di copia
+    // Costruttore di copia
     Array(const Array& t);
 
-    // costruttore assegnazione
+    // Costruttore assegnazione
     Array& operator=(const Array& t);
 
-    // distruttore
+    // Distruttore
     ~Array();
 
-    // operatore di uguaglianza
+    // Operatore di uguaglianza
     bool operator==(const Array& a) const;
 
-    //===== CAPACITY =====
-
-    // Returns the number of elements in the vector.
+    // Ritorna il numero di elementi effettivamente presenti
     int size() const;
 
-    // Return size of allocated storage capacity
+    // Ritorna il numero di elementi che può contenere
     int capacity() const;
 
-    // Test whether vector is empty
+    // True iff vuoto
     bool empty() const;
 
-    // Test whether vector is full
+    // True iff pieno
     bool full() const;
 
-    // Double the vector capacity
+    // Raddoppia capacità
     void resize();
 
     class iterator {
         friend class Array<T>;
-
     private:
         T* i;
         bool isPastTheEnd;
 
-        // convertitore da T* => iterator
+        // Convertitore da T* a iterator
         iterator(T* e, bool pte = false);
 
     public:
@@ -74,27 +71,30 @@ public:
         reference operator*() const;
         pointer operator->() const;
 
-        // Forward category
+        // Scorrimento in avanti
         iterator& operator++();
         iterator operator++(int);
 
-        // Bidirectional category
+        // Scorrimento in dietro
         iterator& operator--();
         iterator operator--(int);
 
-        // Random access category
+        // Operatori di accesso casuale
         iterator operator+(int n) const;
         iterator operator-(int n) const;
         difference_type operator-(const iterator& it) const;
         iterator& operator+=(int n);
         iterator& operator-=(int n);
+        reference operator[](int n) const;
+
+        // Operatori di confronto
         bool operator<(iterator it) const;
         bool operator>(iterator it) const;
         bool operator<=(iterator it) const;
         bool operator>=(iterator it) const;
         bool operator==(iterator it) const;
         bool operator!=(iterator it) const;
-        reference operator[](int n) const;
+
     };
 
     class const_iterator {
@@ -104,71 +104,68 @@ public:
         T* i;
         bool isPastTheEnd;
 
-        // convertitore da T* => const_iterator
+        // Convertitore da T* a const_iterator
         const_iterator(T* e, bool pte = false);
 
     public:
+
         const_iterator();
         const_iterator& operator=(const_iterator it);
 
         const T& operator*() const;
         const T* operator->() const;
 
-        // Forward category
+        // Scorrimento in avanti
         const_iterator& operator++();
         const_iterator operator++(int);
 
+        // Operatori di accesso casuale
         const_iterator operator+(int n) const;
 
+        // Operatori di confronto
         bool operator==(const_iterator it) const;
         bool operator!=(const_iterator it) const;
     };
 
-    //===== ITERATORS =====
+    // Metodi che sfruttano iterator
     iterator begin() const;
-
     iterator end() const;
-
     const_iterator cbegin() const;
-
     const_iterator cend() const;
 
-    //===== ELEMENT ACCESS =====
-
-    // Access element
+    // Metodi di accesso agli elementi
+    T& operator[] (int pos);
     const T& operator[] (int pos) const;
 
-    T& operator[] (int pos);
-
-    const T& operator[] (Array::const_iterator pos) const;
-
     T& operator[] (Array::iterator pos) const;
+    const T& operator[] (Array::const_iterator pos) const;   
 
-    // Returns a reference to the first element in the vector.
+    // Ritorna riferimento del primo elemento
+    T& front();
     const T& front() const;
 
-    T& front();
-
-    // Returns a reference to the last element in the vector.
+    // Ritorna riferimento dell'ultimo elemento
+    T& back();
     const T& back() const;
 
-    T& back();
+    // Metodi che modificano il contenitore
 
-    //===== MODIFIERS =====
-
-    // Add element at the end
+    // Aggiungi in coda
     void push_back(const T& t);
 
-    // Delete last element
+    // Elimina coda
     void pop_back();
 
-    // Erase elements (public member function )
+    // Elimina elemento
     T erase(iterator position);
 
-    // Clear content (public member function )
+    // Svuota contenitore
     void clear();
 };
 
+// Implementazione metodi contenitore
+
+// Stampa tutti gli elementi
 template <class T>
 std::ostream& operator<< (std::ostream& os, const Array<T>& a) {
     for (typename Array<T>::const_iterator it = a.cbegin(); it != a.cend(); it++) {
@@ -177,6 +174,7 @@ std::ostream& operator<< (std::ostream& os, const Array<T>& a) {
     return os;
 }
 
+// Copia profonda
 template<class T>
 T* Array<T>::copia(T *t, int sz, int cap) {
     T* a = new T[cap];
@@ -186,16 +184,16 @@ T* Array<T>::copia(T *t, int sz, int cap) {
 }
 
 template<class T>
-Array<T>::Array(const T &t, int k) : x(k == 0 ? nullptr : new T[k * 2]), _size(k), _capacity(k * 2) {
+Array<T>::Array(const T& t, int k) : x(k == 0 ? nullptr : new T[k * 2]), _size(k), _capacity(k * 2) {
     for (int i = 0; i < _size; i++)
         x[i] = t;
 }
 
 template<class T>
-Array<T>::Array(const Array &t): x(copia(t.x, t._size, t._capacity)), _size(t._size), _capacity(t._capacity) {}
+Array<T>::Array(const Array& t): x(copia(t.x, t._size, t._capacity)), _size(t._size), _capacity(t._capacity) {}
 
 template<class T>
-Array<T>& Array<T>::operator=(const Array &t) {
+Array<T>& Array<T>::operator=(const Array& t) {
     if (this != &t) {
         delete[] x;
         x = copia(t, t._size, t._capacity);
@@ -232,7 +230,7 @@ int Array<T>::capacity() const {
 
 template<class T>
 bool Array<T>::empty() const {
-    return _size == 0; // anche x==nullptr ?
+    return _size == 0;
 }
 
 template<class T>
@@ -542,7 +540,6 @@ T Array<T>::erase(Array::iterator position) {
     for (; position != end(); position++) {
         *position = *(position + 1);
     }
-
     --_size;
     return aux;
 }
