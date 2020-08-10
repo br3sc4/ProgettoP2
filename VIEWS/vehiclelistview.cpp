@@ -9,12 +9,15 @@ VehicleListView::VehicleListView(Controller* controller, const QString& title, c
     connect(_topBar, &BaseTopBar::closeSignal, this, &ViewInterface::closeSignal);
     connect(_topBar, &BaseTopBar::showAddCityWizard, this, &ViewInterface::showAddCityWizard);
     connect(_topBar, &BaseTopBar::showAddVehicleWizard, this, &ViewInterface::showAddVehicleWizard);
-    connect(_topBar, &BackTopBar::backButtonClicked, this, &ViewInterface::backButtonClicked);
+    connect(_topBar, &BackTopBar::backButtonClicked, this, [=]() {
+        emit backButtonClicked();
+        _table->horizontalHeader()->setSortIndicator(2, Qt::SortOrder::DescendingOrder);
+    });
     connect(_table, &QTableWidget::itemDoubleClicked, this, [=](QTableWidgetItem* item) {
         emit rowClicked(item->row());
         _table->clearSelection();
     });
-    connect(_table->horizontalHeader(), &QHeaderView::sortIndicatorChanged, this, [=](int index, Qt::SortOrder order) {        
+    connect(_table->horizontalHeader(), &QHeaderView::sortIndicatorChanged, this, [=](int index, Qt::SortOrder order) {                
         if (index != 2) {
             QHeaderView* header = _table->horizontalHeader();
             const QSignalBlocker blocker(header);
@@ -98,8 +101,8 @@ void VehicleListView::setHederStrings(const QStringList& headerStrings) {
     _table->setHorizontalHeaderLabels(headerStrings);
     QHeaderView *header = _table->horizontalHeader();
     header->setSectionResizeMode(QHeaderView::Stretch);
-    header->setStretchLastSection(true);
-    header->setSortIndicator(2, Qt::AscendingOrder);
+    header->setStretchLastSection(true);    
+    header->setSortIndicator(2, Qt::SortOrder::AscendingOrder);
     header->setSortIndicatorShown(true);
 }
 
