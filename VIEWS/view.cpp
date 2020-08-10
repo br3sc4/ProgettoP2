@@ -21,6 +21,7 @@ View::View(Controller* controller, QWidget *parent) : QStackedWidget(parent),
         createWizard(true);
     });
     connect(_citiesView, &ViewInterface::showAddVehicleWizard, this, [=]() {
+        std::cout << "_citiesView::showAddVehicleWizard" << std::endl;
         createWizard();
     });
 
