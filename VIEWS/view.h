@@ -5,6 +5,7 @@
 #include "VIEWS/citieslistview.h"
 #include "VIEWS/vehiclelistview.h"
 #include "VIEWS/vehicledetailview.h"
+#include "Components/basetopbar.h"
 #include "Wizard/citywizard.h"
 #include <QStackedWidget>
 #include <QDialog>
