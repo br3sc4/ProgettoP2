@@ -1,4 +1,4 @@
-#include "MODELS/monopattino.h"
+#include "Models/monopattino.h"
 
 Monopattino::Monopattino(
     string targa,

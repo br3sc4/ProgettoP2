@@ -1,4 +1,4 @@
-#include "VIEWS/view.h"
+#include "Views/view.h"
 
 #include "Components/basetopbar.h"
 View::View(Controller* controller, QWidget *parent) : QStackedWidget(parent),

@@ -1,7 +1,7 @@
 #ifndef STATETABLEITEM_H
 #define STATETABLEITEM_H
 
-#include "MODELS/veicolo.h"
+#include "Models/veicolo.h"
 #include <QWidget>
 #include <QTableWidgetItem>
 

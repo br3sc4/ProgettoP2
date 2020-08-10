@@ -2,8 +2,8 @@
 #define ARRAY_H
 
 #include <iostream>
-#include "EXCEPTIONS/emptyexception.h"
-#include "EXCEPTIONS/outofboundsexception.h"
+#include "Exceptions/emptyexception.h"
+#include "Exceptions/outofboundsexception.h"
 
 template <class T> class Array;
 template <class T> std::ostream& operator<< (std::ostream&, const Array<T>&);

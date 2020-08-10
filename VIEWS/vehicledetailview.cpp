@@ -1,4 +1,4 @@
-#include "VIEWS/vehicledetailview.h"
+#include "Views/vehicledetailview.h"
 
 
 VehicleDetailView::VehicleDetailView(Controller* controller, const QString& title, QWidget *parent):

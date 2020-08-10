@@ -1,5 +1,5 @@
-#include "CONTROLLERS/controller.h"
-#include "VIEWS/view.h"
+#include "Controllers/controller.h"
+#include "Views/view.h"
 #include <QApplication>
 #include "loadDataBase.cpp"
 #include <vector>

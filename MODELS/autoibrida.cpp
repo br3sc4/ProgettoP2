@@ -1,4 +1,4 @@
-#include "MODELS/autoibrida.h"
+#include "Models/autoibrida.h"
 
 AutoIbrida::AutoIbrida(
     string targa,

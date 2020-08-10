@@ -2,7 +2,7 @@
 #define MOTOREELETTRICO_H
 
 #include "veicolo.h"
-#include "EXCEPTIONS/notinchargeexception.h"
+#include "Exceptions/notinchargeexception.h"
 
 class MotoreElettrico : virtual public Veicolo {
 public:

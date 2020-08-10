@@ -5,7 +5,7 @@
 #include "selectenginepage.h"
 #include "combustionenginepage.h"
 #include "electricenginepage.h"
-#include "MODELS/veicolo.h"
+#include "Models/veicolo.h"
 
 CityWizard::CityWizard(bool addCityMode, Controller* controller, QWidget* parent): QWizard(parent), _controller(controller), _addCityMode(addCityMode) {
     setPage(AddCity_Page, new AddCityPage);

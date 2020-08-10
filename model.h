@@ -1,16 +1,16 @@
 #ifndef MODEL_H
 #define MODEL_H
 
-#include "MODELS/array.h"
-#include "MODELS/citta.h"
-#include "MODELS/automobile.h"
-#include "MODELS/bicicletta.h"
-#include "MODELS/automobileelettrica.h"
-#include "MODELS/autoibrida.h"
-#include "MODELS/monopattino.h"
-#include "MODELS/moto.h"
-#include "MODELS/motoelettrica.h"
-#include "EXCEPTIONS/samecityexception.h"
+#include "Models/array.h"
+#include "Models/citta.h"
+#include "Models/automobile.h"
+#include "Models/bicicletta.h"
+#include "Models/automobileelettrica.h"
+#include "Models/autoibrida.h"
+#include "Models/monopattino.h"
+#include "Models/moto.h"
+#include "Models/motoelettrica.h"
+#include "Exceptions/samecityexception.h"
 
 class Model {
 public:

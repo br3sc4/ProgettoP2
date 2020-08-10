@@ -1,4 +1,4 @@
-#include "VIEWS/vehiclelistview.h"
+#include "Views/vehiclelistview.h"
 
 VehicleListView::VehicleListView(Controller* controller, const QString& title, const QStringList& headerStrings, QWidget *parent):
     ViewInterface(parent), _controller(controller), _topBar(new BackTopBar(title, parent)), _table(new QTableWidget(parent)) {

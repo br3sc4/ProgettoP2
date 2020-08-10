@@ -1,4 +1,4 @@
-#include "MODELS/motorecombustione.h"
+#include "Models/motorecombustione.h"
 
 MotoreCombustione::MotoreCombustione(
     string targa,
