@@ -3,6 +3,7 @@
 
 #include "array.h"
 #include "veicolo.h"
+#include <algorithm>
 
 class Citta {
 public:

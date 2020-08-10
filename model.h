@@ -30,6 +30,8 @@ public:
     bool searchCity(const std::string& city) const;
     bool searchVehicle(unsigned int city, const std::string& vehicle) const;
 
+    void sortVehicleByState(unsigned city, bool ascending = true);
+
 private:
     Array<Citta*> _cities;
 };

@@ -1,5 +1,6 @@
 #include "controller.h"
 #include <typeinfo>
+#include <algorithm>
 
 Controller::Controller(Model* model, QObject* parent): QObject(parent),
     _view(nullptr), _model(model) {}
@@ -11,6 +12,7 @@ void Controller::setView(View *view) {
     connect(_view->getCitiesListView(), SIGNAL(deleteCityButtonClicked(unsigned)), this, SLOT(deleteCity(unsigned)));
     connect(_view->getVehicleListView(), SIGNAL(backButtonClicked()), this, SLOT(goBack()));
     connect(_view->getVehicleListView(), SIGNAL(rowClicked(int)), this, SLOT(goToVehicleDetailView(int)));
+    connect(_view->getVehicleListView(), SIGNAL(sort(bool)), this, SLOT(sortVeiclesByState(bool)));
     connect(_view->getVehicleDetailView(), SIGNAL(backButtonClicked()), this, SLOT(goBack()));
     connect(_view->getVehicleDetailView(), SIGNAL(maintenanceChanged(int)), this, SLOT(toggleMaintenance(int)));
     connect(_view->getVehicleDetailView(), SIGNAL(removeButtonClicked()), this, SLOT(removeVehicle()));
@@ -56,6 +58,10 @@ bool Controller::searchCity(const std::string& nome) const {
 
 bool Controller::searchVehicle(unsigned int city, const std::string& vehicle) const {
     return _model->searchVehicle(city, vehicle);
+}
+
+void Controller::sortVeiclesByState(bool ascending) const {
+    _model->sortVehicleByState(_currentCityIndex, ascending);
 }
 
 void Controller::showMessage(const QString& msg) const {

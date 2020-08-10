@@ -3,7 +3,7 @@
 #include <QFile>
 #include <QTextStream>
 
-void loadCitta(Model &model) {
+void loadCitta(Model& model) {
   QFile inputFile(":/database/Citta.txt");
   if (inputFile.open(QIODevice::ReadOnly)) {
     QTextStream in(&inputFile);
@@ -15,7 +15,7 @@ void loadCitta(Model &model) {
   }
 }
 
-void loadVeicoli(Model &model) {
+void loadVeicoli(Model& model) {
   QString dataBase = ":/database/Veicoli.txt";
 
   QFile inputFile(dataBase);

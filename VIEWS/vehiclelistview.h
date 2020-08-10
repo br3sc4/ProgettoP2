@@ -3,6 +3,7 @@
 
 #include "viewinterface.h"
 #include "Components/backtopbar.h"
+#include "Components/statetableitem.h"
 #include "CONTROLLERS/controller.h"
 #include <typeinfo>
 #include <QWidget>
@@ -35,6 +36,9 @@ private:
     void setupLayout();
 
     const QString getIconPath(const Veicolo& vehicle) const;
+
+signals:
+    void sort(bool ascending);
 };
 
 #endif // VEHICLELISTVIEW_H

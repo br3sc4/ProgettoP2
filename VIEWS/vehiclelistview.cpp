@@ -11,6 +11,10 @@ VehicleListView::VehicleListView(Controller* controller, const QString& title, c
         emit rowClicked(item->row());
         _table->clearSelection();
     });
+    connect(_table->horizontalHeader(), &QHeaderView::sortIndicatorChanged, this, [=](int index, Qt::SortOrder order) {
+        _table->sortItems(index, order);
+        emit sort(order == Qt::SortOrder::AscendingOrder);
+    });
 }
 
 void VehicleListView::reload() {
@@ -29,28 +33,7 @@ void VehicleListView::reload() {
         item = new QTableWidgetItem(QString::fromStdString(vehicles[i]->targa()));
         _table->setItem(i, 1, item);
 
-        item = new QTableWidgetItem();
-        Veicolo::StatoVeicolo stato = vehicles[i]->statoAttuale();
-        QPixmap* iconaStato;
-        switch (stato) {
-            case Veicolo::libero:
-                iconaStato = new QPixmap(":/icons/available.png");
-                item->setText(" Libero");
-                break;
-            case Veicolo::prenotato:
-                iconaStato = new QPixmap(":/icons/reserved.png");
-                item->setText(" Prenotato");
-                break;
-            case Veicolo::occupato:
-                iconaStato = new QPixmap(":/icons/occupate.png");
-                item->setText(" Occupato");
-                break;
-            case Veicolo::manutenzione:
-                iconaStato = new QPixmap(":/icons/manutenzione.png");
-                item->setText(" Manutenzione");
-                break;
-        }
-        item->setData(Qt::DecorationRole, iconaStato->scaled(30, 30));
+        item = new StateTableItem(vehicles[i]->statoAttuale());
         _table->setItem(i, 2, item);
 
         int hIcon = 30, wIcon = 30;
@@ -59,7 +42,6 @@ void VehicleListView::reload() {
         QPixmap* normal = new QPixmap(":/icons/normal_fuel.png");
         QPixmap* help = new QPixmap(":/icons/help.png");
         QPixmap* ok = new QPixmap(":/icons/available.png");
-
 
         item = new QTableWidgetItem();
         if(vehicles[i]->serveAssistenza()) {
@@ -108,6 +90,8 @@ void VehicleListView::setHederStrings(const QStringList& headerStrings) {
     QHeaderView *header = _table->horizontalHeader();
     header->setSectionResizeMode(QHeaderView::Stretch);
     header->setStretchLastSection(true);
+    header->setSortIndicator(2, Qt::AscendingOrder);
+    header->setSortIndicatorShown(true);
 }
 
 QString VehicleListView::title() const {

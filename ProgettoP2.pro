@@ -33,6 +33,7 @@ SOURCES += EXCEPTIONS/emptyexception.cpp \
     MODELS/veicolo.cpp \
     VIEWS/Components/backtopbar.cpp \
     VIEWS/Components/basetopbar.cpp \
+    VIEWS/Components/statetableitem.cpp \
     VIEWS/Wizard/addcitypage.cpp \
     VIEWS/Wizard/citywizard.cpp \
     VIEWS/Wizard/combustionenginepage.cpp \
@@ -68,6 +69,7 @@ HEADERS += EXCEPTIONS/emptyexception.h \
     MODELS/veicolo.h \
     VIEWS/Components/backtopbar.h \
     VIEWS/Components/basetopbar.h \
+    VIEWS/Components/statetableitem.h \
     VIEWS/Wizard/addcitypage.h \
     VIEWS/Wizard/citywizard.h \
     VIEWS/Wizard/combustionenginepage.h \

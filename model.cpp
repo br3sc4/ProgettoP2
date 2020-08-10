@@ -80,3 +80,11 @@ bool Model::searchVehicle(unsigned int city, const std::string& vehicle) const {
 
     return found;
 }
+
+void Model::sortVehicleByState(unsigned city, bool ascending) {
+    Array<Veicolo*>* vehicles = &(_cities[city]->getVeicoli());
+
+    std::stable_sort(vehicles->begin(), vehicles->end(), [=](Veicolo* const lhs, Veicolo* const rhs) {
+        return ascending ? lhs->statoAttuale() < rhs->statoAttuale() : lhs->statoAttuale() > rhs->statoAttuale();
+    });
+}

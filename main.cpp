@@ -2,12 +2,13 @@
 #include "VIEWS/view.h"
 #include <QApplication>
 #include "loadDataBase.cpp"
+#include <vector>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    Model model;
+    Model model;    
 
     loadCitta(model);
     loadVeicoli(model);

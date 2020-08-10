@@ -30,7 +30,7 @@ public:
     void addVehicle(unsigned int city, Veicolo* const vehicle);
 
     bool searchCity(const std::string& nome) const;
-    bool searchVehicle(unsigned int city, const std::string& vehicle) const;
+    bool searchVehicle(unsigned int city, const std::string& vehicle) const;    
 
     void showMessage(const QString& msg) const;
 
@@ -48,6 +48,7 @@ private slots:
     void removeVehicle() const;
     void saveChage(int row) const;
     void deleteCity(unsigned index) const;
+    void sortVeiclesByState(bool ascending) const;
 };
 
 #endif // CITIESLISTCONTROLLER_H
