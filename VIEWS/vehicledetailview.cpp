@@ -1,6 +1,5 @@
 #include "Views/vehicledetailview.h"
 
-
 VehicleDetailView::VehicleDetailView(Controller* controller, const QString& title, QWidget *parent):
     ViewInterface(parent), _controller(controller), _verticalLayout(new QVBoxLayout), _gridLayout(new QGridLayout),
     _topBar(new BackTopBar(title, parent)), _checkBox(new QCheckBox("imposta in manutenzione", parent)),

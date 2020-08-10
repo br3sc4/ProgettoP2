@@ -14,9 +14,15 @@ VehicleListView::VehicleListView(Controller* controller, const QString& title, c
         emit rowClicked(item->row());
         _table->clearSelection();
     });
-    connect(_table->horizontalHeader(), &QHeaderView::sortIndicatorChanged, this, [=](int index, Qt::SortOrder order) {
-        _table->sortItems(index, order);
-        emit sort(order == Qt::SortOrder::AscendingOrder);
+    connect(_table->horizontalHeader(), &QHeaderView::sortIndicatorChanged, this, [=](int index, Qt::SortOrder order) {        
+        if (index != 2) {
+            QHeaderView* header = _table->horizontalHeader();
+            const QSignalBlocker blocker(header);
+            header->setSortIndicator(2, Qt::SortOrder::DescendingOrder);
+        } else {
+            _table->sortItems(index, order);
+            emit sort(order == Qt::SortOrder::AscendingOrder);
+        }
     });
 }
 
