@@ -30,6 +30,7 @@ View::View(Controller* controller, QWidget *parent) : QStackedWidget(parent),
         createWizard(true);
     });
     connect(_vehiclesView, &ViewInterface::showAddVehicleWizard, this, [=]() {
+        std::cout << "_vehiclesView::showAddVehicleWizard" << std::endl;
         createWizard();
     });
 
@@ -38,6 +39,7 @@ View::View(Controller* controller, QWidget *parent) : QStackedWidget(parent),
         createWizard(true);
     });
     connect(_vehicleDetailView, &ViewInterface::showAddVehicleWizard, this, [=]() {
+        std::cout << "_vehicleDetailView::showAddVehicleWizard" << std::endl;
         createWizard();
     });
 
