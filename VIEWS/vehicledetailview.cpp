@@ -45,9 +45,9 @@ void VehicleDetailView::reload() {
     vehicle->checkRiserva();
     QLabel* riserva = static_cast<QLabel*>(_gridLayout->itemAtPosition(11, 0)->widget());
     if (vehicle->inRiserva())
-        riserva->setText("In riserva: <img src=:/icons/true.png width=20 height=20>");
+        riserva->setText("In riserva: <img src=:/ExtraFiles/Icons/true.png width=20 height=20>");
     else
-        riserva->setText("In riserva: <img src=:/icons/false.png width=20 height=20>");
+        riserva->setText("In riserva: <img src=:/ExtraFiles/Icons/false.png width=20 height=20>");
     riserva->setTextFormat(Qt::RichText);
 
     // Se è stato aperto un altro veicolo prima
@@ -62,19 +62,19 @@ void VehicleDetailView::reload() {
     QString stato = "Stato: ";
     switch (state) {
         case Veicolo::libero:
-            stato += "<img src=:/icons/available.png width=20 height=20> libero";
+            stato += "<img src=:/ExtraFiles/Icons/available.png width=20 height=20> libero";
             _checkBox->setDisabled(false);
             break;
         case Veicolo::prenotato:
-            stato += "<img src=:/icons/reserved.png width=20 height=20> prenotato";
+            stato += "<img src=:/ExtraFiles/Icons/reserved.png width=20 height=20> prenotato";
             _checkBox->setDisabled(true);
             break;
         case Veicolo::occupato:
-            stato += "<img src=:/icons/occupate.png width=20 height=20> occupato";
+            stato += "<img src=:/ExtraFiles/Icons/occupate.png width=20 height=20> occupato";
             _checkBox->setDisabled(true);
             break;
         case Veicolo::manutenzione:
-            stato += "<img src=:/icons/manutenzione.png width=20 height=20> manutenzione";
+            stato += "<img src=:/ExtraFiles/Icons/manutenzione.png width=20 height=20> manutenzione";
             _checkBox->setDisabled(false);
             break;
     }
@@ -125,14 +125,14 @@ void VehicleDetailView::setupLayout() {
 }
 
 void VehicleDetailView::setupMoveButton() {
-    QPixmap pixmap(":/icons/change_city.png");
+    QPixmap pixmap(":/ExtraFiles/Icons/change_city.png");
     QIcon buttonIcon(pixmap.scaled(40, 40));
     _moveButton->setIcon(buttonIcon);
     _moveButton->setMaximumWidth(200);
 }
 
 void VehicleDetailView::setupRemoveButton() {
-    QPixmap pixmap(":/icons/delete.png");
+    QPixmap pixmap(":/ExtraFiles/Icons/delete.png");
     QIcon buttonIcon(pixmap.scaled(40, 40));
     _removeButton->setIcon(buttonIcon);
     _removeButton->setMaximumWidth(200);
@@ -190,9 +190,9 @@ void VehicleDetailView::setDynamicData(const Veicolo& veicolo) {
 
         text = "In carica: ";
         if (electric->inCarica())
-            text += "<img src=:/icons/charging.png width=40 height=40>";
+            text += "<img src=:/ExtraFiles/Icons/charging.png width=40 height=40>";
         else
-            text += "<img src=:/icons/not_charging.png width=40 height=40>";
+            text += "<img src=:/ExtraFiles/Icons/not_charging.png width=40 height=40>";
         QLabel* inCarica = new QLabel(text);
         inCarica->setTextFormat(Qt::RichText);
         _gridLayout->addWidget(inCarica, ++row, 1, 1, 2);
@@ -203,16 +203,16 @@ void VehicleDetailView::setDynamicData(const Veicolo& veicolo) {
                 case MotoreElettrico::nessuna:
                     break;
             case MotoreElettrico::lowHome:
-                    text += "<img src=:/icons/charger_lvl1.png width=40 height=40>";
+                    text += "<img src=:/ExtraFiles/Icons/charger_lvl1.png width=40 height=40>";
                 break;
                 case MotoreElettrico::lowPublic:
-                    text += "<img src=:/icons/charger_lvl2.png width=40 height=40>";
+                    text += "<img src=:/ExtraFiles/Icons/charger_lvl2.png width=40 height=40>";
                 break;
                 case MotoreElettrico::medium:
-                    text += "<img src=:/icons/charger_lvl3.png width=40 height=40>";
+                    text += "<img src=:/ExtraFiles/Icons/charger_lvl3.png width=40 height=40>";
                 break;
                 case MotoreElettrico::ultraFast:
-                    text += "<img src=:/icons/charger_lvl4.png width=40 height=40>";
+                    text += "<img src=:/ExtraFiles/Icons/charger_lvl4.png width=40 height=40>";
                 break;
             }
             QLabel* colonnina = new QLabel(text);

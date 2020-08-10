@@ -4,7 +4,7 @@
 #include <QTextStream>
 
 void loadCitta(Model& model) {
-  QFile inputFile(":/database/Citta.txt");
+  QFile inputFile(":/ExtraFiles/DataBase/Citta.txt");
   if (inputFile.open(QIODevice::ReadOnly)) {
     QTextStream in(&inputFile);
     while (!in.atEnd()) {
@@ -16,7 +16,7 @@ void loadCitta(Model& model) {
 }
 
 void loadVeicoli(Model& model) {
-  QString dataBase = ":/database/Veicoli.txt";
+  QString dataBase = ":/ExtraFiles/DataBase/Veicoli.txt";
 
   QFile inputFile(dataBase);
   if (inputFile.open(QIODevice::ReadOnly)) {

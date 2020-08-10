@@ -69,7 +69,7 @@ void View::showMessage(const QString &msg) {
 }
 
 void View::setupStyle() {
-    QFile file(":/stylesheets/style.css");
+    QFile file(":/ExtraFiles/Styles/style.css");
     file.open(QFile::ReadOnly);
     QString styleSheet = QLatin1String(file.readAll());
 

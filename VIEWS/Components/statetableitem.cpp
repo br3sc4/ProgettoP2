@@ -14,19 +14,19 @@ void StateTableItem::setupView(Veicolo::StatoVeicolo state) {
     QPixmap* iconaStato;
     switch (state) {
         case Veicolo::libero:
-            iconaStato = new QPixmap(":/icons/available.png");
+            iconaStato = new QPixmap(":/ExtraFiles/Icons/available.png");
             setText(" Libero");
             break;
         case Veicolo::prenotato:
-            iconaStato = new QPixmap(":/icons/reserved.png");
+            iconaStato = new QPixmap(":/ExtraFiles/Icons/reserved.png");
             setText(" Prenotato");
             break;
         case Veicolo::occupato:
-            iconaStato = new QPixmap(":/icons/occupate.png");
+            iconaStato = new QPixmap(":/ExtraFiles/Icons/occupate.png");
             setText(" Occupato");
             break;
         case Veicolo::manutenzione:
-            iconaStato = new QPixmap(":/icons/manutenzione.png");
+            iconaStato = new QPixmap(":/ExtraFiles/Icons/manutenzione.png");
             setText(" Manutenzione");
             break;
     }

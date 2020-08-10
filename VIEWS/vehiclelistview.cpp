@@ -41,10 +41,10 @@ void VehicleListView::reload() {
 
         int hIcon = 30, wIcon = 30;
 
-        QPixmap* low = new QPixmap(":/icons/low_fuel.png");
-        QPixmap* normal = new QPixmap(":/icons/normal_fuel.png");
-        QPixmap* help = new QPixmap(":/icons/help.png");
-        QPixmap* ok = new QPixmap(":/icons/available.png");
+        QPixmap* low = new QPixmap(":/ExtraFiles/Icons/low_fuel.png");
+        QPixmap* normal = new QPixmap(":/ExtraFiles/Icons/normal_fuel.png");
+        QPixmap* help = new QPixmap(":/ExtraFiles/Icons/help.png");
+        QPixmap* ok = new QPixmap(":/ExtraFiles/Icons/available.png");
 
         item = new QTableWidgetItem();
         if(vehicles[i]->serveAssistenza()) {
@@ -125,7 +125,7 @@ void VehicleListView::setupLayout() {
 }
 
 const QString VehicleListView::getIconPath(const Veicolo& vehicle) const {
-    QString basePath = ":/icons/";
+    QString basePath = ":/ExtraFiles/Icons/";
 
     if (typeid(vehicle) == typeid(Automobile))
         return basePath + "auto.png";
