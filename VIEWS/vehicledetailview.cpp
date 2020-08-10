@@ -48,7 +48,7 @@ void VehicleDetailView::reload() {
     riserva->setTextFormat(Qt::RichText);
 
     // Se è stato aperto un altro veicolo prima
-    if (_gridLayout->itemAtPosition(4, 1))
+    if (_gridLayout->itemAtPosition(1, 1))
         clearDynamicData();
 
     // Seconda colonna
@@ -75,7 +75,7 @@ void VehicleDetailView::reload() {
             _checkBox->setDisabled(false);
             break;
     }
-    static_cast<QLabel*>(_gridLayout->itemAtPosition(3, 1)->widget())->setText(stato);
+    static_cast<QLabel*>(_gridLayout->itemAtPosition(0, 1)->widget())->setText(stato);
 
     setDynamicData(*vehicle);
 }
@@ -109,10 +109,12 @@ void VehicleDetailView::setupLayout() {
     _gridLayout->addWidget(new QLabel("In riserva: "), 11, 0, 1, 1);
 
     // Seconda colonna
-    _gridLayout->addWidget(_checkBox, 0, 2, 1, 2);
-    _gridLayout->addWidget(_moveButton, 1, 2, 1, 2);
-    _gridLayout->addWidget(_removeButton, 2, 2, 1, 2);
-    _gridLayout->addWidget(new QLabel("Stato: "), 3, 1, 1, 2);
+    _gridLayout->addWidget(new QLabel("Stato: "), 0, 1, 1, 2);
+
+    // Terza colonna
+    _gridLayout->addWidget(_checkBox, 0, 2, 1, 1);
+    _gridLayout->addWidget(_moveButton, 1, 2, 1, 1);
+    _gridLayout->addWidget(_removeButton, 2, 2, 1, 1);
 
     _verticalLayout->addSpacerItem(new QSpacerItem(10, 10, QSizePolicy::Minimum, QSizePolicy::MinimumExpanding));
 
@@ -221,7 +223,7 @@ void VehicleDetailView::setDynamicData(const Veicolo& veicolo) {
 }
 
 void VehicleDetailView::clearDynamicData() {
-    unsigned row = 4;
+    unsigned row = 1;
 
     do {
         QLabel* label = dynamic_cast<QLabel*>(_gridLayout->itemAtPosition(row, 1)->widget());
