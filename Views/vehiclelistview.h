@@ -31,6 +31,7 @@ private:
     Controller* _controller;
     BackTopBar* _topBar;
     QTableWidget* _table;
+    Qt::SortOrder _order;
 
     void setupTable(const QStringList& headerStrings);
     void setupLayout();

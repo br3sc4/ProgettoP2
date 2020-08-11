@@ -1,7 +1,7 @@
 #include "Views/vehiclelistview.h"
 
 VehicleListView::VehicleListView(Controller* controller, const QString& title, const QStringList& headerStrings, QWidget *parent):
-    ViewInterface(parent), _controller(controller), _topBar(new BackTopBar(title, parent)), _table(new QTableWidget(parent)) {
+    ViewInterface(parent), _controller(controller), _topBar(new BackTopBar(title, parent)), _table(new QTableWidget(parent)), _order(Qt::SortOrder::AscendingOrder) {
     setupTable(headerStrings);
 
     setupLayout();
@@ -11,19 +11,23 @@ VehicleListView::VehicleListView(Controller* controller, const QString& title, c
     connect(_topBar, &BaseTopBar::showAddVehicleWizard, this, &ViewInterface::showAddVehicleWizard);
     connect(_topBar, &BackTopBar::backButtonClicked, this, [=]() {
         emit backButtonClicked();
-        _table->horizontalHeader()->setSortIndicator(2, Qt::SortOrder::DescendingOrder);
+        _order = Qt::SortOrder::DescendingOrder;
+        QHeaderView* header = _table->horizontalHeader();
+        const QSignalBlocker blocker(header);
+        header->setSortIndicator(2, _order);
     });
     connect(_table, &QTableWidget::itemDoubleClicked, this, [=](QTableWidgetItem* item) {
         emit rowClicked(item->row());
         _table->clearSelection();
     });
     connect(_table->horizontalHeader(), &QHeaderView::sortIndicatorChanged, this, [=](int index, Qt::SortOrder order) {                
-        if (index != 2) {
+        if (index != 2) {            
             QHeaderView* header = _table->horizontalHeader();
             const QSignalBlocker blocker(header);
-            header->setSortIndicator(2, Qt::SortOrder::DescendingOrder);
+            header->setSortIndicator(2, _order);
         } else {
-            _table->sortItems(index, order);
+            _order = order;
+            _table->sortItems(index, _order);
             emit sort(order == Qt::SortOrder::AscendingOrder);
         }
     });
@@ -93,7 +97,11 @@ void VehicleListView::reload() {
 
         _table->setRowHeight(i, 60);
     }
+
     _table->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
+    _order = Qt::SortOrder::AscendingOrder;
+    _table->horizontalHeader()->setSortIndicator(2, _order);
+    _table->scrollToTop();
 }
 
 void VehicleListView::setHederStrings(const QStringList& headerStrings) {
@@ -102,7 +110,7 @@ void VehicleListView::setHederStrings(const QStringList& headerStrings) {
     QHeaderView *header = _table->horizontalHeader();
     header->setSectionResizeMode(QHeaderView::Stretch);
     header->setStretchLastSection(true);    
-    header->setSortIndicator(2, Qt::SortOrder::AscendingOrder);
+    header->setSortIndicator(2, _order);
     header->setSortIndicatorShown(true);
 }
 
