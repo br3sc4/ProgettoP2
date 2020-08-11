@@ -81,7 +81,7 @@ double AutoIbrida::autonomia() const {
 }
 
 short AutoIbrida::fattoreGreen() const {
-    short int somma = MotoreElettrico::fattoreGreen() + MotoreCombustione::fattoreGreen();
+    short int somma = 2 + MotoreElettrico::fattoreGreen() + MotoreCombustione::fattoreGreen();
 
     if(somma < -10) return -10;
     if(somma > 10)  return 10;

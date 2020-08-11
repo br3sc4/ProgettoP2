@@ -59,7 +59,7 @@ void MotoreElettrico::checkRiserva() {
 }
 
 short int MotoreElettrico::fattoreGreen() const {
-    short int somma = 0;
+    short int somma = 2;
     if(ingombro() == 1)
         somma = somma + 3;                          // meno ingombro positivo
     else if(ingombro() == 2 || ingombro() == 3)

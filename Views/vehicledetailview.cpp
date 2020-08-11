@@ -44,9 +44,9 @@ void VehicleDetailView::reload() {
     vehicle->checkRiserva();
     QLabel* riserva = static_cast<QLabel*>(_gridLayout->itemAtPosition(11, 0)->widget());
     if (vehicle->inRiserva())
-        riserva->setText("In riserva: <img src=:/ExtraFiles/Icons/true.png width=20 height=20>");
+        riserva->setText("In riserva: <img src=:/ExtraFiles/Icons/low_fuel.png width=30 height=30> Si");
     else
-        riserva->setText("In riserva: <img src=:/ExtraFiles/Icons/false.png width=20 height=20>");
+        riserva->setText("In riserva: <img src=:/ExtraFiles/Icons/normal_fuel.png width=30 height=30> No");
     riserva->setTextFormat(Qt::RichText);
 
     // Se è stato aperto un altro veicolo prima
@@ -197,21 +197,21 @@ void VehicleDetailView::setDynamicData(const Veicolo& veicolo) {
         _gridLayout->addWidget(inCarica, ++row, 1, 1, 1);
 
         if (electric->inCarica()){
-            text = "Colonnina in uso: ";
+            text = "Velocità colonnina: ";
             switch(electric->colonninaAttuale()){
                 case MotoreElettrico::nessuna:
                     break;
             case MotoreElettrico::lowHome:
-                    text += "<img src=:/ExtraFiles/Icons/charger_lvl1.png width=40 height=40>";
+                    text += "<img src=:/ExtraFiles/Icons/charger_lvl1.png width=40 height=40> Low Home";
                 break;
                 case MotoreElettrico::lowPublic:
-                    text += "<img src=:/ExtraFiles/Icons/charger_lvl2.png width=40 height=40>";
+                    text += "<img src=:/ExtraFiles/Icons/charger_lvl2.png width=40 height=40> Low Public";
                 break;
                 case MotoreElettrico::medium:
-                    text += "<img src=:/ExtraFiles/Icons/charger_lvl3.png width=40 height=40>";
+                    text += "<img src=:/ExtraFiles/Icons/charger_lvl3.png width=40 height=40> Medium";
                 break;
                 case MotoreElettrico::ultraFast:
-                    text += "<img src=:/ExtraFiles/Icons/charger_lvl4.png width=40 height=40>";
+                    text += "<img src=:/ExtraFiles/Icons/charger_lvl4.png width=40 height=40> Ultra Fast";
                 break;
             }
             QLabel* colonnina = new QLabel(text);
